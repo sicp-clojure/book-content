@@ -1,16 +1,9 @@
-SICP
-====
+SICP on Clojure
+===============
 
-<img src="http://sicpebook.files.wordpress.com/2013/09/smile0.png"
- alt="Par smiling" align="right" />
+This is a Clojure port of the HTML5 and EPUB3 version of "Structure and Interpretation of Computer Programs" by Abelson, Sussman, and Sussman. It comes from the lineage of [Unofficial Texinfo Format](http://www.neilvandyke.org/sicp-texi/) that was converted from the original [HTML version](http://mitpress.mit.edu/sicp/) at The MIT Press.
 
-This is a new HTML5 and EPUB3 version of "Structure and Interpretation of Computer Programs" by Abelson, Sussman, and Sussman. It comes from the lineage of [Unofficial Texinfo Format](http://www.neilvandyke.org/sicp-texi/) that was converted from the original [HTML version](http://mitpress.mit.edu/sicp/) at The MIT Press.
-
-<b>In EPUB3 format: [sicp.epub](https://github.com/sarabander/sicp-epub/blob/master/sicp.epub?raw=true)</b>
-
-<b>For online reading: [HTML book](http://sarabander.github.io/sicp/)</b>
-
-Modern solutions such as scalable vector graphics, mathematical markup with MathML and MathJax, embedded web fonts, and syntax highlighting are used. Rudimentary scaffolding for responsive design is in place, which adapts the page for viewing on pocket devices and tablets. More tests on small screens are needed to adjust the font size and formatting, so I encourage feedback from smartphone and tablet owners.
+The version contained within this repository was built off of a clone of [Andres Raba's](https://github.com/sarabander) [HTML5 and EPUB3](https://github.com/sarabander/sicp) translations.
 
 Source
 ------
@@ -28,6 +21,10 @@ You will need [Texinfo 5.1](http://ftp.gnu.org/gnu/texinfo/), Perl 5.12 or later
 Acknowledgements
 ----------------
 
+* Andres Raba
+
+Andres' acknowledges a number of folk on the site that this repository was seeded from.  We have listed those names here without any amendments:
+
 * Lytha Ayth
 * Neil Van Dyke
 * Gavrie Philipson
@@ -36,16 +33,12 @@ Acknowledgements
 * Matt Iversen
 * Eugene Sharygin
 
+
 License
 -------
 
 The source file `sicp-pocket.texi,` HTML content of the book, and diagrams in directory `html/fig` are licensed under Creative Commons Attribution-ShareAlike 4.0 International License ([cc by-sa](http://creativecommons.org/licenses/by-sa/4.0/)).
-          
+
 Most of the scripts are licensed under GNU General Public License version 3 (for details, see LICENSE.src).
 
 Fonts are under SIL Open Font License version 1.1. Other files, like Javascript libraries, have their own licenses.
-
-Sister project
---------------
-
-A [PDF version](https://github.com/sarabander/sicp-pdf) built from LaTeX source accompanies this HTML version.
