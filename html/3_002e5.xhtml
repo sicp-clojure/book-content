@@ -126,7 +126,7 @@ of <a href="2_002e2.xhtml#g_t2_002e2_002e3">2.2.3</a>:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">sum-primes a b</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">accumulate 
+  </span><span class="opn">(</span><span class="pln">accumulate
    </span><span class="pun">+</span><span class="pln">
    </span><span class="lit">0</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">filter prime? </span><span class="opn">(</span><span class="pln">enumerate-interval a b</span><span class="clo">))))</span></pre></div>
@@ -145,8 +145,8 @@ sequence paradigm to compute the second prime in the interval from 10,000 to
 1,000,000 by evaluating the expression
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> 
-      </span><span class="opn">(</span><span class="pln">filter 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln">
+      </span><span class="opn">(</span><span class="pln">filter
        prime?
        </span><span class="opn">(</span><span class="pln">enumerate-interval </span><span class="lit">10000</span><span class="pln"> </span><span class="lit">1000000</span><span class="clo">))))</span></pre></div>
 
@@ -197,16 +197,16 @@ stream analogs of the list operations from <a href="Chapter-2.xhtml#Chapter-2">C
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-map proc s</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-null? s</span><span class="clo">)</span><span class="pln">
       the-empty-stream
-      </span><span class="opn">(</span><span class="pln">cons-stream 
+      </span><span class="opn">(</span><span class="pln">cons-stream
        </span><span class="opn">(</span><span class="pln">proc </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">))</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">stream-map proc </span><span class="opn">(</span><span class="pln">stream-cdr s</span><span class="clo">)))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-for-each proc s</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-null? s</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">'done</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> 
+      </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">proc </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">stream-for-each proc 
+        </span><span class="opn">(</span><span class="pln">stream-for-each proc
                          </span><span class="opn">(</span><span class="pln">stream-cdr s</span><span class="clo">)))))</span></pre></div>
 
 <p><code>Stream-for-each</code> is useful for viewing streams:
@@ -237,9 +237,9 @@ time.
 </p>
 <p>Our implementation of streams will be based on a special form called
 <code>delay</code>.  Evaluating <code>(delay ⟨<var>exp</var>⟩)</code> does not evaluate the
-expression <code>⟨</code><var>exp</var><code>⟩</code>, but rather returns a so-called 
+expression <code>⟨</code><var>exp</var><code>⟩</code>, but rather returns a so-called
 <a id="index-delayed-object"></a>
-<em>delayed object</em>, which we can think of as a “promise” to evaluate 
+<em>delayed object</em>, which we can think of as a “promise” to evaluate
 <code>⟨</code><var>exp</var><code>⟩</code> at some
 future time.  As a companion to <code>delay</code>, there is a procedure called
 <code>force</code> that takes a delayed object as argument and performs the
@@ -263,10 +263,10 @@ pair we will put there a promise to compute the rest if it is ever requested.
 <code>Stream-car</code> and <code>stream-cdr</code> can now be defined as procedures:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-car stream</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-car stream</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> stream</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-cdr stream</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-cdr stream</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">force </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> stream</span><span class="clo">)))</span></pre></div>
 
 <p><code>Stream-car</code> selects the <code>car</code> of the pair; <code>stream-cdr</code> selects
@@ -280,10 +280,10 @@ obtain the rest of the stream.<a class="footnote_link" id="DOCF184" href="#FOOT1
 computation we saw above, reformulated in terms of streams:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">stream-car 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">stream-car
  </span><span class="opn">(</span><span class="pln">stream-cdr
-  </span><span class="opn">(</span><span class="pln">stream-filter 
-   prime? </span><span class="opn">(</span><span class="pln">stream-enumerate-interval 
+  </span><span class="opn">(</span><span class="pln">stream-filter
+   prime? </span><span class="opn">(</span><span class="pln">stream-enumerate-interval
            </span><span class="lit">10000</span><span class="pln"> </span><span class="lit">1000000</span><span class="clo">))))</span></pre></div>
 
 <p>We will see that it does indeed work efficiently.
@@ -306,9 +306,9 @@ and 1,000,000.  <code>Stream-enumerate-interval</code> is the stream analog of
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="lit">10000</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln"> 
-        </span><span class="opn">(</span><span class="pln">stream-enumerate-interval 
-         </span><span class="lit">10001</span><span class="pln"> 
+      </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln">
+        </span><span class="opn">(</span><span class="pln">stream-enumerate-interval
+         </span><span class="lit">10001</span><span class="pln">
          </span><span class="lit">1000000</span><span class="clo">)))</span></pre></div>
 
 <p>That is, <code>stream-enumerate-interval</code> returns a stream represented as a
@@ -318,16 +318,16 @@ using the stream analog of the <code>filter</code> procedure (<a href="2_002e2.x
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-filter pred stream</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">stream-null? stream</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">stream-null? stream</span><span class="clo">)</span><span class="pln">
          the-empty-stream</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">pred </span><span class="opn">(</span><span class="pln">stream-car stream</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">cons-stream 
+         </span><span class="opn">(</span><span class="pln">cons-stream
           </span><span class="opn">(</span><span class="pln">stream-car stream</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">stream-filter 
+          </span><span class="opn">(</span><span class="pln">stream-filter
            pred
            </span><span class="opn">(</span><span class="pln">stream-cdr stream</span><span class="clo">))))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-filter 
-               pred 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-filter
+               pred
                </span><span class="opn">(</span><span class="pln">stream-cdr stream</span><span class="clo">)))))</span></pre></div>
 
 <p><code>Stream-filter</code> tests the <code>stream-car</code> of the stream (the <code>car</code>
@@ -338,9 +338,9 @@ examines the <code>stream-cdr</code> of its input stream.  The call to
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="lit">10001</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln"> 
-        </span><span class="opn">(</span><span class="pln">stream-enumerate-interval 
-         </span><span class="lit">10002</span><span class="pln"> 
+      </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln">
+        </span><span class="opn">(</span><span class="pln">stream-enumerate-interval
+         </span><span class="lit">10002</span><span class="pln">
          </span><span class="lit">1000000</span><span class="clo">)))</span></pre></div>
 
 <p><code>Stream-filter</code> now looks at the <code>stream-car</code> of this stream, 10,001,
@@ -349,7 +349,7 @@ on, until <code>stream-enumerate-interval</code> yields the prime 10,007, whereu
 <code>stream-filter</code>, according to its definition, returns
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">cons-stream 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">cons-stream
  </span><span class="opn">(</span><span class="pln">stream-car stream</span><span class="clo">)</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">stream-filter pred </span><span class="opn">(</span><span class="pln">stream-cdr stream</span><span class="clo">)))</span></pre></div>
 
@@ -362,7 +362,7 @@ on, until <code>stream-enumerate-interval</code> yields the prime 10,007, whereu
          prime?
          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="lit">10008</span><span class="pln">
                </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pln">stream-enumerate-interval 
+                 </span><span class="opn">(</span><span class="pln">stream-enumerate-interval
                   </span><span class="lit">10009</span><span class="pln"> </span><span class="lit">1000000</span><span class="clo">))))))</span></pre></div>
 
 <p>This result is now passed to <code>stream-cdr</code> in our original expression.
@@ -378,7 +378,7 @@ expression is
          prime?
          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="lit">10010</span><span class="pln">
                </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pln">stream-enumerate-interval 
+                 </span><span class="opn">(</span><span class="pln">stream-enumerate-interval
                   </span><span class="lit">10011</span><span class="pln"> </span><span class="lit">1000000</span><span class="clo">))))))</span></pre></div>
 
 <p><code>Stream-car</code> returns 10,009, and the computation is complete.  Only as
@@ -453,7 +453,7 @@ to
 <blockquote>
 <p><strong><a id="Exercise-3_002e50"></a>Exercise 3.50:</strong> Complete the following
 definition, which generalizes <code>stream-map</code> to allow procedures that take
-multiple arguments, analogous to <code>map</code> in <a href="2_002e2.xhtml#g_t2_002e2_002e1">2.2.1</a>, 
+multiple arguments, analogous to <code>map</code> in <a href="2_002e2.xhtml#g_t2_002e2_002e1">2.2.1</a>,
 <a href="2_002e2.xhtml#Footnote-78">Footnote 78</a>.
 </p>
 <div class="lisp">
@@ -463,8 +463,8 @@ multiple arguments, analogous to <code>map</code> in <a href="2_002e2.xhtml#g_t2
       </span><span class="opn">(</span><span class="pln">⟨</span><span class="pun">??</span><span class="pln">⟩
        </span><span class="opn">(</span><span class="pln">apply proc </span><span class="opn">(</span><span class="pln">map ⟨</span><span class="pun">??</span><span class="pln">⟩ argstreams</span><span class="clo">))</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">apply stream-map
-              </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> proc 
-                    </span><span class="opn">(</span><span class="pln">map ⟨</span><span class="pun">??</span><span class="pln">⟩ 
+              </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> proc
+                    </span><span class="opn">(</span><span class="pln">map ⟨</span><span class="pun">??</span><span class="pln">⟩
                          argstreams</span><span class="clo">))))))</span></pre></div>
 </blockquote>
 
@@ -482,9 +482,9 @@ its argument after printing it:
 the following sequence?<a class="footnote_link" id="DOCF187" href="#FOOT187"><sup>187</sup></a>
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> x 
-  </span><span class="opn">(</span><span class="pln">stream-map 
-   show 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> x
+  </span><span class="opn">(</span><span class="pln">stream-map
+   show
    </span><span class="opn">(</span><span class="pln">stream-enumerate-interval </span><span class="lit">0</span><span class="pln"> </span><span class="lit">10</span><span class="clo">)))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="pln">stream-ref x </span><span class="lit">5</span><span class="clo">)</span><span class="pln">
@@ -502,16 +502,16 @@ expressions
   </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> sum </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> x sum</span><span class="clo">))</span><span class="pln">
   sum</span><span class="clo">)</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> seq 
-  </span><span class="opn">(</span><span class="pln">stream-map 
-   accum 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> seq
+  </span><span class="opn">(</span><span class="pln">stream-map
+   accum
    </span><span class="opn">(</span><span class="pln">stream-enumerate-interval </span><span class="lit">1</span><span class="pln"> </span><span class="lit">20</span><span class="clo">)))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> y </span><span class="opn">(</span><span class="pln">stream-filter even? seq</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> z 
-  </span><span class="opn">(</span><span class="pln">stream-filter 
-   </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> z
+  </span><span class="opn">(</span><span class="pln">stream-filter
+   </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">remainder x </span><span class="lit">5</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">))</span><span class="pln"> seq</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="pln">stream-ref y </span><span class="lit">7</span><span class="clo">)</span><span class="pln">
@@ -538,7 +538,7 @@ integers:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">integers-starting-from n</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">cons-stream 
+  </span><span class="opn">(</span><span class="pln">cons-stream
    n </span><span class="opn">(</span><span class="pln">integers-starting-from </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">))))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> integers </span><span class="opn">(</span><span class="pln">integers-starting-from </span><span class="lit">1</span><span class="clo">))</span></pre></div>
 
@@ -554,7 +554,7 @@ of integers that are not divisible by 7:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">divisible? x y</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">remainder x y</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> no-sevens
-  </span><span class="opn">(</span><span class="pln">stream-filter </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">stream-filter </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln">
                    </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">divisible? x </span><span class="lit">7</span><span class="clo">)))</span><span class="pln">
                  integers</span><span class="clo">))</span></pre></div>
 
@@ -600,11 +600,11 @@ result. This process is readily described in terms of stream operations:
    </span><span class="opn">(</span><span class="pln">stream-car stream</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">sieve </span><span class="opn">(</span><span class="pln">stream-filter
            </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">divisible? 
+             </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">divisible?
                    x </span><span class="opn">(</span><span class="pln">stream-car stream</span><span class="clo">))))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">stream-cdr stream</span><span class="clo">)))))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> primes 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> primes
   </span><span class="opn">(</span><span class="pln">sieve </span><span class="opn">(</span><span class="pln">integers-starting-from </span><span class="lit">2</span><span class="clo">)))</span></pre></div>
 
 <p>Now to find a particular prime we need only ask for it:
@@ -615,7 +615,7 @@ result. This process is readily described in terms of stream operations:
 </pre></div>
 
 <p>It is interesting to contemplate the signal-processing system set up by
-<code>sieve</code>, shown in the “Henderson diagram” in 
+<code>sieve</code>, shown in the “Henderson diagram” in
 <a href="#Figure-3_002e31">Figure 3.31</a>.<a class="footnote_link" id="DOCF189" href="#FOOT189"><sup>189</sup></a>  The input stream
 feeds into an “un<code>cons</code>er” that separates the first element of the
 stream from the rest of the stream.  The first element is used to construct a
@@ -656,13 +656,13 @@ as <code>add-streams</code>, which produces the elementwise sum of two given
 streams:<a class="footnote_link" id="DOCF190" href="#FOOT190"><sup>190</sup></a>
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-streams s1 s2</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-streams s1 s2</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">stream-map </span><span class="pun">+</span><span class="pln"> s1 s2</span><span class="clo">))</span></pre></div>
 
 <p>Now we can define the integers as follows:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> integers 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> integers
   </span><span class="opn">(</span><span class="pln">cons-stream </span><span class="lit">1</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-streams ones integers</span><span class="clo">)))</span></pre></div>
 
 <p>This defines <code>integers</code> to be a stream whose first element is 1 and the
@@ -676,10 +676,10 @@ back into the definition to produce the next integer.
 <p>We can define the Fibonacci numbers in the same style:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> fibs 
-  </span><span class="opn">(</span><span class="pln">cons-stream 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> fibs
+  </span><span class="opn">(</span><span class="pln">cons-stream
    </span><span class="lit">0</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cons-stream
-      </span><span class="lit">1</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-streams 
+      </span><span class="lit">1</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-streams
          </span><span class="opn">(</span><span class="pln">stream-cdr fibs</span><span class="clo">)</span><span class="pln"> fibs</span><span class="clo">))))</span></pre></div>
 
 <p>This definition says that <code>fibs</code> is a stream beginning with 0 and 1, such
@@ -704,7 +704,7 @@ definitions.  This multiplies each item in a stream by a given constant:
 <p>For example,
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> double 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> double
   </span><span class="opn">(</span><span class="pln">cons-stream </span><span class="lit">1</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scale-stream double </span><span class="lit">2</span><span class="clo">)))</span></pre></div>
 
 <p>produces the stream of powers of 2: 1, 2, 4, 8, 16, 32, ….
@@ -716,7 +716,7 @@ first prime, 2, to get started:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> primes
   </span><span class="opn">(</span><span class="pln">cons-stream
-   </span><span class="lit">2</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-filter 
+   </span><span class="lit">2</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-filter
       prime? </span><span class="opn">(</span><span class="pln">integers-starting-from </span><span class="lit">3</span><span class="clo">))))</span></pre></div>
 
 <p>This definition is not so straightforward as it appears, because we will test
@@ -790,7 +790,7 @@ whose <math xmlns="http://www.w3.org/1998/Math/MathML">
 </math> factorial:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> factorials 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> factorials
   </span><span class="opn">(</span><span class="pln">cons-stream </span><span class="lit">1</span><span class="pln"> </span><span class="opn">(</span><span class="pln">mul-streams ⟨</span><span class="pun">??</span><span class="pln">⟩ ⟨</span><span class="pun">??</span><span class="pln">⟩</span><span class="clo">)))</span></pre></div>
 </blockquote>
 
@@ -837,7 +837,7 @@ stream whose elements are <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mo>,</mo>
     <mo>…<!-- … --></mo>
   </mrow>
-</math>.  
+</math>.
 For example, <code>(partial-sums integers)</code> should be the
 stream 1, 3, 6, 10, 15, ….
 </p></blockquote>
@@ -877,19 +877,19 @@ ordered result stream, eliminating repetitions:
          </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">s1car </span><span class="opn">(</span><span class="pln">stream-car s1</span><span class="clo">))</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">s2car </span><span class="opn">(</span><span class="pln">stream-car s2</span><span class="clo">)))</span><span class="pln">
            </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> s1car s2car</span><span class="clo">)</span><span class="pln">
-                  </span><span class="opn">(</span><span class="pln">cons-stream 
-                   s1car 
-                   </span><span class="opn">(</span><span class="pln">merge </span><span class="opn">(</span><span class="pln">stream-cdr s1</span><span class="clo">)</span><span class="pln"> 
+                  </span><span class="opn">(</span><span class="pln">cons-stream
+                   s1car
+                   </span><span class="opn">(</span><span class="pln">merge </span><span class="opn">(</span><span class="pln">stream-cdr s1</span><span class="clo">)</span><span class="pln">
                           s2</span><span class="clo">)))</span><span class="pln">
                  </span><span class="opn">((</span><span class="pun">&gt;</span><span class="pln"> s1car s2car</span><span class="clo">)</span><span class="pln">
-                  </span><span class="opn">(</span><span class="pln">cons-stream 
-                   s2car 
-                   </span><span class="opn">(</span><span class="pln">merge s1 
+                  </span><span class="opn">(</span><span class="pln">cons-stream
+                   s2car
+                   </span><span class="opn">(</span><span class="pln">merge s1
                           </span><span class="opn">(</span><span class="pln">stream-cdr s2</span><span class="clo">))))</span><span class="pln">
                  </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-                  </span><span class="opn">(</span><span class="pln">cons-stream 
+                  </span><span class="opn">(</span><span class="pln">cons-stream
                    s1car
-                   </span><span class="opn">(</span><span class="pln">merge 
+                   </span><span class="opn">(</span><span class="pln">merge
                     </span><span class="opn">(</span><span class="pln">stream-cdr s1</span><span class="clo">)</span><span class="pln">
                     </span><span class="opn">(</span><span class="pln">stream-cdr s2</span><span class="clo">)))))))))</span></pre></div>
 
@@ -912,9 +912,9 @@ when we compute the <math xmlns="http://www.w3.org/1998/Math/MathML">
   </msup>
 </math> Fibonacci number using the definition of
 <code>fibs</code> based on the <code>add-streams</code> procedure?  Show that the number of
-additions would be exponentially greater if we had implemented <code>(delay ⟨<var>exp</var>⟩)</code> 
+additions would be exponentially greater if we had implemented <code>(delay ⟨<var>exp</var>⟩)</code>
 simply as <code>(lambda () ⟨<var>exp</var>⟩)</code>, without using the
-optimization provided by the <code>memo-proc</code> procedure described in 
+optimization provided by the <code>memo-proc</code> procedure described in
 <a href="#g_t3_002e5_002e1">3.5.1</a>.<a class="footnote_link" id="DOCF192" href="#FOOT192"><sup>192</sup></a>
 </p></blockquote>
 
@@ -926,8 +926,8 @@ stream computed by the following procedure:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">expand num den radix</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">cons-stream
    </span><span class="opn">(</span><span class="pln">quotient </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> num radix</span><span class="clo">)</span><span class="pln"> den</span><span class="clo">)</span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">expand </span><span class="opn">(</span><span class="pln">remainder </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> num radix</span><span class="clo">)</span><span class="pln"> den</span><span class="clo">)</span><span class="pln"> 
-           den 
+   </span><span class="opn">(</span><span class="pln">expand </span><span class="opn">(</span><span class="pln">remainder </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> num radix</span><span class="clo">)</span><span class="pln"> den</span><span class="clo">)</span><span class="pln">
+           den
            radix</span><span class="clo">)))</span></pre></div>
 
 <p>(<code>Quotient</code> is a primitive that returns the integer quotient of two
@@ -941,7 +941,7 @@ to implement a polynomial arithmetic system representing polynomials as lists
 of terms.  In a similar way, we can work with <a id="index-power-series"></a>
 <em>power series</em>, such as
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <msup>
@@ -950,6 +950,7 @@ of terms.  In a similar way, we can work with <a id="index-power-series"></a>
         </msup>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -1005,6 +1006,7 @@ of terms.  In a similar way, we can work with <a id="index-power-series"></a>
         <mi>x</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -1045,6 +1047,7 @@ of terms.  In a similar way, we can work with <a id="index-power-series"></a>
         <mi>x</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -1338,7 +1341,7 @@ for <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> exp-series
-  </span><span class="opn">(</span><span class="pln">cons-stream 
+  </span><span class="opn">(</span><span class="pln">cons-stream
    </span><span class="lit">1</span><span class="pln"> </span><span class="opn">(</span><span class="pln">integrate-series exp-series</span><span class="clo">)))</span></pre></div>
 
 <p>Show how to generate the series for sine and cosine, starting from the facts
@@ -1346,7 +1349,7 @@ that the derivative of sine is cosine and the derivative of cosine is the
 negative of sine:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> cosine-series 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> cosine-series
   </span><span class="opn">(</span><span class="pln">cons-stream </span><span class="lit">1</span><span class="pln"> ⟨</span><span class="pun">??</span><span class="pln">⟩</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> sine-series
@@ -1433,7 +1436,7 @@ constant term.  Then we can solve for <math xmlns="http://www.w3.org/1998/Math/M
   <mi>X</mi>
 </math> as follows:
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <mi>S</mi>
@@ -1441,6 +1444,7 @@ constant term.  Then we can solve for <math xmlns="http://www.w3.org/1998/Math/M
         <mi>X</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -1462,6 +1466,7 @@ constant term.  Then we can solve for <math xmlns="http://www.w3.org/1998/Math/M
         <mi>X</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -1481,6 +1486,7 @@ constant term.  Then we can solve for <math xmlns="http://www.w3.org/1998/Math/M
         <mi>X</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -1493,6 +1499,7 @@ constant term.  Then we can solve for <math xmlns="http://www.w3.org/1998/Math/M
         <mi>X</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -1536,7 +1543,7 @@ for a power series <math xmlns="http://www.w3.org/1998/Math/MathML">
 </p></blockquote>
 
 <blockquote>
-<p><strong><a id="Exercise-3_002e62"></a>Exercise 3.62:</strong> Use the results of <a href="#Exercise-3_002e60">Exercise 3.60</a> 
+<p><strong><a id="Exercise-3_002e62"></a>Exercise 3.62:</strong> Use the results of <a href="#Exercise-3_002e60">Exercise 3.60</a>
 and <a href="#Exercise-3_002e61">Exercise 3.61</a> to define a procedure <code>div-series</code> that
 divides two power series.  <code>Div-series</code> should work for any two series,
 provided that the denominator series begins with a nonzero constant term.  (If
@@ -1585,7 +1592,7 @@ guesses, starting with an initial guess of 1:<a class="footnote_link" id="DOCF19
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">sqrt-stream x</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> guesses
-    </span><span class="opn">(</span><span class="pln">cons-stream 
+    </span><span class="opn">(</span><span class="pln">cons-stream
      </span><span class="lit">1.0</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-map
           </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">guess</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">sqrt-improve guess x</span><span class="clo">))</span><span class="pln">
@@ -1655,12 +1662,12 @@ and scale the result by 4:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pi-summands n</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">cons-stream 
+  </span><span class="opn">(</span><span class="pln">cons-stream
    </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="lit">1.0</span><span class="pln"> n</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">stream-map </span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pi-summands </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> n </span><span class="lit">2</span><span class="clo">)))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> pi-stream
-  </span><span class="opn">(</span><span class="pln">scale-stream 
+  </span><span class="opn">(</span><span class="pln">scale-stream
    </span><span class="opn">(</span><span class="pln">partial-sums </span><span class="opn">(</span><span class="pln">pi-summands </span><span class="lit">1</span><span class="clo">))</span><span class="pln"> </span><span class="lit">4</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="pln">display-stream pi-stream</span><span class="clo">)</span><span class="pln">
@@ -1778,7 +1785,7 @@ transformed sequence is given by
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">s0 </span><span class="opn">(</span><span class="pln">stream-ref s </span><span class="lit">0</span><span class="clo">))</span><span class="pln">     </span><span class="com">; </span><var><span class="com">Sₙ</span></var><span class="com">₋₁</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">s1 </span><span class="opn">(</span><span class="pln">stream-ref s </span><span class="lit">1</span><span class="clo">))</span><span class="pln">     </span><span class="com">; </span><var><span class="com">Sₙ</span></var><span class="pln">
         </span><span class="opn">(</span><span class="pln">s2 </span><span class="opn">(</span><span class="pln">stream-ref s </span><span class="lit">2</span><span class="clo">)))</span><span class="pln">    </span><span class="com">; </span><var><span class="com">Sₙ</span></var><span class="com">₊₁</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">cons-stream 
+    </span><span class="opn">(</span><span class="pln">cons-stream
      </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> s2 </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> s2 s1</span><span class="clo">))</span><span class="pln">
               </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> s0 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="lit">-2</span><span class="pln"> s1</span><span class="clo">)</span><span class="pln"> s2</span><span class="clo">)))</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">euler-transform </span><span class="opn">(</span><span class="pln">stream-cdr s</span><span class="clo">)))))</span></pre></div>
@@ -1789,7 +1796,7 @@ transformed sequence is given by
 </math>:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">display-stream 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">display-stream
  </span><span class="opn">(</span><span class="pln">euler-transform pi-stream</span><span class="clo">))</span><span class="pln">
 </span><i><span class="lit">3.166666666666667</span></i><span class="pln">
 </span><i><span class="lit">3.1333333333333337</span></i><span class="pln">
@@ -1810,7 +1817,7 @@ preceding one:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-tableau transform s</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">cons-stream 
+  </span><span class="opn">(</span><span class="pln">cons-stream
    s
    </span><span class="opn">(</span><span class="pln">make-tableau
     transform
@@ -1959,7 +1966,7 @@ tableau:
 sequence:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">display-stream 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">display-stream
  </span><span class="opn">(</span><span class="pln">accelerated-sequence euler-transform
                        pi-stream</span><span class="clo">))</span><span class="pln">
 </span><i><span class="lit">4.</span></i><span class="pln">
@@ -2010,7 +2017,7 @@ straightforward way, without the local variable <code>guesses</code>:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">sqrt-stream x</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">cons-stream 
+  </span><span class="opn">(</span><span class="pln">cons-stream
    </span><span class="lit">1.0</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">stream-map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">guess</span><span class="clo">)</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">sqrt-improve guess x</span><span class="clo">))</span><span class="pln">
@@ -2126,7 +2133,7 @@ of <a href="2_002e2.xhtml#g_t2_002e2_002e3">2.2.3</a> to produce the stream of p
 </math>, then our required stream is simply<a class="footnote_link" id="DOCF194" href="#FOOT194"><sup>194</sup></a>
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">stream-filter 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">stream-filter
  </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pair</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">prime? </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> pair</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> pair</span><span class="clo">))))</span><span class="pln">
  int-pairs</span><span class="clo">)</span></pre></div>
@@ -2548,7 +2555,7 @@ first row) is (recursively) the pairs formed from <code>(stream-cdr S)</code> an
 row) is
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">stream-map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">stream-map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">)</span><span class="pln"> x</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">stream-cdr t</span><span class="clo">))</span></pre></div>
 
@@ -2559,7 +2566,7 @@ row) is
   </span><span class="opn">(</span><span class="pln">cons-stream
    </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-car t</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">⟨</span><var><span class="pln">combine-in-some-way</span></var><span class="pln">⟩
-    </span><span class="opn">(</span><span class="pln">stream-map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="pln">stream-map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln">
                   </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">)</span><span class="pln"> x</span><span class="clo">))</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">stream-cdr t</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">pairs </span><span class="opn">(</span><span class="pln">stream-cdr s</span><span class="clo">)</span><span class="pln">
@@ -2573,7 +2580,7 @@ procedure from <a href="2_002e2.xhtml#g_t2_002e2_002e1">2.2.1</a>:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-append s1 s2</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-null? s1</span><span class="clo">)</span><span class="pln">
       s2
-      </span><span class="opn">(</span><span class="pln">cons-stream 
+      </span><span class="opn">(</span><span class="pln">cons-stream
        </span><span class="opn">(</span><span class="pln">stream-car s1</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">stream-append </span><span class="opn">(</span><span class="pln">stream-cdr s1</span><span class="clo">)</span><span class="pln"> s2</span><span class="clo">))))</span></pre></div>
 
@@ -2597,7 +2604,7 @@ long enough.  An elegant way to accomplish this is with the following
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">interleave s1 s2</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-null? s1</span><span class="clo">)</span><span class="pln">
       s2
-      </span><span class="opn">(</span><span class="pln">cons-stream 
+      </span><span class="opn">(</span><span class="pln">cons-stream
        </span><span class="opn">(</span><span class="pln">stream-car s1</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">interleave s2 </span><span class="opn">(</span><span class="pln">stream-cdr s1</span><span class="clo">)))))</span></pre></div>
 
@@ -2612,7 +2619,7 @@ stream, even if the first stream is infinite.
   </span><span class="opn">(</span><span class="pln">cons-stream
    </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-car t</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">interleave
-    </span><span class="opn">(</span><span class="pln">stream-map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="pln">stream-map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln">
                   </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">)</span><span class="pln"> x</span><span class="clo">))</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">stream-cdr t</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">pairs </span><span class="opn">(</span><span class="pln">stream-cdr s</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-cdr t</span><span class="clo">)))))</span></pre></div>
@@ -2671,7 +2678,7 @@ the first row, he proposes to work with the whole first row, as follows:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pairs s t</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">interleave
    </span><span class="opn">(</span><span class="pln">stream-map
-    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">)</span><span class="pln"> x</span><span class="clo">))</span><span class="pln">
     t</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">pairs </span><span class="opn">(</span><span class="pln">stream-cdr s</span><span class="clo">)</span><span class="pln">
@@ -2717,7 +2724,7 @@ stream of triples <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mo>≤<!-- ≤ --></mo>
     <mi>k</mi>
   </mrow>
-</math>.  
+</math>.
 Use <code>triples</code> to generate the stream of all Pythagorean
 triples of positive integers, i.e., the triples <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
@@ -2937,7 +2944,7 @@ Ramanujan numbers.  The first such number is 1,729.  What are the next five?
 </p></blockquote>
 
 <blockquote>
-<p><strong><a id="Exercise-3_002e72"></a>Exercise 3.72:</strong> In a similar way to <a href="#Exercise-3_002e71">Exercise 3.71</a> 
+<p><strong><a id="Exercise-3_002e72"></a>Exercise 3.72:</strong> In a similar way to <a href="#Exercise-3_002e71">Exercise 3.71</a>
 generate a stream of all numbers that can be written as the sum of two
 squares in three different ways (showing how they can be so written).
 </p></blockquote>
@@ -3019,7 +3026,7 @@ of the stream of integers (<a href="#g_t3_002e5_002e2">3.5.2</a>):
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">integral integrand initial-value dt</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> int
-    </span><span class="opn">(</span><span class="pln">cons-stream 
+    </span><span class="opn">(</span><span class="pln">cons-stream
      initial-value
      </span><span class="opn">(</span><span class="pln">add-streams </span><span class="opn">(</span><span class="pln">scale-stream integrand dt</span><span class="clo">)</span><span class="pln">
                   int</span><span class="clo">)))</span><span class="pln">
@@ -3156,14 +3163,14 @@ constructs her zero-crossing stream as follows:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-zero-crossings
          input-stream last-value</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">cons-stream
-   </span><span class="opn">(</span><span class="pln">sign-change-detector 
-    </span><span class="opn">(</span><span class="pln">stream-car input-stream</span><span class="clo">)</span><span class="pln"> 
+   </span><span class="opn">(</span><span class="pln">sign-change-detector
+    </span><span class="opn">(</span><span class="pln">stream-car input-stream</span><span class="clo">)</span><span class="pln">
     last-value</span><span class="clo">)</span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">make-zero-crossings 
+   </span><span class="opn">(</span><span class="pln">make-zero-crossings
     </span><span class="opn">(</span><span class="pln">stream-cdr input-stream</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">stream-car input-stream</span><span class="clo">))))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> zero-crossings 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> zero-crossings
   </span><span class="opn">(</span><span class="pln">make-zero-crossings sense-data </span><span class="lit">0</span><span class="clo">))</span></pre></div>
 
 <p>Alyssa’s boss, Eva Lu Ator, walks by and suggests that this program is
@@ -3172,8 +3179,8 @@ version of <code>stream-map</code> from <a href="#Exercise-3_002e50">Exercise 3.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> zero-crossings
-  </span><span class="opn">(</span><span class="pln">stream-map sign-change-detector 
-              sense-data 
+  </span><span class="opn">(</span><span class="pln">stream-map sign-change-detector
+              sense-data
               ⟨</span><var><span class="pln">expression</span></var><span class="pln">⟩</span><span class="clo">))</span></pre></div>
 
 <p>Complete the program by supplying the indicated <code>⟨</code><var>expression</var><code>⟩</code>.
@@ -3191,15 +3198,15 @@ the problem to her assistant, Louis Reasoner, who attempts to implement the
 idea, altering Alyssa’s program as follows:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-zero-crossings 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-zero-crossings
          input-stream last-value</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">avpt 
-         </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-car input-stream</span><span class="clo">)</span><span class="pln"> 
-               last-value</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">avpt
+         </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-car input-stream</span><span class="clo">)</span><span class="pln">
+               last-value</span><span class="clo">)</span><span class="pln">
             </span><span class="lit">2</span><span class="clo">)))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">cons-stream 
+    </span><span class="opn">(</span><span class="pln">cons-stream
      </span><span class="opn">(</span><span class="pln">sign-change-detector avpt last-value</span><span class="clo">)</span><span class="pln">
-     </span><span class="opn">(</span><span class="pln">make-zero-crossings 
+     </span><span class="opn">(</span><span class="pln">make-zero-crossings
       </span><span class="opn">(</span><span class="pln">stream-cdr input-stream</span><span class="clo">)</span><span class="pln"> avpt</span><span class="clo">))))</span></pre></div>
 
 <p>This does not correctly implement Alyssa’s plan.  Find the bug that Louis has
@@ -3231,9 +3238,9 @@ itself:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> int
-  </span><span class="opn">(</span><span class="pln">cons-stream 
+  </span><span class="opn">(</span><span class="pln">cons-stream
    initial-value
-   </span><span class="opn">(</span><span class="pln">add-streams 
+   </span><span class="opn">(</span><span class="pln">add-streams
     </span><span class="opn">(</span><span class="pln">scale-stream integrand dt</span><span class="clo">)</span><span class="pln"> int</span><span class="clo">)))</span></pre></div>
 
 <p>The interpreter’s ability to deal with such an implicit definition depends on
@@ -3340,11 +3347,11 @@ more than the first element of the output stream:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">integral
          delayed-integrand initial-value dt</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> int
-    </span><span class="opn">(</span><span class="pln">cons-stream 
+    </span><span class="opn">(</span><span class="pln">cons-stream
      initial-value
-     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">integrand 
+     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">integrand
             </span><span class="opn">(</span><span class="pln">force delayed-integrand</span><span class="clo">)))</span><span class="pln">
-       </span><span class="opn">(</span><span class="pln">add-streams 
+       </span><span class="opn">(</span><span class="pln">add-streams
         </span><span class="opn">(</span><span class="pln">scale-stream integrand dt</span><span class="clo">)</span><span class="pln">
         int</span><span class="clo">))))</span><span class="pln">
   int</span><span class="clo">)</span></pre></div>
@@ -3398,7 +3405,7 @@ condition <math xmlns="http://www.w3.org/1998/Math/MathML">
 </math>:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">stream-ref 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">stream-ref
  </span><span class="opn">(</span><span class="pln">solve </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">y</span><span class="clo">)</span><span class="pln"> y</span><span class="clo">)</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">0.001</span><span class="clo">)</span><span class="pln"> </span><span class="lit">1000</span><span class="clo">)</span><span class="pln">
 </span><i><span class="lit">2.716924</span></i>
 </pre></div>
@@ -3413,11 +3420,11 @@ of integers in <a href="#g_t3_002e5_002e2">3.5.2</a>.  Alternatively, we can giv
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">integral
          integrand initial-value dt</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">cons-stream 
+  </span><span class="opn">(</span><span class="pln">cons-stream
    initial-value
    </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-null? integrand</span><span class="clo">)</span><span class="pln">
        the-empty-stream
-       </span><span class="opn">(</span><span class="pln">integral 
+       </span><span class="opn">(</span><span class="pln">integral
         </span><span class="opn">(</span><span class="pln">stream-cdr integrand</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> dt </span><span class="opn">(</span><span class="pln">stream-car integrand</span><span class="clo">))</span><span class="pln">
            initial-value</span><span class="clo">)</span><span class="pln">
@@ -3649,7 +3656,7 @@ current <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
 </math> for the three components are described by the equations
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <msub>
@@ -3658,6 +3665,7 @@ current <math xmlns="http://www.w3.org/1998/Math/MathML">
         </msub>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -3677,6 +3685,7 @@ current <math xmlns="http://www.w3.org/1998/Math/MathML">
         </msub>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -3708,6 +3717,7 @@ current <math xmlns="http://www.w3.org/1998/Math/MathML">
         </msub>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -3735,7 +3745,7 @@ current <math xmlns="http://www.w3.org/1998/Math/MathML">
 </math>
 and the circuit connections dictate the relations
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <msub>
@@ -3744,6 +3754,7 @@ and the circuit connections dictate the relations
         </msub>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -3768,6 +3779,7 @@ and the circuit connections dictate the relations
         </msub>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -3799,7 +3811,7 @@ Combining these equations shows that the state of the circuit (summarized by
 </math>, the current in
 the inductor) is described by the pair of differential equations
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <mrow class="MJX-TeXAtom-ORD">
@@ -3819,9 +3831,11 @@ the inductor) is described by the pair of differential equations
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
+        <mi/>
         <mo>−<!-- − --></mo>
         <mrow class="MJX-TeXAtom-ORD">
           <mfrac>
@@ -3855,6 +3869,7 @@ the inductor) is described by the pair of differential equations
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -4050,7 +4065,7 @@ just a stream of random numbers produced by successive calls to
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> random-numbers
   </span><span class="opn">(</span><span class="pln">cons-stream random-init
-               </span><span class="opn">(</span><span class="pln">stream-map rand-update 
+               </span><span class="opn">(</span><span class="pln">stream-map rand-update
                            random-numbers</span><span class="clo">)))</span></pre></div>
 
 <p>We use this to construct the stream of outcomes of the Cesàro experiment
@@ -4064,9 +4079,9 @@ performed on consecutive pairs in the <code>random-numbers</code> stream:
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">map-successive-pairs f s</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">cons-stream
-   </span><span class="opn">(</span><span class="pln">f </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">)</span><span class="pln"> 
+   </span><span class="opn">(</span><span class="pln">f </span><span class="opn">(</span><span class="pln">stream-car s</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">stream-car </span><span class="opn">(</span><span class="pln">stream-cdr s</span><span class="clo">)))</span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">map-successive-pairs 
+   </span><span class="opn">(</span><span class="pln">map-successive-pairs
     f </span><span class="opn">(</span><span class="pln">stream-cdr </span><span class="opn">(</span><span class="pln">stream-cdr s</span><span class="clo">)))))</span></pre></div>
 
 <p>The <code>cesaro-stream</code> is now fed to a <code>monte-carlo</code> procedure, which
@@ -4081,15 +4096,15 @@ of <math xmlns="http://www.w3.org/1998/Math/MathML">
 into the <code>pi</code> stream:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">monte-carlo experiment-stream 
-                     passed 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">monte-carlo experiment-stream
+                     passed
                      failed</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">next passed failed</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">cons-stream
      </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> passed </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> passed failed</span><span class="clo">))</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">monte-carlo
-      </span><span class="opn">(</span><span class="pln">stream-cdr experiment-stream</span><span class="clo">)</span><span class="pln"> 
-      passed 
+      </span><span class="opn">(</span><span class="pln">stream-cdr experiment-stream</span><span class="clo">)</span><span class="pln">
+      passed
       failed</span><span class="clo">)))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-car experiment-stream</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">next </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> passed </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> failed</span><span class="clo">)</span><span class="pln">
@@ -4168,7 +4183,7 @@ successive balances in the account:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-withdraw balance amount-stream</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">cons-stream
    balance
-   </span><span class="opn">(</span><span class="pln">stream-withdraw 
+   </span><span class="opn">(</span><span class="pln">stream-withdraw
     </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> balance </span><span class="opn">(</span><span class="pln">stream-car amount-stream</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">stream-cdr amount-stream</span><span class="clo">))))</span></pre></div>
 
@@ -4219,7 +4234,7 @@ interactions between independent entities.  For instance, consider once more
 the implementation of a banking system that permits joint bank accounts.  In a
 conventional system using assignment and objects, we would model the fact that
 Peter and Paul share an account by having both Peter and Paul send their
-transaction requests to the same bank-account object, as we saw in 
+transaction requests to the same bank-account object, as we saw in
 <a href="3_002e1.xhtml#g_t3_002e1_002e3">3.1.3</a>.  From the stream point of view, where there are no “objects”
 <em>per se</em>, we have already indicated that a bank account can be modeled as
 a process that operates on a stream of transaction requests to produce a stream
@@ -4248,7 +4263,7 @@ constrained by “real time” as perceived by Peter and Paul, in the sense that
 if Peter and Paul meet, they can agree that certain transactions were processed
 before the meeting, and other transactions were processed after the
 meeting.<a class="footnote_link" id="DOCF203" href="#FOOT203"><sup>203</sup></a> This
-is precisely the same constraint that we had to deal with in 
+is precisely the same constraint that we had to deal with in
 <a href="3_002e4.xhtml#g_t3_002e4_002e1">3.4.1</a>, where we found the need to introduce explicit synchronization to
 ensure a “correct” order of events in concurrent processing of objects with
 state.  Thus, in an attempt to support the functional style, the need to merge
@@ -4287,7 +4302,7 @@ you.  The fact that we are defining such similar procedures for streams and
 lists indicates that we are missing some underlying abstraction.
 Unfortunately, in order to exploit this abstraction, we will need to exert
 finer control over the process of evaluation than we can at present.  We will
-discuss this point further at the end of <a href="#g_t3_002e5_002e4">3.5.4</a>.  In 
+discuss this point further at the end of <a href="#g_t3_002e5_002e4">3.5.4</a>.  In
 <a href="4_002e2.xhtml#g_t4_002e2">4.2</a>, we’ll develop a framework that unifies lists and streams.</p>
 </div>
 <div id="FOOT184"><p><a class="footnote_backlink" href="#DOCF184"><sup>184</sup></a>
@@ -4440,7 +4455,7 @@ P. L. Chebyshev established that <math xmlns="http://www.w3.org/1998/Math/MathML
   <mi>n</mi>
 </math>.
 This result, originally conjectured in 1845, is known as <a id="index-Bertrand_0027s-hypothesis"></a>
-<em>Bertrand’s hypothesis</em>.  
+<em>Bertrand’s hypothesis</em>.
 A proof can be found in section 22.3 of <a href="References.xhtml#Hardy-and-Wright-1960">Hardy and Wright 1960</a>.</p>
 </div>
 <div id="FOOT192"><p><a class="footnote_backlink" href="#DOCF192"><sup>192</sup></a>
@@ -4457,7 +4472,7 @@ depends on <code>guesses</code> itself.  <a href="#Exercise-3_002e63">Exercise 3
 local variable here.</p>
 </div>
 <div id="FOOT194"><p><a class="footnote_backlink" href="#DOCF194"><sup>194</sup></a>
-As in 
+As in
 <a href="2_002e2.xhtml#g_t2_002e2_002e3">2.2.3</a>, we represent a pair of integers as a list rather than a Lisp
 pair.</p>
 </div>
@@ -4495,7 +4510,7 @@ weight of a pair increases as we move out along a row or down along a column of
 the array of pairs.</p>
 </div>
 <div id="FOOT198"><p><a class="footnote_backlink" href="#DOCF198"><sup>198</sup></a>
-To quote from G. H. Hardy’s obituary of Ramanujan (<a href="References.xhtml#Hardy-1921">Hardy 1921</a>): 
+To quote from G. H. Hardy’s obituary of Ramanujan (<a href="References.xhtml#Hardy-1921">Hardy 1921</a>):
 “It was Mr. Littlewood (I believe) who remarked that ‘every positive
 integer was one of his friends.’  I remember once going to see him when he was
 lying ill at Putney.  I had ridden in taxi-cab No. 1729, and remarked that the
@@ -4524,7 +4539,7 @@ Rather, we would need a different mapping procedure for each different
 combination of argument and result data types that might be specified for a
 <code>proc</code>.  Maintaining a practical notion of “data type” in the presence
 of higher-order procedures raises many difficult issues.  One way of dealing
-with this problem is illustrated by the language ML (<a href="References.xhtml#Gordon-et-al_002e-1979">Gordon et al. 1979</a>), 
+with this problem is illustrated by the language ML (<a href="References.xhtml#Gordon-et-al_002e-1979">Gordon et al. 1979</a>),
 whose “polymorphic data types” include templates for
 higher-order transformations between data types.  Moreover, data types for most
 procedures in ML are never explicitly declared by the programmer.  Instead, ML
@@ -4541,9 +4556,9 @@ world line in space-time there is no change involved.</p>
 <div id="FOOT202"><p><a class="footnote_backlink" href="#DOCF202"><sup>202</sup></a>
 John Backus, the
 inventor of Fortran, gave high visibility to functional programming when he was
-awarded the <abbr>ACM</abbr> Turing award in 1978.  His acceptance speech 
+awarded the <abbr>ACM</abbr> Turing award in 1978.  His acceptance speech
 (<a href="References.xhtml#Backus-1978">Backus 1978</a>) strongly advocated the functional approach.  A good overview of
-functional programming is given in <a href="References.xhtml#Henderson-1980">Henderson 1980</a> and in 
+functional programming is given in <a href="References.xhtml#Henderson-1980">Henderson 1980</a> and in
 <a href="References.xhtml#Darlington-et-al_002e-1982">Darlington et al. 1982</a>.</p>
 </div>
 <div id="FOOT203"><p><a class="footnote_backlink" href="#DOCF203"><sup>203</sup></a>
@@ -4552,7 +4567,7 @@ than one acceptable order of interleaving.  Thus, technically, “merge” is a
 relation rather than a function—the answer is not a deterministic function of
 the inputs.  We already mentioned (<a href="3_002e4.xhtml#Footnote-167">Footnote 167</a>) that nondeterminism is
 essential when dealing with concurrency.  The merge relation illustrates the
-same essential nondeterminism, from the functional perspective.  In 
+same essential nondeterminism, from the functional perspective.  In
 <a href="4_002e3.xhtml#g_t4_002e3">4.3</a>, we will look at nondeterminism from yet another point of view.</p>
 </div>
 <div id="FOOT204"><p><a class="footnote_backlink" href="#DOCF204"><sup>204</sup></a>

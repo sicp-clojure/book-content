@@ -86,7 +86,7 @@ different ways by different parts of a program.  This requires constructing
 <em>generic procedures</em>—procedures that can operate on data that may be
 represented in more than one way.  Our main technique for building generic
 procedures will be to work in terms of data objects that have <a id="index-type-tags"></a>
-<em>type tags</em>, 
+<em>type tags</em>,
 that is, data objects that include explicit information about how they
 are to be processed.  We will also discuss <a id="index-data_002ddirected"></a>
 <em>data-directed</em> programming,
@@ -119,7 +119,7 @@ and install alternative representations.
 <p>In <a href="2_002e5.xhtml#g_t2_002e5">2.5</a> we will show how to use type tags and data-directed style
 to develop a generic arithmetic package.  This provides procedures (<code>add</code>,
 <code>mul</code>, and so on) that can be used to manipulate all sorts of “numbers”
-and can be easily extended when a new kind of number is needed.  In 
+and can be easily extended when a new kind of number is needed.  In
 <a href="2_002e5.xhtml#g_t2_002e5_002e3">2.5.3</a>, we’ll show how to use generic arithmetic in a system that performs
 symbolic algebra.
 </p>
@@ -132,14 +132,14 @@ symbolic algebra.
 as a simple but unrealistic example of a program that uses generic operations.
 We begin by discussing two plausible representations for complex numbers as
 ordered pairs: rectangular form (real part and imaginary part) and polar form
-(magnitude and angle).<a class="footnote_link" id="DOCF109" href="#FOOT109"><sup>109</sup></a>  
+(magnitude and angle).<a class="footnote_link" id="DOCF109" href="#FOOT109"><sup>109</sup></a>
 Section <a href="#g_t2_002e4_002e2">2.4.2</a> will show how both representations can be made to coexist in a
 single system through the use of type tags and generic operations.
 </p>
 <p>Like rational numbers, complex numbers are naturally represented as ordered
 pairs.  The set of complex numbers can be thought of as a two-dimensional space
 with two orthogonal axes, the “real” axis and the “imaginary” axis. (See
-<a href="#Figure-2_002e20">Figure 2.20</a>.)  From this point of view, the complex number 
+<a href="#Figure-2_002e20">Figure 2.20</a>.)  From this point of view, the complex number
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi>z</mi>
@@ -170,7 +170,7 @@ whose real coordinate is <math xmlns="http://www.w3.org/1998/Math/MathML">
 Addition of complex numbers reduces in this representation to addition of
 coordinates:
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <mtext>Real-part</mtext>
@@ -187,6 +187,7 @@ coordinates:
         <mo stretchy="false">)</mo>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -230,6 +231,7 @@ coordinates:
         <mo stretchy="false">)</mo>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -279,7 +281,7 @@ and <math xmlns="http://www.w3.org/1998/Math/MathML">
 vector obtained by stretching one complex number by the length of the other and
 then rotating it through the angle of the other:
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <mtext>Magnitude</mtext>
@@ -296,6 +298,7 @@ then rotating it through the angle of the other:
         <mo stretchy="false">)</mo>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -333,6 +336,7 @@ then rotating it through the angle of the other:
         <mo stretchy="false">)</mo>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -378,13 +382,13 @@ with specified magnitude and angle.  These procedures have the property that,
 for any complex number <code>z</code>, both
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">make-from-real-imag </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">make-from-real-imag </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">)</span><span class="pln">
                      </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">))</span></pre></div>
 
 <p>and
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">make-from-mag-ang </span><span class="opn">(</span><span class="pln">magnitude z</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">make-from-mag-ang </span><span class="opn">(</span><span class="pln">magnitude z</span><span class="clo">)</span><span class="pln">
                    </span><span class="opn">(</span><span class="pln">angle z</span><span class="clo">))</span></pre></div>
 
 <p>produce complex numbers that are equal to <code>z</code>.
@@ -398,22 +402,22 @@ terms of magnitudes and angles:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-complex z1 z2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">make-from-real-imag 
+  </span><span class="opn">(</span><span class="pln">make-from-real-imag
    </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z2</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z2</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">sub-complex z1 z2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">make-from-real-imag 
+  </span><span class="opn">(</span><span class="pln">make-from-real-imag
    </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z2</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z2</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">mul-complex z1 z2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">make-from-mag-ang 
+  </span><span class="opn">(</span><span class="pln">make-from-mag-ang
    </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z2</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z2</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">div-complex z1 z2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">make-from-mag-ang 
+  </span><span class="opn">(</span><span class="pln">make-from-mag-ang
    </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z2</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z2</span><span class="clo">))))</span></pre></div>
 
@@ -434,12 +438,13 @@ magnitude and the angle, or to construct a complex number with a given
 magnitude and angle, he uses the trigonometric relations
 </p>
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <mi>x</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -455,6 +460,7 @@ magnitude and angle, he uses the trigonometric relations
         <mi>y</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -470,6 +476,7 @@ magnitude and angle, he uses the trigonometric relations
         <mi>r</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -492,6 +499,7 @@ magnitude and angle, he uses the trigonometric relations
         <mi>A</mi>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -533,13 +541,13 @@ representation is therefore given by the following selectors and constructors:
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">))</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">square </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">)))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">atan </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">)))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> x y</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">)</span><span class="pln">
@@ -564,7 +572,7 @@ representation is:
   </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square x</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square y</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">atan y x</span><span class="clo">)))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> r a</span><span class="clo">))</span></pre></div>
 
 <p>The discipline of data abstraction ensures that the same implementation of
@@ -577,7 +585,7 @@ representation.
 <h4 class="subsection"><span class="secnum">2.4.2</span><span class="sectitle">Tagged data</span></h4>
 
 <p>One way to view data abstraction is as an application of the “principle of
-least commitment.”  In implementing the complex-number system in 
+least commitment.”  In implementing the complex-number system in
 <a href="#g_t2_002e4_002e1">2.4.1</a>, we can use either Ben’s rectangular representation or Alyssa’s
 polar representation.  The abstraction barrier formed by the selectors and
 constructors permits us to defer to the last possible moment the choice of a
@@ -613,13 +621,13 @@ way to implement this is to use ordinary list structure:
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">type-tag datum</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pair? datum</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> datum</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Bad tagged datum: 
+      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Bad tagged datum:
               TYPE-TAG"</span><span class="pln"> datum</span><span class="clo">)))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">contents datum</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pair? datum</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> datum</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Bad tagged datum: 
+      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Bad tagged datum:
               CONTENTS"</span><span class="pln"> datum</span><span class="clo">)))</span></pre></div>
 
 <p>Using these procedures, we can define predicates <code>rectangular?</code>  and
@@ -639,7 +647,7 @@ constructs a complex number, she tags it as polar.  In addition, Ben and Alyssa
 must make sure that the names of their procedures do not conflict.  One way to
 do this is for Ben to append the suffix <code>rectangular</code> to the name of each
 of his representation procedures and for Alyssa to append <code>polar</code> to the
-names of hers.  Here is Ben’s revised rectangular representation from 
+names of hers.  Here is Ben’s revised rectangular representation from
 <a href="#g_t2_002e4_002e1">2.4.1</a>:
 </p>
 <div class="lisp">
@@ -658,7 +666,7 @@ names of hers.  Here is Ben’s revised rectangular representation from
   </span><span class="opn">(</span><span class="pln">attach-tag </span><span class="lit">'rectangular</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> x y</span><span class="clo">)))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-mag-ang-rectangular r a</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">attach-tag 
+  </span><span class="opn">(</span><span class="pln">attach-tag
    </span><span class="lit">'rectangular</span><span class="pln">
    </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> r </span><span class="opn">(</span><span class="pln">cos a</span><span class="clo">))</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> r </span><span class="opn">(</span><span class="pln">sin a</span><span class="clo">)))))</span></pre></div>
 
@@ -666,18 +674,18 @@ names of hers.  Here is Ben’s revised rectangular representation from
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part-polar z</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude-polar z</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude-polar z</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">cos </span><span class="opn">(</span><span class="pln">angle-polar z</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part-polar z</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude-polar z</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude-polar z</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">sin </span><span class="opn">(</span><span class="pln">angle-polar z</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude-polar z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle-polar z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-real-imag-polar x y</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">attach-tag 
+  </span><span class="opn">(</span><span class="pln">attach-tag
    </span><span class="lit">'polar</span><span class="pln">
    </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square x</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square y</span><span class="clo">)))</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">atan y x</span><span class="clo">))))</span><span class="pln">
@@ -699,7 +707,7 @@ procedure as required:
          </span><span class="opn">(</span><span class="pln">real-part-rectangular </span><span class="opn">(</span><span class="pln">contents z</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">polar? z</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">real-part-polar </span><span class="opn">(</span><span class="pln">contents z</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown type: 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown type:
                REAL-PART"</span><span class="pln"> z</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">)</span><span class="pln">
@@ -707,7 +715,7 @@ procedure as required:
          </span><span class="opn">(</span><span class="pln">imag-part-rectangular </span><span class="opn">(</span><span class="pln">contents z</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">polar? z</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">imag-part-polar </span><span class="opn">(</span><span class="pln">contents z</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown type: 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown type:
                IMAG-PART"</span><span class="pln"> z</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z</span><span class="clo">)</span><span class="pln">
@@ -715,7 +723,7 @@ procedure as required:
          </span><span class="opn">(</span><span class="pln">magnitude-rectangular </span><span class="opn">(</span><span class="pln">contents z</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">polar? z</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">magnitude-polar </span><span class="opn">(</span><span class="pln">contents z</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown type: 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown type:
                MAGNITUDE"</span><span class="pln"> z</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z</span><span class="clo">)</span><span class="pln">
@@ -723,7 +731,7 @@ procedure as required:
          </span><span class="opn">(</span><span class="pln">angle-rectangular </span><span class="opn">(</span><span class="pln">contents z</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">polar? z</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">angle-polar </span><span class="opn">(</span><span class="pln">contents z</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown type: 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown type:
                ANGLE"</span><span class="pln"> z</span><span class="clo">))))</span></pre></div>
 
 <p>To implement the complex-number arithmetic operations, we can use the same
@@ -734,7 +742,7 @@ procedure <code>add-complex</code> is still
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-complex z1 z2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">make-from-real-imag 
+  </span><span class="opn">(</span><span class="pln">make-from-real-imag
    </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z2</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z2</span><span class="clo">))))</span></pre></div>
 
@@ -750,7 +758,7 @@ construct polar numbers whenever we have magnitudes and angles:
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">make-from-mag-ang-polar r a</span><span class="clo">))</span></pre></div>
 
-<p>The resulting complex-number system has the structure shown in <a href="#Figure-2_002e21">Figure 2.21</a>.  
+<p>The resulting complex-number system has the structure shown in <a href="#Figure-2_002e21">Figure 2.21</a>.
 The system has been decomposed into three relatively independent parts:
 the complex-number-arithmetic operations, Alyssa’s polar implementation, and
 Ben’s rectangular implementation.  The polar and rectangular implementations
@@ -821,7 +829,7 @@ large-scale data-base-management systems.
 </p>
 <p>What we need is a means for modularizing the system design even further.  This
 is provided by the programming technique known as <a id="index-data_002ddirected-programming-1"></a>
-<em>data-directed programming</em>.  
+<em>data-directed programming</em>.
 To understand how data-directed programming works, begin with
 the observation that whenever we deal with a set of generic operations that are
 common to a set of different types we are, in effect, dealing with a
@@ -857,12 +865,12 @@ to the table.
 <code>get</code>, for manipulating the operation-and-type table:
 </p>
 <ul>
-<li> <code>(put ⟨<var>op</var>⟩ ⟨<var>type</var>⟩ ⟨<var>item</var>⟩)</code> installs the 
-<code>⟨</code><var>item</var><code>⟩</code> in the table, indexed by the 
+<li> <code>(put ⟨<var>op</var>⟩ ⟨<var>type</var>⟩ ⟨<var>item</var>⟩)</code> installs the
+<code>⟨</code><var>item</var><code>⟩</code> in the table, indexed by the
 <code>⟨</code><var>op</var><code>⟩</code> and the <code>⟨</code><var>type</var><code>⟩</code>.
 
-</li><li> <code>(get ⟨<var>op</var>⟩ ⟨<var>type</var>⟩)</code> looks up the <code>⟨</code><var>op</var><code>⟩</code>, 
-<code>⟨</code><var>type</var><code>⟩</code> entry in the table and returns the item found there.  
+</li><li> <code>(get ⟨<var>op</var>⟩ ⟨<var>type</var>⟩)</code> looks up the <code>⟨</code><var>op</var><code>⟩</code>,
+<code>⟨</code><var>type</var><code>⟩</code> entry in the table and returns the item found there.
 If no item is found, <code>get</code> returns false.
 
 </li></ul>
@@ -884,7 +892,7 @@ numbers.  This is accomplished by calling the following procedure:
   </span><span class="roman"><span class="com">;; internal procedures</span></span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> x y</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">))</span><span class="pln">
@@ -894,21 +902,21 @@ numbers.  This is accomplished by calling the following procedure:
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> r </span><span class="opn">(</span><span class="pln">cos a</span><span class="clo">))</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> r </span><span class="opn">(</span><span class="pln">sin a</span><span class="clo">))))</span><span class="pln">
   </span><span class="roman"><span class="com">;; interface to the rest of the system</span></span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tag x</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tag x</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">attach-tag </span><span class="lit">'rectangular</span><span class="pln"> x</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'real-part</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">rectangular</span><span class="clo">)</span><span class="pln"> real-part</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'imag-part</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">rectangular</span><span class="clo">)</span><span class="pln"> imag-part</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'magnitude</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">rectangular</span><span class="clo">)</span><span class="pln"> magnitude</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'angle</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">rectangular</span><span class="clo">)</span><span class="pln"> angle</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'make-from-real-imag</span><span class="pln"> </span><span class="lit">'rectangular</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'make-from-mag-ang</span><span class="pln"> </span><span class="lit">'rectangular</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">r a</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">r a</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">))))</span><span class="pln">
   </span><span class="lit">'done</span><span class="clo">)</span></pre></div>
 
-<p>Notice that the internal procedures here are the same procedures from 
+<p>Notice that the internal procedures here are the same procedures from
 <a href="#g_t2_002e4_002e1">2.4.1</a> that Ben wrote when he was working in isolation.  No changes are
 necessary in order to interface them to the rest of the system.  Moreover,
 since these procedure definitions are internal to the installation procedure,
@@ -942,10 +950,10 @@ Ben’s internally defined constructors, except that they attach the tag.
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'magnitude</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">polar</span><span class="clo">)</span><span class="pln"> magnitude</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'angle</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">polar</span><span class="clo">)</span><span class="pln"> angle</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'make-from-real-imag</span><span class="pln"> </span><span class="lit">'polar</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'make-from-mag-ang</span><span class="pln"> </span><span class="lit">'polar</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">r a</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">r a</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">))))</span><span class="pln">
   </span><span class="lit">'done</span><span class="clo">)</span></pre></div>
 
@@ -967,20 +975,20 @@ procedure if one is present:<a class="footnote_link" id="DOCF113" href="#FOOT113
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> proc
           </span><span class="opn">(</span><span class="pln">apply proc </span><span class="opn">(</span><span class="pln">map contents args</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="err">error</span><span class="pln">
-            </span><span class="str">"No method for these types: 
+            </span><span class="str">"No method for these types:
              APPLY-GENERIC"</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">list op type-tags</span><span class="clo">))))))</span></pre></div>
 
 <p>Using <code>apply-generic</code>, we can define our generic selectors as follows:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">apply-generic </span><span class="lit">'real-part</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">apply-generic </span><span class="lit">'imag-part</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">apply-generic </span><span class="lit">'magnitude</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">apply-generic </span><span class="lit">'angle</span><span class="pln"> z</span><span class="clo">))</span></pre></div>
 
 <p>Observe that these do not change at all if a new representation is added to the
@@ -994,13 +1002,13 @@ numbers whenever we have magnitudes and angles:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'make-from-real-imag</span><span class="pln"> 
-        </span><span class="lit">'rectangular</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'make-from-real-imag</span><span class="pln">
+        </span><span class="lit">'rectangular</span><span class="clo">)</span><span class="pln">
    x y</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'make-from-mag-ang</span><span class="pln"> 
-        </span><span class="lit">'polar</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'make-from-mag-ang</span><span class="pln">
+        </span><span class="lit">'polar</span><span class="clo">)</span><span class="pln">
    r a</span><span class="clo">))</span></pre></div>
 
 <blockquote>
@@ -1010,17 +1018,17 @@ program that performs symbolic differentiation:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">deriv exp var</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">number? exp</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">same-variable? exp var</span><span class="clo">)</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">0</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">sum? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">make-sum </span><span class="opn">(</span><span class="pln">deriv </span><span class="opn">(</span><span class="pln">addend exp</span><span class="clo">)</span><span class="pln"> var</span><span class="clo">)</span><span class="pln">
                    </span><span class="opn">(</span><span class="pln">deriv </span><span class="opn">(</span><span class="pln">augend exp</span><span class="clo">)</span><span class="pln"> var</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">product? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">make-sum
-           </span><span class="opn">(</span><span class="pln">make-product 
+           </span><span class="opn">(</span><span class="pln">make-product
             </span><span class="opn">(</span><span class="pln">multiplier exp</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">deriv </span><span class="opn">(</span><span class="pln">multiplicand exp</span><span class="clo">)</span><span class="pln"> var</span><span class="clo">))</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">make-product 
+           </span><span class="opn">(</span><span class="pln">make-product
             </span><span class="opn">(</span><span class="pln">deriv </span><span class="opn">(</span><span class="pln">multiplier exp</span><span class="clo">)</span><span class="pln"> var</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">multiplicand exp</span><span class="clo">))))</span><span class="pln">
         ⟨</span><var><span class="pln">more rules can be added here</span></var><span class="pln">⟩
@@ -1036,12 +1044,12 @@ data-directed style by rewriting the basic derivative procedure as
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">deriv exp var</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">number? exp</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln"> 
-           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">same-variable? exp var</span><span class="clo">)</span><span class="pln"> 
-               </span><span class="lit">1</span><span class="pln"> 
+         </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln">
+           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">same-variable? exp var</span><span class="clo">)</span><span class="pln">
+               </span><span class="lit">1</span><span class="pln">
                </span><span class="lit">0</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'deriv</span><span class="pln"> </span><span class="opn">(</span><span class="pln">operator exp</span><span class="clo">))</span><span class="pln"> 
-                </span><span class="opn">(</span><span class="pln">operands exp</span><span class="clo">)</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'deriv</span><span class="pln"> </span><span class="opn">(</span><span class="pln">operator exp</span><span class="clo">))</span><span class="pln">
+                </span><span class="opn">(</span><span class="pln">operands exp</span><span class="clo">)</span><span class="pln">
                 var</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">operator exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
@@ -1063,7 +1071,7 @@ operator that binds it together.  Suppose, however, we indexed the procedures
 in the opposite way, so that the dispatch line in <code>deriv</code> looked like
 
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">((</span><span class="pln">get </span><span class="opn">(</span><span class="pln">operator exp</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'deriv</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">((</span><span class="pln">get </span><span class="opn">(</span><span class="pln">operator exp</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'deriv</span><span class="clo">)</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">operands exp</span><span class="clo">)</span><span class="pln"> var</span><span class="clo">)</span></pre></div>
 
 <p>What corresponding changes to the derivative system are required?
@@ -1121,7 +1129,7 @@ incorporate the new personnel information into the central system?
 
 <p>The key idea of data-directed programming is to handle generic operations in
 programs by dealing explicitly with operation-and-type tables, such as the
-table in <a href="#Figure-2_002e22">Figure 2.22</a>.  The style of programming we used in 
+table in <a href="#Figure-2_002e22">Figure 2.22</a>.  The style of programming we used in
 <a href="#g_t2_002e4_002e2">2.4.2</a> organized the required dispatching on type by having each operation
 take care of its own dispatching.  In effect, this decomposes the
 operation-and-type table into rows, with each generic operation procedure
@@ -1144,7 +1152,7 @@ operation name and performs the operation indicated.  In such a discipline,
            </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square x</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square y</span><span class="clo">))))</span><span class="pln">
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> op </span><span class="lit">'angle</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">atan y x</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-           </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown op: 
+           </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown op:
             MAKE-FROM-REAL-IMAG"</span><span class="pln"> op</span><span class="clo">))))</span><span class="pln">
   dispatch</span><span class="clo">)</span></pre></div>
 

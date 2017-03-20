@@ -118,7 +118,7 @@ sets the <math xmlns="http://www.w3.org/1998/Math/MathML">
 fifth entry in the vector <code>v</code> and <code>(vector-set! v 5 7)</code> changes the
 value of the fifth entry of the vector <code>v</code> to 7.<a class="footnote_link" id="DOCF291" href="#FOOT291"><sup>291</sup></a>  For computer memory, this access can
 be implemented through the use of address arithmetic to combine a <a id="index-base-address"></a>
-<em>base address</em> 
+<em>base address</em>
 that specifies the beginning location of a vector in memory with an
 <a id="index-index"></a>
 <em>index</em> that specifies the offset of a particular element of the
@@ -143,7 +143,7 @@ enables the system to distinguish a pointer to a pair (which consists of the
 “pair” data type and an index into the memory vectors) from pointers to other
 kinds of data (which consist of some other data type and whatever is being used
 to represent data of that type).  Two data objects are considered to be the
-same (<code>eq?</code>) if their pointers are identical.<a class="footnote_link" id="DOCF293" href="#FOOT293"><sup>293</sup></a> 
+same (<code>eq?</code>) if their pointers are identical.<a class="footnote_link" id="DOCF293" href="#FOOT293"><sup>293</sup></a>
 <a href="#Figure-5_002e14">Figure 5.14</a> illustrates the use of this method to
 represent the list <code>((1 2) 3 4)</code>, whose box-and-pointer diagram is also
 shown.  We use letter prefixes to denote the data-type information.  Thus, a
@@ -211,7 +211,7 @@ vector, or adding two numbers) use only the index portion of the typed pointer.
 <p>if we implement these, respectively, as
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">reg</span><span class="pun">₁</span></var><span class="pln">⟩ 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">reg</span><span class="pun">₁</span></var><span class="pln">⟩
         </span><span class="opn">(</span><span class="pln">op vector-ref</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">reg the-cars</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">reg ⟨</span><var><span class="pln">reg</span><span class="pun">₂</span></var><span class="pln">⟩</span><span class="clo">))</span><span class="pln">
@@ -279,11 +279,11 @@ check the type field.
 
 <p>Although our register machines use stacks, we need do nothing special here,
 since stacks can be modeled in terms of lists.  The stack can be a list of the
-saved values, pointed to by a special register <code>the-stack</code>.  Thus, 
+saved values, pointed to by a special register <code>the-stack</code>.  Thus,
 <code>(save ⟨<var>reg</var>⟩)</code> can be implemented as
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign the-stack 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign the-stack
         </span><span class="opn">(</span><span class="pln">op </span><span class="kwd">cons</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">reg ⟨</span><var><span class="pln">reg</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">reg the-stack</span><span class="clo">))</span></pre></div>
@@ -330,7 +330,7 @@ available as machine primitives.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">count-leaves tree</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? tree</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">not </span><span class="opn">(</span><span class="pln">pair? tree</span><span class="clo">))</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
          </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">count-leaves </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> tree</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">count-leaves </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> tree</span><span class="clo">))))))</span></pre></div>
 
@@ -341,17 +341,17 @@ available as machine primitives.
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">count-iter tree n</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? tree</span><span class="clo">)</span><span class="pln"> n</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">((</span><span class="pln">not </span><span class="opn">(</span><span class="pln">pair? tree</span><span class="clo">))</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
-           </span><span class="opn">(</span><span class="pln">count-iter 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
+           </span><span class="opn">(</span><span class="pln">count-iter
             </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> tree</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">count-iter </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> tree</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">(</span><span class="pln">count-iter </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> tree</span><span class="clo">)</span><span class="pln">
                         n</span><span class="clo">)))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">count-iter tree </span><span class="lit">0</span><span class="clo">))</span></pre></div>
 </li></ol>
 </blockquote>
 
 <blockquote>
-<p><strong><a id="Exercise-5_002e22"></a>Exercise 5.22:</strong> <a href="3_002e3.xhtml#Exercise-3_002e12">Exercise 3.12</a> of 
+<p><strong><a id="Exercise-5_002e22"></a>Exercise 5.22:</strong> <a href="3_002e3.xhtml#Exercise-3_002e12">Exercise 3.12</a> of
 <a href="3_002e3.xhtml#g_t3_002e3_002e1">3.3.1</a> presented an <code>append</code> procedure that appends two lists to form
 a new list and an <code>append!</code> procedure that splices two lists together.
 Design a register machine to implement each of these procedures.  Assume that
@@ -372,8 +372,8 @@ longer needed—they are <a id="index-garbage"></a>
 <em>garbage</em>.  For instance, the computation
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">accumulate 
- </span><span class="pun">+</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">accumulate
+ </span><span class="pun">+</span><span class="pln">
  </span><span class="lit">0</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">filter odd? </span><span class="opn">(</span><span class="pln">enumerate-interval </span><span class="lit">0</span><span class="pln"> n</span><span class="clo">)))</span></pre></div>
 
@@ -500,7 +500,7 @@ garbage collector.
   </span><span class="opn">(</span><span class="pln">assign free </span><span class="opn">(</span><span class="pln">const </span><span class="lit">0</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign scan </span><span class="opn">(</span><span class="pln">const </span><span class="lit">0</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign old </span><span class="opn">(</span><span class="pln">reg root</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign relocate-continue 
+  </span><span class="opn">(</span><span class="pln">assign relocate-continue
           </span><span class="opn">(</span><span class="pln">label reassign-root</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label relocate-old-result-in-new</span><span class="clo">))</span><span class="pln">
 reassign-root
@@ -521,11 +521,11 @@ set up so that the subroutine will return to update the <code>car</code> pointer
 <pre class="lisp prettyprinted" style=""><span class="pln">gc-loop
   </span><span class="opn">(</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op </span><span class="pun">=</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg scan</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg free</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label gc-flip</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign old 
+  </span><span class="opn">(</span><span class="pln">assign old
           </span><span class="opn">(</span><span class="pln">op vector-ref</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg new-cars</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg scan</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign relocate-continue 
+  </span><span class="opn">(</span><span class="pln">assign relocate-continue
           </span><span class="opn">(</span><span class="pln">label update-car</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label relocate-old-result-in-new</span><span class="clo">))</span></pre></div>
 
@@ -541,7 +541,7 @@ with the main loop.
            </span><span class="opn">(</span><span class="pln">reg new-cars</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg scan</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg new</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign  old 
+  </span><span class="opn">(</span><span class="pln">assign  old
            </span><span class="opn">(</span><span class="pln">op vector-ref</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg new-cdrs</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg scan</span><span class="clo">))</span><span class="pln">
@@ -580,7 +580,7 @@ broken-heart tag and forwarding address at the old location.
   </span><span class="opn">(</span><span class="pln">assign new </span><span class="opn">(</span><span class="pln">reg old</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg relocate-continue</span><span class="clo">))</span><span class="pln">
 pair
-  </span><span class="opn">(</span><span class="pln">assign  oldcr 
+  </span><span class="opn">(</span><span class="pln">assign  oldcr
            </span><span class="opn">(</span><span class="pln">op vector-ref</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg the-cars</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg old</span><span class="clo">))</span><span class="pln">
@@ -594,7 +594,7 @@ pair
            </span><span class="opn">(</span><span class="pln">reg new-cars</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg new</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg oldcr</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign  oldcr 
+  </span><span class="opn">(</span><span class="pln">assign  oldcr
            </span><span class="opn">(</span><span class="pln">op vector-ref</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg the-cdrs</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg old</span><span class="clo">))</span><span class="pln">

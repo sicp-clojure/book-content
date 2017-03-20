@@ -288,7 +288,7 @@ in which many individual pairs are shared by many different structures.
 by
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> z2 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> z2
   </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'a</span><span class="pln"> </span><span class="lit">'b</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'a</span><span class="pln"> </span><span class="lit">'b</span><span class="clo">)))</span></pre></div>
 
 <figure class="float">
@@ -410,7 +410,7 @@ can be represented purely in terms of procedures:
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">dispatch m</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'car</span><span class="clo">)</span><span class="pln"> x</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'cdr</span><span class="clo">)</span><span class="pln"> y</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Undefined 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Undefined
                  operation: CONS"</span><span class="pln"> m</span><span class="clo">))))</span><span class="pln">
   dispatch</span><span class="clo">)</span><span class="pln">
 
@@ -432,7 +432,7 @@ using <code>make-account</code> in <a href="3_002e1.xhtml#g_t3_002e1_002e1">3.1.
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'cdr</span><span class="clo">)</span><span class="pln"> y</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'set-car!</span><span class="clo">)</span><span class="pln"> set-x!</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'set-cdr!</span><span class="clo">)</span><span class="pln"> set-y!</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Undefined 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Undefined
                  operation: CONS"</span><span class="pln"> m</span><span class="clo">))))</span><span class="pln">
   dispatch</span><span class="clo">)</span><span class="pln">
 
@@ -596,16 +596,16 @@ to select and to modify the front and rear pointers of a queue:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">front-ptr queue</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> queue</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">rear-ptr queue</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> queue</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-front-ptr! queue item</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-front-ptr! queue item</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">set-car! queue item</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-rear-ptr! queue item</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-rear-ptr! queue item</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">set-cdr! queue item</span><span class="clo">))</span></pre></div>
 
 <p>Now we can implement the actual queue operations.  We will consider a queue to
 be empty if its front pointer is the empty list:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-queue? queue</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-queue? queue</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">null? </span><span class="opn">(</span><span class="pln">front-ptr queue</span><span class="clo">)))</span></pre></div>
 
 <p>The <code>make-queue</code> constructor returns, as an initially empty queue, a pair
@@ -620,7 +620,7 @@ pair indicated by the front pointer:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">front-queue queue</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-queue? queue</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"FRONT called with an 
+      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"FRONT called with an
               empty queue"</span><span class="pln"> queue</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="opn">(</span><span class="pln">front-ptr queue</span><span class="clo">))))</span></pre></div>
 
@@ -647,23 +647,23 @@ also set the rear pointer to the new pair.
            </span><span class="opn">(</span><span class="pln">set-front-ptr! queue new-pair</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">set-rear-ptr! queue new-pair</span><span class="clo">)</span><span class="pln">
            queue</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-cdr! </span><span class="opn">(</span><span class="pln">rear-ptr queue</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-cdr! </span><span class="opn">(</span><span class="pln">rear-ptr queue</span><span class="clo">)</span><span class="pln">
                           new-pair</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">set-rear-ptr! queue new-pair</span><span class="clo">)</span><span class="pln">
                 queue</span><span class="clo">))))</span></pre></div>
 
 <p>To delete the item at the front of the queue, we merely modify the front
 pointer so that it now points at the second item in the queue, which can be
-found by following the <code>cdr</code> pointer of the first item (see 
+found by following the <code>cdr</code> pointer of the first item (see
 <a href="#Figure-3_002e21">Figure 3.21</a>):<a class="footnote_link" id="DOCF150" href="#FOOT150"><sup>150</sup></a>
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">delete-queue! queue</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">empty-queue? queue</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"DELETE! called with 
+         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"DELETE! called with
                  an empty queue"</span><span class="pln"> queue</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-front-ptr! 
-               queue 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-front-ptr!
+               queue
                </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> </span><span class="opn">(</span><span class="pln">front-ptr queue</span><span class="clo">)))</span><span class="pln">
               queue</span><span class="clo">)))</span></pre></div>
 
@@ -735,9 +735,9 @@ queue operations using this representation.
 front or the rear.  Operations on deques are the constructor <code>make-deque</code>,
 the predicate <code>empty-deque?</code>, selectors <code>front-deque</code> and
 <code>rear-deque</code>, and mutators <code>front-insert-deque!</code>,
-<code>rear-insert-deque!</code>, <code>front-delete-deque!</code>, 
+<code>rear-insert-deque!</code>, <code>front-delete-deque!</code>,
 <code>rear-delete-deque!</code>.  Show how to represent deques using pairs, and give
-implementations of the operations.<a class="footnote_link" id="DOCF151" href="#FOOT151"><sup>151</sup></a>  
+implementations of the operations.<a class="footnote_link" id="DOCF151" href="#FOOT151"><sup>151</sup></a>
 All operations should be accomplished in <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi mathvariant="normal">Θ<!-- Θ --></mi>
@@ -804,7 +804,7 @@ of the record.
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">assoc key records</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? records</span><span class="clo">)</span><span class="pln"> false</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> key </span><span class="opn">(</span><span class="kwd">caar</span><span class="pln"> records</span><span class="clo">))</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> key </span><span class="opn">(</span><span class="kwd">caar</span><span class="pln"> records</span><span class="clo">))</span><span class="pln">
          </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> records</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">assoc key </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> records</span><span class="clo">)))))</span></pre></div>
 
@@ -822,7 +822,7 @@ location to modify in order to insert the new record.<a class="footnote_link" id
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> record
         </span><span class="opn">(</span><span class="pln">set-cdr! record value</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">set-cdr! table
-                  </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> key value</span><span class="clo">)</span><span class="pln"> 
+                  </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> key value</span><span class="clo">)</span><span class="pln">
                         </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> table</span><span class="clo">)))))</span><span class="pln">
   </span><span class="lit">'ok</span><span class="clo">)</span></pre></div>
 
@@ -865,7 +865,7 @@ Then we use the second key to identify the record within the subtable.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lookup key-1 key-2 table</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">subtable </span><span class="opn">(</span><span class="pln">assoc key-1 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> table</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> subtable
-        </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">record 
+        </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">record
                </span><span class="opn">(</span><span class="pln">assoc key-2 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> subtable</span><span class="clo">))))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> record </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> record</span><span class="clo">)</span><span class="pln"> false</span><span class="clo">))</span><span class="pln">
         false</span><span class="clo">)))</span></pre></div>
@@ -881,15 +881,15 @@ one-dimensional tables described above:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">insert! key-1 key-2 value table</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">subtable </span><span class="opn">(</span><span class="pln">assoc key-1 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> table</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> subtable
-        </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">record 
+        </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">record
                </span><span class="opn">(</span><span class="pln">assoc key-2 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> subtable</span><span class="clo">))))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> record
               </span><span class="opn">(</span><span class="pln">set-cdr! record value</span><span class="clo">)</span><span class="pln">
-              </span><span class="opn">(</span><span class="pln">set-cdr! 
+              </span><span class="opn">(</span><span class="pln">set-cdr!
                subtable
                </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> key-2 value</span><span class="clo">)</span><span class="pln">
                      </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> subtable</span><span class="clo">)))))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">set-cdr! 
+        </span><span class="opn">(</span><span class="pln">set-cdr!
          table
          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list key-1 </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> key-2 value</span><span class="clo">))</span><span class="pln">
                </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> table</span><span class="clo">)))))</span><span class="pln">
@@ -911,28 +911,28 @@ generator for two-dimensional tables represented in this fashion:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-table</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">local-table </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'</span><span class="pun">*</span><span class="pln">table</span><span class="pun">*</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lookup key-1 key-2</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">subtable 
+      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">subtable
              </span><span class="opn">(</span><span class="pln">assoc key-1 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> local-table</span><span class="clo">))))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> subtable
-            </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">record 
-                   </span><span class="opn">(</span><span class="pln">assoc key-2 
+            </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">record
+                   </span><span class="opn">(</span><span class="pln">assoc key-2
                           </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> subtable</span><span class="clo">))))</span><span class="pln">
               </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> record </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> record</span><span class="clo">)</span><span class="pln"> false</span><span class="clo">))</span><span class="pln">
             false</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">insert! key-1 key-2 value</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">subtable 
+      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">subtable
              </span><span class="opn">(</span><span class="pln">assoc key-1 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> local-table</span><span class="clo">))))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> subtable
-            </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">record 
-                   </span><span class="opn">(</span><span class="pln">assoc key-2 
+            </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">record
+                   </span><span class="opn">(</span><span class="pln">assoc key-2
                           </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> subtable</span><span class="clo">))))</span><span class="pln">
               </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> record
                   </span><span class="opn">(</span><span class="pln">set-cdr! record value</span><span class="clo">)</span><span class="pln">
-                  </span><span class="opn">(</span><span class="pln">set-cdr! 
+                  </span><span class="opn">(</span><span class="pln">set-cdr!
                    subtable
                    </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> key-2 value</span><span class="clo">)</span><span class="pln">
                          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> subtable</span><span class="clo">)))))</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">set-cdr! 
+            </span><span class="opn">(</span><span class="pln">set-cdr!
              local-table
              </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list key-1
                          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> key-2 value</span><span class="clo">))</span><span class="pln">
@@ -941,7 +941,7 @@ generator for two-dimensional tables represented in this fashion:
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">dispatch m</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'lookup-proc</span><span class="clo">)</span><span class="pln"> lookup</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'insert-proc!</span><span class="clo">)</span><span class="pln"> insert!</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown operation: 
+            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown operation:
                           TABLE"</span><span class="pln"> m</span><span class="clo">))))</span><span class="pln">
     dispatch</span><span class="clo">))</span></pre></div>
 
@@ -1015,11 +1015,11 @@ computing Fibonacci numbers:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> memo-fib
-  </span><span class="opn">(</span><span class="pln">memoize 
+  </span><span class="opn">(</span><span class="pln">memoize
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">n</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
-           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
+           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
             </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">memo-fib </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">memo-fib </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">2</span><span class="clo">))))))))</span></pre></div>
 
@@ -1029,7 +1029,7 @@ computing Fibonacci numbers:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">memoize f</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">table </span><span class="opn">(</span><span class="pln">make-table</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">previously-computed-result 
+      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">previously-computed-result
              </span><span class="opn">(</span><span class="pln">lookup x table</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> previously-computed-result
             </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">result </span><span class="opn">(</span><span class="pln">f x</span><span class="clo">)))</span><span class="pln">
@@ -1083,7 +1083,7 @@ time that depends on the type of the function box.  For example, an
 input signal to an inverter changes to 0, then one inverter-delay later the
 inverter will change its output signal to 1.  If the input signal to an
 inverter changes to 1, then one inverter-delay later the inverter will change
-its output signal to 0.  We draw an inverter symbolically as in <a href="#Figure-3_002e24">Figure 3.24</a>.  
+its output signal to 0.  We draw an inverter symbolically as in <a href="#Figure-3_002e24">Figure 3.24</a>.
 An <a id="index-and_002dgate"></a>
 <em>and-gate</em>, also shown in figure 3.24, is a primitive
 function box with two inputs and one output.  It drives its output signal to a
@@ -1177,14 +1177,14 @@ to be attached to the half-adder:
     </span><span class="lit">'ok</span><span class="clo">))</span></pre></div>
 
 <p>The advantage of making this definition is that we can use <code>half-adder</code>
-itself as a building block in creating more complex circuits.  <a href="#Figure-3_002e26">Figure 3.26</a>, 
+itself as a building block in creating more complex circuits.  <a href="#Figure-3_002e26">Figure 3.26</a>,
 for example, shows a <a id="index-full_002dadder"></a>
 <em>full-adder</em> composed of two half-adders
 and an or-gate.<a class="footnote_link" id="DOCF154" href="#FOOT154"><sup>154</sup></a> We can construct a full-adder as follows:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">full-adder a b c-in sum c-out</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">c1 </span><span class="opn">(</span><span class="pln">make-wire</span><span class="clo">))</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">c1 </span><span class="opn">(</span><span class="pln">make-wire</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">c2 </span><span class="opn">(</span><span class="pln">make-wire</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">s  </span><span class="opn">(</span><span class="pln">make-wire</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">half-adder b c-in s c1</span><span class="clo">)</span><span class="pln">
@@ -1250,9 +1250,9 @@ signal on the input wire changes value.  The procedure computes the
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">inverter input output</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">invert-input</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">new-value 
+    </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">new-value
            </span><span class="opn">(</span><span class="pln">logical-not </span><span class="opn">(</span><span class="pln">get-signal input</span><span class="clo">))))</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">after-delay 
+      </span><span class="opn">(</span><span class="pln">after-delay
        inverter-delay
        </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">set-signal! output new-value</span><span class="clo">)))))</span><span class="pln">
@@ -1274,9 +1274,9 @@ the output wire after one <code>and-gate-delay</code>.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">and-gate a1 a2 output</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">and-action-procedure</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">new-value
-           </span><span class="opn">(</span><span class="pln">logical-and </span><span class="opn">(</span><span class="pln">get-signal a1</span><span class="clo">)</span><span class="pln"> 
+           </span><span class="opn">(</span><span class="pln">logical-and </span><span class="opn">(</span><span class="pln">get-signal a1</span><span class="clo">)</span><span class="pln">
                         </span><span class="opn">(</span><span class="pln">get-signal a2</span><span class="clo">))))</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">after-delay 
+      </span><span class="opn">(</span><span class="pln">after-delay
        and-gate-delay
        </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">set-signal! output new-value</span><span class="clo">)))))</span><span class="pln">
@@ -1327,7 +1327,7 @@ numbers.  The inputs <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>A</mi>
     <mi>n</mi>
   </msub>
-</math> and 
+</math> and
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>B</mi>
@@ -1370,7 +1370,7 @@ numbers.  The inputs <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>S</mi>
     <mn>2</mn>
   </msub>
-</math>, 
+</math>,
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>S</mi>
@@ -1436,31 +1436,31 @@ variables: a <code>signal-value</code> (initially taken to be 0) and a collectio
 <code>action-procedures</code> to be run when the signal changes value.  We implement
 the wire, using message-passing style, as a collection of local procedures
 together with a <code>dispatch</code> procedure that selects the appropriate local
-operation, just as we did with the simple bank-account object in 
+operation, just as we did with the simple bank-account object in
 <a href="3_002e1.xhtml#g_t3_002e1_002e1">3.1.1</a>:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-wire</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">signal-value </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">signal-value </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">action-procedures </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-my-signal! new-value</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> signal-value new-value</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> signal-value new-value</span><span class="clo">)</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pln">call-each 
+                 </span><span class="opn">(</span><span class="pln">call-each
                   action-procedures</span><span class="clo">))</span><span class="pln">
           </span><span class="lit">'done</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">accept-action-procedure! proc</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> action-procedures 
+      </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> action-procedures
             </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> proc action-procedures</span><span class="clo">))</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">proc</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">dispatch m</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'get-signal</span><span class="clo">)</span><span class="pln"> 
+      </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'get-signal</span><span class="clo">)</span><span class="pln">
              signal-value</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'set-signal!</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'set-signal!</span><span class="clo">)</span><span class="pln">
              set-my-signal!</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'add-action!</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'add-action!</span><span class="clo">)</span><span class="pln">
              accept-action-procedure!</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown operation: 
+            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown operation:
                           WIRE"</span><span class="pln"> m</span><span class="clo">))))</span><span class="pln">
     dispatch</span><span class="clo">))</span></pre></div>
 
@@ -1527,8 +1527,8 @@ agenda.
 </li><li> <code>(remove-first-agenda-item! ⟨<var>agenda</var>⟩)</code> modifies the agenda by
 removing the first item.
 
-</li><li> <code>(add-to-agenda! ⟨<var>time</var>⟩ ⟨<var>action</var>⟩ ⟨<var>agenda</var>⟩)</code> 
-modifies the agenda by adding the given action procedure to be run at the 
+</li><li> <code>(add-to-agenda! ⟨<var>time</var>⟩ ⟨<var>action</var>⟩ ⟨<var>agenda</var>⟩)</code>
+modifies the agenda by adding the given action procedure to be run at the
 specified time.
 
 </li><li> <code>(current-time ⟨<var>agenda</var>⟩)</code> returns the current simulation time.
@@ -1540,7 +1540,7 @@ procedure <code>after-delay</code> adds new elements to <code>the-agenda</code>:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">after-delay </span><span class="kwd">delay</span><span class="pln"> action</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">add-to-agenda! 
+  </span><span class="opn">(</span><span class="pln">add-to-agenda!
    </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="kwd">delay</span><span class="pln"> </span><span class="opn">(</span><span class="pln">current-time the-agenda</span><span class="clo">))</span><span class="pln">
    action
    the-agenda</span><span class="clo">))</span></pre></div>
@@ -1555,7 +1555,7 @@ agenda:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">propagate</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-agenda? the-agenda</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">'done</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">first-item 
+      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">first-item
              </span><span class="opn">(</span><span class="pln">first-agenda-item the-agenda</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">first-item</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">remove-first-agenda-item! the-agenda</span><span class="clo">)</span><span class="pln">
@@ -1571,7 +1571,7 @@ time and a name that identifies the wire:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">probe name wire</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">add-action! 
+  </span><span class="opn">(</span><span class="pln">add-action!
    wire
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">)</span><span class="pln">
@@ -1647,7 +1647,7 @@ would differ if we had defined <code>accept-action-procedure!</code> as
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">accept-action-procedure! proc</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> action-procedures 
+  </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> action-procedures
         </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> proc action-procedures</span><span class="clo">)))</span></pre></div>
 </blockquote>
 
@@ -1687,9 +1687,9 @@ of 0:<a class="footnote_link" id="DOCF156" href="#FOOT156"><sup>156</sup></a>
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">segments agenda</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> agenda</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-segments! agenda segments</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">set-cdr! agenda segments</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">first-segment agenda</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">first-segment agenda</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="opn">(</span><span class="pln">segments agenda</span><span class="clo">)))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">rest-segments agenda</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">rest-segments agenda</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> </span><span class="opn">(</span><span class="pln">segments agenda</span><span class="clo">)))</span></pre></div>
 
 <p>An agenda is empty if it has no time segments:
@@ -1710,7 +1710,7 @@ agenda, we must create a new time segment at the end.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-to-agenda! time action agenda</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">belongs-before? segments</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? segments</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="pun">&lt;</span><span class="pln"> time 
+        </span><span class="opn">(</span><span class="pun">&lt;</span><span class="pln"> time
            </span><span class="opn">(</span><span class="pln">segment-time </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> segments</span><span class="clo">)))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-new-time-segment time action</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">q </span><span class="opn">(</span><span class="pln">make-queue</span><span class="clo">)))</span><span class="pln">
@@ -1718,15 +1718,15 @@ agenda, we must create a new time segment at the end.
       </span><span class="opn">(</span><span class="pln">make-time-segment time q</span><span class="clo">)))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-to-segments! segments</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">segment-time </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> segments</span><span class="clo">))</span><span class="pln"> time</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">insert-queue! 
+        </span><span class="opn">(</span><span class="pln">insert-queue!
          </span><span class="opn">(</span><span class="pln">segment-queue </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> segments</span><span class="clo">))</span><span class="pln">
          action</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">rest </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> segments</span><span class="clo">)))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">belongs-before? rest</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">set-cdr!
                segments
-               </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-new-time-segment 
-                      time 
+               </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-new-time-segment
+                      time
                       action</span><span class="clo">)</span><span class="pln">
                      </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> segments</span><span class="clo">)))</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">add-to-segments! rest</span><span class="clo">)))))</span><span class="pln">
@@ -1734,8 +1734,8 @@ agenda, we must create a new time segment at the end.
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">belongs-before? segments</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">set-segments!
          agenda
-         </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-new-time-segment 
-                time 
+         </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-new-time-segment
+                time
                 action</span><span class="clo">)</span><span class="pln">
                segments</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">add-to-segments! segments</span><span class="clo">))))</span></pre></div>
@@ -1746,12 +1746,12 @@ time segment empty, we remove it from the list of segments:<a class="footnote_li
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">remove-first-agenda-item! agenda</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">q </span><span class="opn">(</span><span class="pln">segment-queue 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">q </span><span class="opn">(</span><span class="pln">segment-queue
             </span><span class="opn">(</span><span class="pln">first-segment agenda</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">delete-queue! q</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-queue? q</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">set-segments! 
-         agenda 
+        </span><span class="opn">(</span><span class="pln">set-segments!
+         agenda
          </span><span class="opn">(</span><span class="pln">rest-segments agenda</span><span class="clo">)))))</span></pre></div>
 
 <p>The first agenda item is found at the head of the queue in the first time
@@ -1761,14 +1761,14 @@ time:<a class="footnote_link" id="DOCF158" href="#FOOT158"><sup>158</sup></a>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">first-agenda-item agenda</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-agenda? agenda</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Agenda is empty: 
+      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Agenda is empty:
               FIRST-AGENDA-ITEM"</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">first-seg 
+      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">first-seg
              </span><span class="opn">(</span><span class="pln">first-segment agenda</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">set-current-time! 
-         agenda 
+        </span><span class="opn">(</span><span class="pln">set-current-time!
+         agenda
          </span><span class="opn">(</span><span class="pln">segment-time first-seg</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">front-queue 
+        </span><span class="opn">(</span><span class="pln">front-queue
          </span><span class="opn">(</span><span class="pln">segment-queue first-seg</span><span class="clo">)))))</span></pre></div>
 
 <blockquote>
@@ -1846,7 +1846,7 @@ quantities <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>b</mi>
 </math>, and <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>c</mi>
-</math> must be related by the equation 
+</math> must be related by the equation
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi>a</mi>
@@ -1855,7 +1855,7 @@ quantities <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mo>=</mo>
     <mi>c</mi>
   </mrow>
-</math>, <code>(multiplier x y z)</code> expresses the constraint 
+</math>, <code>(multiplier x y z)</code> expresses the constraint
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi>x</mi>
@@ -1896,32 +1896,32 @@ relationship between Fahrenheit and Celsius temperatures is
 Such a constraint can be thought of as a network consisting of primitive adder,
 multiplier, and constant constraints (<a href="#Figure-3_002e28">Figure 3.28</a>).  In the figure, we
 see on the left a multiplier box with three terminals, labeled <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow class="MJX-TeXAtom-ORD">
-  <mi>m</mi>
-  <mn>1</mn>
-</mrow>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mi>m</mi>
+    <mn>1</mn>
+  </mrow>
 </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow class="MJX-TeXAtom-ORD">
-  <mi>m</mi>
-  <mn>2</mn>
-</mrow>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mi>m</mi>
+    <mn>2</mn>
+  </mrow>
 </math>,
 and <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>p</mi>
 </math>.  These connect the multiplier to the rest of the network as follows:
 The <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow class="MJX-TeXAtom-ORD">
-  <mi>m</mi>
-  <mn>1</mn>
-</mrow>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mi>m</mi>
+    <mn>1</mn>
+  </mrow>
 </math> terminal is linked to a connector <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>C</mi>
 </math>, which will hold the Celsius
 temperature.  The <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow class="MJX-TeXAtom-ORD">
-  <mi>m</mi>
-  <mn>2</mn>
-</mrow>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mi>m</mi>
+    <mn>2</mn>
+  </mrow>
 </math> terminal is linked to a connector <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>w</mi>
 </math>, which is also
@@ -1929,29 +1929,29 @@ linked to a constant box that holds 9.  The <math xmlns="http://www.w3.org/1998/
   <mi>p</mi>
 </math> terminal, which the
 multiplier box constrains to be the product of <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow class="MJX-TeXAtom-ORD">
-  <mi>m</mi>
-  <mn>1</mn>
-</mrow>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mi>m</mi>
+    <mn>1</mn>
+  </mrow>
 </math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow class="MJX-TeXAtom-ORD">
-  <mi>m</mi>
-  <mn>2</mn>
-</mrow>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mi>m</mi>
+    <mn>2</mn>
+  </mrow>
 </math>, is linked to
 the <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>p</mi>
 </math> terminal of another multiplier box, whose <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow class="MJX-TeXAtom-ORD">
-  <mi>m</mi>
-  <mn>2</mn>
-</mrow>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mi>m</mi>
+    <mn>2</mn>
+  </mrow>
 </math> is connected to a
 constant 5 and whose <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow class="MJX-TeXAtom-ORD">
-  <mi>m</mi>
-  <mn>1</mn>
-</mrow>
+  <mrow class="MJX-TeXAtom-ORD">
+    <mi>m</mi>
+    <mn>1</mn>
+  </mrow>
 </math> is connected to one of the terms in a sum.
 </p>
 <figure class="float">
@@ -2051,7 +2051,7 @@ appropriate network:
 <p>This procedure creates the internal connectors <code>u</code>, <code>v</code>, <code>w</code>,
 <code>x</code>, and <code>y</code>, and links them as shown in <a href="#Figure-3_002e28">Figure 3.28</a> using the
 primitive constraint constructors <code>adder</code>, <code>multiplier</code>, and
-<code>constant</code>.  Just as with the digital-circuit simulator of 
+<code>constant</code>.  Just as with the digital-circuit simulator of
 <a href="#g_t3_002e3_002e4">3.3.4</a>, expressing these combinations of primitive elements in terms of
 procedures automatically provides our language with a means of abstraction for
 compound objects.
@@ -2124,7 +2124,7 @@ distinguishing feature of constraint-based systems.
 <h5 class="subsubheading">Implementing the constraint system</h5>
 
 <p>The constraint system is implemented via procedural objects with local state,
-in a manner very similar to the digital-circuit simulator of 
+in a manner very similar to the digital-circuit simulator of
 <a href="#g_t3_002e3_002e4">3.3.4</a>.  Although the primitive objects of the constraint system are
 somewhat more complex, the overall system is simpler, since there is no concern
 about agendas and logic delays.
@@ -2160,22 +2160,22 @@ procedure with local state (the procedure <code>me</code> below):
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">adder a1 a2 sum</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">process-new-value</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? a1</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? a1</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">has-value? a2</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">set-value! sum
-                       </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value a1</span><span class="clo">)</span><span class="pln"> 
+                       </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value a1</span><span class="clo">)</span><span class="pln">
                           </span><span class="opn">(</span><span class="pln">get-value a2</span><span class="clo">))</span><span class="pln">
                        me</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? a1</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? a1</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">has-value? sum</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">set-value! a2
-                       </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value sum</span><span class="clo">)</span><span class="pln"> 
+                       </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value sum</span><span class="clo">)</span><span class="pln">
                           </span><span class="opn">(</span><span class="pln">get-value a1</span><span class="clo">))</span><span class="pln">
                        me</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? a2</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? a2</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">has-value? sum</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">set-value! a1
-                       </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value sum</span><span class="clo">)</span><span class="pln"> 
+                       </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value sum</span><span class="clo">)</span><span class="pln">
                           </span><span class="opn">(</span><span class="pln">get-value a2</span><span class="clo">))</span><span class="pln">
                        me</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">process-forget-value</span><span class="clo">)</span><span class="pln">
@@ -2188,7 +2188,7 @@ procedure with local state (the procedure <code>me</code> below):
            </span><span class="opn">(</span><span class="pln">process-new-value</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'I-lost-my-value</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">process-forget-value</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request: 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request:
                         ADDER"</span><span class="pln"> request</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">connect a1 me</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">connect a2 me</span><span class="clo">)</span><span class="pln">
@@ -2229,27 +2229,27 @@ if either of the factors is 0, even if the other factor is not known.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">multiplier m1 m2 product</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">process-new-value</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? m1</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? m1</span><span class="clo">)</span><span class="pln">
                     </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value m1</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">))</span><span class="pln">
-               </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? m2</span><span class="clo">)</span><span class="pln"> 
+               </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? m2</span><span class="clo">)</span><span class="pln">
                     </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value m2</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">)))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">set-value! product </span><span class="lit">0</span><span class="pln"> me</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? m1</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? m1</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">has-value? m2</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">set-value! product
-                       </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value m1</span><span class="clo">)</span><span class="pln"> 
+                       </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value m1</span><span class="clo">)</span><span class="pln">
                           </span><span class="opn">(</span><span class="pln">get-value m2</span><span class="clo">))</span><span class="pln">
                        me</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? product</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? product</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">has-value? m1</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">set-value! m2
-                       </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value product</span><span class="clo">)</span><span class="pln"> 
+                       </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value product</span><span class="clo">)</span><span class="pln">
                           </span><span class="opn">(</span><span class="pln">get-value m1</span><span class="clo">))</span><span class="pln">
                        me</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? product</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? product</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">has-value? m2</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">set-value! m1
-                       </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value product</span><span class="clo">)</span><span class="pln"> 
+                       </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value product</span><span class="clo">)</span><span class="pln">
                           </span><span class="opn">(</span><span class="pln">get-value m2</span><span class="clo">))</span><span class="pln">
                        me</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">process-forget-value</span><span class="clo">)</span><span class="pln">
@@ -2263,8 +2263,8 @@ if either of the factors is 0, even if the other factor is not known.
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'I-lost-my-value</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">process-forget-value</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-           </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request: 
-                   MULTIPLIER"</span><span class="pln"> 
+           </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request:
+                   MULTIPLIER"</span><span class="pln">
                   request</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">connect m1 me</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">connect m2 me</span><span class="clo">)</span><span class="pln">
@@ -2278,7 +2278,7 @@ the constant box will produce an error.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">constant value connector</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">me request</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request: CONSTANT"</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request: CONSTANT"</span><span class="pln">
            request</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">connect connector me</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">set-value! connector value me</span><span class="clo">)</span><span class="pln">
@@ -2302,7 +2302,7 @@ the designated connector:
            </span><span class="opn">(</span><span class="pln">process-new-value</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'I-lost-my-value</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">process-forget-value</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request: 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request:
                         PROBE"</span><span class="pln"> request</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">connect connector me</span><span class="clo">)</span><span class="pln">
   me</span><span class="clo">)</span></pre></div>
@@ -2317,34 +2317,34 @@ constraints in which the connector participates.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-connector</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">value false</span><span class="clo">)</span><span class="pln"> 
-        </span><span class="opn">(</span><span class="pln">informant false</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">value false</span><span class="clo">)</span><span class="pln">
+        </span><span class="opn">(</span><span class="pln">informant false</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">constraints </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-my-value newval setter</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">not </span><span class="opn">(</span><span class="pln">has-value? me</span><span class="clo">))</span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> value newval</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> informant setter</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="pln">for-each-except 
+             </span><span class="opn">(</span><span class="pln">for-each-except
               setter
               inform-about-value
               constraints</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">((</span><span class="pln">not </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> value newval</span><span class="clo">))</span><span class="pln">
-             </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Contradiction"</span><span class="pln"> 
+             </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Contradiction"</span><span class="pln">
                     </span><span class="opn">(</span><span class="pln">list value newval</span><span class="clo">)))</span><span class="pln">
             </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="lit">'ignored</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">forget-my-value retractor</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> retractor informant</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> informant false</span><span class="clo">)</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pln">for-each-except 
+                 </span><span class="opn">(</span><span class="pln">for-each-except
                   retractor
                   inform-about-no-value
                   constraints</span><span class="clo">))</span><span class="pln">
           </span><span class="lit">'ignored</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">connect new-constraint</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">memq new-constraint 
+      </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">memq new-constraint
                      constraints</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> constraints
-                </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> new-constraint 
+                </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> new-constraint
                       constraints</span><span class="clo">)))</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? me</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">inform-about-value new-constraint</span><span class="clo">))</span><span class="pln">
@@ -2353,12 +2353,12 @@ constraints in which the connector participates.
       </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'has-value?</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> informant true false</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'value</span><span class="clo">)</span><span class="pln"> value</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'set-value!</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'set-value!</span><span class="clo">)</span><span class="pln">
              set-my-value</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'forget</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'forget</span><span class="clo">)</span><span class="pln">
              forget-my-value</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> request </span><span class="lit">'connect</span><span class="clo">)</span><span class="pln"> connect</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown operation: 
+            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown operation:
                           CONNECTOR"</span><span class="pln">
                          request</span><span class="clo">))))</span><span class="pln">
     me</span><span class="clo">))</span></pre></div>
@@ -2372,12 +2372,12 @@ accomplished using the following iterator, which applies a designated procedure
 to all items in a list except a given one:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">for-each-except exception 
-                         procedure 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">for-each-except exception
+                         procedure
                          list</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">loop items</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? items</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'done</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> items</span><span class="clo">)</span><span class="pln"> exception</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> items</span><span class="clo">)</span><span class="pln"> exception</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">loop </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> items</span><span class="clo">)))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">procedure </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> items</span><span class="clo">))</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">loop </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> items</span><span class="clo">)))))</span><span class="pln">
@@ -2401,11 +2401,11 @@ procedures provide a syntax interface for the dispatch:
   </span><span class="opn">(</span><span class="pln">connector </span><span class="lit">'has-value?</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value connector</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">connector </span><span class="lit">'value</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-value! connector 
-                    new-value 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">set-value! connector
+                    new-value
                     informant</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">((</span><span class="pln">connector </span><span class="lit">'set-value!</span><span class="clo">)</span><span class="pln"> 
-   new-value 
+  </span><span class="opn">((</span><span class="pln">connector </span><span class="lit">'set-value!</span><span class="clo">)</span><span class="pln">
+   new-value
    informant</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">forget-value! connector retractor</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">((</span><span class="pln">connector </span><span class="lit">'forget</span><span class="clo">)</span><span class="pln"> retractor</span><span class="clo">))</span><span class="pln">
@@ -2444,8 +2444,8 @@ procedure to implement such a constraint:
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">process-new-value</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">has-value? b</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&lt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-value b</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"square less than 0: 
-                    SQUARER"</span><span class="pln"> 
+            </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"square less than 0:
+                    SQUARER"</span><span class="pln">
                    </span><span class="opn">(</span><span class="pln">get-value b</span><span class="clo">))</span><span class="pln">
             ⟨</span><var><span class="pln">alternative1</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln">
         ⟨</span><var><span class="pln">alternative2</span></var><span class="pln">⟩</span><span class="clo">))</span><span class="pln">
@@ -2468,7 +2468,7 @@ sequence of expressions in the global environment:
 expression from the connector’s local procedure is evaluated:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">for-each-except 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">for-each-except
   setter inform-about-value constraints</span><span class="clo">)</span></pre></div>
 
 <p>Draw an environment diagram showing the environment in which the above
@@ -2619,7 +2619,7 @@ no fundamental difference between “procedures” and “data,” and we can
 choose our syntactic sugar to allow us to program in whatever style we choose.</p>
 </div>
 <div id="FOOT156"><p><a class="footnote_backlink" href="#DOCF156"><sup>156</sup></a>
-The agenda is a headed list, like the tables in 
+The agenda is a headed list, like the tables in
 <a href="#g_t3_002e3_002e3">3.3.3</a>, but since the list is headed by the time, we do not need an
 additional dummy header (such as the <code>*table*</code> symbol used with tables).</p>
 </div>
@@ -2657,7 +2657,7 @@ The expression-oriented format is convenient
 because it avoids the need to name the intermediate expressions in a
 computation.  Our original formulation of the constraint language is cumbersome
 in the same way that many languages are cumbersome when dealing with operations
-on compound data.  For example, if we wanted to compute the product 
+on compound data.  For example, if we wanted to compute the product
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mo stretchy="false">(</mo>
@@ -2686,7 +2686,7 @@ vectors as values, and thus avoid explicitly mentioning <code>temp1</code> and
 <code>temp2</code>:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> answer 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> answer
   </span><span class="opn">(</span><span class="pln">v-prod </span><span class="opn">(</span><span class="pln">v-sum a b</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">v-sum c d</span><span class="clo">)))</span></pre></div>
 
 <p>Since Lisp allows us to return compound objects as values of procedures, we can

@@ -222,7 +222,7 @@ machine.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">data-paths
  </span><span class="opn">(</span><span class="pln">registers
   </span><span class="opn">((</span><span class="pln">name a</span><span class="clo">)</span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">buttons </span><span class="opn">((</span><span class="pln">name a</span><span class="pun">&lt;-</span><span class="pln">b</span><span class="clo">)</span><span class="pln"> 
+   </span><span class="opn">(</span><span class="pln">buttons </span><span class="opn">((</span><span class="pln">name a</span><span class="pun">&lt;-</span><span class="pln">b</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">source </span><span class="opn">(</span><span class="pln">register b</span><span class="clo">)))))</span><span class="pln">
   </span><span class="opn">((</span><span class="pln">name b</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">buttons </span><span class="opn">((</span><span class="pln">name b</span><span class="pun">&lt;-</span><span class="pln">t</span><span class="clo">)</span><span class="pln">
@@ -239,12 +239,12 @@ machine.
 </span><span class="opn">(</span><span class="pln">controller
  test-b                </span><span class="roman"><span class="com">; label</span></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">test </span><span class="pun">=</span><span class="clo">)</span><span class="pln">            </span><span class="roman"><span class="com">; test</span></span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">branch 
+   </span><span class="opn">(</span><span class="pln">branch
     </span><span class="opn">(</span><span class="pln">label gcd-done</span><span class="clo">))</span><span class="pln">  </span><span class="roman"><span class="com">; conditional branch</span></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">t</span><span class="pun">&lt;-</span><span class="pln">r</span><span class="clo">)</span><span class="pln">              </span><span class="roman"><span class="com">; button push</span></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">a</span><span class="pun">&lt;-</span><span class="pln">b</span><span class="clo">)</span><span class="pln">              </span><span class="roman"><span class="com">; button push</span></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">b</span><span class="pun">&lt;-</span><span class="pln">t</span><span class="clo">)</span><span class="pln">              </span><span class="roman"><span class="com">; button push</span></span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">goto 
+   </span><span class="opn">(</span><span class="pln">goto
     </span><span class="opn">(</span><span class="pln">label test-b</span><span class="clo">))</span><span class="pln">    </span><span class="roman"><span class="com">; unconditional branch</span></span><span class="pln">
  gcd-done</span><span class="clo">)</span><span class="pln">             </span><span class="roman"><span class="com">; label</span></span>
 </pre></div>
@@ -562,7 +562,7 @@ gcd-done
  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label gcd</span><span class="clo">))</span><span class="pln">
 after-gcd-1
   </span><span class="roman"><span class="pun">…</span></span><span class="pln">
-</span><span class="roman"><span class="com">;; Before the second use of </span><code><span class="com">gcd</span></code><span class="com">,</span></span><span class="com"> </span><span class="pln">
+</span><span class="roman"><span class="com">;; Before the second use of </span><code><span class="com">gcd</span></code><span class="com">,</span></span><span class="pln">
 </span><span class="roman"><span class="com">;; we place 1 in the </span><code><span class="com">continue</span></code><span class="com"> register</span></span><span class="pln">
  </span><span class="opn">(</span><span class="pln">assign continue </span><span class="opn">(</span><span class="pln">const </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label gcd</span><span class="clo">))</span><span class="pln">
@@ -611,7 +611,7 @@ terminate the <code>gcd</code> subroutine with a branch to the location stored i
 gcd-done
  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg continue</span><span class="clo">))</span><span class="pln">
   </span><span class="roman"><span class="pun">…</span></span><span class="pln">
-</span><span class="roman"><span class="com">;; Before calling </span><code><span class="com">gcd</span></code><span class="com">,</span></span><span class="com"> </span><span class="pln">
+</span><span class="roman"><span class="com">;; Before calling </span><code><span class="com">gcd</span></code><span class="com">,</span></span><span class="pln">
 </span><span class="roman"><span class="com">;; we assign to </span><code><span class="com">continue</span></code><span class="com"> the label</span></span><span class="pln">
 </span><span class="roman"><span class="com">;; to which </span><code><span class="com">gcd</span></code><span class="com"> should return.</span></span><span class="pln">
  </span><span class="opn">(</span><span class="pln">assign continue </span><span class="opn">(</span><span class="pln">label after-gcd-1</span><span class="clo">))</span><span class="pln">
@@ -654,7 +654,7 @@ first examined in <a href="1_002e2.xhtml#g_t1_002e2_002e1">1.2.1</a>:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">factorial n</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">1</span><span class="pln">
       </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">factorial </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">))</span><span class="pln"> n</span><span class="clo">)))</span></pre></div>
 
@@ -677,7 +677,7 @@ Our <abbr>GCD</abbr> machine, modeled on the procedure
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">gcd a b</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> b </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> b </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
       a
       </span><span class="opn">(</span><span class="pln">gcd b </span><span class="opn">(</span><span class="pln">remainder a b</span><span class="clo">))))</span></pre></div>
 
@@ -776,7 +776,7 @@ sequence of values has been <code>save</code>d on the stack, a sequence of
 machine’s data paths for each factorial subproblem.  There is a similar design
 issue in reusing the controller sequence that operates the data paths.  To
 reexecute the factorial computation, the controller cannot simply loop back to
-the beginning, as with an iterative process, because after solving the 
+the beginning, as with an iterative process, because after solving the
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mo stretchy="false">(</mo>
@@ -873,8 +873,8 @@ of the Fibonacci numbers, which we introduced in <a href="1_002e2.xhtml#g_t1_002
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fib n</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&lt;</span><span class="pln"> n </span><span class="lit">2</span><span class="clo">)</span><span class="pln"> 
-      n 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&lt;</span><span class="pln"> n </span><span class="lit">2</span><span class="clo">)</span><span class="pln">
+      n
       </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fib </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">))</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fib </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">2</span><span class="clo">)))))</span></pre></div>
 
 <p>Just as with factorial, we can implement the recursive Fibonacci computation as
@@ -936,11 +936,11 @@ Fibonacci numbers.
    </span><span class="opn">(</span><span class="pln">save continue</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">assign continue </span><span class="opn">(</span><span class="pln">label afterfib-n-1</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">save n</span><span class="clo">)</span><span class="pln">           </span><span class="roman"><span class="com">; save old value of </span><code><span class="com">n</span></code></span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">assign n 
+   </span><span class="opn">(</span><span class="pln">assign n
            </span><span class="opn">(</span><span class="pln">op </span><span class="pun">-</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg n</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">const </span><span class="lit">1</span><span class="clo">))</span><span class="pln"> </span><span class="roman"><span class="com">; clobber </span><code><span class="com">n</span></code><span class="com"> to </span><code><span class="com">n-1</span></code></span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">goto 
+   </span><span class="opn">(</span><span class="pln">goto
     </span><span class="opn">(</span><span class="pln">label fib-loop</span><span class="clo">))</span><span class="pln"> </span><span class="roman"><span class="com">; perform recursive call</span></span><span class="pln">
  afterfib-n-1 </span><span class="roman"><span class="com">; upon return, </span><code><span class="com">val</span></code><span class="com"> contains Fib(</span><em><span class="com">n</span></em><span class="com"> − 1)</span></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">restore n</span><span class="clo">)</span><span class="pln">
@@ -952,18 +952,18 @@ Fibonacci numbers.
    </span><span class="opn">(</span><span class="pln">save val</span><span class="clo">)</span><span class="pln">         </span><span class="roman"><span class="com">; save Fib(</span><em><span class="com">n</span></em><span class="com"> − 1)</span></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label fib-loop</span><span class="clo">))</span><span class="pln">
  afterfib-n-2 </span><span class="roman"><span class="com">; upon return, </span><code><span class="com">val</span></code><span class="com"> contains Fib(</span><em><span class="com">n</span></em><span class="com"> − 2)</span></span><span class="pln">
-   </span><span class="opn">(</span><span class="pln">assign n 
+   </span><span class="opn">(</span><span class="pln">assign n
            </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln"> </span><span class="roman"><span class="com">; </span><code><span class="com">n</span></code><span class="com"> now contains Fib(</span><em><span class="com">n</span></em><span class="com"> − 2)</span></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">restore val</span><span class="clo">)</span><span class="pln">      </span><span class="roman"><span class="com">; </span><code><span class="com">val</span></code><span class="com"> now contains Fib(</span><em><span class="com">n</span></em><span class="com"> − 1)</span></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">restore continue</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">assign val        </span><span class="roman"><span class="com">; Fib(</span><em><span class="com">n</span></em><span class="com"> − 1) + Fib(</span><em><span class="com">n</span></em><span class="com"> − 2)</span></span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">op </span><span class="pun">+</span><span class="clo">)</span><span class="pln"> 
+           </span><span class="opn">(</span><span class="pln">op </span><span class="pun">+</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg n</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">goto              </span><span class="roman"><span class="com">; return to caller,</span></span><span class="pln">
     </span><span class="opn">(</span><span class="pln">reg continue</span><span class="clo">))</span><span class="pln">   </span><span class="roman"><span class="com">; answer is in </span><code><span class="com">val</span></code></span><span class="pln">
  immediate-answer
-   </span><span class="opn">(</span><span class="pln">assign val 
+   </span><span class="opn">(</span><span class="pln">assign val
            </span><span class="opn">(</span><span class="pln">reg n</span><span class="clo">))</span><span class="pln">   </span><span class="roman"><span class="com">; base case: Fib(</span><em><span class="com">n</span></em><span class="com">) = </span><em><span class="com">n</span></em></span><span class="pln">
    </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg continue</span><span class="clo">))</span><span class="pln">
  fib-done</span><span class="clo">)</span></pre></div>
@@ -1031,24 +1031,24 @@ following forms, where each <math xmlns="http://www.w3.org/1998/Math/MathML">
     </msub>
     <mo stretchy="false">⟩</mo>
   </mrow>
-</math> is either 
-<code>(reg ⟨<var>register-name</var>⟩)</code> or <code>(const ⟨<var>constant-value</var>⟩)</code>.  
+</math> is either
+<code>(reg ⟨<var>register-name</var>⟩)</code> or <code>(const ⟨<var>constant-value</var>⟩)</code>.
 These instructions were introduced in <a href="#g_t5_002e1_002e1">5.1.1</a>:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">register-name</span></var><span class="pln">⟩ </span><span class="opn">(</span><span class="pln">reg ⟨</span><var><span class="pln">register-name</span></var><span class="pln">⟩</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">register-name</span></var><span class="pln">⟩ 
+</span><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">register-name</span></var><span class="pln">⟩
         </span><span class="opn">(</span><span class="pln">const ⟨</span><var><span class="pln">constant-value</span></var><span class="pln">⟩</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">register-name</span></var><span class="pln">⟩ 
-        </span><span class="opn">(</span><span class="pln">op ⟨</span><var><span class="pln">operation-name</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">register-name</span></var><span class="pln">⟩
+        </span><span class="opn">(</span><span class="pln">op ⟨</span><var><span class="pln">operation-name</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln">
         ⟨</span><var><span class="pln">input</span><span class="pun">₁</span></var><span class="pln">⟩ </span><span class="roman"><span class="pun">…</span></span><span class="pln"> ⟨</span><var><span class="pln">input</span><span class="pun">ₙ</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">perform </span><span class="opn">(</span><span class="pln">op ⟨</span><var><span class="pln">operation-name</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln"> 
-         ⟨</span><var><span class="pln">input</span><span class="pun">₁</span></var><span class="pln">⟩ 
-         </span><span class="roman"><span class="pun">…</span></span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">perform </span><span class="opn">(</span><span class="pln">op ⟨</span><var><span class="pln">operation-name</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln">
+         ⟨</span><var><span class="pln">input</span><span class="pun">₁</span></var><span class="pln">⟩
+         </span><span class="roman"><span class="pun">…</span></span><span class="pln">
          ⟨</span><var><span class="pln">input</span><span class="pun">ₙ</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op ⟨</span><var><span class="pln">operation-name</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln"> 
-      ⟨</span><var><span class="pln">input</span><span class="pun">₁</span></var><span class="pln">⟩ 
-      </span><span class="roman"><span class="pun">…</span></span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op ⟨</span><var><span class="pln">operation-name</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln">
+      ⟨</span><var><span class="pln">input</span><span class="pun">₁</span></var><span class="pln">⟩
+      </span><span class="roman"><span class="pun">…</span></span><span class="pln">
       ⟨</span><var><span class="pln">input</span><span class="pun">ₙ</span></var><span class="pln">⟩</span><span class="clo">)</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label ⟨</span><var><span class="pln">label-name</span></var><span class="pln">⟩</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label ⟨</span><var><span class="pln">label-name</span></var><span class="pln">⟩</span><span class="clo">))</span></pre></div>

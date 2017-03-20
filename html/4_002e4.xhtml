@@ -80,8 +80,8 @@ of the basic list constructor <code>cons</code>, as we did in <a href="2_002e2.x
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">append x y</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? x</span><span class="clo">)</span><span class="pln"> 
-      y 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? x</span><span class="clo">)</span><span class="pln">
+      y
       </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> x</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">append </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> x</span><span class="clo">)</span><span class="pln"> y</span><span class="clo">))))</span></pre></div>
 
 <p>This procedure can be regarded as a translation into Lisp of the following two
@@ -179,7 +179,7 @@ company personnel.  Here is the information about Ben Bitdiddle, the resident
 computer wizard:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Slumerville </span><span class="opn">(</span><span class="pln">Ridge Road</span><span class="clo">)</span><span class="pln"> </span><span class="lit">10</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">computer wizard</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">)</span><span class="pln"> </span><span class="lit">60000</span><span class="clo">)</span></pre></div>
@@ -192,19 +192,19 @@ supervises two programmers and one technician.  Here is the information about
 them:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Cambridge </span><span class="opn">(</span><span class="pln">Mass Ave</span><span class="clo">)</span><span class="pln"> </span><span class="lit">78</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">computer programmer</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln"> </span><span class="lit">40000</span><span class="clo">)</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Cambridge </span><span class="opn">(</span><span class="pln">Ames Street</span><span class="clo">)</span><span class="pln"> </span><span class="lit">3</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">computer programmer</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln"> </span><span class="lit">35000</span><span class="clo">)</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Tweakit Lem E</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Tweakit Lem E</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Boston </span><span class="opn">(</span><span class="pln">Bay State Road</span><span class="clo">)</span><span class="pln"> </span><span class="lit">22</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Tweakit Lem E</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">computer technician</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Tweakit Lem E</span><span class="clo">)</span><span class="pln"> </span><span class="lit">25000</span><span class="clo">)</span><span class="pln">
@@ -213,12 +213,12 @@ them:
 <p>There is also a programmer trainee, who is supervised by Alyssa:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Slumerville </span><span class="opn">(</span><span class="pln">Pine Tree Road</span><span class="clo">)</span><span class="pln"> </span><span class="lit">80</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">computer programmer trainee</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln"> </span><span class="lit">30000</span><span class="clo">)</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">))</span></pre></div>
 
 <p>All of these people are in the computer division, as indicated by the word
@@ -229,9 +229,9 @@ himself:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">Warbucks Oliver</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Warbucks Oliver</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Warbucks Oliver</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Swellesley </span><span class="opn">(</span><span class="pln">Top Heap Road</span><span class="clo">)))</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Warbucks Oliver</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Warbucks Oliver</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">administration big wheel</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Warbucks Oliver</span><span class="clo">)</span><span class="pln"> </span><span class="lit">150000</span><span class="clo">)</span></pre></div>
 
@@ -239,14 +239,14 @@ himself:
 division, consisting of a chief accountant and his assistant:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Scrooge Eben</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Scrooge Eben</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Weston </span><span class="opn">(</span><span class="pln">Shady Lane</span><span class="clo">)</span><span class="pln"> </span><span class="lit">10</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Scrooge Eben</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Scrooge Eben</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">accounting chief accountant</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Scrooge Eben</span><span class="clo">)</span><span class="pln"> </span><span class="lit">75000</span><span class="clo">)</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Scrooge Eben</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">Warbucks Oliver</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Cratchet Robert</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Cratchet Robert</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Allston </span><span class="opn">(</span><span class="pln">N Harvard Street</span><span class="clo">)</span><span class="pln"> </span><span class="lit">16</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Cratchet Robert</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">accounting scrivener</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Cratchet Robert</span><span class="clo">)</span><span class="pln"> </span><span class="lit">18000</span><span class="clo">)</span><span class="pln">
@@ -255,7 +255,7 @@ division, consisting of a chief accountant and his assistant:
 <p>There is also a secretary for the big wheel:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Aull DeWitt</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Aull DeWitt</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">Slumerville </span><span class="opn">(</span><span class="pln">Onion Square</span><span class="clo">)</span><span class="pln"> </span><span class="lit">5</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Aull DeWitt</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">administration secretary</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">salary </span><span class="opn">(</span><span class="pln">Aull DeWitt</span><span class="clo">)</span><span class="pln"> </span><span class="lit">25000</span><span class="clo">)</span><span class="pln">
@@ -266,10 +266,10 @@ people holding other kinds of jobs.  For instance, a computer wizard can do the
 jobs of both a computer programmer and a computer technician:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">can-do-job </span><span class="opn">(</span><span class="pln">computer wizard</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">can-do-job </span><span class="opn">(</span><span class="pln">computer wizard</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">computer programmer</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="pln">can-do-job </span><span class="opn">(</span><span class="pln">computer wizard</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">can-do-job </span><span class="opn">(</span><span class="pln">computer wizard</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">computer technician</span><span class="clo">))</span></pre></div>
 
 <p>A computer programmer could fill in for a trainee:
@@ -354,7 +354,7 @@ is <code>computer</code>:
 <p>This same pattern does <em>not</em> match
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">computer programmer trainee</span><span class="clo">))</span></pre></div>
 
 <p>because the third item in the entry is a list of three elements, and the
@@ -443,13 +443,13 @@ programmers:
 <p>The resulting output is
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">computer programmer</span><span class="clo">))</span><span class="pln">
-     </span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln"> 
+     </span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">Cambridge </span><span class="opn">(</span><span class="pln">Mass Ave</span><span class="clo">)</span><span class="pln"> </span><span class="lit">78</span><span class="clo">)))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">job </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">computer programmer</span><span class="clo">))</span><span class="pln">
-     </span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln"> 
+     </span><span class="opn">(</span><span class="pln">address </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">Cambridge </span><span class="opn">(</span><span class="pln">Ames Street</span><span class="clo">)</span><span class="pln"> </span><span class="lit">3</span><span class="clo">)))</span></pre></div>
 
 <p>In general,
@@ -502,24 +502,24 @@ example,
 <p>will find all employees supervised by Ben Bitdiddle or Alyssa P.  Hacker:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Fect Cy D</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Tweakit Lem E</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Tweakit Lem E</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Tweakit Lem E</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Tweakit Lem E</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">Bitdiddle Ben</span><span class="clo">))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="pln">supervisor </span><span class="opn">(</span><span class="pln">Reasoner Louis</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">Hacker Alyssa P</span><span class="clo">)))</span></pre></div>
 
 <p>In general,
@@ -655,9 +655,9 @@ The rule
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">rule </span><span class="opn">(</span><span class="pln">lives-near </span><span class="pun">?</span><span class="pln">person-1 </span><span class="pun">?</span><span class="pln">person-2</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">address </span><span class="pun">?</span><span class="pln">person-1 
+      </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">address </span><span class="pun">?</span><span class="pln">person-1
                     </span><span class="opn">(</span><span class="pun">?</span><span class="pln">town </span><span class="pun">.</span><span class="pln"> </span><span class="pun">?</span><span class="pln">rest-1</span><span class="clo">))</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">address </span><span class="pun">?</span><span class="pln">person-2 
+           </span><span class="opn">(</span><span class="pln">address </span><span class="pun">?</span><span class="pln">person-2
                     </span><span class="opn">(</span><span class="pun">?</span><span class="pln">town </span><span class="pun">.</span><span class="pln"> </span><span class="pun">?</span><span class="pln">rest-2</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">same </span><span class="pun">?</span><span class="pln">person-1 </span><span class="pun">?</span><span class="pln">person-2</span><span class="clo">))))</span></pre></div>
 
@@ -674,7 +674,7 @@ he supervises someone who is in turn a supervisor:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">rule </span><span class="opn">(</span><span class="pln">wheel </span><span class="pun">?</span><span class="pln">person</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">middle-manager 
+      </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">middle-manager
                        </span><span class="pun">?</span><span class="pln">person</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">x </span><span class="pun">?</span><span class="pln">middle-manager</span><span class="clo">)))</span></pre></div>
 
@@ -714,9 +714,9 @@ recursively.  For instance, the rule
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">rule </span><span class="opn">(</span><span class="pln">outranked-by </span><span class="pun">?</span><span class="pln">staff-person </span><span class="pun">?</span><span class="pln">boss</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">staff-person </span><span class="pun">?</span><span class="pln">boss</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">staff-person 
+          </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">staff-person
                            </span><span class="pun">?</span><span class="pln">middle-manager</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">outranked-by </span><span class="pun">?</span><span class="pln">middle-manager 
+               </span><span class="opn">(</span><span class="pln">outranked-by </span><span class="pun">?</span><span class="pln">middle-manager
                              </span><span class="pun">?</span><span class="pln">boss</span><span class="clo">))))</span></pre></div>
 
 <p>says that a staff person is outranked by a boss in the organization if the boss
@@ -1046,7 +1046,7 @@ all the frames that extend the given frame via a match to some assertion in the
 data base.<a class="footnote_link" id="DOCF271" href="#FOOT271"><sup>271</sup></a>
 </p>
 <p>In our system, a query takes an input stream of frames and performs the above
-matching operation for every frame in the stream, as indicated in <a href="#Figure-4_002e4">Figure 4.4</a>.  
+matching operation for every frame in the stream, as indicated in <a href="#Figure-4_002e4">Figure 4.4</a>.
 That is, for each frame in the input stream, the query generates a new
 stream consisting of all extensions to that frame by matches to assertions in
 the data base.  All these streams are then combined to form one huge stream,
@@ -1078,8 +1078,8 @@ the ability of our matcher to demand that a match be consistent with a
 specified frame.  For example, to handle the <code>and</code> of two queries, such as
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">can-do-job 
-      </span><span class="pun">?</span><span class="pln">x 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">can-do-job
+      </span><span class="pun">?</span><span class="pln">x
       </span><span class="opn">(</span><span class="pln">computer programmer trainee</span><span class="clo">))</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">job </span><span class="pun">?</span><span class="pln">person </span><span class="pun">?</span><span class="pln">x</span><span class="clo">))</span></pre></div>
 
@@ -1254,9 +1254,9 @@ that the pattern unifies with the conclusion of the rule
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">rule </span><span class="opn">(</span><span class="pln">lives-near </span><span class="pun">?</span><span class="pln">person-1 </span><span class="pun">?</span><span class="pln">person-2</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">address </span><span class="pun">?</span><span class="pln">person-1 
+      </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">address </span><span class="pun">?</span><span class="pln">person-1
                     </span><span class="opn">(</span><span class="pun">?</span><span class="pln">town </span><span class="pun">.</span><span class="pln"> </span><span class="pun">?</span><span class="pln">rest-1</span><span class="clo">))</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">address </span><span class="pun">?</span><span class="pln">person-2 
+           </span><span class="opn">(</span><span class="pln">address </span><span class="pun">?</span><span class="pln">person-2
                     </span><span class="opn">(</span><span class="pun">?</span><span class="pln">town </span><span class="pun">.</span><span class="pln"> </span><span class="pun">?</span><span class="pln">rest-2</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">same </span><span class="pun">?</span><span class="pln">person-1 </span><span class="pun">?</span><span class="pln">person-2</span><span class="clo">))))</span></pre></div>
 
@@ -1359,7 +1359,7 @@ the data base.  For instance,
 
 </span><span class="opn">(</span><span class="pln">assert!
  </span><span class="opn">(</span><span class="pln">rule </span><span class="opn">(</span><span class="pln">wheel </span><span class="pun">?</span><span class="pln">person</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor 
+       </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor
              </span><span class="pun">?</span><span class="pln">middle-manager </span><span class="pun">?</span><span class="pln">person</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">supervisor
              </span><span class="pun">?</span><span class="pln">x </span><span class="pun">?</span><span class="pln">middle-manager</span><span class="clo">))))</span></pre></div>
@@ -1374,7 +1374,7 @@ and the application of query-language rules is in fact accomplished through a
 legitimate method of inference.<a class="footnote_link" id="DOCF279" href="#FOOT279"><sup>279</sup></a> This
 identification of the query language with mathematical logic is not really
 valid, though, because the query language provides a <a id="index-control-structure"></a>
-<em>control structure</em> 
+<em>control structure</em>
 that interprets the logical statements procedurally.  We can often
 take advantage of this control structure.  For example, to find all of the
 supervisors of programmers we could formulate a query in either of two
@@ -1548,7 +1548,7 @@ change in the rule, and types it in as
   </span><span class="opn">(</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">staff-person </span><span class="pun">?</span><span class="pln">boss</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">outranked-by </span><span class="pun">?</span><span class="pln">middle-manager
                          </span><span class="pun">?</span><span class="pln">boss</span><span class="clo">)</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">staff-person 
+           </span><span class="opn">(</span><span class="pln">supervisor </span><span class="pun">?</span><span class="pln">staff-person
                        </span><span class="pun">?</span><span class="pln">middle-manager</span><span class="clo">))))</span></pre></div>
 
 <p>Just after Louis types this information into the system, DeWitt Aull comes by
@@ -1604,7 +1604,7 @@ will produce a stream of frames.  He will then pass this stream through a
 mapping function that extracts the value of the designated variable from each
 frame in the stream and feed the resulting stream of values to the accumulation
 function.  Just as Ben completes the implementation and is about to try it out,
-Cy walks by, still puzzling over the <code>wheel</code> query result in 
+Cy walks by, still puzzling over the <code>wheel</code> query result in
 <a href="#Exercise-4_002e65">Exercise 4.65</a>.  When Cy shows Ben the system’s response, Ben groans,
 “Oh, no, my simple accumulation scheme won’t work!”
 </p>
@@ -1677,10 +1677,10 @@ the terminal:
   </span><span class="opn">(</span><span class="pln">prompt-for-input input-prompt</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">q </span><span class="opn">(</span><span class="pln">query-syntax-process </span><span class="opn">(</span><span class="pln">read</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">assertion-to-be-added? q</span><span class="clo">)</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">add-rule-or-assertion! 
+           </span><span class="opn">(</span><span class="pln">add-rule-or-assertion!
             </span><span class="opn">(</span><span class="pln">add-assertion-body q</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">)</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">display 
+           </span><span class="opn">(</span><span class="pln">display
             </span><span class="str">"Assertion added to data base."</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">query-driver-loop</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
@@ -1719,20 +1719,20 @@ in turn bound to 5).  The action to take if a variable cannot be instantiated
 is given by a procedural argument to <code>instantiate</code>.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">instantiate 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">instantiate
          exp frame unbound-var-handler</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">copy exp</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">var? exp</span><span class="clo">)</span><span class="pln">
-           </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">binding 
-                  </span><span class="opn">(</span><span class="pln">binding-in-frame 
+           </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">binding
+                  </span><span class="opn">(</span><span class="pln">binding-in-frame
                    exp frame</span><span class="clo">)))</span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> binding
-                 </span><span class="opn">(</span><span class="pln">copy 
+                 </span><span class="opn">(</span><span class="pln">copy
                   </span><span class="opn">(</span><span class="pln">binding-value binding</span><span class="clo">))</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pln">unbound-var-handler 
+                 </span><span class="opn">(</span><span class="pln">unbound-var-handler
                   exp frame</span><span class="clo">))))</span><span class="pln">
           </span><span class="opn">((</span><span class="pln">pair? exp</span><span class="clo">)</span><span class="pln">
-           </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">copy </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln"> 
+           </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">copy </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">copy </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> exp</span><span class="clo">))))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> exp</span><span class="clo">)))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">copy exp</span><span class="clo">))</span></pre></div>
@@ -1770,19 +1770,19 @@ returns the stream formed by extending each frame by all data-base matches of
 the query.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">simple-query query-pattern 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">simple-query query-pattern
                       frame-stream</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">stream-flatmap
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">frame</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">stream-append-delayed
       </span><span class="opn">(</span><span class="pln">find-assertions query-pattern frame</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln"> 
+      </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">apply-rules query-pattern frame</span><span class="clo">))))</span><span class="pln">
    frame-stream</span><span class="clo">))</span></pre></div>
 
-<p>For each frame in the input stream, we use <code>find-assertions</code> 
+<p>For each frame in the input stream, we use <code>find-assertions</code>
 (<a href="#g_t4_002e4_002e4_002e3">4.4.4.3</a>) to match the pattern against all assertions in the data base,
-producing a stream of extended frames, and we use <code>apply-rules</code> 
+producing a stream of extended frames, and we use <code>apply-rules</code>
 (<a href="#g_t4_002e4_002e4_002e4">4.4.4.4</a>) to apply all possible rules, producing another stream of
 extended frames.  These two streams are combined (using
 <code>stream-append-delayed</code>, <a href="#g_t4_002e4_002e4_002e6">4.4.4.6</a>) to make a stream of all
@@ -1808,7 +1808,7 @@ the queries.
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-conjunction? conjuncts</span><span class="clo">)</span><span class="pln">
       frame-stream
       </span><span class="opn">(</span><span class="pln">conjoin </span><span class="opn">(</span><span class="pln">rest-conjuncts conjuncts</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">qeval 
+               </span><span class="opn">(</span><span class="pln">qeval
                 </span><span class="opn">(</span><span class="pln">first-conjunct conjuncts</span><span class="clo">)</span><span class="pln">
                 frame-stream</span><span class="clo">))))</span></pre></div>
 
@@ -1830,9 +1830,9 @@ separately and merged using the <code>interleave-delayed</code> procedure from
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-disjunction? disjuncts</span><span class="clo">)</span><span class="pln">
       the-empty-stream
       </span><span class="opn">(</span><span class="pln">interleave-delayed
-       </span><span class="opn">(</span><span class="pln">qeval </span><span class="opn">(</span><span class="pln">first-disjunct disjuncts</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="pln">qeval </span><span class="opn">(</span><span class="pln">first-disjunct disjuncts</span><span class="clo">)</span><span class="pln">
               frame-stream</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln"> </span><span class="opn">(</span><span class="pln">disjoin 
+       </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln"> </span><span class="opn">(</span><span class="pln">disjoin
                </span><span class="opn">(</span><span class="pln">rest-disjuncts disjuncts</span><span class="clo">)</span><span class="pln">
                frame-stream</span><span class="clo">)))))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'or</span><span class="pln"> </span><span class="lit">'qeval</span><span class="pln"> disjoin</span><span class="clo">)</span></pre></div>
@@ -1852,7 +1852,7 @@ extended.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">negate operands frame-stream</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">stream-flatmap
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">frame</span><span class="clo">)</span><span class="pln">
-     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-null? 
+     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-null?
           </span><span class="opn">(</span><span class="pln">qeval </span><span class="opn">(</span><span class="pln">negated-query operands</span><span class="clo">)</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">singleton-stream frame</span><span class="clo">)))</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">singleton-stream frame</span><span class="clo">)</span><span class="pln">
@@ -1874,8 +1874,8 @@ of the input stream.  An error results if there are unbound pattern variables.
            call
            frame
            </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">v f</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="err">error</span><span class="pln"> 
-              </span><span class="str">"Unknown pat var: LISP-VALUE"</span><span class="pln"> 
+             </span><span class="opn">(</span><span class="err">error</span><span class="pln">
+              </span><span class="str">"Unknown pat var: LISP-VALUE"</span><span class="pln">
               v</span><span class="clo">))))</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">singleton-stream frame</span><span class="clo">)</span><span class="pln">
          the-empty-stream</span><span class="clo">))</span><span class="pln">
@@ -1891,7 +1891,7 @@ underlying Lisp system.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">execute exp</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">apply </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">predicate exp</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">apply </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">predicate exp</span><span class="clo">)</span><span class="pln">
                user-initial-environment</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">args exp</span><span class="clo">)))</span></pre></div>
 
@@ -1903,7 +1903,7 @@ that were defined without bodies (that is, rules whose conclusions are always
 satisfied).
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">always-true ignore frame-stream</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">always-true ignore frame-stream</span><span class="clo">)</span><span class="pln">
   frame-stream</span><span class="clo">)</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'always-true</span><span class="pln"> </span><span class="lit">'qeval</span><span class="pln"> always-true</span><span class="clo">)</span></pre></div>
 
@@ -1928,8 +1928,8 @@ because we would need to make many more calls to the matcher.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">find-assertions pattern frame</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">stream-flatmap 
-    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">datum</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">stream-flatmap
+    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">datum</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">check-an-assertion datum pattern frame</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">fetch-assertions pattern frame</span><span class="clo">)))</span></pre></div>
 
@@ -1938,10 +1938,10 @@ because we would need to make many more calls to the matcher.
 extended frame or <code>the-empty-stream</code> if the match fails.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">check-an-assertion 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">check-an-assertion
          assertion query-pat query-frame</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">match-result
-         </span><span class="opn">(</span><span class="pln">pattern-match 
+         </span><span class="opn">(</span><span class="pln">pattern-match
           query-pat assertion query-frame</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> match-result </span><span class="lit">'failed</span><span class="clo">)</span><span class="pln">
         the-empty-stream
@@ -1964,12 +1964,12 @@ and we return the symbol <code>failed</code>.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pattern-match pat dat frame</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> frame </span><span class="lit">'failed</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'failed</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> pat dat</span><span class="clo">)</span><span class="pln"> frame</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">var? pat</span><span class="clo">)</span><span class="pln"> 
-         </span><span class="opn">(</span><span class="pln">extend-if-consistent 
+        </span><span class="opn">((</span><span class="pln">var? pat</span><span class="clo">)</span><span class="pln">
+         </span><span class="opn">(</span><span class="pln">extend-if-consistent
           pat dat frame</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pair? pat</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pair? dat</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">pattern-match 
-          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> pat</span><span class="clo">)</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="pln">pattern-match
+          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> pat</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> dat</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">pattern-match
            </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> pat</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> dat</span><span class="clo">)</span><span class="pln"> frame</span><span class="clo">)))</span><span class="pln">
@@ -1982,7 +1982,7 @@ consistent with the bindings already in the frame:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">extend-if-consistent var dat frame</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">binding </span><span class="opn">(</span><span class="pln">binding-in-frame var frame</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> binding
-        </span><span class="opn">(</span><span class="pln">pattern-match 
+        </span><span class="opn">(</span><span class="pln">pattern-match
          </span><span class="opn">(</span><span class="pln">binding-value binding</span><span class="clo">)</span><span class="pln"> dat frame</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">extend var dat frame</span><span class="clo">))))</span></pre></div>
 
@@ -2039,7 +2039,7 @@ will match <code>?type</code> against the list <code>(programmer trainee)</code>
 <a id="Rules-and-Unification"></a>
 <h5 class="subsubsection"><span class="secnum">4.4.4.4</span><span class="sectitle">Rules and Unification</span></h5>
 
-<p><code>Apply-rules</code> is the rule analog of <code>find-assertions</code> 
+<p><code>Apply-rules</code> is the rule analog of <code>find-assertions</code>
 (<a href="#g_t4_002e4_002e4_002e3">4.4.4.3</a>).  It takes as input a pattern and a frame, and it forms a stream
 of extension frames by applying rules from the data base.
 <code>Stream-flatmap</code> maps <code>apply-a-rule</code> down the stream of possibly
@@ -2048,12 +2048,12 @@ combines the resulting streams of frames.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">apply-rules pattern frame</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">stream-flatmap 
+  </span><span class="opn">(</span><span class="pln">stream-flatmap
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">rule</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">apply-a-rule rule pattern frame</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">fetch-rules pattern frame</span><span class="clo">)))</span></pre></div>
 
-<p><code>Apply-a-rule</code> applies rules using the method outlined in 
+<p><code>Apply-a-rule</code> applies rules using the method outlined in
 <a href="#g_t4_002e4_002e2">4.4.2</a>.  It first augments its argument frame by unifying the rule
 conclusion with the pattern in the given frame.  If this succeeds, it evaluates
 the rule body in this new frame.
@@ -2074,7 +2074,7 @@ not the most efficient.  (See <a href="#Exercise-4_002e79">Exercise 4.79</a>.)  
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">apply-a-rule rule
                       query-pattern
                       query-frame</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">clean-rule 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">clean-rule
          </span><span class="opn">(</span><span class="pln">rename-variables-in rule</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">unify-result
            </span><span class="opn">(</span><span class="pln">unify-match query-pattern
@@ -2083,7 +2083,7 @@ not the most efficient.  (See <a href="#Exercise-4_002e79">Exercise 4.79</a>.)  
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> unify-result </span><span class="lit">'failed</span><span class="clo">)</span><span class="pln">
           the-empty-stream
           </span><span class="opn">(</span><span class="pln">qeval </span><span class="opn">(</span><span class="pln">rule-body clean-rule</span><span class="clo">)</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pln">singleton-stream 
+                 </span><span class="opn">(</span><span class="pln">singleton-stream
                   unify-result</span><span class="clo">))))))</span></pre></div>
 
 <p>The selectors <code>rule-body</code> and <code>conclusion</code> that extract parts of a
@@ -2099,12 +2099,12 @@ the rule to <code>?y-7</code>.  (<code>Make-new-variable</code> and
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">rename-variables-in rule</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">rule-application-id 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">rule-application-id
          </span><span class="opn">(</span><span class="pln">new-rule-application-id</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tree-walk exp</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">var? exp</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="pln">make-new-variable 
-              exp 
+             </span><span class="opn">(</span><span class="pln">make-new-variable
+              exp
               rule-application-id</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">((</span><span class="pln">pair? exp</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tree-walk </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
@@ -2127,16 +2127,16 @@ object on the right side of the match is a variable.
         </span><span class="opn">((</span><span class="pln">var? p1</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">extend-if-possible p1 p2 frame</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">var? p2</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">extend-if-possible 
-          p2 
-          p1 
+         </span><span class="opn">(</span><span class="pln">extend-if-possible
+          p2
+          p1
           frame</span><span class="clo">))</span><span class="pln">        </span><span class="com">; </span><span class="roman"><span class="com">***</span></span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pair? p1</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">pair? p1</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">pair? p2</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">unify-match 
-          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> p1</span><span class="clo">)</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="pln">unify-match
+          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> p1</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> p2</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">unify-match 
+          </span><span class="opn">(</span><span class="pln">unify-match
            </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> p1</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> p2</span><span class="clo">)</span><span class="pln">
            frame</span><span class="clo">)))</span><span class="pln">
@@ -2179,14 +2179,14 @@ of by the <code>equal?</code>  clause of <code>unify-match</code>.
            </span><span class="opn">(</span><span class="pln">unify-match
             </span><span class="opn">(</span><span class="pln">binding-value binding</span><span class="clo">)</span><span class="pln"> val frame</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">((</span><span class="pln">var? val</span><span class="clo">)</span><span class="pln">                   </span><span class="roman"><span class="com">; ***</span></span><span class="pln">
-           </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">binding 
-                  </span><span class="opn">(</span><span class="pln">binding-in-frame 
+           </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">binding
+                  </span><span class="opn">(</span><span class="pln">binding-in-frame
                    val
                    frame</span><span class="clo">)))</span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> binding
                  </span><span class="opn">(</span><span class="pln">unify-match
-                  var 
-                  </span><span class="opn">(</span><span class="pln">binding-value binding</span><span class="clo">)</span><span class="pln"> 
+                  var
+                  </span><span class="opn">(</span><span class="pln">binding-value binding</span><span class="clo">)</span><span class="pln">
                   frame</span><span class="clo">)</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">extend var val frame</span><span class="clo">))))</span><span class="pln">
           </span><span class="opn">((</span><span class="pln">depends-on? val var frame</span><span class="clo">)</span><span class="pln">  </span><span class="roman"><span class="com">; ***</span></span><span class="pln">
@@ -2207,11 +2207,11 @@ substitute for the values of variables whenever necessary.
            </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> var e</span><span class="clo">)</span><span class="pln">
                true
                </span><span class="opn">(</span><span class="kwd">let</span><span class="pln">
-                 </span><span class="opn">((</span><span class="pln">b </span><span class="opn">(</span><span class="pln">binding-in-frame 
-                      e 
+                 </span><span class="opn">((</span><span class="pln">b </span><span class="opn">(</span><span class="pln">binding-in-frame
+                      e
                       frame</span><span class="clo">)))</span><span class="pln">
                   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> b
-                      </span><span class="opn">(</span><span class="pln">tree-walk 
+                      </span><span class="opn">(</span><span class="pln">tree-walk
                        </span><span class="opn">(</span><span class="pln">binding-value b</span><span class="clo">))</span><span class="pln">
                       false</span><span class="clo">))))</span><span class="pln">
           </span><span class="opn">((</span><span class="pln">pair? e</span><span class="clo">)</span><span class="pln">
@@ -2302,7 +2302,7 @@ appropriate, and in a stream of all assertions or rules in the data base.
   </span><span class="opn">(</span><span class="pln">store-assertion-in-index assertion</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">old-assertions THE-ASSERTIONS</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> THE-ASSERTIONS
-          </span><span class="opn">(</span><span class="pln">cons-stream assertion 
+          </span><span class="opn">(</span><span class="pln">cons-stream assertion
                        old-assertions</span><span class="clo">))</span><span class="pln">
     </span><span class="lit">'ok</span><span class="clo">))</span><span class="pln">
 
@@ -2321,11 +2321,11 @@ If so, we store it in the appropriate stream.
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">indexable? assertion</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">key </span><span class="opn">(</span><span class="pln">index-key-of assertion</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">current-assertion-stream
-               </span><span class="opn">(</span><span class="pln">get-stream 
+               </span><span class="opn">(</span><span class="pln">get-stream
                 key </span><span class="lit">'assertion-stream</span><span class="clo">)))</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">put key
                </span><span class="lit">'assertion-stream</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">cons-stream 
+               </span><span class="opn">(</span><span class="pln">cons-stream
                 assertion
                 current-assertion-stream</span><span class="clo">))))))</span><span class="pln">
 
@@ -2334,11 +2334,11 @@ If so, we store it in the appropriate stream.
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">indexable? pattern</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">key </span><span class="opn">(</span><span class="pln">index-key-of pattern</span><span class="clo">)))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">current-rule-stream
-                 </span><span class="opn">(</span><span class="pln">get-stream 
+                 </span><span class="opn">(</span><span class="pln">get-stream
                   key </span><span class="lit">'rule-stream</span><span class="clo">)))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">put key
                  </span><span class="lit">'rule-stream</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pln">cons-stream 
+                 </span><span class="opn">(</span><span class="pln">cons-stream
                   rule
                   current-rule-stream</span><span class="clo">)))))))</span></pre></div>
 
@@ -2377,7 +2377,7 @@ ones in <a href="3_002e5.xhtml#g_t3_002e5_002e2">3.5.2</a>: <code>(define ones (
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-assertion! assertion</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">store-assertion-in-index assertion</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> THE-ASSERTIONS
-        </span><span class="opn">(</span><span class="pln">cons-stream assertion 
+        </span><span class="opn">(</span><span class="pln">cons-stream assertion
                      THE-ASSERTIONS</span><span class="clo">))</span><span class="pln">
   </span><span class="lit">'ok</span><span class="clo">)</span></pre></div>
 </blockquote>
@@ -2391,7 +2391,7 @@ ones in <a href="3_002e5.xhtml#g_t3_002e5_002e2">3.5.2</a>: <code>(define ones (
 </p>
 <p><code>Stream-append-delayed</code> and <code>interleave-delayed</code> are just like
 <code>stream-append</code> and <code>interleave</code> (<a href="3_002e5.xhtml#g_t3_002e5_002e3">3.5.3</a>), except that
-they take a delayed argument (like the <code>integral</code> procedure in 
+they take a delayed argument (like the <code>integral</code> procedure in
 <a href="3_002e5.xhtml#g_t3_002e5_002e4">3.5.4</a>).  This postpones looping in some cases (see <a href="#Exercise-4_002e71">Exercise 4.71</a>).
 </p>
 <div class="lisp">
@@ -2408,7 +2408,7 @@ they take a delayed argument (like the <code>integral</code> procedure in
       </span><span class="opn">(</span><span class="pln">force delayed-s2</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">cons-stream
        </span><span class="opn">(</span><span class="pln">stream-car s1</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="pln">interleave-delayed 
+       </span><span class="opn">(</span><span class="pln">interleave-delayed
         </span><span class="opn">(</span><span class="pln">force delayed-s2</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">delay</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-cdr s1</span><span class="clo">))))))</span></pre></div>
 
@@ -2460,7 +2460,7 @@ They are the same as the <code>type-tag</code> and <code>contents</code> procedu
       </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown expression CONTENTS"</span><span class="pln">
              exp</span><span class="clo">)))</span></pre></div>
 
-<p>The following procedures, used by <code>query-driver-loop</code> (in 
+<p>The following procedures, used by <code>query-driver-loop</code> (in
 <a href="#g_t4_002e4_002e4_002e1">4.4.4.1</a>), specify that rules and assertions are added to the data base by
 expressions of the form <code>(assert! ⟨<var>rule-or-assertion</var>⟩)</code>:
 </p>
@@ -2515,9 +2515,9 @@ procedure:<a class="footnote_link" id="DOCF285" href="#FOOT285"><sup>285</sup></
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">map-over-symbols proc exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">pair? exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">map-over-symbols 
+         </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">map-over-symbols
                 proc </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">map-over-symbols 
+               </span><span class="opn">(</span><span class="pln">map-over-symbols
                 proc </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> exp</span><span class="clo">))))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">symbol? exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">proc exp</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> exp</span><span class="clo">)))</span><span class="pln">
@@ -2527,8 +2527,8 @@ procedure:<a class="footnote_link" id="DOCF285" href="#FOOT285"><sup>285</sup></
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">string=</span><span class="pun">?</span><span class="pln"> </span><span class="opn">(</span><span class="pln">substring chars </span><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="str">"?"</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'</span><span class="pun">?</span><span class="pln"> </span><span class="opn">(</span><span class="pln">string-</span><span class="pun">&gt;</span><span class="pln">symbol
                   </span><span class="opn">(</span><span class="pln">substring
-                   chars 
-                   </span><span class="lit">1</span><span class="pln"> 
+                   chars
+                   </span><span class="lit">1</span><span class="pln">
                    </span><span class="opn">(</span><span class="pln">string-length chars</span><span class="clo">))))</span><span class="pln">
         symbol</span><span class="clo">)))</span></pre></div>
 
@@ -2540,7 +2540,7 @@ recognized for data-base indexing, <a href="#g_t4_002e4_002e4_002e5">4.4.4.5</a>
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">var? exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tagged-list? exp </span><span class="lit">'</span><span class="pun">?</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">constant-symbol? exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">symbol? exp</span><span class="clo">))</span></pre></div>
 
-<p>Unique variables are constructed during rule application (in 
+<p>Unique variables are constructed during rule application (in
 <a href="#g_t4_002e4_002e4_002e4">4.4.4.4</a>) by means of the following procedures.  The unique identifier for
 a rule application is a number, which is incremented each time a rule is
 applied.
@@ -2552,7 +2552,7 @@ applied.
   </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> rule-counter </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> rule-counter</span><span class="clo">))</span><span class="pln">
   rule-counter</span><span class="clo">)</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-new-variable 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-new-variable
          var rule-application-id</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="lit">'</span><span class="pun">?</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> rule-application-id
                  </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> var</span><span class="clo">))))</span></pre></div>
@@ -2601,7 +2601,7 @@ implemented using explicit <code>delay</code> operations, rather than being defi
 as follows:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">simple-query 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">simple-query
          query-pattern frame-stream</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">stream-flatmap
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">frame</span><span class="clo">)</span><span class="pln">
@@ -2639,7 +2639,7 @@ use <code>delay</code> explicitly?  What would be wrong with defining it as foll
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">stream-null? stream</span><span class="clo">)</span><span class="pln">
       the-empty-stream
       </span><span class="opn">(</span><span class="pln">interleave </span><span class="opn">(</span><span class="pln">stream-car stream</span><span class="clo">)</span><span class="pln">
-                  </span><span class="opn">(</span><span class="pln">flatten-stream 
+                  </span><span class="opn">(</span><span class="pln">flatten-stream
                    </span><span class="opn">(</span><span class="pln">stream-cdr stream</span><span class="clo">)))))</span></pre></div>
 </blockquote>
 
@@ -2659,7 +2659,7 @@ a singleton stream, so no interleaving is needed when combining these streams.
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">simple-flatten stream</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">stream-map ⟨</span><span class="pun">??</span><span class="pln">⟩
-              </span><span class="opn">(</span><span class="pln">stream-filter ⟨</span><span class="pun">??</span><span class="pln">⟩ 
+              </span><span class="opn">(</span><span class="pln">stream-filter ⟨</span><span class="pun">??</span><span class="pln">⟩
                              stream</span><span class="clo">)))</span></pre></div>
 
 </li><li> Does the query system’s behavior change if we change it in this way?
@@ -2691,7 +2691,7 @@ example,
 programmer.  Moreover,
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">job </span><span class="pun">?</span><span class="pln">x </span><span class="pun">?</span><span class="pln">j</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">job </span><span class="pun">?</span><span class="pln">x </span><span class="pun">?</span><span class="pln">j</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">unique </span><span class="opn">(</span><span class="pln">job </span><span class="pun">?</span><span class="pln">anyone </span><span class="pun">?</span><span class="pln">j</span><span class="clo">)))</span></pre></div>
 
 <p>should list all the jobs that are filled by only one person, and the people who
@@ -2810,7 +2810,7 @@ number of intermediate frames generated.
 
 <blockquote>
 <p><strong><a id="Exercise-4_002e78"></a>Exercise 4.78:</strong> Redesign the query language as a
-nondeterministic program to be implemented using the evaluator of 
+nondeterministic program to be implemented using the evaluator of
 <a href="4_002e3.xhtml#g_t4_002e3">4.3</a>, rather than as a stream process.  In this approach, each query will
 produce a single answer (rather than the stream of all answers) and the user
 can type <code>try-again</code> to see more answers.  You should find that much of
@@ -2827,7 +2827,7 @@ name conflicts between the parameters of procedures.  For example, in
 evaluating
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square x</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square x</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> x x</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">sum-of-squares x y</span><span class="clo">)</span><span class="pln">
@@ -2872,12 +2872,12 @@ they exhaustively searched the space of possible proofs.  The major
 breakthrough that made such a search plausible was the discovery in the early
 1960s of the <a id="index-unification-algorithm"></a>
 <em>unification algorithm</em> and the <a id="index-resolution-principle"></a>
-<em>resolution principle</em> 
-(<a href="References.xhtml#Robinson-1965">Robinson 1965</a>).  Resolution was used, for example, by 
+<em>resolution principle</em>
+(<a href="References.xhtml#Robinson-1965">Robinson 1965</a>).  Resolution was used, for example, by
 <a href="References.xhtml#Green-and-Raphael-_00281968_0029">Green and Raphael (1968)</a> (see also <a href="References.xhtml#Green-1969">Green 1969</a>) as the basis for a deductive
 question-answering system.  During most of this period, researchers
 concentrated on algorithms that are guaranteed to find a proof if one exists.
-Such algorithms were difficult to control and to direct toward a proof.  
+Such algorithms were difficult to control and to direct toward a proof.
 <a href="References.xhtml#Hewitt-_00281969_0029">Hewitt (1969)</a> recognized the possibility of merging the control structure of a
 programming language with the operations of a logic-manipulation system,
 leading to the work in automatic search mentioned in <a href="4_002e3.xhtml#g_t4_002e3_002e1">4.3.1</a>
@@ -2893,7 +2893,7 @@ the French can point to Prolog’s genesis at the University of Marseille, while
 the British can highlight the work at the University of Edinburgh.  According
 to people at <abbr>MIT</abbr>, logic programming was developed by these groups in
 an attempt to figure out what Hewitt was talking about in his brilliant but
-impenetrable Ph.D. thesis.  For a history of logic programming, see 
+impenetrable Ph.D. thesis.  For a history of logic programming, see
 <a href="References.xhtml#Robinson-1983">Robinson 1983</a>.</p>
 </div>
 <div id="FOOT263"><p><a class="footnote_backlink" href="#DOCF263"><sup>263</sup></a>
@@ -2980,7 +2980,7 @@ that some of the work of coarse matching can be done when the data base is
 constructed rather then when we want to select the candidates.  This is called
 <a id="index-indexing"></a>
 <em>indexing</em> the data base.  There is a vast technology built around
-data-base-indexing schemes.  Our implementation, described in 
+data-base-indexing schemes.  Our implementation, described in
 <a href="#g_t4_002e4_002e4">4.4.4</a>, contains a simple-minded form of such an optimization.</p>
 </div>
 <div id="FOOT272"><p><a class="footnote_backlink" href="#DOCF272"><sup>272</sup></a>
@@ -3177,13 +3177,15 @@ and repeatedly substituting <math xmlns="http://www.w3.org/1998/Math/MathML">
     </mrow>
     <mrow>
       <mo>(</mo>
-      <mn>1</mn>
-      <mo>+</mo>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mfrac>
-          <mi>y</mi>
-          <mn>2</mn>
-        </mfrac>
+      <mrow>
+        <mn>1</mn>
+        <mo>+</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mi>y</mi>
+            <mn>2</mn>
+          </mfrac>
+        </mrow>
       </mrow>
       <mo>)</mo>
     </mrow>
@@ -3247,7 +3249,7 @@ However, if we try the same manipulation beginning with the observation that <ma
     <mo>−</mo>
     <mn>1</mn>
   </mrow>
-</math> 
+</math>
 is the solution to the equation <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi>y</mi>

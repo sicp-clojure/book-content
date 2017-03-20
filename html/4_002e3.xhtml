@@ -38,7 +38,7 @@ Next: <a href="4_002e4.xhtml#g_t4_002e4" accesskey="n" rel="next">4.4</a>, Prev:
 paradigm called <a id="index-nondeterministic-computing-1"></a>
 <em>nondeterministic computing</em> by building into the
 evaluator a facility to support automatic search.  This is a much more profound
-change to the language than the introduction of lazy evaluation in 
+change to the language than the introduction of lazy evaluation in
 <a href="4_002e2.xhtml#g_t4_002e2">4.2</a>.
 </p>
 <p>Nondeterministic computing, like stream processing, is useful for “generate
@@ -111,8 +111,8 @@ previous choice point and proceed along a different branch.
 from each of the lists, until a successful choice was made.
 </p>
 <p>Section <a href="#g_t4_002e3_002e1">4.3.1</a> introduces <code>amb</code> and explains how it supports
-nondeterminism through the evaluator’s automatic search mechanism.  
-<a href="#g_t4_002e3_002e2">4.3.2</a> presents examples of nondeterministic programs, and 
+nondeterminism through the evaluator’s automatic search mechanism.
+<a href="#g_t4_002e3_002e2">4.3.2</a> presents examples of nondeterministic programs, and
 <a href="#g_t4_002e3_002e3">4.3.3</a> gives the details of how to implement the <code>amb</code> evaluator by
 modifying the ordinary Scheme evaluator.
 </p>
@@ -171,7 +171,7 @@ procedure used above:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">an-element-of items</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">null? items</span><span class="clo">)))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">amb </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> items</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">amb </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> items</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">an-element-of </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> items</span><span class="clo">))))</span></pre></div>
 
 <p><code>An-element-of</code> fails if the list is empty.  Otherwise it ambiguously
@@ -220,7 +220,7 @@ systematic search as follows: When the evaluator encounters an application of
 <code>amb</code>, it initially selects the first alternative.  This selection may
 itself lead to a further choice.  The evaluator will always initially choose
 the first alternative at each choice point.  If a choice results in a failure,
-then the evaluator automagically<a class="footnote_link" id="DOCF250" href="#FOOT250"><sup>250</sup></a> 
+then the evaluator automagically<a class="footnote_link" id="DOCF250" href="#FOOT250"><sup>250</sup></a>
 <a id="index-backtracks"></a>
 <em>backtracks</em> to the most
 recent choice point and tries the next alternative.  If it runs out of
@@ -266,8 +266,8 @@ try-again
 try-again
 
 </span><i><span class="com">;;; There are no more values of</span></i><span class="pln">
-</span><i><span class="opn">(</span><span class="pln">prime-sum-pair 
- </span><span class="opn">(</span><span class="kwd">quote</span><span class="pln"> </span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="lit">8</span><span class="clo">))</span><span class="pln"> 
+</span><i><span class="opn">(</span><span class="pln">prime-sum-pair
+ </span><span class="opn">(</span><span class="kwd">quote</span><span class="pln"> </span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="lit">8</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="kwd">quote</span><span class="pln"> </span><span class="opn">(</span><span class="lit">20</span><span class="pln"> </span><span class="lit">35</span><span class="pln"> </span><span class="lit">110</span><span class="clo">)))</span></i><span class="pln">
 
 </span><i><span class="com">;;; Amb-Eval input:</span></i><span class="pln">
@@ -323,7 +323,7 @@ triples of integers <math xmlns="http://www.w3.org/1998/Math/MathML">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">i </span><span class="opn">(</span><span class="pln">an-integer-between low high</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">j </span><span class="opn">(</span><span class="pln">an-integer-between i high</span><span class="clo">)))</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">k </span><span class="opn">(</span><span class="pln">an-integer-between j high</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> i i</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> j j</span><span class="clo">))</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> i i</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> j j</span><span class="clo">))</span><span class="pln">
                     </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> k k</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">list i j k</span><span class="clo">)))))</span></pre></div>
 </blockquote>
@@ -394,7 +394,7 @@ restrictions:<a class="footnote_link" id="DOCF252" href="#FOOT252"><sup>252</sup
         </span><span class="opn">(</span><span class="pln">miller </span><span class="opn">(</span><span class="pln">amb </span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">4</span><span class="pln"> </span><span class="lit">5</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">smith </span><span class="opn">(</span><span class="pln">amb </span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">4</span><span class="pln"> </span><span class="lit">5</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">require
-     </span><span class="opn">(</span><span class="pln">distinct? </span><span class="opn">(</span><span class="pln">list baker cooper fletcher 
+     </span><span class="opn">(</span><span class="pln">distinct? </span><span class="opn">(</span><span class="pln">list baker cooper fletcher
                       miller smith</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> baker </span><span class="lit">5</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> cooper </span><span class="lit">1</span><span class="clo">)))</span><span class="pln">
@@ -403,7 +403,7 @@ restrictions:<a class="footnote_link" id="DOCF252" href="#FOOT252"><sup>252</sup
     </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pun">&gt;</span><span class="pln"> miller cooper</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">require
      </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">abs </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> smith fletcher</span><span class="clo">))</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">require 
+    </span><span class="opn">(</span><span class="pln">require
      </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">abs </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> fletcher cooper</span><span class="clo">))</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'baker</span><span class="pln"> baker</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'cooper</span><span class="pln"> cooper</span><span class="clo">)</span><span class="pln">
@@ -517,10 +517,10 @@ identify the parts of speech of individual words.  We could start with some
 lists that classify various words:<a class="footnote_link" id="DOCF254" href="#FOOT254"><sup>254</sup></a>
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> nouns 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> nouns
   </span><span class="lit">'</span><span class="opn">(</span><span class="pln">noun student professor cat class</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> verbs 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> verbs
   </span><span class="lit">'</span><span class="opn">(</span><span class="pln">verb studies lectures eats sleeps</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> articles </span><span class="lit">'</span><span class="opn">(</span><span class="pln">article the a</span><span class="clo">))</span></pre></div>
@@ -569,7 +569,7 @@ head of the list):<a class="footnote_link" id="DOCF255" href="#FOOT255"><sup>255
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">parse-word word-list</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="pln">null? </span><span class="pun">*</span><span class="pln">unparsed</span><span class="pun">*</span><span class="clo">)))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pln">memq </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="pun">*</span><span class="pln">unparsed</span><span class="pun">*</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pln">memq </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="pun">*</span><span class="pln">unparsed</span><span class="pun">*</span><span class="clo">)</span><span class="pln">
                  </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> word-list</span><span class="clo">)))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">found-word </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="pun">*</span><span class="pln">unparsed</span><span class="pun">*</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> </span><span class="pun">*</span><span class="pln">unparsed</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> </span><span class="pun">*</span><span class="pln">unparsed</span><span class="pun">*</span><span class="clo">))</span><span class="pln">
@@ -595,7 +595,7 @@ sentence:
 
 </span><i><span class="com">;;; Starting a new problem</span></i><span class="pln">
 </span><i><span class="com">;;; Amb-Eval value:</span></i><span class="pln">
-</span><i><span class="opn">(</span><span class="pln">sentence 
+</span><i><span class="opn">(</span><span class="pln">sentence
  </span><span class="opn">(</span><span class="pln">noun-phrase </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">noun cat</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">verb eats</span><span class="clo">))</span></i>
 </pre></div>
@@ -608,7 +608,7 @@ where there are choices for how the units can be decomposed.
 <p>Let’s add to our grammar a list of prepositions:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> prepositions 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> prepositions
   </span><span class="lit">'</span><span class="opn">(</span><span class="pln">prep for to in by with</span><span class="clo">))</span></pre></div>
 
 <p>and define a prepositional phrase (e.g., “for the cat”) to be a preposition
@@ -632,9 +632,9 @@ prepositional phrase:<a class="footnote_link" id="DOCF256" href="#FOOT256"><sup>
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">parse-verb-phrase</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">maybe-extend verb-phrase</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">amb 
+    </span><span class="opn">(</span><span class="pln">amb
      verb-phrase
-     </span><span class="opn">(</span><span class="pln">maybe-extend 
+     </span><span class="opn">(</span><span class="pln">maybe-extend
       </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'verb-phrase</span><span class="pln">
             verb-phrase
             </span><span class="opn">(</span><span class="pln">parse-prepositional-phrase</span><span class="clo">)))))</span><span class="pln">
@@ -654,9 +654,9 @@ phrase:
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">parse-noun-phrase</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">maybe-extend noun-phrase</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">amb 
+    </span><span class="opn">(</span><span class="pln">amb
      noun-phrase
-     </span><span class="opn">(</span><span class="pln">maybe-extend 
+     </span><span class="opn">(</span><span class="pln">maybe-extend
       </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'noun-phrase</span><span class="pln">
             noun-phrase
             </span><span class="opn">(</span><span class="pln">parse-prepositional-phrase</span><span class="clo">)))))</span><span class="pln">
@@ -665,7 +665,7 @@ phrase:
 <p>Our new grammar lets us parse more complex sentences.  For example
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">parse </span><span class="lit">'</span><span class="opn">(</span><span class="pln">the student with the cat 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">parse </span><span class="lit">'</span><span class="opn">(</span><span class="pln">the student with the cat
          sleeps in the class</span><span class="clo">))</span></pre></div>
 
 <p>produces
@@ -673,7 +673,7 @@ phrase:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">sentence
  </span><span class="opn">(</span><span class="pln">noun-phrase
-  </span><span class="opn">(</span><span class="pln">simple-noun-phrase </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">simple-noun-phrase </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln">
                       </span><span class="opn">(</span><span class="pln">noun student</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">prep-phrase </span><span class="opn">(</span><span class="pln">prep with</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">simple-noun-phrase
@@ -692,44 +692,44 @@ professor is lecturing with the cat, or that the student has the cat.  Our
 nondeterministic program finds both possibilities:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">parse </span><span class="lit">'</span><span class="opn">(</span><span class="pln">the professor lectures to 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">parse </span><span class="lit">'</span><span class="opn">(</span><span class="pln">the professor lectures to
          the student with the cat</span><span class="clo">))</span></pre></div>
 
 <p>produces
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">sentence
- </span><span class="opn">(</span><span class="pln">simple-noun-phrase </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln"> 
+ </span><span class="opn">(</span><span class="pln">simple-noun-phrase </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln">
                      </span><span class="opn">(</span><span class="pln">noun professor</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">verb-phrase
   </span><span class="opn">(</span><span class="pln">verb-phrase
    </span><span class="opn">(</span><span class="pln">verb lectures</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">prep-phrase </span><span class="opn">(</span><span class="pln">prep to</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">simple-noun-phrase
-                 </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln"> 
+                 </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">noun student</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">prep-phrase </span><span class="opn">(</span><span class="pln">prep with</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">simple-noun-phrase
-                </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln"> 
+                </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">noun cat</span><span class="clo">)))))</span></pre></div>
 
 <p>Asking the evaluator to try again yields
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">sentence
- </span><span class="opn">(</span><span class="pln">simple-noun-phrase </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln"> 
+ </span><span class="opn">(</span><span class="pln">simple-noun-phrase </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln">
                      </span><span class="opn">(</span><span class="pln">noun professor</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">verb-phrase </span><span class="opn">(</span><span class="pln">verb lectures</span><span class="clo">)</span><span class="pln">
-              </span><span class="opn">(</span><span class="pln">prep-phrase 
+              </span><span class="opn">(</span><span class="pln">prep-phrase
                </span><span class="opn">(</span><span class="pln">prep to</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">noun-phrase
                 </span><span class="opn">(</span><span class="pln">simple-noun-phrase
-                 </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln"> 
+                 </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">noun student</span><span class="clo">))</span><span class="pln">
-                </span><span class="opn">(</span><span class="pln">prep-phrase 
+                </span><span class="opn">(</span><span class="pln">prep-phrase
                  </span><span class="opn">(</span><span class="pln">prep with</span><span class="clo">)</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">simple-noun-phrase
-                  </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln"> 
+                  </span><span class="opn">(</span><span class="pln">article the</span><span class="clo">)</span><span class="pln">
                   </span><span class="opn">(</span><span class="pln">noun cat</span><span class="clo">)))))))</span></pre></div>
 
 <blockquote>
@@ -740,7 +740,7 @@ explain the differences in shades of meaning among them.
 </p></blockquote>
 
 <blockquote>
-<p><strong><a id="Exercise-4_002e46"></a>Exercise 4.46:</strong> The evaluators in 
+<p><strong><a id="Exercise-4_002e46"></a>Exercise 4.46:</strong> The evaluators in
 <a href="4_002e1.xhtml#g_t4_002e1">4.1</a> and <a href="4_002e2.xhtml#g_t4_002e2">4.2</a> do not determine what order operands are evaluated in.
 We will see that the <code>amb</code> evaluator evaluates them from left to right.
 Explain why our parsing program wouldn’t work if the operands were evaluated in
@@ -756,7 +756,7 @@ procedure <code>parse-verb-phrase</code> as follows (and similarly for noun phra
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">parse-verb-phrase</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">amb </span><span class="opn">(</span><span class="pln">parse-word verbs</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="pln">list 
+       </span><span class="opn">(</span><span class="pln">list
         </span><span class="lit">'verb-phrase</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">parse-verb-phrase</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">parse-prepositional-phrase</span><span class="clo">))))</span></pre></div>
@@ -966,7 +966,7 @@ expression, passing along the failure continuation that was passed to them.
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-lambda exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">vars </span><span class="opn">(</span><span class="pln">lambda-parameters exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">bproc </span><span class="opn">(</span><span class="pln">analyze-sequence 
+        </span><span class="opn">(</span><span class="pln">bproc </span><span class="opn">(</span><span class="pln">analyze-sequence
                 </span><span class="opn">(</span><span class="pln">lambda-body exp</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env succeed fail</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">succeed </span><span class="opn">(</span><span class="pln">make-procedure vars bproc env</span><span class="clo">)</span><span class="pln">
@@ -1024,7 +1024,7 @@ then <code>b</code>, we call <code>a</code> with a success continuation that cal
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">loop first-proc rest-procs</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? rest-procs</span><span class="clo">)</span><span class="pln">
         first-proc
-        </span><span class="opn">(</span><span class="pln">loop </span><span class="opn">(</span><span class="pln">sequentially first-proc 
+        </span><span class="opn">(</span><span class="pln">loop </span><span class="opn">(</span><span class="pln">sequentially first-proc
                             </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> rest-procs</span><span class="clo">))</span><span class="pln">
               </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> rest-procs</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">procs </span><span class="opn">(</span><span class="pln">map analyze exps</span><span class="clo">)))</span><span class="pln">
@@ -1046,7 +1046,7 @@ defined variable, the variable is defined and the success is propagated:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-definition exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">var </span><span class="opn">(</span><span class="pln">definition-variable exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">vproc </span><span class="opn">(</span><span class="pln">analyze 
+        </span><span class="opn">(</span><span class="pln">vproc </span><span class="opn">(</span><span class="pln">analyze
                 </span><span class="opn">(</span><span class="pln">definition-value exp</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env succeed fail</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">vproc env
@@ -1079,23 +1079,23 @@ the assignment before actually calling <code>fail2</code>.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-assignment exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">var </span><span class="opn">(</span><span class="pln">assignment-variable exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">vproc </span><span class="opn">(</span><span class="pln">analyze 
+        </span><span class="opn">(</span><span class="pln">vproc </span><span class="opn">(</span><span class="pln">analyze
                 </span><span class="opn">(</span><span class="pln">assignment-value exp</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env succeed fail</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">vproc env
              </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">val fail2</span><span class="clo">)</span><span class="pln">    </span><span class="roman"><span class="com">; *1*</span></span><span class="pln">
                </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">old-value
-                      </span><span class="opn">(</span><span class="pln">lookup-variable-value 
-                       var 
+                      </span><span class="opn">(</span><span class="pln">lookup-variable-value
+                       var
                        env</span><span class="clo">)))</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">set-variable-value!
-                  var 
-                  val 
+                  var
+                  val
                   env</span><span class="clo">)</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pln">succeed 
+                 </span><span class="opn">(</span><span class="pln">succeed
                   </span><span class="lit">'ok</span><span class="pln">
                   </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="clo">)</span><span class="pln">    </span><span class="roman"><span class="com">; *2*</span></span><span class="pln">
-                    </span><span class="opn">(</span><span class="pln">set-variable-value! 
+                    </span><span class="opn">(</span><span class="pln">set-variable-value!
                      var
                      old-value
                      env</span><span class="clo">)</span><span class="pln">
@@ -1119,7 +1119,7 @@ failure continuations as we evaluate the operands.  We use a procedure
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env succeed fail</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">fproc env
              </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">proc fail2</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">get-args 
+               </span><span class="opn">(</span><span class="pln">get-args
                 aprocs
                 env
                 </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">args fail3</span><span class="clo">)</span><span class="pln">
@@ -1140,11 +1140,11 @@ arguments:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">get-args aprocs env succeed fail</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? aprocs</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">succeed </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln"> fail</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">((</span><span class="kwd">car</span><span class="pln"> aprocs</span><span class="clo">)</span><span class="pln"> 
+      </span><span class="opn">((</span><span class="kwd">car</span><span class="pln"> aprocs</span><span class="clo">)</span><span class="pln">
        env
        </span><span class="com">;; </span><span class="roman"><span class="com">success continuation for this </span><code><span class="com">aproc</span></code></span><span class="pln">
        </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">arg fail2</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">get-args 
+         </span><span class="opn">(</span><span class="pln">get-args
           </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> aprocs</span><span class="clo">)</span><span class="pln">
           env
           </span><span class="com">;; </span><span class="roman"><span class="com">success continuation for</span></span><span class="pln">
@@ -1160,22 +1160,22 @@ arguments:
 evaluator, except for the need to manage the continuations.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">execute-application 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">execute-application
          proc args succeed fail</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">primitive-procedure? proc</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">succeed 
-          </span><span class="opn">(</span><span class="pln">apply-primitive-procedure 
+         </span><span class="opn">(</span><span class="pln">succeed
+          </span><span class="opn">(</span><span class="pln">apply-primitive-procedure
            proc args</span><span class="clo">)</span><span class="pln">
           fail</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">compound-procedure? proc</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">((</span><span class="pln">procedure-body proc</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">extend-environment 
+          </span><span class="opn">(</span><span class="pln">extend-environment
            </span><span class="opn">(</span><span class="pln">procedure-parameters proc</span><span class="clo">)</span><span class="pln">
            args
            </span><span class="opn">(</span><span class="pln">procedure-environment proc</span><span class="clo">))</span><span class="pln">
           succeed
           fail</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown procedure type: 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown procedure type:
                       EXECUTE-APPLICATION"</span><span class="pln">
                      proc</span><span class="clo">))))</span></pre></div>
 
@@ -1198,7 +1198,7 @@ are no more alternatives to try, the entire <code>amb</code> expression fails.
       </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">try-next choices</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? choices</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">fail</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">((</span><span class="kwd">car</span><span class="pln"> choices</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">((</span><span class="kwd">car</span><span class="pln"> choices</span><span class="clo">)</span><span class="pln">
              env
              succeed
              </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="clo">)</span><span class="pln">
@@ -1242,29 +1242,29 @@ successful evaluations.
           </span><span class="opn">(</span><span class="pln">try-again</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">display 
+            </span><span class="opn">(</span><span class="pln">display
              </span><span class="str">";;; Starting a new problem "</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">ambeval 
+            </span><span class="opn">(</span><span class="pln">ambeval
              input
              the-global-environment
              </span><span class="roman"><span class="com">;; </span><code><span class="com">ambeval</span></code><span class="com"> success</span></span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">val next-alternative</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">announce-output 
+               </span><span class="opn">(</span><span class="pln">announce-output
                 output-prompt</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">user-print val</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">internal-loop 
+               </span><span class="opn">(</span><span class="pln">internal-loop
                 next-alternative</span><span class="clo">))</span><span class="pln">
              </span><span class="roman"><span class="com">;; </span><code><span class="com">ambeval</span></code><span class="com"> failure</span></span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">announce-output
-                </span><span class="str">";;; There are no 
+                </span><span class="str">";;; There are no
                  more values of"</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">user-print input</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">driver-loop</span><span class="clo">)))))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">internal-loop
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">)</span><span class="pln">
-     </span><span class="opn">(</span><span class="pln">display 
+     </span><span class="opn">(</span><span class="pln">display
       </span><span class="str">";;; There is no current problem"</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">driver-loop</span><span class="clo">))))</span></pre></div>
 
@@ -1319,7 +1319,7 @@ following example:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><i><span class="com">;;; Amb-Eval input:</span></i><span class="pln">
-</span><span class="opn">(</span><span class="pln">if-fail 
+</span><span class="opn">(</span><span class="pln">if-fail
  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">x </span><span class="opn">(</span><span class="pln">an-element-of </span><span class="lit">'</span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">5</span><span class="clo">))))</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">require </span><span class="opn">(</span><span class="pln">even? x</span><span class="clo">))</span><span class="pln">
    x</span><span class="clo">)</span><span class="pln">
@@ -1349,11 +1349,11 @@ what will be the result of evaluating
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">pairs </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">if-fail 
-   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">p </span><span class="opn">(</span><span class="pln">prime-sum-pair 
-             </span><span class="lit">'</span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="lit">8</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">if-fail
+   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">p </span><span class="opn">(</span><span class="pln">prime-sum-pair
+             </span><span class="lit">'</span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="lit">5</span><span class="pln"> </span><span class="lit">8</span><span class="clo">)</span><span class="pln">
              </span><span class="lit">'</span><span class="opn">(</span><span class="lit">20</span><span class="pln"> </span><span class="lit">35</span><span class="pln"> </span><span class="lit">110</span><span class="clo">))))</span><span class="pln">
-     </span><span class="opn">(</span><span class="pln">permanent-set! pairs 
+     </span><span class="opn">(</span><span class="pln">permanent-set! pairs
                      </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> p pairs</span><span class="clo">))</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">amb</span><span class="clo">))</span><span class="pln">
    pairs</span><span class="clo">))</span></pre></div>
@@ -1367,10 +1367,10 @@ would have had to implement it as a special form.  This would require syntax
 procedures
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">require? exp</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">require? exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">tagged-list? exp </span><span class="lit">'require</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">require-predicate exp</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">require-predicate exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> exp</span><span class="clo">))</span></pre></div>
 
 <p>and a new clause in the dispatch in <code>analyze</code>
@@ -1383,7 +1383,7 @@ expressions.  Complete the following definition of <code>analyze-require</code>.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-require exp</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">pproc </span><span class="opn">(</span><span class="pln">analyze 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">pproc </span><span class="opn">(</span><span class="pln">analyze
                 </span><span class="opn">(</span><span class="pln">require-predicate exp</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env succeed fail</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">pproc env
@@ -1402,7 +1402,7 @@ We assume that we have previously defined a
 procedure <code>prime?</code> that tests whether numbers are prime.  Even with
 <code>prime?</code> defined, the <code>prime-sum-pair</code> procedure may look
 suspiciously like the unhelpful “pseudo-Lisp” attempt to define the
-square-root function, which we described at the beginning of 
+square-root function, which we described at the beginning of
 <a href="1_002e1.xhtml#g_t1_002e1_002e7">1.1.7</a>.  In fact, a square-root procedure along those lines can actually
 be formulated as a nondeterministic program.  By incorporating a search
 mechanism into the evaluator, we are eroding the distinction between purely
@@ -1440,7 +1440,7 @@ too ugly, or perhaps even too trivial), the speaker doesn’t feel like
 explaining.”  (<a href="References.xhtml#Steele-et-al_002e-1983">Steele et al. 1983</a>, <a href="References.xhtml#Raymond-1993">Raymond 1993</a>)</p>
 </div>
 <div id="FOOT251"><p><a class="footnote_backlink" href="#DOCF251"><sup>251</sup></a>
-The integration of 
+The integration of
 automatic search strategies into programming languages has had a long and
 checkered history.  The first suggestions that nondeterministic algorithms
 might be elegantly encoded in a programming language with search and automatic
@@ -1454,7 +1454,7 @@ proving, led to the genesis in Edinburgh and Marseille of the elegant language
 Prolog (which we will discuss in <a href="4_002e4.xhtml#g_t4_002e4">4.4</a>).  After sufficient
 frustration with automatic search, <a href="References.xhtml#McDermott-and-Sussman-_00281972_0029">McDermott and Sussman (1972)</a> developed a
 language called Conniver, which included mechanisms for placing the search
-strategy under programmer control.  This proved unwieldy, however, and <a href="References.xhtml#Sussman-and-Stallman-1975">Sussman and Stallman 1975</a> 
+strategy under programmer control.  This proved unwieldy, however, and <a href="References.xhtml#Sussman-and-Stallman-1975">Sussman and Stallman 1975</a>
 found a more tractable approach while investigating methods
 of symbolic analysis for electrical circuits.  They developed a
 non-chronological backtracking scheme that was based on tracing out the logical
@@ -1468,7 +1468,7 @@ search that is now called <a id="index-truth-maintenance"></a>
 <em>truth maintenance</em>.  Modern problem-solving
 systems all use some form of truth-maintenance system as a substrate.  See
 <a href="References.xhtml#Forbus-and-deKleer-1993">Forbus and deKleer 1993</a> for a discussion of elegant ways to build
-truth-maintenance systems and applications using truth maintenance.  
+truth-maintenance systems and applications using truth maintenance.
 <a href="References.xhtml#Zabih-et-al_002e-1987">Zabih et al. 1987</a> describes a nondeterministic extension to Scheme
 that is based on <code>amb</code>; it is similar to the interpreter described in this
 section, but more sophisticated, because it uses dependency-directed
@@ -1530,7 +1530,7 @@ for a way to deal with this.</p>
 We chose to
 implement the lazy evaluator in <a href="4_002e2.xhtml#g_t4_002e2">4.2</a> as a modification of the
 ordinary metacircular evaluator of <a href="4_002e1.xhtml#g_t4_002e1_002e1">4.1.1</a>.  In contrast, we will
-base the <code>amb</code> evaluator on the analyzing evaluator of 
+base the <code>amb</code> evaluator on the analyzing evaluator of
 <a href="4_002e1.xhtml#g_t4_002e1_002e7">4.1.7</a>, because the execution procedures in that evaluator provide a
 convenient framework for implementing backtracking.</p>
 </div>

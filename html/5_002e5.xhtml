@@ -161,7 +161,7 @@ that we implement in this section will take advantage of this fact and generate
 code that evaluates the operator using the instruction
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign proc 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign proc
         </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">const f</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span></pre></div>
@@ -207,12 +207,12 @@ type of expression, it dispatches to a specialized <a id="index-code-generator">
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile exp target linkage</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">self-evaluating? exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">compile-self-evaluating 
+         </span><span class="opn">(</span><span class="pln">compile-self-evaluating
           exp target linkage</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">quoted? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">quoted? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">compile-quoted exp target linkage</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">compile-variable 
+         </span><span class="opn">(</span><span class="pln">compile-variable
           exp target linkage</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">assignment? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">compile-assignment
@@ -225,17 +225,17 @@ type of expression, it dispatches to a specialized <a id="index-code-generator">
         </span><span class="opn">((</span><span class="kwd">lambda</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">compile-lambda exp target linkage</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="kwd">begin</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">compile-sequence 
+         </span><span class="opn">(</span><span class="pln">compile-sequence
           </span><span class="opn">(</span><span class="pln">begin-actions exp</span><span class="clo">)</span><span class="pln"> target linkage</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">cond</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
-         </span><span class="opn">(</span><span class="pln">compile 
+        </span><span class="opn">((</span><span class="kwd">cond</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
+         </span><span class="opn">(</span><span class="pln">compile
           </span><span class="opn">(</span><span class="pln">cond-</span><span class="pun">&gt;</span><span class="kwd">if</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> target linkage</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">application? exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">compile-application 
+         </span><span class="opn">(</span><span class="pln">compile-application
           exp target linkage</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown expression type: 
-                 COMPILE"</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown expression type:
+                 COMPILE"</span><span class="pln">
                 exp</span><span class="clo">))))</span></pre></div>
 
 <a id="Targets-and-linkages"></a>
@@ -307,7 +307,7 @@ returns the combined sequence.  That is, if <math xmlns="http://www.w3.org/1998/
     </msub>
     <mo stretchy="false">⟩</mo>
   </mrow>
-</math> 
+</math>
 and <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mo stretchy="false">⟨</mo>
@@ -320,7 +320,7 @@ and <math xmlns="http://www.w3.org/1998/Math/MathML">
     </msub>
     <mo stretchy="false">⟩</mo>
   </mrow>
-</math> are sequences of instructions, then 
+</math> are sequences of instructions, then
 evaluating
 </p>
 <div class="lisp">
@@ -370,7 +370,7 @@ produces one of the following four sequences of instructions, depending on how
     </msub>
     <mo stretchy="false">⟩</mo>
   </mrow>
-</math> 
+</math>
 use <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mo stretchy="false">⟨</mo>
@@ -397,264 +397,264 @@ use <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
 </math>:
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-<mtable columnalign="left left left left" rowspacing="4pt" columnspacing="1em" columnlines="solid solid solid">
-  <mtr>
-    <mtd>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>s</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>q</mi>
-          <mn>1</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-    </mtd>
-    <mtd>
-      <mtext>(save</mtext>
-    </mtd>
-    <mtd>
-      <mtext>(save</mtext>
-    </mtd>
-    <mtd>
-      <mtext>(save</mtext>
-      <mspace width="1ex"/>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>r</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>g</mi>
-          <mn>2</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-      <mtext>)</mtext>
-    </mtd>
-  </mtr>
-  <mtr>
-    <mtd>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>s</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>q</mi>
-          <mn>2</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-    </mtd>
-    <mtd>
-      <mspace width="1ex"/>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>r</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>g</mi>
-          <mn>1</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-      <mtext>)</mtext>
-    </mtd>
-    <mtd>
-      <mspace width="1ex"/>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>r</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>g</mi>
-          <mn>2</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-      <mtext>)</mtext>
-    </mtd>
-    <mtd>
-      <mtext>(save</mtext>
-      <mspace width="1ex"/>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>r</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>g</mi>
-          <mn>1</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-      <mtext>)</mtext>
-    </mtd>
-  </mtr>
-  <mtr>
-    <mtd/>
-    <mtd>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>s</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>q</mi>
-          <mn>1</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-    </mtd>
-    <mtd>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>s</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>q</mi>
-          <mn>1</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-    </mtd>
-    <mtd>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>s</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>q</mi>
-          <mn>1</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-    </mtd>
-  </mtr>
-  <mtr>
-    <mtd/>
-    <mtd>
-      <mtext>(restore</mtext>
-    </mtd>
-    <mtd>
-      <mtext>(restore</mtext>
-    </mtd>
-    <mtd>
-      <mtext>(restore</mtext>
-      <mspace width="1ex"/>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>r</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>g</mi>
-          <mn>1</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-      <mtext>)</mtext>
-    </mtd>
-  </mtr>
-  <mtr>
-    <mtd/>
-    <mtd>
-      <mspace width="1ex"/>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>r</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>g</mi>
-          <mn>1</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-      <mtext>)</mtext>
-    </mtd>
-    <mtd>
-      <mspace width="1ex"/>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>r</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>g</mi>
-          <mn>2</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-      <mtext>)</mtext>
-    </mtd>
-    <mtd>
-      <mtext>(restore</mtext>
-      <mspace width="1ex"/>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>r</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>g</mi>
-          <mn>2</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-      <mtext>)</mtext>
-    </mtd>
-  </mtr>
-  <mtr>
-    <mtd/>
-    <mtd>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>s</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>q</mi>
-          <mn>2</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-    </mtd>
-    <mtd>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>s</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>q</mi>
-          <mn>2</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-    </mtd>
-    <mtd>
-      <mo stretchy="false">⟨</mo>
-      <mspace width="0.1em"/>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mi>s</mi>
-        <mi>e</mi>
-        <msub>
-          <mi>q</mi>
-          <mn>2</mn>
-        </msub>
-      </mrow>
-      <mo stretchy="false">⟩</mo>
-    </mtd>
-  </mtr>
-</mtable>
+  <mtable columnalign="left left left left" rowspacing="4pt" columnspacing="1em" columnlines="solid solid solid">
+    <mtr>
+      <mtd>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>q</mi>
+            <mn>1</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+      </mtd>
+      <mtd>
+        <mtext>(save</mtext>
+      </mtd>
+      <mtd>
+        <mtext>(save</mtext>
+      </mtd>
+      <mtd>
+        <mtext>(save</mtext>
+        <mspace width="1ex"/>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>r</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>g</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+        <mtext>)</mtext>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>q</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+      </mtd>
+      <mtd>
+        <mspace width="1ex"/>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>r</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>g</mi>
+            <mn>1</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+        <mtext>)</mtext>
+      </mtd>
+      <mtd>
+        <mspace width="1ex"/>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>r</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>g</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+        <mtext>)</mtext>
+      </mtd>
+      <mtd>
+        <mtext>(save</mtext>
+        <mspace width="1ex"/>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>r</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>g</mi>
+            <mn>1</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+        <mtext>)</mtext>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd/>
+      <mtd>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>q</mi>
+            <mn>1</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+      </mtd>
+      <mtd>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>q</mi>
+            <mn>1</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+      </mtd>
+      <mtd>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>q</mi>
+            <mn>1</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd/>
+      <mtd>
+        <mtext>(restore</mtext>
+      </mtd>
+      <mtd>
+        <mtext>(restore</mtext>
+      </mtd>
+      <mtd>
+        <mtext>(restore</mtext>
+        <mspace width="1ex"/>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>r</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>g</mi>
+            <mn>1</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+        <mtext>)</mtext>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd/>
+      <mtd>
+        <mspace width="1ex"/>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>r</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>g</mi>
+            <mn>1</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+        <mtext>)</mtext>
+      </mtd>
+      <mtd>
+        <mspace width="1ex"/>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>r</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>g</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+        <mtext>)</mtext>
+      </mtd>
+      <mtd>
+        <mtext>(restore</mtext>
+        <mspace width="1ex"/>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>r</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>g</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+        <mtext>)</mtext>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd/>
+      <mtd>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>q</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+      </mtd>
+      <mtd>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>q</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+      </mtd>
+      <mtd>
+        <mo stretchy="false">⟨</mo>
+        <mspace width="0.1em"/>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>s</mi>
+          <mi>e</mi>
+          <msub>
+            <mi>q</mi>
+            <mn>2</mn>
+          </msub>
+        </mrow>
+        <mo stretchy="false">⟩</mo>
+      </mtd>
+    </mtr>
+  </mtable>
 </math>
 </p>
 <p>By using <code>preserving</code> to combine instruction sequences the compiler avoids
@@ -700,7 +700,7 @@ sequence, and
 constructor for instruction sequences is thus
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-instruction-sequence
          needs modifies statements</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">list needs modifies statements</span><span class="clo">))</span></pre></div>
 
@@ -726,7 +726,7 @@ therefore be constructed as
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-instruction-sequence</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">make-instruction-sequence </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)))</span></pre></div>
 
-<p>The procedures for combining instruction sequences are shown in 
+<p>The procedures for combining instruction sequences are shown in
 <a href="#g_t5_002e5_002e4">5.5.4</a>.
 </p>
 <blockquote>
@@ -790,7 +790,7 @@ instruction that does not need or modify any registers.<a class="footnote_link" 
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-linkage linkage</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> linkage </span><span class="lit">'return</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+         </span><span class="opn">(</span><span class="pln">make-instruction-sequence
           </span><span class="lit">'</span><span class="opn">(</span><span class="pln">continue</span><span class="clo">)</span><span class="pln">
           </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
           </span><span class="lit">'</span><span class="opn">((</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg continue</span><span class="clo">)))))</span><span class="pln">
@@ -807,7 +807,7 @@ the <code>continue</code> register, since a <code>return</code> linkage will req
 and restored.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">end-with-linkage 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">end-with-linkage
          linkage instruction-sequence</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">preserving </span><span class="lit">'</span><span class="opn">(</span><span class="pln">continue</span><span class="clo">)</span><span class="pln">
    instruction-sequence
@@ -821,10 +821,10 @@ construct instruction sequences that assign the required value to the target
 register and then proceed as specified by the linkage descriptor.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-self-evaluating 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-self-evaluating
          exp target linkage</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">end-with-linkage
-   linkage </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+   linkage </span><span class="opn">(</span><span class="pln">make-instruction-sequence
             </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">list target</span><span class="clo">)</span><span class="pln">
             </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign </span><span class="pun">,</span><span class="pln">target </span><span class="opn">(</span><span class="pln">const </span><span class="pun">,</span><span class="pln">exp</span><span class="clo">))))))</span><span class="pln">
@@ -835,15 +835,15 @@ register and then proceed as specified by the linkage descriptor.
    </span><span class="opn">(</span><span class="pln">make-instruction-sequence
     </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">list target</span><span class="clo">)</span><span class="pln">
-    </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign 
+    </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign
        </span><span class="pun">,</span><span class="pln">target
        </span><span class="opn">(</span><span class="pln">const </span><span class="pun">,</span><span class="opn">(</span><span class="pln">text-of-quotation exp</span><span class="clo">)))))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-variable
          exp target linkage</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">end-with-linkage 
+  </span><span class="opn">(</span><span class="pln">end-with-linkage
    linkage
-   </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+   </span><span class="opn">(</span><span class="pln">make-instruction-sequence
     </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">list target</span><span class="clo">)</span><span class="pln">
     </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign </span><span class="pun">,</span><span class="pln">target
@@ -867,16 +867,16 @@ compilation of a complex expression that might modify the registers in
 arbitrary ways.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-assignment 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-assignment
          exp target linkage</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">var </span><span class="opn">(</span><span class="pln">assignment-variable exp</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">get-value-code
-         </span><span class="opn">(</span><span class="pln">compile </span><span class="opn">(</span><span class="pln">assignment-value exp</span><span class="clo">)</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="pln">compile </span><span class="opn">(</span><span class="pln">assignment-value exp</span><span class="clo">)</span><span class="pln">
                   </span><span class="lit">'val</span><span class="pln">
                   </span><span class="lit">'next</span><span class="clo">)))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">end-with-linkage 
+    </span><span class="opn">(</span><span class="pln">end-with-linkage
      linkage
-     </span><span class="opn">(</span><span class="pln">preserving 
+     </span><span class="opn">(</span><span class="pln">preserving
       </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
       get-value-code
       </span><span class="opn">(</span><span class="pln">make-instruction-sequence
@@ -888,7 +888,7 @@ arbitrary ways.
                   </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">assign </span><span class="pun">,</span><span class="pln">target </span><span class="opn">(</span><span class="pln">const ok</span><span class="clo">))))))))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-definition 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-definition
          exp target linkage</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">var </span><span class="opn">(</span><span class="pln">definition-variable exp</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">get-value-code
@@ -897,7 +897,7 @@ arbitrary ways.
                   </span><span class="lit">'next</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">end-with-linkage
      linkage
-     </span><span class="opn">(</span><span class="pln">preserving 
+     </span><span class="opn">(</span><span class="pln">preserving
       </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
       get-value-code
       </span><span class="opn">(</span><span class="pln">make-instruction-sequence
@@ -924,15 +924,15 @@ would cause the previous contents of <code>val</code> to be restored right after
 has the form
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">compilation of predicate</span><span class="pun">,</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">compilation of predicate</span><span class="pun">,</span><span class="pln">
  target </span><code><span class="pln">val</span></code><span class="pun">,</span><span class="pln"> linkage </span><code><span class="pln">next</span></code></em><span class="pln">⟩
  </span><span class="opn">(</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op false?</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label false-branch</span><span class="clo">))</span><span class="pln">
 true-branch
- ⟨</span><em><span class="pln">compilation of consequent with given 
+ ⟨</span><em><span class="pln">compilation of consequent with given
   target </span><span class="kwd">and</span><span class="pln"> given linkage </span><span class="kwd">or</span><span class="pln"> </span><code><span class="pln">after-if</span></code></em><span class="pln">⟩
 false-branch
- ⟨</span><em><span class="pln">compilation of alternative 
+ ⟨</span><em><span class="pln">compilation of alternative
   with given target </span><span class="kwd">and</span><span class="pln"> linkage</span></em><span class="pln">⟩
 after-if</span></pre></div>
 
@@ -952,32 +952,32 @@ for the false branch to the label at the end of the conditional.
         </span><span class="opn">(</span><span class="pln">f-branch </span><span class="opn">(</span><span class="pln">make-label </span><span class="lit">'false-branch</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">after-if </span><span class="opn">(</span><span class="pln">make-label </span><span class="lit">'after-if</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">consequent-linkage
-           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> linkage </span><span class="lit">'next</span><span class="clo">)</span><span class="pln"> 
+           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> linkage </span><span class="lit">'next</span><span class="clo">)</span><span class="pln">
                after-if
                linkage</span><span class="clo">)))</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">p-code 
+      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">p-code
              </span><span class="opn">(</span><span class="pln">compile </span><span class="opn">(</span><span class="pln">if-predicate exp</span><span class="clo">)</span><span class="pln">
                       </span><span class="lit">'val</span><span class="pln">
                       </span><span class="lit">'next</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">c-code
-             </span><span class="opn">(</span><span class="pln">compile </span><span class="opn">(</span><span class="pln">if-consequent exp</span><span class="clo">)</span><span class="pln"> 
-                      target 
+             </span><span class="opn">(</span><span class="pln">compile </span><span class="opn">(</span><span class="pln">if-consequent exp</span><span class="clo">)</span><span class="pln">
+                      target
                       consequent-linkage</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">a-code
              </span><span class="opn">(</span><span class="pln">compile </span><span class="opn">(</span><span class="pln">if-alternative exp</span><span class="clo">)</span><span class="pln">
                       target
                       linkage</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">preserving 
+        </span><span class="opn">(</span><span class="pln">preserving
          </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env continue</span><span class="clo">)</span><span class="pln">
          p-code
          </span><span class="opn">(</span><span class="pln">append-instruction-sequences
-          </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
-           </span><span class="lit">'</span><span class="opn">(</span><span class="pln">val</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="pln">make-instruction-sequence
+           </span><span class="lit">'</span><span class="opn">(</span><span class="pln">val</span><span class="clo">)</span><span class="pln">
            </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
            </span><span class="pun">`</span><span class="opn">((</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op false?</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label </span><span class="pun">,</span><span class="pln">f-branch</span><span class="clo">))))</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">parallel-instruction-sequences
-           </span><span class="opn">(</span><span class="pln">append-instruction-sequences 
+           </span><span class="opn">(</span><span class="pln">append-instruction-sequences
             t-branch c-code</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">append-instruction-sequences
             f-branch a-code</span><span class="clo">))</span><span class="pln">
@@ -987,11 +987,11 @@ for the false branch to the label at the end of the conditional.
 the true and false branches, and <code>continue</code> is preserved because it could
 be needed by the linkage code in those branches.  The code for the true and
 false branches (which are not executed sequentially) is appended using a
-special combiner <code>parallel-instruction-sequences</code> described in 
+special combiner <code>parallel-instruction-sequences</code> described in
 <a href="#g_t5_002e5_002e4">5.5.4</a>.
 </p>
 <p>Note that <code>cond</code> is a derived expression, so all that the compiler needs
-to do handle it is to apply the <code>cond-&gt;if</code> transformer (from 
+to do handle it is to apply the <code>cond-&gt;if</code> transformer (from
 <a href="4_002e1.xhtml#g_t4_002e1_002e2">4.1.2</a>) and compile the resulting <code>if</code> expression.
 </p>
 <a id="Compiling-sequences"></a>
@@ -1023,7 +1023,7 @@ linkage at the end of the sequence) are preserved.
 <code>lambda</code> expression must have the form
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">construct procedure object 
+<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">construct procedure object
  </span><span class="kwd">and</span><span class="pln"> assign it to target register</span></em><span class="pln">⟩
 ⟨</span><var><span class="pln">linkage</span></var><span class="pln">⟩</span></pre></div>
 
@@ -1037,9 +1037,9 @@ using a linkage that jumps to a label that is inserted after the body.  The
 object code thus has the form
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">construct procedure object 
+<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">construct procedure object
  </span><span class="kwd">and</span><span class="pln"> assign it to target register</span></em><span class="pln">⟩
- ⟨</span><em><span class="pln">code for given linkage</span></em><span class="pln">⟩ </span><em><span class="kwd">or</span></em><span class="pln"> 
+ ⟨</span><em><span class="pln">code for given linkage</span></em><span class="pln">⟩ </span><em><span class="kwd">or</span></em><span class="pln">
   </span><code><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label after-lambda</span><span class="clo">))</span></code><span class="pln">
  ⟨</span><em><span class="pln">compilation of procedure body</span></em><span class="pln">⟩
 after-lambda</span></pre></div>
@@ -1052,9 +1052,9 @@ at the point of definition) with the entry point to the compiled procedure body
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-lambda exp target linkage</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">proc-entry 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">proc-entry
          </span><span class="opn">(</span><span class="pln">make-label </span><span class="lit">'entry</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">after-lambda 
+        </span><span class="opn">(</span><span class="pln">after-lambda
          </span><span class="opn">(</span><span class="pln">make-label </span><span class="lit">'after-lambda</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">lambda-linkage
            </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> linkage </span><span class="lit">'next</span><span class="clo">)</span><span class="pln">
@@ -1062,12 +1062,12 @@ at the point of definition) with the entry point to the compiled procedure body
                linkage</span><span class="clo">)))</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">append-instruction-sequences
        </span><span class="opn">(</span><span class="pln">tack-on-instruction-sequence
-        </span><span class="opn">(</span><span class="pln">end-with-linkage 
+        </span><span class="opn">(</span><span class="pln">end-with-linkage
          lambda-linkage
-         </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+         </span><span class="opn">(</span><span class="pln">make-instruction-sequence
           </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">list target</span><span class="clo">)</span><span class="pln">
-          </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign 
+          </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign
              </span><span class="pun">,</span><span class="pln">target
              </span><span class="opn">(</span><span class="pln">op make-compiled-procedure</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">label </span><span class="pun">,</span><span class="pln">proc-entry</span><span class="clo">)</span><span class="pln">
@@ -1098,11 +1098,11 @@ procedure result in <code>val</code>.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-lambda-body exp proc-entry</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">formals </span><span class="opn">(</span><span class="pln">lambda-parameters exp</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">append-instruction-sequences
-     </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+     </span><span class="opn">(</span><span class="pln">make-instruction-sequence
       </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env proc argl</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
       </span><span class="pun">`</span><span class="opn">(</span><span class="pun">,</span><span class="pln">proc-entry
-        </span><span class="opn">(</span><span class="pln">assign env 
+        </span><span class="opn">(</span><span class="pln">assign env
                 </span><span class="opn">(</span><span class="pln">op compiled-procedure-env</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">assign env
@@ -1123,11 +1123,11 @@ applications.  The code for a combination compiled with a given target and
 linkage has the form
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">compilation of operator</span><span class="pun">,</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">compilation of operator</span><span class="pun">,</span><span class="pln">
  target </span><code><span class="pln">proc</span></code><span class="pun">,</span><span class="pln"> linkage </span><code><span class="pln">next</span></code></em><span class="pln">⟩
-⟨</span><em><span class="pln">evaluate operands </span><span class="kwd">and</span><span class="pln"> construct 
+⟨</span><em><span class="pln">evaluate operands </span><span class="kwd">and</span><span class="pln"> construct
  argument list in </span><code><span class="pln">argl</span></code></em><span class="pln">⟩
-⟨</span><em><span class="pln">compilation of procedure call 
+⟨</span><em><span class="pln">compilation of procedure call
  with given target </span><span class="kwd">and</span><span class="pln"> linkage</span></em><span class="pln">⟩</span></pre></div>
 
 <p>The registers <code>env</code>, <code>proc</code>, and <code>argl</code> may have to be saved and
@@ -1151,21 +1151,21 @@ modify <code>proc</code>, which will be needed for the actual procedure applicat
 linkage in the procedure call.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-application 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-application
          exp target linkage</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">proc-code 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">proc-code
          </span><span class="opn">(</span><span class="pln">compile </span><span class="opn">(</span><span class="pln">operator exp</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'proc</span><span class="pln"> </span><span class="lit">'next</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">operand-codes
          </span><span class="opn">(</span><span class="pln">map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">operand</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">compile operand </span><span class="lit">'val</span><span class="pln"> </span><span class="lit">'next</span><span class="clo">))</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">operands exp</span><span class="clo">))))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">preserving 
+    </span><span class="opn">(</span><span class="pln">preserving
      </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env continue</span><span class="clo">)</span><span class="pln">
      proc-code
-     </span><span class="opn">(</span><span class="pln">preserving 
+     </span><span class="opn">(</span><span class="pln">preserving
       </span><span class="lit">'</span><span class="opn">(</span><span class="pln">proc continue</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">construct-arglist operand-codes</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">compile-procedure-call 
+      </span><span class="opn">(</span><span class="pln">compile-procedure-call
        target
        linkage</span><span class="clo">)))))</span></pre></div>
 
@@ -1210,17 +1210,17 @@ sequences from the order supplied by <code>compile-application</code>.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">construct-arglist operand-codes</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">operand-codes 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">operand-codes
          </span><span class="opn">(</span><span class="pln">reverse operand-codes</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? operand-codes</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
-         </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="pln">make-instruction-sequence
+         </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
          </span><span class="lit">'</span><span class="opn">(</span><span class="pln">argl</span><span class="clo">)</span><span class="pln">
          </span><span class="lit">'</span><span class="opn">((</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">const </span><span class="opn">(</span><span class="clo">)))))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">code-to-get-last-arg
                </span><span class="opn">(</span><span class="pln">append-instruction-sequences
                 </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> operand-codes</span><span class="clo">)</span><span class="pln">
-                </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+                </span><span class="opn">(</span><span class="pln">make-instruction-sequence
                  </span><span class="lit">'</span><span class="opn">(</span><span class="pln">val</span><span class="clo">)</span><span class="pln">
                  </span><span class="lit">'</span><span class="opn">(</span><span class="pln">argl</span><span class="clo">)</span><span class="pln">
                  </span><span class="lit">'</span><span class="opn">((</span><span class="pln">assign argl
@@ -1228,7 +1228,7 @@ sequences from the order supplied by <code>compile-application</code>.
                            </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)))))))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> operand-codes</span><span class="clo">))</span><span class="pln">
               code-to-get-last-arg
-              </span><span class="opn">(</span><span class="pln">preserving 
+              </span><span class="opn">(</span><span class="pln">preserving
                </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
                code-to-get-last-arg
                </span><span class="opn">(</span><span class="pln">code-to-get-rest-args
@@ -1236,10 +1236,10 @@ sequences from the order supplied by <code>compile-application</code>.
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">code-to-get-rest-args operand-codes</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">code-for-next-arg
-         </span><span class="opn">(</span><span class="pln">preserving 
+         </span><span class="opn">(</span><span class="pln">preserving
           </span><span class="lit">'</span><span class="opn">(</span><span class="pln">argl</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> operand-codes</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+          </span><span class="opn">(</span><span class="pln">make-instruction-sequence
            </span><span class="lit">'</span><span class="opn">(</span><span class="pln">val argl</span><span class="clo">)</span><span class="pln">
            </span><span class="lit">'</span><span class="opn">(</span><span class="pln">argl</span><span class="clo">)</span><span class="pln">
            </span><span class="lit">'</span><span class="opn">((</span><span class="pln">assign argl
@@ -1248,10 +1248,10 @@ sequences from the order supplied by <code>compile-application</code>.
                      </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">)))))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> operand-codes</span><span class="clo">))</span><span class="pln">
         code-for-next-arg
-        </span><span class="opn">(</span><span class="pln">preserving 
+        </span><span class="opn">(</span><span class="pln">preserving
          </span><span class="lit">'</span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
          code-for-next-arg
-         </span><span class="opn">(</span><span class="pln">code-to-get-rest-args 
+         </span><span class="opn">(</span><span class="pln">code-to-get-rest-args
           </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> operand-codes</span><span class="clo">))))))</span></pre></div>
 
 <a id="Applying-procedures"></a>
@@ -1271,7 +1271,7 @@ procedures.  The procedure-application code has the following form:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op primitive-procedure?</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label primitive-branch</span><span class="clo">))</span><span class="pln">
 compiled-branch
- ⟨</span><em><span class="pln">code to apply compiled procedure 
+ ⟨</span><em><span class="pln">code to apply compiled procedure
   with given target </span><span class="kwd">and</span><span class="pln"> appropriate linkage</span></em><span class="pln">⟩
 primitive-branch
  </span><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">target</span></var><span class="pln">⟩
@@ -1290,9 +1290,9 @@ in <code>compile-if</code>.)
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-procedure-call
          target linkage</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">primitive-branch 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">primitive-branch
          </span><span class="opn">(</span><span class="pln">make-label </span><span class="lit">'primitive-branch</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">compiled-branch 
+        </span><span class="opn">(</span><span class="pln">compiled-branch
          </span><span class="opn">(</span><span class="pln">make-label </span><span class="lit">'compiled-branch</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">after-call
          </span><span class="opn">(</span><span class="pln">make-label </span><span class="lit">'after-call</span><span class="clo">)))</span><span class="pln">
@@ -1301,18 +1301,18 @@ in <code>compile-if</code>.)
                after-call
                linkage</span><span class="clo">)))</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">append-instruction-sequences
-       </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+       </span><span class="opn">(</span><span class="pln">make-instruction-sequence
         </span><span class="lit">'</span><span class="opn">(</span><span class="pln">proc</span><span class="clo">)</span><span class="pln">
         </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
-        </span><span class="pun">`</span><span class="opn">((</span><span class="pln">test 
+        </span><span class="pun">`</span><span class="opn">((</span><span class="pln">test
            </span><span class="opn">(</span><span class="pln">op primitive-procedure?</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">branch 
+          </span><span class="opn">(</span><span class="pln">branch
            </span><span class="opn">(</span><span class="pln">label </span><span class="pun">,</span><span class="pln">primitive-branch</span><span class="clo">))))</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">parallel-instruction-sequences
         </span><span class="opn">(</span><span class="pln">append-instruction-sequences
          compiled-branch
-         </span><span class="opn">(</span><span class="pln">compile-proc-appl 
+         </span><span class="opn">(</span><span class="pln">compile-proc-appl
           target
           compiled-linkage</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">append-instruction-sequences
@@ -1322,7 +1322,7 @@ in <code>compile-if</code>.)
           </span><span class="opn">(</span><span class="pln">make-instruction-sequence
            </span><span class="lit">'</span><span class="opn">(</span><span class="pln">proc argl</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">list target</span><span class="clo">)</span><span class="pln">
-           </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign 
+           </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign
               </span><span class="pun">,</span><span class="pln">target
               </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln">
@@ -1348,14 +1348,14 @@ might expect the code for a compiled-procedure application (to be generated by
 the linkage is a label
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign continue 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign continue
         </span><span class="opn">(</span><span class="pln">label proc-return</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">assign val
          </span><span class="opn">(</span><span class="pln">op compiled-procedure-entry</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
 proc-return
- </span><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">target</span></var><span class="pln">⟩ 
+ </span><span class="opn">(</span><span class="pln">assign ⟨</span><var><span class="pln">target</span></var><span class="pln">⟩
          </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">   </span><span class="roman"><span class="com">; included if target is not </span><code><span class="com">val</span></code></span><span class="pln">
  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label ⟨</span><var><span class="pln">linkage</span></var><span class="pln">⟩</span><span class="clo">))</span><span class="pln">   </span><span class="roman"><span class="com">; linkage code</span></span>
 </pre></div>
@@ -1364,9 +1364,9 @@ proc-return
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">save continue</span><span class="clo">)</span><span class="pln">
- </span><span class="opn">(</span><span class="pln">assign continue 
+ </span><span class="opn">(</span><span class="pln">assign continue
          </span><span class="opn">(</span><span class="pln">label proc-return</span><span class="clo">))</span><span class="pln">
- </span><span class="opn">(</span><span class="pln">assign val 
+ </span><span class="opn">(</span><span class="pln">assign val
          </span><span class="opn">(</span><span class="pln">op compiled-procedure-entry</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
@@ -1396,7 +1396,7 @@ specified by the caller’s linkage:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="kwd">set</span><span class="pln"> up </span><code><span class="pln">continue</span></code><span class="pln"> for linkage</span></em><span class="pln">⟩
-</span><span class="opn">(</span><span class="pln">assign val 
+</span><span class="opn">(</span><span class="pln">assign val
         </span><span class="opn">(</span><span class="pln">op compiled-procedure-entry</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span></pre></div>
@@ -1407,7 +1407,7 @@ ends with becomes equivalent to the <code>(goto (label ⟨<var>linkage</var>⟩)
 <code>proc-return</code> above.)
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign continue 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign continue
         </span><span class="opn">(</span><span class="pln">label ⟨</span><var><span class="pln">linkage</span></var><span class="pln">⟩</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">assign val
         </span><span class="opn">(</span><span class="pln">op compiled-procedure-entry</span><span class="clo">)</span><span class="pln">
@@ -1452,26 +1452,26 @@ compiled procedure.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-proc-appl target linkage</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> target </span><span class="lit">'val</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> linkage </span><span class="lit">'return</span><span class="clo">)))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+         </span><span class="opn">(</span><span class="pln">make-instruction-sequence
           </span><span class="lit">'</span><span class="opn">(</span><span class="pln">proc</span><span class="clo">)</span><span class="pln">
           all-regs
           </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign continue </span><span class="opn">(</span><span class="pln">label </span><span class="pun">,</span><span class="pln">linkage</span><span class="clo">))</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">assign 
-             val 
+            </span><span class="opn">(</span><span class="pln">assign
+             val
              </span><span class="opn">(</span><span class="pln">op compiled-procedure-entry</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)))))</span><span class="pln">
         </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> target </span><span class="lit">'val</span><span class="clo">))</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> linkage </span><span class="lit">'return</span><span class="clo">)))</span><span class="pln">
-         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">proc-return 
+         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">proc-return
                 </span><span class="opn">(</span><span class="pln">make-label </span><span class="lit">'proc-return</span><span class="clo">)))</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
+           </span><span class="opn">(</span><span class="pln">make-instruction-sequence
             </span><span class="lit">'</span><span class="opn">(</span><span class="pln">proc</span><span class="clo">)</span><span class="pln">
             all-regs
-            </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign continue 
+            </span><span class="pun">`</span><span class="opn">((</span><span class="pln">assign continue
                       </span><span class="opn">(</span><span class="pln">label </span><span class="pun">,</span><span class="pln">proc-return</span><span class="clo">))</span><span class="pln">
-              </span><span class="opn">(</span><span class="pln">assign 
-               val 
+              </span><span class="opn">(</span><span class="pln">assign
+               val
                </span><span class="opn">(</span><span class="pln">op compiled-procedure-entry</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
@@ -1480,17 +1480,17 @@ compiled procedure.
               </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label </span><span class="pun">,</span><span class="pln">linkage</span><span class="clo">))))))</span><span class="pln">
         </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> target </span><span class="lit">'val</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> linkage </span><span class="lit">'return</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">make-instruction-sequence 
-          </span><span class="lit">'</span><span class="opn">(</span><span class="pln">proc continue</span><span class="clo">)</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="pln">make-instruction-sequence
+          </span><span class="lit">'</span><span class="opn">(</span><span class="pln">proc continue</span><span class="clo">)</span><span class="pln">
           all-regs
-          </span><span class="lit">'</span><span class="opn">((</span><span class="pln">assign 
-             val 
+          </span><span class="lit">'</span><span class="opn">((</span><span class="pln">assign
+             val
              </span><span class="opn">(</span><span class="pln">op compiled-procedure-entry</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)))))</span><span class="pln">
         </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">not </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> target </span><span class="lit">'val</span><span class="clo">))</span><span class="pln">
               </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> linkage </span><span class="lit">'return</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"return linkage, 
+         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"return linkage,
                  target not val: COMPILE"</span><span class="pln">
                 target</span><span class="clo">))))</span></pre></div>
 
@@ -1553,9 +1553,9 @@ needed by <code>seq2</code> and the registers modified by <code>seq1</code>.)  T
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">append-instruction-sequences </span><span class="pun">.</span><span class="pln"> seqs</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">append-2-sequences seq1 seq2</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">make-instruction-sequence
-     </span><span class="opn">(</span><span class="pln">list-union 
+     </span><span class="opn">(</span><span class="pln">list-union
       </span><span class="opn">(</span><span class="pln">registers-needed seq1</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">list-difference 
+      </span><span class="opn">(</span><span class="pln">list-difference
        </span><span class="opn">(</span><span class="pln">registers-needed seq2</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">registers-modified seq1</span><span class="clo">)))</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">list-union
@@ -1566,13 +1566,13 @@ needed by <code>seq2</code> and the registers modified by <code>seq1</code>.)  T
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">append-seq-list seqs</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? seqs</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">empty-instruction-sequence</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">append-2-sequences 
+        </span><span class="opn">(</span><span class="pln">append-2-sequences
          </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> seqs</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">append-seq-list </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> seqs</span><span class="clo">)))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">append-seq-list seqs</span><span class="clo">))</span></pre></div>
 
 <p>This procedure uses some simple operations for manipulating sets represented as
-lists, similar to the (unordered) set representation described in 
+lists, similar to the (unordered) set representation described in
 <a href="2_002e3.xhtml#g_t2_002e3_002e3">2.3.3</a>:
 </p>
 <div class="lisp">
@@ -1588,7 +1588,7 @@ lists, similar to the (unordered) set representation described in
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? s1</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">memq </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> s1</span><span class="clo">)</span><span class="pln"> s2</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">list-difference </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> s1</span><span class="clo">)</span><span class="pln"> s2</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> s1</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">list-difference </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> s1</span><span class="clo">)</span><span class="pln">
                                 s2</span><span class="clo">)))))</span></pre></div>
@@ -1614,14 +1614,14 @@ of registers to be preserved:<a class="footnote_link" id="DOCF327" href="#FOOT32
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? regs</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">append-instruction-sequences seq1 seq2</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">first-reg </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> regs</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">and</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">and</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">needs-register? seq2 first-reg</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="pln">modifies-register? seq1 
+             </span><span class="opn">(</span><span class="pln">modifies-register? seq1
                                  first-reg</span><span class="clo">))</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">preserving 
+            </span><span class="opn">(</span><span class="pln">preserving
              </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> regs</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">make-instruction-sequence
-              </span><span class="opn">(</span><span class="pln">list-union 
+              </span><span class="opn">(</span><span class="pln">list-union
                </span><span class="opn">(</span><span class="pln">list first-reg</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">registers-needed seq1</span><span class="clo">))</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">list-difference
@@ -1631,7 +1631,7 @@ of registers to be preserved:<a class="footnote_link" id="DOCF327" href="#FOOT32
                       </span><span class="opn">(</span><span class="pln">statements seq1</span><span class="clo">)</span><span class="pln">
                       </span><span class="pun">`</span><span class="opn">((</span><span class="pln">restore </span><span class="pun">,</span><span class="pln">first-reg</span><span class="clo">))))</span><span class="pln">
              seq2</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">preserving 
+            </span><span class="opn">(</span><span class="pln">preserving
              </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> regs</span><span class="clo">)</span><span class="pln">
              seq1
              seq2</span><span class="clo">)))))</span></pre></div>
@@ -1644,7 +1644,7 @@ which it is embedded.  We thus ignore the procedure body’s sets of needed and
 modified registers when we tack it onto the other sequence.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tack-on-instruction-sequence 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tack-on-instruction-sequence
          seq body-seq</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">make-instruction-sequence
    </span><span class="opn">(</span><span class="pln">registers-needed seq</span><span class="clo">)</span><span class="pln">
@@ -1661,7 +1661,7 @@ branch are still needed by the combined sequence, even if these are modified by
 the first branch.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">parallel-instruction-sequences 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">parallel-instruction-sequences
          seq1 seq2</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">make-instruction-sequence
    </span><span class="opn">(</span><span class="pln">list-union </span><span class="opn">(</span><span class="pln">registers-needed seq1</span><span class="clo">)</span><span class="pln">
@@ -1704,7 +1704,7 @@ linkage code in this case.  The skeleton of the compiled code is thus
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">save </span><code><span class="pln">env</span></code><span class="pln"> </span><span class="kwd">if</span><span class="pln"> modified by code to compute value</span></em><span class="pln">⟩
-  ⟨</span><em><span class="pln">compilation of definition value</span><span class="pun">,</span><span class="pln"> 
+  ⟨</span><em><span class="pln">compilation of definition value</span><span class="pun">,</span><span class="pln">
    target </span><code><span class="pln">val</span></code><span class="pun">,</span><span class="pln"> linkage </span><code><span class="pln">next</span></code></em><span class="pln">⟩
   ⟨</span><em><span class="pln">restore </span><code><span class="pln">env</span></code><span class="pln"> </span><span class="kwd">if</span><span class="pln"> saved above</span></em><span class="pln">⟩
   </span><span class="opn">(</span><span class="pln">perform </span><span class="opn">(</span><span class="pln">op define-variable!</span><span class="clo">)</span><span class="pln">
@@ -1769,18 +1769,18 @@ value of the conditional, which is the value computed by either of its
 branches, is the value of the procedure.)
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">save </span><code><span class="pln">continue</span></code><span class="pun">,</span><span class="pln"> </span><code><span class="pln">env</span></code><span class="pln"> </span><span class="kwd">if</span><span class="pln"> modified by 
+<pre class="lisp prettyprinted" style=""><span class="pln">⟨</span><em><span class="pln">save </span><code><span class="pln">continue</span></code><span class="pun">,</span><span class="pln"> </span><code><span class="pln">env</span></code><span class="pln"> </span><span class="kwd">if</span><span class="pln"> modified by
  predicate </span><span class="kwd">and</span><span class="pln"> needed by branches</span></em><span class="pln">⟩
-  ⟨</span><em><span class="pln">compilation of predicate</span><span class="pun">,</span><span class="pln"> 
+  ⟨</span><em><span class="pln">compilation of predicate</span><span class="pun">,</span><span class="pln">
    target </span><code><span class="pln">val</span></code><span class="pun">,</span><span class="pln"> linkage </span><code><span class="pln">next</span></code></em><span class="pln">⟩
   ⟨</span><em><span class="pln">restore </span><code><span class="pln">continue</span></code><span class="pun">,</span><span class="pln"> </span><code><span class="pln">env</span></code><span class="pln"> </span><span class="kwd">if</span><span class="pln"> saved above</span></em><span class="pln">⟩
   </span><span class="opn">(</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op false?</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label false-branch4</span><span class="clo">))</span><span class="pln">
 true-branch5
-  ⟨</span><em><span class="pln">compilation of true branch</span><span class="pun">,</span><span class="pln"> 
+  ⟨</span><em><span class="pln">compilation of true branch</span><span class="pun">,</span><span class="pln">
    target </span><code><span class="pln">val</span></code><span class="pun">,</span><span class="pln"> linkage </span><code><span class="pln">return</span></code></em><span class="pln">⟩
 false-branch4
-  ⟨</span><em><span class="pln">compilation of false branch</span><span class="pun">,</span><span class="pln"> 
+  ⟨</span><em><span class="pln">compilation of false branch</span><span class="pun">,</span><span class="pln">
    target </span><code><span class="pln">val</span></code><span class="pun">,</span><span class="pln"> linkage </span><code><span class="pln">return</span></code></em><span class="pln">⟩
 after-if3</span></pre></div>
 
@@ -1796,7 +1796,7 @@ the registers in question.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pln">  </span><span class="opn">(</span><span class="pln">assign proc </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">const </span><span class="pun">=</span><span class="clo">)</span><span class="pln"> 
+               </span><span class="opn">(</span><span class="pln">const </span><span class="pun">=</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">const </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
@@ -1844,32 +1844,32 @@ procedure call in the predicate and needed for the procedure call and the
 <pre class="lisp prettyprinted" style=""><span class="roman"><span class="com">;; construct the procedure and skip over code</span></span><span class="pln">
 </span><span class="roman"><span class="com">;; for the procedure body</span></span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val
-          </span><span class="opn">(</span><span class="pln">op make-compiled-procedure</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">label entry2</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="pln">op make-compiled-procedure</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">label entry2</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label after-lambda1</span><span class="clo">))</span><span class="pln">
 entry2     </span><span class="roman"><span class="com">; calls to </span><code><span class="com">factorial</span></code><span class="com"> will enter here</span></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign env 
+  </span><span class="opn">(</span><span class="pln">assign env
           </span><span class="opn">(</span><span class="pln">op compiled-procedure-env</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign env
-          </span><span class="opn">(</span><span class="pln">op extend-environment</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">const </span><span class="opn">(</span><span class="pln">n</span><span class="clo">))</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="pln">op extend-environment</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">const </span><span class="opn">(</span><span class="pln">n</span><span class="clo">))</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
 </span><span class="roman"><span class="com">;; begin actual procedure body</span></span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save continue</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save env</span><span class="clo">)</span><span class="pln">
 </span><span class="roman"><span class="com">;; compute </span><code><span class="com">(= n 1)</span></code></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign proc 
-          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">const </span><span class="pun">=</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign proc
+          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">const </span><span class="pun">=</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">const </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign val 
-          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">const n</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign val
+          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">const n</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op </span><span class="kwd">cons</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op primitive-procedure?</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
@@ -1881,9 +1881,9 @@ compiled-branch16
           </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
 primitive-branch17
-  </span><span class="opn">(</span><span class="pln">assign val 
-          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign val
+          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
 after-call15   </span><span class="roman"><span class="com">; </span><code><span class="com">val</span></code><span class="com"> now contains result of </span><code><span class="com">(= n 1)</span></code></span><span class="pln">
   </span><span class="opn">(</span><span class="pln">restore env</span><span class="clo">)</span><span class="pln">
@@ -1896,35 +1896,35 @@ true-branch5  </span><span class="roman"><span class="com">; return 1</span></sp
 
 false-branch4
 </span><span class="roman"><span class="com">;; compute and return </span><code><span class="com">(* (factorial (- n 1)) n)</span></code></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign proc 
-          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">const </span><span class="pun">*</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign proc
+          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">const </span><span class="pun">*</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save continue</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save proc</span><span class="clo">)</span><span class="pln">   </span><span class="roman"><span class="com">; save </span><code><span class="com">*</span></code></span><span class="com"> procedure</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign val 
-          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">const n</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign val
+          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">const n</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save argl</span><span class="clo">)</span><span class="pln">   </span><span class="roman"><span class="com">; save partial argument list for </span><code><span class="com">*</span></code></span><span class="pln">
-</span><span class="roman"><span class="com">;; compute </span><code><span class="com">(factorial (- n 1))</span></code><span class="com">,</span></span><span class="com"> </span><span class="pln">
+</span><span class="roman"><span class="com">;; compute </span><code><span class="com">(factorial (- n 1))</span></code><span class="com">,</span></span><span class="pln">
 </span><span class="roman"><span class="com">;; which is the other argument for </span><code><span class="com">*</span></code></span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign proc
-          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">const factorial</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">const factorial</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save proc</span><span class="clo">)</span><span class="pln">  </span><span class="roman"><span class="com">; save </span><code><span class="com">factorial</span></code><span class="com"> procedure</span></span><span class="pln">
 </span><span class="roman"><span class="com">;; compute </span><code><span class="com">(- n 1)</span></code><span class="com">, which is the argument for </span><code><span class="com">factorial</span></code></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign proc 
+  </span><span class="opn">(</span><span class="pln">assign proc
           </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">const </span><span class="pun">-</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="pln">const </span><span class="pun">-</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">const </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign val 
-          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">const n</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign val
+          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">const n</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op </span><span class="kwd">cons</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">test </span><span class="opn">(</span><span class="pln">op primitive-procedure?</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
@@ -1936,9 +1936,9 @@ compiled-branch7
           </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
 primitive-branch8
-  </span><span class="opn">(</span><span class="pln">assign val 
-          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign val
+          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
 
 after-call6   </span><span class="roman"><span class="com">; </span><code><span class="com">val</span></code><span class="com"> now contains result of </span><code><span class="com">(- n 1)</span></code></span><span class="pln">
@@ -1954,11 +1954,11 @@ compiled-branch10
           </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
 primitive-branch11
-  </span><span class="opn">(</span><span class="pln">assign val 
-          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign val
+          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
-after-call9      </span><span class="roman"><span class="com">; </span><code><span class="com">val</span></code><span class="com"> now contains result</span></span><span class="com"> </span><span class="pln">
+after-call9      </span><span class="roman"><span class="com">; </span><code><span class="com">val</span></code><span class="com"> now contains result</span></span><span class="pln">
                  </span><span class="roman"><span class="com">; of </span><code><span class="com">(factorial (- n 1))</span></code></span><span class="pln">
   </span><span class="opn">(</span><span class="pln">restore argl</span><span class="clo">)</span><span class="pln"> </span><span class="roman"><span class="com">; restore partial argument list for </span><code><span class="com">*</span></code></span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op </span><span class="kwd">cons</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
@@ -1975,18 +1975,18 @@ compiled-branch13
           </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
 primitive-branch14
-  </span><span class="opn">(</span><span class="pln">assign val 
-          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign val
+          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg continue</span><span class="clo">))</span><span class="pln">
 after-call12
 after-if3
 after-lambda1
 </span><span class="roman"><span class="com">;; assign the procedure to the variable </span><code><span class="com">factorial</span></code></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">perform </span><span class="opn">(</span><span class="pln">op define-variable!</span><span class="clo">)</span><span class="pln"> 
-           </span><span class="opn">(</span><span class="pln">const factorial</span><span class="clo">)</span><span class="pln"> 
-           </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">perform </span><span class="opn">(</span><span class="pln">op define-variable!</span><span class="clo">)</span><span class="pln">
+           </span><span class="opn">(</span><span class="pln">const factorial</span><span class="clo">)</span><span class="pln">
+           </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">const ok</span><span class="clo">))</span></pre></div>
 </blockquote>
@@ -2036,32 +2036,32 @@ produce the code shown in <a href="#Figure-5_002e18">Figure 5.18</a>?
 <a href="#Exercise-5_002e35">Exercise 5.35</a>.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">op make-compiled-procedure</span><span class="clo">)</span><span class="pln"> 
-            </span><span class="opn">(</span><span class="pln">label entry16</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">op make-compiled-procedure</span><span class="clo">)</span><span class="pln">
+            </span><span class="opn">(</span><span class="pln">label entry16</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label after-lambda15</span><span class="clo">))</span><span class="pln">
 entry16
   </span><span class="opn">(</span><span class="pln">assign env </span><span class="opn">(</span><span class="pln">op compiled-procedure-env</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign env </span><span class="opn">(</span><span class="pln">op extend-environment</span><span class="clo">)</span><span class="pln"> 
-              </span><span class="opn">(</span><span class="pln">const </span><span class="opn">(</span><span class="pln">x</span><span class="clo">))</span><span class="pln"> 
-              </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign env </span><span class="opn">(</span><span class="pln">op extend-environment</span><span class="clo">)</span><span class="pln">
+              </span><span class="opn">(</span><span class="pln">const </span><span class="opn">(</span><span class="pln">x</span><span class="clo">))</span><span class="pln">
+              </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign proc </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-               </span><span class="opn">(</span><span class="pln">const </span><span class="pun">+</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign proc </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+               </span><span class="opn">(</span><span class="pln">const </span><span class="pun">+</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save continue</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">save proc</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">save env</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign proc </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-               </span><span class="opn">(</span><span class="pln">const g</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign proc </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+               </span><span class="opn">(</span><span class="pln">const g</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save proc</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign proc </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-               </span><span class="opn">(</span><span class="pln">const </span><span class="pun">+</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign proc </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+               </span><span class="opn">(</span><span class="pln">const </span><span class="pun">+</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">const </span><span class="lit">2</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
-              </span><span class="opn">(</span><span class="pln">const x</span><span class="clo">)</span><span class="pln"> 
+              </span><span class="opn">(</span><span class="pln">const x</span><span class="clo">)</span><span class="pln">
               </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op </span><span class="kwd">cons</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln">
@@ -2078,7 +2078,7 @@ compiled-branch18
 primitive-branch19
   </span><span class="opn">(</span><span class="pln">assign val
           </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
 after-call17
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
@@ -2093,16 +2093,16 @@ compiled-branch21
           </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
 primitive-branch22
-  </span><span class="opn">(</span><span class="pln">assign val 
-          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">assign val
+          </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
 after-call20
   </span><span class="opn">(</span><span class="pln">assign argl </span><span class="opn">(</span><span class="pln">op list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">restore env</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val
-          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-          </span><span class="opn">(</span><span class="pln">const x</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+          </span><span class="opn">(</span><span class="pln">const x</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign argl
           </span><span class="opn">(</span><span class="pln">op </span><span class="kwd">cons</span><span class="clo">)</span><span class="pln">
@@ -2118,16 +2118,16 @@ compiled-branch24
               </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">))</span><span class="pln">
 primitive-branch25
-  </span><span class="opn">(</span><span class="pln">assign val 
+  </span><span class="opn">(</span><span class="pln">assign val
           </span><span class="opn">(</span><span class="pln">op apply-primitive-procedure</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">reg continue</span><span class="clo">))</span><span class="pln">
 after-call23
 after-lambda15
-  </span><span class="opn">(</span><span class="pln">perform </span><span class="opn">(</span><span class="pln">op define-variable!</span><span class="clo">)</span><span class="pln"> 
-           </span><span class="opn">(</span><span class="pln">const f</span><span class="clo">)</span><span class="pln"> 
-           </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">perform </span><span class="opn">(</span><span class="pln">op define-variable!</span><span class="clo">)</span><span class="pln">
+           </span><span class="opn">(</span><span class="pln">const f</span><span class="clo">)</span><span class="pln">
+           </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">const ok</span><span class="clo">))</span></pre></div>
 </blockquote>
@@ -2173,8 +2173,8 @@ use these primitive machine operations.  The expression <code>(+ a 1)</code> mig
 compiled into something as simple as<a class="footnote_link" id="DOCF328" href="#FOOT328"><sup>328</sup></a>
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln"> 
-            </span><span class="opn">(</span><span class="pln">const a</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">op lookup-variable-value</span><span class="clo">)</span><span class="pln">
+            </span><span class="opn">(</span><span class="pln">const a</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">reg env</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="pln">assign val </span><span class="opn">(</span><span class="pln">op </span><span class="pun">+</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln">
@@ -2272,7 +2272,7 @@ frame.
 <code>lexical-address-lookup</code>, that takes as arguments an environment and a
 <a id="index-lexical-address"></a>
 <em>lexical address</em> that consists of two numbers: a <a id="index-frame-number"></a>
-<em>frame number</em>, 
+<em>frame number</em>,
 which specifies how many frames to pass over, and a
 <a id="index-displacement-number"></a>
 <em>displacement number</em>, which specifies how many variables to pass over
@@ -2351,15 +2351,15 @@ the compile-time environment during the compilation of expression <code>⟨</cod
 <code>((y z) (a b c d e) (x y))</code>.  <code>Find-variable</code> should produce
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">find-variable 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">find-variable
  </span><span class="lit">'c</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="pln">y z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">a b c d e</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)))</span><span class="pln">
 </span><i><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="clo">)</span></i><span class="pln">
 
-</span><span class="opn">(</span><span class="pln">find-variable 
+</span><span class="opn">(</span><span class="pln">find-variable
  </span><span class="lit">'x</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="pln">y z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">a b c d e</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)))</span><span class="pln">
 </span><i><span class="opn">(</span><span class="lit">2</span><span class="pln"> </span><span class="lit">0</span><span class="clo">)</span></i><span class="pln">
 
-</span><span class="opn">(</span><span class="pln">find-variable 
+</span><span class="opn">(</span><span class="pln">find-variable
  </span><span class="lit">'w</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="pln">y z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">a b c d e</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)))</span><span class="pln">
 </span><i><span class="pln">not-found</span></i>
 </pre></div>
@@ -2387,7 +2387,7 @@ this section.
 that internal definitions for block structure should not be considered “real”
 <code>define</code>s.  Rather, a procedure body should be interpreted as if the
 internal variables being defined were installed as ordinary <code>lambda</code>
-variables initialized to their correct values using <code>set!</code>.  
+variables initialized to their correct values using <code>set!</code>.
 <a href="4_002e1.xhtml#g_t4_002e1_002e6">4.1.6</a> and <a href="4_002e1.xhtml#Exercise-4_002e16">Exercise 4.16</a> showed how to modify the metacircular
 interpreter to accomplish this by scanning out internal definitions.  Modify
 the compiler to perform the same transformation before it compiles a procedure
@@ -2487,7 +2487,7 @@ is set.<a class="footnote_link" id="DOCF334" href="#FOOT334"><sup>334</sup></a>
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="roman"><span class="com">;; branches if </span><code><span class="com">flag</span></code><span class="com"> is set:</span></span><span class="pln">
-</span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label external-entry</span><span class="clo">))</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label external-entry</span><span class="clo">))</span><span class="pln">
 read-eval-print-loop
   </span><span class="opn">(</span><span class="pln">perform </span><span class="opn">(</span><span class="pln">op initialize-stack</span><span class="clo">))</span><span class="pln">
   </span><span class="roman"><span class="pun">…</span></span>
@@ -2523,16 +2523,16 @@ evaluator.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compile-and-go expression</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">instructions
-         </span><span class="opn">(</span><span class="pln">assemble 
+         </span><span class="opn">(</span><span class="pln">assemble
           </span><span class="opn">(</span><span class="pln">statements
-           </span><span class="opn">(</span><span class="pln">compile 
+           </span><span class="opn">(</span><span class="pln">compile
             expression </span><span class="lit">'val</span><span class="pln"> </span><span class="lit">'return</span><span class="clo">))</span><span class="pln">
           eceval</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> the-global-environment
           </span><span class="opn">(</span><span class="pln">setup-environment</span><span class="clo">))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">set-register-contents! 
+    </span><span class="opn">(</span><span class="pln">set-register-contents!
      eceval </span><span class="lit">'val</span><span class="pln"> instructions</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">set-register-contents! 
+    </span><span class="opn">(</span><span class="pln">set-register-contents!
      eceval </span><span class="lit">'flag</span><span class="pln"> true</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">start eceval</span><span class="clo">)))</span></pre></div>
 
@@ -2559,7 +2559,7 @@ can examine the stack usage of compiled code:
 </pre></div>
 
 <p>Compare this example with the evaluation of <code>(factorial 5)</code> using the
-interpreted version of the same procedure, shown at the end of 
+interpreted version of the same procedure, shown at the end of
 <a href="5_002e4.xhtml#g_t5_002e4_002e4">5.4.4</a>.  The interpreted version required 144 pushes and a maximum stack
 depth of 28.  This illustrates the optimization that results from our
 compilation strategy.
@@ -2590,7 +2590,7 @@ machine by first compiling it with the compiler running on our original Lisp
 system, and linking it with a compiled version of the run-time
 library.<a class="footnote_link" id="DOCF338" href="#FOOT338"><sup>338</sup></a> Better yet, we can
 compile the compiler itself, and run this on the new machine to compile other
-Lisp programs.<a class="footnote_link" id="DOCF339" href="#FOOT339"><sup>339</sup></a>  Or we can compile one of the interpreters of 
+Lisp programs.<a class="footnote_link" id="DOCF339" href="#FOOT339"><sup>339</sup></a>  Or we can compile one of the interpreters of
 <a href="4_002e1.xhtml#g_t4_002e1">4.1</a> to produce an interpreter that runs on the new machine.
 </p>
 <blockquote>
@@ -2753,7 +2753,7 @@ storage-allocation routines and other run-time support.
 </p></blockquote>
 
 <blockquote>
-<p><strong><a id="Exercise-5_002e52"></a>Exercise 5.52:</strong> As a counterpoint to 
+<p><strong><a id="Exercise-5_002e52"></a>Exercise 5.52:</strong> As a counterpoint to
 <a href="#Exercise-5_002e51">Exercise 5.51</a>, modify the compiler so that it compiles Scheme procedures
 into sequences of C instructions.  Compile the metacircular evaluator of
 <a href="4_002e1.xhtml#g_t4_002e1">4.1</a> to produce a Scheme interpreter written in C.
@@ -2799,22 +2799,22 @@ is much like quoting it, except that anything in the list that is flagged with
 a comma is evaluated.
 </p>
 <p>For example, if the value of <code>linkage</code> is the symbol <code>branch25</code>,
-then the expression 
+then the expression
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pun">`</span><span class="opn">((</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label </span><span class="pun">,</span><span class="pln">linkage</span><span class="clo">)))</span></pre></div>
 
-<p>evaluates to the list 
-</p>	
-<div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">((</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label branch25</span><span class="clo">)))</span><span class="pln"> </span></pre></div>
-
-<p>Similarly, if the value of <code>x</code> is the list <code>(a b c)</code>, then 
+<p>evaluates to the list
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="pun">`</span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">,</span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> x</span><span class="clo">))</span><span class="pln"> </span></pre></div>
+<pre class="lisp prettyprinted" style=""><span class="opn">((</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label branch25</span><span class="clo">)))</span></pre></div>
 
-<p>evaluates to the list 
+<p>Similarly, if the value of <code>x</code> is the list <code>(a b c)</code>, then
+</p>
+<div class="lisp">
+<pre class="lisp prettyprinted" style=""><span class="pun">`</span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="pun">,</span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> x</span><span class="clo">))</span></pre></div>
+
+<p>evaluates to the list
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> a</span><span class="clo">)</span></pre></div>
@@ -2838,7 +2838,7 @@ generation of unique variable names in the query language, as follows:
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-label name</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">string-</span><span class="pun">&gt;</span><span class="pln">symbol
-   </span><span class="opn">(</span><span class="pln">string-append 
+   </span><span class="opn">(</span><span class="pln">string-append
     </span><span class="opn">(</span><span class="pln">symbol-</span><span class="pun">&gt;</span><span class="pln">string name</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">number-</span><span class="pun">&gt;</span><span class="pln">string </span><span class="opn">(</span><span class="pln">new-label-number</span><span class="clo">)))))</span></pre></div>
 </div>
@@ -2853,7 +2853,7 @@ procedures, analogous to the structure for compound procedures described in
   </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'compiled-procedure</span><span class="pln"> entry env</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compiled-procedure? proc</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">tagged-list? proc </span><span class="lit">'compiled-procedure</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compiled-procedure-entry c-proc</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compiled-procedure-entry c-proc</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> c-proc</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compiled-procedure-env c-proc</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">caddr</span><span class="pln"> c-proc</span><span class="clo">))</span></pre></div>
@@ -2956,7 +2956,7 @@ attempt to print the components of a compiled procedure:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">user-print object</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">compound-procedure? object</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">display 
+         </span><span class="opn">(</span><span class="pln">display
           </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'compound-procedure</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">procedure-parameters object</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">procedure-body object</span><span class="clo">)</span><span class="pln">

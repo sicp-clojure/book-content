@@ -58,7 +58,7 @@ be maintained in structures called <a id="index-environments"></a>
 <em>bindings</em>, which associate variable names with
 their corresponding values.  (A single frame may contain at most one binding
 for any variable.)  Each frame also has a pointer to its <a id="index-enclosing-environment"></a>
-<em>enclosing environment</em>, 
+<em>enclosing environment</em>,
 unless, for the purposes of discussion, the frame is considered
 to be <a id="index-global-1"></a>
 <em>global</em>.  The <a id="index-value-of-a-variable"></a>
@@ -181,7 +181,7 @@ environment, evaluate the procedure body.
 </p>
 <p>To show how this rule is followed, <a href="#Figure-3_002e3">Figure 3.3</a> illustrates the environment
 structure created by evaluating the expression <code>(square 5)</code> in the global
-environment, where <code>square</code> is the procedure generated in <a href="#Figure-3_002e2">Figure 3.2</a>.  
+environment, where <code>square</code> is the procedure generated in <a href="#Figure-3_002e2">Figure 3.2</a>.
 Applying the procedure results in the creation of a new environment,
 labeled E1 in the figure, that begins with a frame in which <code>x</code>, the
 formal parameter for the procedure, is bound to the argument 5.  The pointer
@@ -336,8 +336,8 @@ recursive version
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">factorial n</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">fact-iter </span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> n</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fact-iter product 
-                   counter 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fact-iter product
+                   counter
                    max-count</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;</span><span class="pln"> counter max-count</span><span class="clo">)</span><span class="pln">
       product
@@ -362,7 +362,7 @@ procedure
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-withdraw balance</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">amount</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;=</span><span class="pln"> balance amount</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance 
+        </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance
                      </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> balance amount</span><span class="clo">))</span><span class="pln">
                balance</span><span class="clo">)</span><span class="pln">
         </span><span class="str">"Insufficient funds"</span><span class="clo">)))</span></pre></div>
@@ -514,7 +514,7 @@ explicitly, using <code>let</code>, as follows:
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">balance initial-amount</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">amount</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;=</span><span class="pln"> balance amount</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance 
+          </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance
                        </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> balance amount</span><span class="clo">))</span><span class="pln">
                  balance</span><span class="clo">)</span><span class="pln">
           </span><span class="str">"Insufficient funds"</span><span class="clo">))))</span></pre></div>
@@ -639,8 +639,8 @@ of <a href="3_002e1.xhtml#g_t3_002e1_002e1">3.1.1</a>:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-account balance</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">withdraw amount</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;=</span><span class="pln"> balance amount</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance 
-                     </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> balance 
+        </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance
+                     </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> balance
                         amount</span><span class="clo">))</span><span class="pln">
                balance</span><span class="clo">)</span><span class="pln">
         </span><span class="str">"Insufficient funds"</span><span class="clo">))</span><span class="pln">
@@ -650,8 +650,8 @@ of <a href="3_002e1.xhtml#g_t3_002e1_002e1">3.1.1</a>:
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">dispatch m</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'withdraw</span><span class="clo">)</span><span class="pln"> withdraw</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'deposit</span><span class="clo">)</span><span class="pln"> deposit</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request: 
-                        MAKE-ACCOUNT"</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request:
+                        MAKE-ACCOUNT"</span><span class="pln">
                        m</span><span class="clo">))))</span><span class="pln">
   dispatch</span><span class="clo">)</span></pre></div>
 

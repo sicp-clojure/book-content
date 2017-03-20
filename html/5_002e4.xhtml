@@ -36,7 +36,7 @@ Next: <a href="5_002e5.xhtml#g_t5_002e5" accesskey="n" rel="next">5.5</a>, Prev:
 
 <p>In <a href="5_002e1.xhtml#g_t5_002e1">5.1</a> we saw how to transform simple Scheme programs into
 descriptions of register machines.  We will now perform this transformation on
-a more complex program, the metacircular evaluator of 
+a more complex program, the metacircular evaluator of
 <a href="4_002e1.xhtml#g_t4_002e1_002e1">4.1.1</a>–<a href="4_002e1.xhtml#g_t4_002e1_002e4">4.1.4</a>, which shows how the behavior of a Scheme interpreter
 can be described in terms of the procedures <code>eval</code> and <code>apply</code>. The
 <a id="index-explicit_002dcontrol-evaluator"></a>
@@ -46,7 +46,7 @@ evaluation process can be described in terms of operations on registers and
 stacks.  In addition, the explicit-control evaluator can serve as an
 implementation of a Scheme interpreter, written in a language that is very
 similar to the native machine language of conventional computers.  The
-evaluator can be executed by the register-machine simulator of 
+evaluator can be executed by the register-machine simulator of
 <a href="5_002e2.xhtml#g_t5_002e2">5.2</a>.  Alternatively, it can be used as a starting point for building a
 machine-language implementation of a Scheme evaluator, or even a
 special-purpose machine for evaluating Scheme expressions.  <a href="#Figure-5_002e16">Figure 5.16</a>
@@ -81,7 +81,7 @@ procedures for representing environments and other run-time data given in
 sections <a href="4_002e1.xhtml#g_t4_002e1_002e3">4.1.3</a> and <a href="4_002e1.xhtml#g_t4_002e1_002e4">4.1.4</a>.  In order to completely specify an
 evaluator that could be programmed in a low-level machine language or
 implemented in hardware, we would replace these operations by more elementary
-operations, using the list-structure implementation we described in 
+operations, using the list-structure implementation we described in
 <a href="5_002e3.xhtml#g_t5_002e3">5.3</a>.
 </p>
 <p>Our Scheme evaluator register machine includes a stack and seven registers:
@@ -166,10 +166,10 @@ ev-lambda
   </span><span class="opn">(</span><span class="pln">assign unev
           </span><span class="opn">(</span><span class="pln">op lambda-parameters</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg exp</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign exp 
+  </span><span class="opn">(</span><span class="pln">assign exp
           </span><span class="opn">(</span><span class="pln">op lambda-body</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg exp</span><span class="clo">))</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign val 
+  </span><span class="opn">(</span><span class="pln">assign val
           </span><span class="opn">(</span><span class="pln">op make-procedure</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg unev</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg exp</span><span class="clo">)</span><span class="pln">
@@ -258,7 +258,7 @@ made for the evaluation of the last operand, which is handled at
   </span><span class="opn">(</span><span class="pln">branch </span><span class="opn">(</span><span class="pln">label ev-appl-last-arg</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save env</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save unev</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign continue 
+  </span><span class="opn">(</span><span class="pln">assign continue
           </span><span class="opn">(</span><span class="pln">label ev-appl-accumulate-arg</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label eval-dispatch</span><span class="clo">))</span></pre></div>
 
@@ -271,7 +271,7 @@ operands in <code>unev</code>, and the argument-evaluation continues.
   </span><span class="opn">(</span><span class="pln">restore unev</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">restore env</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">restore argl</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign argl 
+  </span><span class="opn">(</span><span class="pln">assign argl
           </span><span class="opn">(</span><span class="pln">op adjoin-arg</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
@@ -290,12 +290,12 @@ application.<a class="footnote_link" id="DOCF308" href="#FOOT308"><sup>308</sup>
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pln">ev-appl-last-arg
-  </span><span class="opn">(</span><span class="pln">assign continue 
+  </span><span class="opn">(</span><span class="pln">assign continue
           </span><span class="opn">(</span><span class="pln">label ev-appl-accum-last-arg</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label eval-dispatch</span><span class="clo">))</span><span class="pln">
 ev-appl-accum-last-arg
   </span><span class="opn">(</span><span class="pln">restore argl</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign argl 
+  </span><span class="opn">(</span><span class="pln">assign argl
           </span><span class="opn">(</span><span class="pln">op adjoin-arg</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg val</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg argl</span><span class="clo">))</span><span class="pln">
@@ -368,7 +368,7 @@ forms the body of the procedure.  <code>Ev-sequence</code>, described below in
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pln">compound-apply
-  </span><span class="opn">(</span><span class="pln">assign unev 
+  </span><span class="opn">(</span><span class="pln">assign unev
           </span><span class="opn">(</span><span class="pln">op procedure-parameters</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg proc</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign env
@@ -563,7 +563,7 @@ the <code>if</code>.
   </span><span class="opn">(</span><span class="pln">assign continue </span><span class="opn">(</span><span class="pln">label ev-if-decide</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign exp </span><span class="opn">(</span><span class="pln">op if-predicate</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">reg exp</span><span class="clo">))</span><span class="pln">
   </span><span class="roman"><span class="com">; evaluate the predicate:</span></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label eval-dispatch</span><span class="clo">))</span><span class="pln">  </span></pre></div>
+  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label eval-dispatch</span><span class="clo">))</span></pre></div>
 
 <p>When we return from evaluating the predicate, we test whether it was true or
 false and, depending on the result, place either the consequent or the
@@ -597,7 +597,7 @@ assumed to be available as a machine operation.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pln">ev-assignment
-  </span><span class="opn">(</span><span class="pln">assign unev 
+  </span><span class="opn">(</span><span class="pln">assign unev
           </span><span class="opn">(</span><span class="pln">op assignment-variable</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg exp</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save unev</span><span class="clo">)</span><span class="pln">   </span><span class="roman"><span class="com">; save variable for later</span></span><span class="pln">
@@ -609,7 +609,7 @@ assumed to be available as a machine operation.
   </span><span class="opn">(</span><span class="pln">assign continue
           </span><span class="opn">(</span><span class="pln">label ev-assignment-1</span><span class="clo">))</span><span class="pln">
   </span><span class="roman"><span class="com">; evaluate the assignment value:</span></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label eval-dispatch</span><span class="clo">))</span><span class="pln">  
+  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label eval-dispatch</span><span class="clo">))</span><span class="pln">
 ev-assignment-1
   </span><span class="opn">(</span><span class="pln">restore continue</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">restore env</span><span class="clo">)</span><span class="pln">
@@ -626,18 +626,18 @@ ev-assignment-1
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pln">ev-definition
-  </span><span class="opn">(</span><span class="pln">assign unev 
+  </span><span class="opn">(</span><span class="pln">assign unev
           </span><span class="opn">(</span><span class="pln">op definition-variable</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg exp</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save unev</span><span class="clo">)</span><span class="pln">   </span><span class="roman"><span class="com">; save variable for later</span></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">assign exp 
+  </span><span class="opn">(</span><span class="pln">assign exp
           </span><span class="opn">(</span><span class="pln">op definition-value</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">reg exp</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save env</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">save continue</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">assign continue </span><span class="opn">(</span><span class="pln">label ev-definition-1</span><span class="clo">))</span><span class="pln">
   </span><span class="roman"><span class="com">; evaluate the definition value:</span></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label eval-dispatch</span><span class="clo">))</span><span class="pln">  
+  </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label eval-dispatch</span><span class="clo">))</span><span class="pln">
 ev-definition-1
   </span><span class="opn">(</span><span class="pln">restore continue</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">restore env</span><span class="clo">)</span><span class="pln">
@@ -651,7 +651,7 @@ ev-definition-1
 
 <blockquote>
 <p><strong><a id="Exercise-5_002e23"></a>Exercise 5.23:</strong> Extend the evaluator to handle
-derived expressions such as <code>cond</code>, <code>let</code>, and so on 
+derived expressions such as <code>cond</code>, <code>let</code>, and so on
 (<a href="4_002e1.xhtml#g_t4_002e1_002e2">4.1.2</a>).  You may “cheat” and assume that the syntax transformers such
 as <code>cond-&gt;if</code> are available as machine operations.<a class="footnote_link" id="DOCF313" href="#FOOT313"><sup>313</sup></a>
 </p></blockquote>
@@ -715,14 +715,14 @@ return to the driver loop.<a class="footnote_link" id="DOCF315" href="#FOOT315">
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="pln">unknown-expression-type
-  </span><span class="opn">(</span><span class="pln">assign 
+  </span><span class="opn">(</span><span class="pln">assign
    val
    </span><span class="opn">(</span><span class="pln">const unknown-expression-type-error</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label signal-error</span><span class="clo">))</span><span class="pln">
 unknown-procedure-type
   </span><span class="roman"><span class="com">; clean up stack (from </span><code><span class="com">apply-dispatch</span></code><span class="com">):</span></span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">restore continue</span><span class="clo">)</span><span class="pln">    
-  </span><span class="opn">(</span><span class="pln">assign 
+  </span><span class="opn">(</span><span class="pln">restore continue</span><span class="clo">)</span><span class="pln">
+  </span><span class="opn">(</span><span class="pln">assign
    val
    </span><span class="opn">(</span><span class="pln">const unknown-procedure-type-error</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">goto </span><span class="opn">(</span><span class="pln">label signal-error</span><span class="clo">))</span><span class="pln">
@@ -734,7 +734,7 @@ signal-error
 the driver loop, since it might not be empty after an error (such as an
 undefined variable) interrupts an evaluation.<a class="footnote_link" id="DOCF316" href="#FOOT316"><sup>316</sup></a>
 </p>
-<p>If we combine all the code fragments presented in 
+<p>If we combine all the code fragments presented in
 <a href="#g_t5_002e4_002e1">5.4.1</a>–<a href="#g_t5_002e4_002e4">5.4.4</a>, we can create an evaluator machine model that we can
 run using the register-machine simulator of <a href="5_002e2.xhtml#g_t5_002e2">5.2</a>.
 </p>
@@ -744,7 +744,7 @@ run using the register-machine simulator of <a href="5_002e2.xhtml#g_t5_002e2">5
    </span><span class="lit">'</span><span class="opn">(</span><span class="pln">exp env val proc argl continue unev</span><span class="clo">)</span><span class="pln">
    eceval-operations
    </span><span class="lit">'</span><span class="opn">(</span><span class="pln">read-eval-print-loop
-     ⟨</span><em><span class="pln">entire machine controller</span></em><span class="pln"> 
+     ⟨</span><em><span class="pln">entire machine controller</span></em><span class="pln">
       </span><em><span class="pln">as given above</span></em><span class="pln">⟩</span><span class="clo">)))</span></pre></div>
 
 <p>We must define Scheme procedures to simulate the operations used as primitives
@@ -754,9 +754,9 @@ in footnotes throughout <a href="#g_t5_002e4">5.4</a>.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> eceval-operations
-  </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'self-evaluating?</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'self-evaluating?</span><span class="pln">
               self-evaluating</span><span class="clo">)</span><span class="pln">
-        ⟨</span><em><span class="pln">complete list of operations</span></em><span class="pln"> 
+        ⟨</span><em><span class="pln">complete list of operations</span></em><span class="pln">
          </span><em><span class="pln">for eceval machine</span></em><span class="pln">⟩</span><span class="clo">))</span></pre></div>
 
 <p>Finally, we can initialize the global environment and run the evaluator:
@@ -798,7 +798,7 @@ design but also to monitor the performance of the simulated evaluator.  For
 example, one important factor in performance is how efficiently the evaluator
 uses the stack.  We can observe the number of stack operations required to
 evaluate various expressions by defining the evaluator register machine with
-the version of the simulator that collects statistics on stack use 
+the version of the simulator that collects statistics on stack use
 (<a href="5_002e2.xhtml#g_t5_002e2_002e4">5.2.4</a>), and adding an instruction at the evaluator’s <code>print-result</code>
 entry point to print the statistics:
 </p>
@@ -895,7 +895,7 @@ by two constants.
 </blockquote>
 
 <blockquote>
-<p><strong><a id="Exercise-5_002e27"></a>Exercise 5.27:</strong> For comparison with <a href="#Exercise-5_002e26">Exercise 5.26</a>, 
+<p><strong><a id="Exercise-5_002e27"></a>Exercise 5.27:</strong> For comparison with <a href="#Exercise-5_002e26">Exercise 5.26</a>,
 explore the behavior of the following procedure for computing factorials
 recursively:
 </p>
@@ -1095,7 +1095,7 @@ constant <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>n</mi>
     <mo stretchy="false">)</mo>
   </mrow>
-</math> can be expressed as 
+</math> can be expressed as
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi>a</mi>

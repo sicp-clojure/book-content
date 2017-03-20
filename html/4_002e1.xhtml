@@ -65,7 +65,7 @@ in which expressions to be evaluated in environments are reduced to procedures
 to be applied to arguments, which in turn are reduced to new expressions to be
 evaluated in new environments, and so on, until we get down to symbols, whose
 values are looked up in the environment, and to primitive procedures, which are
-applied directly (see <a href="#Figure-4_002e1">Figure 4.1</a>).<a class="footnote_link" id="DOCF208" href="#FOOT208"><sup>208</sup></a> 
+applied directly (see <a href="#Figure-4_002e1">Figure 4.1</a>).<a class="footnote_link" id="DOCF208" href="#FOOT208"><sup>208</sup></a>
 This evaluation cycle will be embodied by the interplay between the two
 critical procedures in the evaluator, <code>eval</code> and <code>apply</code>, which are
 described in <a href="#g_t4_002e1_002e1">4.1.1</a> (see <a href="#Figure-4_002e1">Figure 4.1</a>).
@@ -167,36 +167,36 @@ application.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">eval exp env</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">self-evaluating? exp</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">self-evaluating? exp</span><span class="clo">)</span><span class="pln">
          exp</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">lookup-variable-value exp env</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">quoted? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">quoted? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">text-of-quotation exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">assignment? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">assignment? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">eval-assignment exp env</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">definition? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">definition? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">eval-definition exp env</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">if</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">if</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">eval-if exp env</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="kwd">lambda</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">make-procedure 
+         </span><span class="opn">(</span><span class="pln">make-procedure
           </span><span class="opn">(</span><span class="pln">lambda-parameters exp</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">lambda-body exp</span><span class="clo">)</span><span class="pln">
           env</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="kwd">begin</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">eval-sequence 
-          </span><span class="opn">(</span><span class="pln">begin-actions exp</span><span class="clo">)</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="pln">eval-sequence
+          </span><span class="opn">(</span><span class="pln">begin-actions exp</span><span class="clo">)</span><span class="pln">
           env</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">cond</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">cond</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">cond-</span><span class="pun">&gt;</span><span class="kwd">if</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">application? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">apply </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">operator exp</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">)</span><span class="pln">
-                </span><span class="opn">(</span><span class="pln">list-of-values 
-                 </span><span class="opn">(</span><span class="pln">operands exp</span><span class="clo">)</span><span class="pln"> 
+                </span><span class="opn">(</span><span class="pln">list-of-values
+                 </span><span class="opn">(</span><span class="pln">operands exp</span><span class="clo">)</span><span class="pln">
                  env</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown expression 
+         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown expression
                  type: EVAL"</span><span class="pln"> exp</span><span class="clo">))))</span></pre></div>
 
 <p>For clarity, <code>eval</code> has been implemented as a case analysis using
@@ -224,21 +224,21 @@ the definition of <code>apply</code>:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">apply procedure arguments</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">primitive-procedure? procedure</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">apply-primitive-procedure 
-          procedure 
+         </span><span class="opn">(</span><span class="pln">apply-primitive-procedure
+          procedure
           arguments</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">compound-procedure? procedure</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">eval-sequence
            </span><span class="opn">(</span><span class="pln">procedure-body procedure</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">extend-environment
-             </span><span class="opn">(</span><span class="pln">procedure-parameters 
+             </span><span class="opn">(</span><span class="pln">procedure-parameters
               procedure</span><span class="clo">)</span><span class="pln">
              arguments
-             </span><span class="opn">(</span><span class="pln">procedure-environment 
+             </span><span class="opn">(</span><span class="pln">procedure-environment
               procedure</span><span class="clo">))))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown procedure 
-                 type: APPLY"</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown procedure
+                 type: APPLY"</span><span class="pln">
                 procedure</span><span class="clo">))))</span></pre></div>
 
 <a id="Procedure-arguments"></a>
@@ -255,8 +255,8 @@ corresponding values:<a class="footnote_link" id="DOCF209" href="#FOOT209"><sup>
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">no-operands? exps</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">first-operand exps</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">list-of-values 
-             </span><span class="opn">(</span><span class="pln">rest-operands exps</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">(</span><span class="pln">list-of-values
+             </span><span class="opn">(</span><span class="pln">rest-operands exps</span><span class="clo">)</span><span class="pln">
              env</span><span class="clo">))))</span></pre></div>
 
 <a id="Conditionals"></a>
@@ -291,11 +291,11 @@ which they occur.  The value returned is the value of the final expression.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">eval-sequence exps env</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">last-exp? exps</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">last-exp? exps</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">first-exp exps</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">first-exp exps</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">eval-sequence </span><span class="opn">(</span><span class="pln">rest-exps exps</span><span class="clo">)</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="pln">eval-sequence </span><span class="opn">(</span><span class="pln">rest-exps exps</span><span class="clo">)</span><span class="pln">
                         env</span><span class="clo">))))</span></pre></div>
 
 <a id="Assignments-and-definitions"></a>
@@ -308,7 +308,7 @@ environment.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">eval-assignment exp env</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">set-variable-value! 
+  </span><span class="opn">(</span><span class="pln">set-variable-value!
    </span><span class="opn">(</span><span class="pln">assignment-variable exp</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">assignment-value exp</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">)</span><span class="pln">
    env</span><span class="clo">)</span><span class="pln">
@@ -318,7 +318,7 @@ environment.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">eval-definition exp env</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">define-variable! 
+  </span><span class="opn">(</span><span class="pln">define-variable!
     </span><span class="opn">(</span><span class="pln">definition-variable exp</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="pln">definition-value exp</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">)</span><span class="pln">
     env</span><span class="clo">)</span><span class="pln">
@@ -398,7 +398,7 @@ identifies lists beginning with a designated symbol:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">assignment? exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">tagged-list? exp </span><span class="lit">'set!</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">assignment-variable exp</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">assignment-variable exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">assignment-value exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">caddr</span><span class="pln"> exp</span><span class="clo">))</span></pre></div>
@@ -435,7 +435,7 @@ identifies lists beginning with a designated symbol:
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">definition-value exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">symbol? </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">caddr</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">make-lambda 
+      </span><span class="opn">(</span><span class="pln">make-lambda
        </span><span class="opn">(</span><span class="kwd">cdadr</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">   </span><span class="roman"><span class="com">; formal parameters</span></span><span class="pln">
        </span><span class="opn">(</span><span class="kwd">cddr</span><span class="pln"> exp</span><span class="clo">))))</span><span class="pln"> </span><span class="roman"><span class="com">; body</span></span>
 </pre></div>
@@ -443,7 +443,7 @@ identifies lists beginning with a designated symbol:
 </li><li> <code>Lambda</code> expressions are lists that begin with the symbol <code>lambda</code>:
 
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">tagged-list? exp </span><span class="lit">'lambda</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lambda-parameters exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lambda-body exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cddr</span><span class="pln"> exp</span><span class="clo">))</span></pre></div>
@@ -473,12 +473,12 @@ identifies lists beginning with a designated symbol:
 expressions:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-if predicate 
-                 consequent 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-if predicate
+                 consequent
                  alternative</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'if</span><span class="pln"> 
-        predicate 
-        consequent 
+  </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'if</span><span class="pln">
+        predicate
+        consequent
         alternative</span><span class="clo">))</span></pre></div>
 
 </li><li> <code>Begin</code> packages a sequence of expressions into a single expression.  We
@@ -488,7 +488,7 @@ first expression and the rest of the expressions in the
 sequence.<a class="footnote_link" id="DOCF215" href="#FOOT215"><sup>215</sup></a>
 
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">begin</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">begin</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">tagged-list? exp </span><span class="lit">'begin</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">begin-actions exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">last-exp? seq</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> seq</span><span class="clo">)))</span><span class="pln">
@@ -556,14 +556,14 @@ expressions into <code>if</code> expressions.  A case analysis begins with
 <code>else</code> clause if its predicate is the symbol <code>else</code>.<a class="footnote_link" id="DOCF216" href="#FOOT216"><sup>216</sup></a>
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cond</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cond</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">tagged-list? exp </span><span class="lit">'cond</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-clauses exp</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> exp</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-else-clause? clause</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-predicate clause</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'else</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-predicate clause</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-predicate clause</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> clause</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-actions clause</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-actions clause</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> clause</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-</span><span class="pun">&gt;</span><span class="kwd">if</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">expand-clauses </span><span class="opn">(</span><span class="pln">cond-clauses exp</span><span class="clo">)))</span><span class="pln">
@@ -574,21 +574,21 @@ expressions into <code>if</code> expressions.  A case analysis begins with
             </span><span class="opn">(</span><span class="pln">rest </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> clauses</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cond-else-clause? first</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? rest</span><span class="clo">)</span><span class="pln">
-                </span><span class="opn">(</span><span class="pln">sequence-</span><span class="pun">&gt;</span><span class="pln">exp 
+                </span><span class="opn">(</span><span class="pln">sequence-</span><span class="pun">&gt;</span><span class="pln">exp
                  </span><span class="opn">(</span><span class="pln">cond-actions first</span><span class="clo">))</span><span class="pln">
-                </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"ELSE clause isn't 
+                </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"ELSE clause isn't
                         last: COND-&gt;IF"</span><span class="pln">
                        clauses</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">make-if </span><span class="opn">(</span><span class="pln">cond-predicate first</span><span class="clo">)</span><span class="pln">
-                     </span><span class="opn">(</span><span class="pln">sequence-</span><span class="pun">&gt;</span><span class="pln">exp 
+                     </span><span class="opn">(</span><span class="pln">sequence-</span><span class="pun">&gt;</span><span class="pln">exp
                       </span><span class="opn">(</span><span class="pln">cond-actions first</span><span class="clo">))</span><span class="pln">
-                     </span><span class="opn">(</span><span class="pln">expand-clauses 
+                     </span><span class="opn">(</span><span class="pln">expand-clauses
                       rest</span><span class="clo">))))))</span></pre></div>
 
 <p>Expressions (such as <code>cond</code>) that we choose to implement as syntactic
 transformations are called <a id="index-derived-expressions"></a>
 <em>derived expressions</em>.  <code>Let</code>
-expressions are also derived expressions (see 
+expressions are also derived expressions (see
 <a href="#Exercise-4_002e6">Exercise 4.6</a>).<a class="footnote_link" id="DOCF217" href="#FOOT217"><sup>217</sup></a>
 </p>
 <blockquote>
@@ -712,7 +712,7 @@ is it sufficient to add a clause to <code>eval</code> whose action is
 
 <blockquote>
 <p><strong><a id="Exercise-4_002e8"></a>Exercise 4.8:</strong> “Named <code>let</code>” is a variant
-of <code>let</code> that has the form 
+of <code>let</code> that has the form
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">let</span><span class="pln"> ⟨</span><var><span class="pln">var</span></var><span class="pln">⟩ ⟨</span><var><span class="pln">bindings</span></var><span class="pln">⟩ ⟨</span><var><span class="pln">body</span></var><span class="pln">⟩</span><span class="clo">)</span></pre></div>
@@ -721,7 +721,7 @@ of <code>let</code> that has the form
 except that <code>⟨</code><var>var</var><code>⟩</code> is bound within <code>⟨</code><var>body</var><code>⟩</code> to a procedure whose body
 is <code>⟨</code><var>body</var><code>⟩</code> and whose parameters are the variables in the <code>⟨</code><var>bindings</var><code>⟩</code>.
 Thus, one can repeatedly execute the <code>⟨</code><var>body</var><code>⟩</code> by invoking the procedure
-named <code>⟨</code><var>var</var><code>⟩</code>.  For example, the iterative Fibonacci procedure 
+named <code>⟨</code><var>var</var><code>⟩</code>.  For example, the iterative Fibonacci procedure
 (<a href="1_002e2.xhtml#g_t1_002e2_002e2">1.2.2</a>) can be rewritten using named <code>let</code> as follows:
 </p>
 <div class="lisp">
@@ -729,8 +729,8 @@ named <code>⟨</code><var>var</var><code>⟩</code>.  For example, the iterativ
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> fib-iter </span><span class="opn">((</span><span class="pln">a </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">b </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">count n</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> count </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
         b
-        </span><span class="opn">(</span><span class="pln">fib-iter </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> a b</span><span class="clo">)</span><span class="pln"> 
-                  a 
+        </span><span class="opn">(</span><span class="pln">fib-iter </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> a b</span><span class="clo">)</span><span class="pln">
+                  a
                   </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> count </span><span class="lit">1</span><span class="clo">)))))</span></pre></div>
 
 <p>Modify <code>let-&gt;combination</code> of <a href="#Exercise-4_002e6">Exercise 4.6</a> to also support named
@@ -796,7 +796,7 @@ procedures:
 </p>
 </li></ul>
 
-<p>These mechanisms for handling primitives are further described in 
+<p>These mechanisms for handling primitives are further described in
 <a href="#g_t4_002e1_002e4">4.1.4</a>.
 </p>
 <p>Compound procedures are constructed from parameters, procedure bodies, and
@@ -877,11 +877,11 @@ variables does not match the number of values.
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">length vars</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">length vals</span><span class="clo">))</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-frame vars vals</span><span class="clo">)</span><span class="pln"> base-env</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&lt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">length vars</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">length vals</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Too many arguments supplied"</span><span class="pln"> 
-                 vars 
+          </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Too many arguments supplied"</span><span class="pln">
+                 vars
                  vals</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Too few arguments supplied"</span><span class="pln"> 
-                 vars 
+          </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Too few arguments supplied"</span><span class="pln">
+                 vars
                  vals</span><span class="clo">))))</span></pre></div>
 
 <p>To look up a variable in an environment, we scan the list of variables in the
@@ -895,11 +895,11 @@ environment, we signal an “unbound variable” error.
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env-loop env</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan vars vals</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? vars</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="pln">env-loop 
+             </span><span class="opn">(</span><span class="pln">env-loop
               </span><span class="opn">(</span><span class="pln">enclosing-environment env</span><span class="clo">)))</span><span class="pln">
             </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> var </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> vars</span><span class="clo">))</span><span class="pln">
              </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> vals</span><span class="clo">))</span><span class="pln">
-            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vars</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vars</span><span class="clo">)</span><span class="pln">
                         </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vals</span><span class="clo">)))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> env the-empty-environment</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unbound variable"</span><span class="pln"> var</span><span class="clo">)</span><span class="pln">
@@ -917,11 +917,11 @@ value when we find it.
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env-loop env</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan vars vals</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? vars</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="pln">env-loop 
+             </span><span class="opn">(</span><span class="pln">env-loop
               </span><span class="opn">(</span><span class="pln">enclosing-environment env</span><span class="clo">)))</span><span class="pln">
             </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> var </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> vars</span><span class="clo">))</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">set-car! vals val</span><span class="clo">))</span><span class="pln">
-            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vars</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vars</span><span class="clo">)</span><span class="pln">
                         </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vals</span><span class="clo">)))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> env the-empty-environment</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unbound variable: SET!"</span><span class="pln"> var</span><span class="clo">)</span><span class="pln">
@@ -939,11 +939,11 @@ If no such binding exists, we adjoin one to the first frame.
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">frame </span><span class="opn">(</span><span class="pln">first-frame env</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan vars vals</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? vars</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="pln">add-binding-to-frame! 
+             </span><span class="opn">(</span><span class="pln">add-binding-to-frame!
               var val frame</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> var </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> vars</span><span class="clo">))</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">set-car! vals val</span><span class="clo">))</span><span class="pln">
-            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vars</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scan </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vars</span><span class="clo">)</span><span class="pln">
                         </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> vals</span><span class="clo">)))))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">scan </span><span class="opn">(</span><span class="pln">frame-variables frame</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">frame-values frame</span><span class="clo">))))</span></pre></div>
@@ -1012,7 +1012,7 @@ they can be used as variables in expressions to be evaluated.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">setup-environment</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">initial-env
-         </span><span class="opn">(</span><span class="pln">extend-environment 
+         </span><span class="opn">(</span><span class="pln">extend-environment
           </span><span class="opn">(</span><span class="pln">primitive-procedure-names</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">primitive-procedure-objects</span><span class="clo">)</span><span class="pln">
           the-empty-environment</span><span class="clo">)))</span><span class="pln">
@@ -1020,7 +1020,7 @@ they can be used as variables in expressions to be evaluated.
     </span><span class="opn">(</span><span class="pln">define-variable! </span><span class="lit">'false</span><span class="pln"> false initial-env</span><span class="clo">)</span><span class="pln">
     initial-env</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> the-global-environment 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> the-global-environment
   </span><span class="opn">(</span><span class="pln">setup-environment</span><span class="clo">))</span></pre></div>
 
 <p>It does not matter how we represent the primitive procedure objects, so long as
@@ -1034,7 +1034,7 @@ implements that primitive.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">primitive-procedure? proc</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">tagged-list? proc </span><span class="lit">'primitive</span><span class="clo">))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">primitive-implementation proc</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">primitive-implementation proc</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> proc</span><span class="clo">))</span></pre></div>
 
 <p><code>Setup-environment</code> will get the primitive names and implementation
@@ -1052,7 +1052,7 @@ procedures from a list:<a class="footnote_link" id="DOCF220" href="#FOOT220"><su
   </span><span class="opn">(</span><span class="pln">map </span><span class="kwd">car</span><span class="pln"> primitive-procedures</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">primitive-procedure-objects</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">proc</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">proc</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'primitive</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> proc</span><span class="clo">)))</span><span class="pln">
        primitive-procedures</span><span class="clo">))</span></pre></div>
 
@@ -1082,15 +1082,15 @@ the value of the expression from other output that may be printed.<a class="foot
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">driver-loop</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">prompt-for-input input-prompt</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">input </span><span class="opn">(</span><span class="pln">read</span><span class="clo">)))</span><span class="pln">
-    </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">output 
-           </span><span class="opn">(</span><span class="pln">eval input 
+    </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">output
+           </span><span class="opn">(</span><span class="pln">eval input
                  the-global-environment</span><span class="clo">)))</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">announce-output output-prompt</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">user-print output</span><span class="clo">)))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">driver-loop</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">prompt-for-input string</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">display string</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">newline</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">announce-output string</span><span class="clo">)</span><span class="pln">
@@ -1103,7 +1103,7 @@ even contain cycles).
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">user-print object</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">compound-procedure? object</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">display 
+      </span><span class="opn">(</span><span class="pln">display
        </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'compound-procedure</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">procedure-parameters object</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">procedure-body object</span><span class="clo">)</span><span class="pln">
@@ -1114,7 +1114,7 @@ even contain cycles).
 environment and start the driver loop.  Here is a sample interaction:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> the-global-environment 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> the-global-environment
   </span><span class="opn">(</span><span class="pln">setup-environment</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="pln">driver-loop</span><span class="clo">)</span><span class="pln">
@@ -1191,7 +1191,7 @@ the evaluator will be able to compute factorials.
 </figure>
 
 <p>From this perspective, our evaluator is seen to be a <a id="index-universal-machine"></a>
-<em>universal machine</em>.  
+<em>universal machine</em>.
 It mimics other machines when these are described as Lisp
 programs.<a class="footnote_link" id="DOCF223" href="#FOOT223"><sup>223</sup></a> This is striking. Try to imagine an analogous evaluator
 for electrical circuits.  This would be a circuit that takes as input a signal
@@ -1226,7 +1226,7 @@ environment.<a class="footnote_link" id="DOCF225" href="#FOOT225"><sup>225</sup>
 <p>and
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="lit">'</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list </span><span class="lit">5</span><span class="pln"> </span><span class="lit">5</span><span class="clo">))</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">eval </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="lit">'</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list </span><span class="lit">5</span><span class="pln"> </span><span class="lit">5</span><span class="clo">))</span><span class="pln">
       user-initial-environment</span><span class="clo">)</span></pre></div>
 
 <p>will both return 25.<a class="footnote_link" id="DOCF226" href="#FOOT226"><sup>226</sup></a>
@@ -1264,7 +1264,7 @@ definitions in sequence, extending the environment frame one definition at a
 time.  This is particularly convenient for interactive program development, in
 which the programmer needs to freely mix the application of procedures with the
 definition of new procedures.  However, if we think carefully about the
-internal definitions used to implement block structure (introduced in 
+internal definitions used to implement block structure (introduced in
 <a href="1_002e1.xhtml#g_t1_002e1_002e8">1.1.8</a>), we will find that name-by-name extension of the environment may
 not be the best way to define local variables.
 </p>
@@ -1562,12 +1562,12 @@ definitions:
   </span><span class="opn">((</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">even? odd?</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">even? even? odd? x</span><span class="clo">))</span><span class="pln">
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">ev? od? n</span><span class="clo">)</span><span class="pln">
-     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
-         true 
+     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
+         true
          </span><span class="opn">(</span><span class="pln">od? ⟨</span><span class="pun">??</span><span class="pln">⟩ ⟨</span><span class="pun">??</span><span class="pln">⟩ ⟨</span><span class="pun">??</span><span class="pln">⟩</span><span class="clo">)))</span><span class="pln">
    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">ev? od? n</span><span class="clo">)</span><span class="pln">
-     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
-         false 
+     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
+         false
          </span><span class="opn">(</span><span class="pln">ev? ⟨</span><span class="pun">??</span><span class="pln">⟩ ⟨</span><span class="pun">??</span><span class="pln">⟩ ⟨</span><span class="pun">??</span><span class="pln">⟩</span><span class="clo">)))))</span></pre></div>
 </li></ol>
 </blockquote>
@@ -1622,28 +1622,28 @@ procedures to which we dispatch perform only analysis, not full evaluation:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">self-evaluating? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze-self-evaluating exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">quoted? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">quoted? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze-quoted exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">variable? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze-variable exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">assignment? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">assignment? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze-assignment exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">definition? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">definition? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze-definition exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">if</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">if</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze-if exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">lambda</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">lambda</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze-lambda exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">begin</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
-         </span><span class="opn">(</span><span class="pln">analyze-sequence 
+        </span><span class="opn">((</span><span class="kwd">begin</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
+         </span><span class="opn">(</span><span class="pln">analyze-sequence
           </span><span class="opn">(</span><span class="pln">begin-actions exp</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">cond</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">cond</span><span class="pun">?</span><span class="pln"> exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze </span><span class="opn">(</span><span class="pln">cond-</span><span class="pun">&gt;</span><span class="kwd">if</span><span class="pln"> exp</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">application? exp</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">application? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">analyze-application exp</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown expression 
-                 type: ANALYZE"</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown expression
+                 type: ANALYZE"</span><span class="pln">
                 exp</span><span class="clo">))))</span></pre></div>
 
 <p>Here is the simplest syntactic analysis procedure, which handles
@@ -1668,7 +1668,7 @@ this depends upon knowing the environment.<a class="footnote_link" id="DOCF233" 
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-variable exp</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">lookup-variable-value exp env</span><span class="clo">)))</span></pre></div>
 
 <p><code>Analyze-assignment</code> also must defer actually setting the variable until
@@ -1681,16 +1681,16 @@ definitions.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-assignment exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">var </span><span class="opn">(</span><span class="pln">assignment-variable exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">vproc </span><span class="opn">(</span><span class="pln">analyze 
+        </span><span class="opn">(</span><span class="pln">vproc </span><span class="opn">(</span><span class="pln">analyze
                 </span><span class="opn">(</span><span class="pln">assignment-value exp</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">set-variable-value! 
+      </span><span class="opn">(</span><span class="pln">set-variable-value!
        var </span><span class="opn">(</span><span class="pln">vproc env</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">'ok</span><span class="clo">)))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-definition exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">var </span><span class="opn">(</span><span class="pln">definition-variable exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">vproc </span><span class="opn">(</span><span class="pln">analyze 
+        </span><span class="opn">(</span><span class="pln">vproc </span><span class="opn">(</span><span class="pln">analyze
                 </span><span class="opn">(</span><span class="pln">definition-value exp</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">define-variable! var </span><span class="opn">(</span><span class="pln">vproc env</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">)</span><span class="pln">
@@ -1716,9 +1716,9 @@ from evaluation of the <code>lambda</code> may be applied many times.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-lambda exp</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">vars </span><span class="opn">(</span><span class="pln">lambda-parameters exp</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">bproc </span><span class="opn">(</span><span class="pln">analyze-sequence 
+        </span><span class="opn">(</span><span class="pln">bproc </span><span class="opn">(</span><span class="pln">analyze-sequence
                 </span><span class="opn">(</span><span class="pln">lambda-body exp</span><span class="clo">))))</span><span class="pln">
-    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">make-procedure vars bproc env</span><span class="clo">))))</span></pre></div>
 
 <p>Analysis of a sequence of expressions (as in a <code>begin</code> or the body of a
@@ -1735,7 +1735,7 @@ procedure with the environment as argument.
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">loop first-proc rest-procs</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? rest-procs</span><span class="clo">)</span><span class="pln">
         first-proc
-        </span><span class="opn">(</span><span class="pln">loop </span><span class="opn">(</span><span class="pln">sequentially first-proc 
+        </span><span class="opn">(</span><span class="pln">loop </span><span class="opn">(</span><span class="pln">sequentially first-proc
                             </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> rest-procs</span><span class="clo">))</span><span class="pln">
               </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> rest-procs</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">procs </span><span class="opn">(</span><span class="pln">map analyze exps</span><span class="clo">)))</span><span class="pln">
@@ -1747,7 +1747,7 @@ procedure with the environment as argument.
 an execution procedure that calls the operator execution procedure (to obtain
 the actual procedure to be applied) and the operand execution procedures (to
 obtain the actual arguments).  We then pass these to
-<code>execute-application</code>, which is the analog of <code>apply</code> in 
+<code>execute-application</code>, which is the analog of <code>apply</code> in
 <a href="#g_t4_002e1_002e1">4.1.1</a>.  <code>Execute-application</code> differs from <code>apply</code> in that the
 procedure body for a compound procedure has already been analyzed, so there is
 no need to do further analysis.  Instead, we just call the execution procedure
@@ -1758,7 +1758,7 @@ for the body on the extended environment.
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">fproc </span><span class="opn">(</span><span class="pln">analyze </span><span class="opn">(</span><span class="pln">operator exp</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">aprocs </span><span class="opn">(</span><span class="pln">map analyze </span><span class="opn">(</span><span class="pln">operands exp</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">execute-application 
+      </span><span class="opn">(</span><span class="pln">execute-application
        </span><span class="opn">(</span><span class="pln">fproc env</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">map </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">aproc</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">aproc env</span><span class="clo">))</span><span class="pln">
             aprocs</span><span class="clo">)))))</span><span class="pln">
@@ -1768,11 +1768,11 @@ for the body on the extended environment.
          </span><span class="opn">(</span><span class="pln">apply-primitive-procedure proc args</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">compound-procedure? proc</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">((</span><span class="pln">procedure-body proc</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">extend-environment 
+          </span><span class="opn">(</span><span class="pln">extend-environment
            </span><span class="opn">(</span><span class="pln">procedure-parameters proc</span><span class="clo">)</span><span class="pln">
            args
            </span><span class="opn">(</span><span class="pln">procedure-environment proc</span><span class="clo">))))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown procedure type: 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown procedure type:
                       EXECUTE-APPLICATION"</span><span class="pln">
                      proc</span><span class="clo">))))</span></pre></div>
 
@@ -1789,22 +1789,22 @@ section to support the special form <code>let</code>.  (See <a href="#Exercise-4
 <p><strong><a id="Exercise-4_002e23"></a>Exercise 4.23:</strong> Alyssa P. Hacker doesn’t
 understand why <code>analyze-sequence</code> needs to be so complicated.  All the
 other analysis procedures are straightforward transformations of the
-corresponding evaluation procedures (or <code>eval</code> clauses) in 
+corresponding evaluation procedures (or <code>eval</code> clauses) in
 <a href="#g_t4_002e1_002e1">4.1.1</a>.  She expected <code>analyze-sequence</code> to look like this:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">analyze-sequence exps</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">execute-sequence procs env</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> procs</span><span class="clo">))</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> procs</span><span class="clo">))</span><span class="pln">
            </span><span class="opn">((</span><span class="kwd">car</span><span class="pln"> procs</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">car</span><span class="pln"> procs</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">)</span><span class="pln">
-                </span><span class="opn">(</span><span class="pln">execute-sequence 
+                </span><span class="opn">(</span><span class="pln">execute-sequence
                  </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> procs</span><span class="clo">)</span><span class="pln"> env</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">procs </span><span class="opn">(</span><span class="pln">map analyze exps</span><span class="clo">)))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? procs</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Empty sequence: 
+        </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Empty sequence:
                 ANALYZE"</span><span class="clo">))</span><span class="pln">
-    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">env</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">execute-sequence procs env</span><span class="clo">))))</span></pre></div>
 
 <p>Eva Lu Ator explains to Alyssa that the version in the text does more of the
@@ -1935,7 +1935,7 @@ transformation is called a <a id="index-macro"></a>
 <em>macro</em>.  Although it is easy to add an
 elementary mechanism for defining macros, the resulting language has subtle
 name-conflict problems.  There has been much research on mechanisms for macro
-definition that do not cause these difficulties.  See, for example, <a href="References.xhtml#Kohlbecker-1986">Kohlbecker 1986</a>, 
+definition that do not cause these difficulties.  See, for example, <a href="References.xhtml#Kohlbecker-1986">Kohlbecker 1986</a>,
 <a href="References.xhtml#Clinger-and-Rees-1991">Clinger and Rees 1991</a>, and <a href="References.xhtml#Hanson-1991">Hanson 1991</a>.</p>
 </div>
 <div id="FOOT218"><p><a class="footnote_backlink" href="#DOCF218"><sup>218</sup></a>
@@ -2023,7 +2023,7 @@ Some people find it counterintuitive that an evaluator, which
 is implemented by a relatively simple procedure, can emulate programs that are
 more complex than the evaluator itself.  The existence of a universal evaluator
 machine is a deep and wonderful property of computation.  <a id="index-Recursion-theory"></a>
-<em>Recursion theory</em>, 
+<em>Recursion theory</em>,
 a branch of mathematical logic, is concerned with logical limits of
 computation.  Douglas Hofstadter’s beautiful book <cite>Gödel, Escher, Bach</cite>
 explores some of these ideas (<a href="References.xhtml#Hofstadter-1979">Hofstadter 1979</a>).</p>

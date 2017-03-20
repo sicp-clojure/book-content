@@ -180,51 +180,51 @@ as the internal operations, the same <code>add-complex</code>, <code>sub-complex
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">install-complex-package</span><span class="clo">)</span><span class="pln">
-  </span><span class="roman"><span class="com">;; imported procedures from rectangular</span></span><span class="com"> </span><span class="pln">
+  </span><span class="roman"><span class="com">;; imported procedures from rectangular</span></span><span class="pln">
   </span><span class="roman"><span class="com">;; and polar packages</span></span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'make-from-real-imag</span><span class="pln"> 
-          </span><span class="lit">'rectangular</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'make-from-real-imag</span><span class="pln">
+          </span><span class="lit">'rectangular</span><span class="clo">)</span><span class="pln">
      x y</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'make-from-mag-ang</span><span class="pln"> </span><span class="lit">'polar</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">((</span><span class="pln">get </span><span class="lit">'make-from-mag-ang</span><span class="pln"> </span><span class="lit">'polar</span><span class="clo">)</span><span class="pln">
      r a</span><span class="clo">))</span><span class="pln">
   </span><span class="roman"><span class="com">;; internal procedures</span></span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-complex z1 z2</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">make-from-real-imag 
+    </span><span class="opn">(</span><span class="pln">make-from-real-imag
      </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z2</span><span class="clo">))</span><span class="pln">
      </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">sub-complex z1 z2</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">make-from-real-imag 
+    </span><span class="opn">(</span><span class="pln">make-from-real-imag
      </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z2</span><span class="clo">))</span><span class="pln">
      </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">imag-part z2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">mul-complex z1 z2</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">make-from-mag-ang 
+    </span><span class="opn">(</span><span class="pln">make-from-mag-ang
      </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z2</span><span class="clo">))</span><span class="pln">
      </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">div-complex z1 z2</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">make-from-mag-ang 
+    </span><span class="opn">(</span><span class="pln">make-from-mag-ang
      </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">magnitude z2</span><span class="clo">))</span><span class="pln">
      </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">angle z2</span><span class="clo">))))</span><span class="pln">
   </span><span class="roman"><span class="com">;; interface to rest of the system</span></span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tag z</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">attach-tag </span><span class="lit">'complex</span><span class="pln"> z</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'add</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">complex complex</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z1 z2</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z1 z2</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">add-complex z1 z2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'sub</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">complex complex</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z1 z2</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z1 z2</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">sub-complex z1 z2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'mul</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">complex complex</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z1 z2</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z1 z2</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">mul-complex z1 z2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'div</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">complex complex</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z1 z2</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z1 z2</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">div-complex z1 z2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'make-from-real-imag</span><span class="pln"> </span><span class="lit">'complex</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">make-from-real-imag x y</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'make-from-mag-ang</span><span class="pln"> </span><span class="lit">'complex</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">r a</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">r a</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">make-from-mag-ang r a</span><span class="clo">))))</span><span class="pln">
   </span><span class="lit">'done</span><span class="clo">)</span></pre></div>
 
@@ -248,7 +248,7 @@ outside world.
     <mn>4</mn>
     <mi>i</mi>
   </mrow>
-</math> in rectangular form, would be represented as shown in <a href="#Figure-2_002e24">Figure 2.24</a>.  
+</math> in rectangular form, would be represented as shown in <a href="#Figure-2_002e24">Figure 2.24</a>.
 The outer tag (<code>complex</code>) is used to direct the number to the
 complex package.  Once within the complex package, the next tag
 (<code>rectangular</code>) is used to direct the number to the rectangular package.
@@ -362,9 +362,9 @@ the table using the tag <code>(complex scheme-number)</code>:<a class="footnote_
   </span><span class="opn">(</span><span class="pln">make-from-real-imag </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">real-part z</span><span class="clo">)</span><span class="pln"> x</span><span class="clo">)</span><span class="pln">
                        </span><span class="opn">(</span><span class="pln">imag-part z</span><span class="clo">)))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="pln">put </span><span class="lit">'add</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">put </span><span class="lit">'add</span><span class="pln">
      </span><span class="lit">'</span><span class="opn">(</span><span class="pln">complex scheme-number</span><span class="clo">)</span><span class="pln">
-     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z x</span><span class="clo">)</span><span class="pln"> 
+     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">z x</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">add-complex-to-schemenum z x</span><span class="clo">))))</span></pre></div>
 
 <p>This technique works, but it is cumbersome.  With such a system, the cost of
@@ -407,14 +407,14 @@ to a complex number with that real part and zero imaginary part:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">scheme-number-</span><span class="pun">&gt;</span><span class="pln">complex n</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">make-complex-from-real-imag 
+  </span><span class="opn">(</span><span class="pln">make-complex-from-real-imag
    </span><span class="opn">(</span><span class="pln">contents n</span><span class="clo">)</span><span class="pln"> </span><span class="lit">0</span><span class="clo">))</span></pre></div>
 
 <p>We install these coercion procedures in a special coercion table, indexed under
 the names of the two types:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">put-coercion </span><span class="lit">'scheme-number</span><span class="pln"> </span><span class="lit">'complex</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">put-coercion </span><span class="lit">'scheme-number</span><span class="pln"> </span><span class="lit">'complex</span><span class="pln">
               scheme-number-</span><span class="pun">&gt;</span><span class="pln">complex</span><span class="clo">)</span></pre></div>
 
 <p>(We assume that there are <code>put-coercion</code> and <code>get-coercion</code>
@@ -451,26 +451,26 @@ procedure:
                     </span><span class="opn">(</span><span class="pln">type2 </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> type-tags</span><span class="clo">))</span><span class="pln">
                     </span><span class="opn">(</span><span class="pln">a1 </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> args</span><span class="clo">))</span><span class="pln">
                     </span><span class="opn">(</span><span class="pln">a2 </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> args</span><span class="clo">)))</span><span class="pln">
-                </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">t1-</span><span class="pun">&gt;</span><span class="pln">t2 
+                </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">t1-</span><span class="pun">&gt;</span><span class="pln">t2
                        </span><span class="opn">(</span><span class="pln">get-coercion type1
                                      type2</span><span class="clo">))</span><span class="pln">
-                      </span><span class="opn">(</span><span class="pln">t2-</span><span class="pun">&gt;</span><span class="pln">t1 
-                       </span><span class="opn">(</span><span class="pln">get-coercion type2 
+                      </span><span class="opn">(</span><span class="pln">t2-</span><span class="pun">&gt;</span><span class="pln">t1
+                       </span><span class="opn">(</span><span class="pln">get-coercion type2
                                      type1</span><span class="clo">)))</span><span class="pln">
                   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">(</span><span class="pln">t1-</span><span class="pun">&gt;</span><span class="pln">t2
-                         </span><span class="opn">(</span><span class="pln">apply-generic 
+                         </span><span class="opn">(</span><span class="pln">apply-generic
                           op </span><span class="opn">(</span><span class="pln">t1-</span><span class="pun">&gt;</span><span class="pln">t2 a1</span><span class="clo">)</span><span class="pln"> a2</span><span class="clo">))</span><span class="pln">
                         </span><span class="opn">(</span><span class="pln">t2-</span><span class="pun">&gt;</span><span class="pln">t1
-                         </span><span class="opn">(</span><span class="pln">apply-generic 
+                         </span><span class="opn">(</span><span class="pln">apply-generic
                           op a1 </span><span class="opn">(</span><span class="pln">t2-</span><span class="pun">&gt;</span><span class="pln">t1 a2</span><span class="clo">)))</span><span class="pln">
                         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-                         </span><span class="opn">(</span><span class="err">error</span><span class="pln"> 
-                          </span><span class="str">"No method for 
+                         </span><span class="opn">(</span><span class="err">error</span><span class="pln">
+                          </span><span class="str">"No method for
                            these types"</span><span class="pln">
-                          </span><span class="opn">(</span><span class="pln">list 
-                           op 
+                          </span><span class="opn">(</span><span class="pln">list
+                           op
                            type-tags</span><span class="clo">))))))</span><span class="pln">
-              </span><span class="opn">(</span><span class="err">error</span><span class="pln"> 
+              </span><span class="opn">(</span><span class="err">error</span><span class="pln">
                </span><span class="str">"No method for these types"</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">list op type-tags</span><span class="clo">)))))))</span></pre></div>
 
@@ -650,7 +650,7 @@ their own type.  For example, in addition to the
 </span><span class="opn">(</span><span class="pln">put-coercion </span><span class="lit">'scheme-number</span><span class="pln"> </span><span class="lit">'scheme-number</span><span class="pln">
               scheme-number-</span><span class="pun">&gt;</span><span class="pln">scheme-number</span><span class="clo">)</span><span class="pln">
 
-</span><span class="opn">(</span><span class="pln">put-coercion </span><span class="lit">'complex</span><span class="pln"> </span><span class="lit">'complex</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">put-coercion </span><span class="lit">'complex</span><span class="pln"> </span><span class="lit">'complex</span><span class="pln">
               complex-</span><span class="pun">&gt;</span><span class="pln">complex</span><span class="clo">)</span></pre></div>
 
 <ol>
@@ -661,7 +661,7 @@ the table for those types?  For example, assume that we’ve defined a generic
 exponentiation operation:
 
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">exp x y</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">exp x y</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">apply-generic </span><span class="lit">'exp</span><span class="pln"> x y</span><span class="clo">))</span></pre></div>
 
 <p>and have put a procedure for exponentiation in the Scheme-number
@@ -669,10 +669,10 @@ package but not in any other package:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="roman"><span class="com">;; following added to Scheme-number package</span></span><span class="pln">
-</span><span class="opn">(</span><span class="pln">put </span><span class="lit">'exp</span><span class="pln"> 
+</span><span class="opn">(</span><span class="pln">put </span><span class="lit">'exp</span><span class="pln">
      </span><span class="lit">'</span><span class="opn">(</span><span class="pln">scheme-number scheme-number</span><span class="clo">)</span><span class="pln">
-     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)</span><span class="pln"> 
-       </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">expt x y</span><span class="clo">))))</span><span class="pln"> 
+     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x y</span><span class="clo">)</span><span class="pln">
+       </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">expt x y</span><span class="clo">))))</span><span class="pln">
        </span><span class="roman"><span class="com">; using primitive </span><code><span class="com">expt</span></code></span>
 </pre></div>
 
@@ -722,7 +722,7 @@ adding new levels to the tower.
 for “simplifying” a data object by lowering it in the tower of types as far
 as possible.  Design a procedure <code>drop</code> that accomplishes this for the
 tower described in <a href="#Exercise-2_002e83">Exercise 2.83</a>.  The key is to decide, in some general
-way, whether an object can be lowered.  For example, the complex number 
+way, whether an object can be lowered.  For example, the complex number
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mn>1.5</mn>
@@ -951,30 +951,30 @@ called a <a id="index-poly"></a>
 terms.  We assume that we have selectors <code>variable</code> and <code>term-list</code>
 that extract those parts from a poly and a constructor <code>make-poly</code> that
 assembles a poly from a given variable and a term list.  A variable will be
-just a symbol, so we can use the <code>same-variable?</code>  procedure of 
+just a symbol, so we can use the <code>same-variable?</code>  procedure of
 <a href="2_002e3.xhtml#g_t2_002e3_002e2">2.3.2</a> to compare variables.  The following procedures define addition and
 multiplication of polys:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-poly p1 p2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">same-variable? </span><span class="opn">(</span><span class="pln">variable p1</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">same-variable? </span><span class="opn">(</span><span class="pln">variable p1</span><span class="clo">)</span><span class="pln">
                       </span><span class="opn">(</span><span class="pln">variable p2</span><span class="clo">))</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">make-poly 
+      </span><span class="opn">(</span><span class="pln">make-poly
        </span><span class="opn">(</span><span class="pln">variable p1</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">add-terms </span><span class="opn">(</span><span class="pln">term-list p1</span><span class="clo">)</span><span class="pln">
                   </span><span class="opn">(</span><span class="pln">term-list p2</span><span class="clo">)))</span><span class="pln">
-      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Polys not in same var: 
+      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Polys not in same var:
               ADD-POLY"</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">list p1 p2</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">mul-poly p1 p2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">same-variable? </span><span class="opn">(</span><span class="pln">variable p1</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">same-variable? </span><span class="opn">(</span><span class="pln">variable p1</span><span class="clo">)</span><span class="pln">
                       </span><span class="opn">(</span><span class="pln">variable p2</span><span class="clo">))</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">make-poly 
+      </span><span class="opn">(</span><span class="pln">make-poly
        </span><span class="opn">(</span><span class="pln">variable p1</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">mul-terms </span><span class="opn">(</span><span class="pln">term-list p1</span><span class="clo">)</span><span class="pln">
                   </span><span class="opn">(</span><span class="pln">term-list p2</span><span class="clo">)))</span><span class="pln">
-      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Polys not in same var: 
+      </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Polys not in same var:
               MUL-POLY"</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">list p1 p2</span><span class="clo">))))</span></pre></div>
 
@@ -992,11 +992,11 @@ similar to the ones in <a href="#g_t2_002e5_002e1">2.5.1</a>:
     </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> variable term-list</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">variable p</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> p</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">term-list p</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> p</span><span class="clo">))</span><span class="pln">
-  ⟨</span><em><span class="pln">procedures </span><code><span class="pln">same-variable?</span></code><span class="pln"> 
+  ⟨</span><em><span class="pln">procedures </span><code><span class="pln">same-variable?</span></code><span class="pln">
    </span><span class="kwd">and</span><span class="pln"> </span><code><span class="pln">variable?</span></code><span class="pln"> from section </span><span class="lit">2.3.2</span></em><span class="pln">⟩
 
   </span><span class="roman"><span class="com">;; representation of terms and term lists</span></span><span class="pln">
-  ⟨</span><em><span class="pln">procedures </span><code><span class="pln">adjoin-term</span></code><span class="pln"> </span><span class="roman"><span class="pun">…</span></span><span class="pln"> </span><code><span class="pln">coeff</span></code><span class="pln"> 
+  ⟨</span><em><span class="pln">procedures </span><code><span class="pln">adjoin-term</span></code><span class="pln"> </span><span class="roman"><span class="pun">…</span></span><span class="pln"> </span><code><span class="pln">coeff</span></code><span class="pln">
   from text below</span></em><span class="pln">⟩
 
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-poly p1 p2</span><span class="clo">)</span><span class="pln"> </span><span class="roman"><span class="pun">…</span></span><span class="clo">)</span><span class="pln">
@@ -1007,13 +1007,13 @@ similar to the ones in <a href="#g_t2_002e5_002e1">2.5.1</a>:
   </span><span class="roman"><span class="com">;; interface to rest of the system</span></span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tag p</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">attach-tag </span><span class="lit">'polynomial</span><span class="pln"> p</span><span class="clo">))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'add</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">polynomial polynomial</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">p1 p2</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">p1 p2</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">add-poly p1 p2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'mul</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">polynomial polynomial</span><span class="clo">)</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">p1 p2</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">p1 p2</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">mul-poly p1 p2</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">put </span><span class="lit">'make</span><span class="pln"> </span><span class="lit">'polynomial</span><span class="pln">
-       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">var terms</span><span class="clo">)</span><span class="pln"> 
+       </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">var terms</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">tag </span><span class="opn">(</span><span class="pln">make-poly var terms</span><span class="clo">))))</span><span class="pln">
   </span><span class="lit">'done</span><span class="clo">)</span></pre></div>
 
@@ -1045,26 +1045,26 @@ polynomials:<a class="footnote_link" id="DOCF122" href="#FOOT122"><sup>122</sup>
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">empty-termlist? L1</span><span class="clo">)</span><span class="pln"> L2</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">empty-termlist? L2</span><span class="clo">)</span><span class="pln"> L1</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">t1 </span><span class="opn">(</span><span class="pln">first-term L1</span><span class="clo">))</span><span class="pln"> 
+         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">t1 </span><span class="opn">(</span><span class="pln">first-term L1</span><span class="clo">))</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">t2 </span><span class="opn">(</span><span class="pln">first-term L2</span><span class="clo">)))</span><span class="pln">
            </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">&gt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t2</span><span class="clo">))</span><span class="pln">
                   </span><span class="opn">(</span><span class="pln">adjoin-term
-                   t1 
-                   </span><span class="opn">(</span><span class="pln">add-terms </span><span class="opn">(</span><span class="pln">rest-terms L1</span><span class="clo">)</span><span class="pln"> 
+                   t1
+                   </span><span class="opn">(</span><span class="pln">add-terms </span><span class="opn">(</span><span class="pln">rest-terms L1</span><span class="clo">)</span><span class="pln">
                               L2</span><span class="clo">)))</span><span class="pln">
                  </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t2</span><span class="clo">))</span><span class="pln">
                   </span><span class="opn">(</span><span class="pln">adjoin-term
-                   t2 
-                   </span><span class="opn">(</span><span class="pln">add-terms 
-                    L1 
+                   t2
+                   </span><span class="opn">(</span><span class="pln">add-terms
+                    L1
                     </span><span class="opn">(</span><span class="pln">rest-terms L2</span><span class="clo">))))</span><span class="pln">
                  </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
                   </span><span class="opn">(</span><span class="pln">adjoin-term
-                   </span><span class="opn">(</span><span class="pln">make-term 
+                   </span><span class="opn">(</span><span class="pln">make-term
                     </span><span class="opn">(</span><span class="pln">order t1</span><span class="clo">)</span><span class="pln">
-                    </span><span class="opn">(</span><span class="pln">add </span><span class="opn">(</span><span class="pln">coeff t1</span><span class="clo">)</span><span class="pln"> 
+                    </span><span class="opn">(</span><span class="pln">add </span><span class="opn">(</span><span class="pln">coeff t1</span><span class="clo">)</span><span class="pln">
                          </span><span class="opn">(</span><span class="pln">coeff t2</span><span class="clo">)))</span><span class="pln">
-                   </span><span class="opn">(</span><span class="pln">add-terms 
+                   </span><span class="opn">(</span><span class="pln">add-terms
                     </span><span class="opn">(</span><span class="pln">rest-terms L1</span><span class="clo">)</span><span class="pln">
                     </span><span class="opn">(</span><span class="pln">rest-terms L2</span><span class="clo">)))))))))</span></pre></div>
 
@@ -1084,8 +1084,8 @@ factors:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">mul-terms L1 L2</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-termlist? L1</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">the-empty-termlist</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">add-terms 
-       </span><span class="opn">(</span><span class="pln">mul-term-by-all-terms 
+      </span><span class="opn">(</span><span class="pln">add-terms
+       </span><span class="opn">(</span><span class="pln">mul-term-by-all-terms
         </span><span class="opn">(</span><span class="pln">first-term L1</span><span class="clo">)</span><span class="pln"> L2</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">mul-terms </span><span class="opn">(</span><span class="pln">rest-terms L1</span><span class="clo">)</span><span class="pln"> L2</span><span class="clo">))))</span><span class="pln">
 
@@ -1094,18 +1094,18 @@ factors:
       </span><span class="opn">(</span><span class="pln">the-empty-termlist</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">t2 </span><span class="opn">(</span><span class="pln">first-term L</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="pln">adjoin-term
-         </span><span class="opn">(</span><span class="pln">make-term 
+         </span><span class="opn">(</span><span class="pln">make-term
           </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t2</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">mul </span><span class="opn">(</span><span class="pln">coeff t1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">coeff t2</span><span class="clo">)))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">mul-term-by-all-terms 
-          t1 
+         </span><span class="opn">(</span><span class="pln">mul-term-by-all-terms
+          t1
           </span><span class="opn">(</span><span class="pln">rest-terms L</span><span class="clo">))))))</span></pre></div>
 
 <p>This is really all there is to polynomial addition and multiplication.  Notice
 that, since we operate on terms using the generic procedures <code>add</code> and
 <code>mul</code>, our polynomial package is automatically able to handle any type of
 coefficient that is known about by the generic arithmetic package.  If we
-include a coercion mechanism such as one of those discussed in 
+include a coercion mechanism such as one of those discussed in
 <a href="#g_t2_002e5_002e2">2.5.2</a>, then we also are automatically able to handle operations on
 polynomials of different coefficient types, such as
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -1132,28 +1132,30 @@ polynomials of different coefficient types, such as
   <mrow class="MJX-TeXAtom-ORD">
     <mrow>
       <mo>[</mo>
-      <msup>
-        <mi>x</mi>
-        <mn>4</mn>
-      </msup>
-      <mo>+</mo>
-      <mrow class="MJX-TeXAtom-ORD">
-        <mfrac>
+      <mrow>
+        <msup>
+          <mi>x</mi>
+          <mn>4</mn>
+        </msup>
+        <mo>+</mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mfrac>
+            <mn>2</mn>
+            <mn>3</mn>
+          </mfrac>
+        </mrow>
+        <msup>
+          <mi>x</mi>
           <mn>2</mn>
-          <mn>3</mn>
-        </mfrac>
+        </msup>
+        <mo>+</mo>
+        <mo stretchy="false">(</mo>
+        <mn>5</mn>
+        <mo>+</mo>
+        <mn>3</mn>
+        <mi>i</mi>
+        <mo stretchy="false">)</mo>
       </mrow>
-      <msup>
-        <mi>x</mi>
-        <mn>2</mn>
-      </msup>
-      <mo>+</mo>
-      <mo stretchy="false">(</mo>
-      <mn>5</mn>
-      <mo>+</mo>
-      <mn>3</mn>
-      <mi>i</mi>
-      <mo stretchy="false">)</mo>
       <mo>]</mo>
     </mrow>
     <mo>.</mo>
@@ -1348,9 +1350,9 @@ constructors for terms and term lists is straightforward:<a class="footnote_link
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">the-empty-termlist</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">first-term term-list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> term-list</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">rest-terms term-list</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> term-list</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-termlist? term-list</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-termlist? term-list</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">null? term-list</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-term order coeff</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-term order coeff</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">list order coeff</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order term</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> term</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">coeff term</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> term</span><span class="clo">))</span></pre></div>
@@ -1388,7 +1390,7 @@ polynomials.
 <p><strong><a id="Exercise-2_002e90"></a>Exercise 2.90:</strong> Suppose we want to have a
 polynomial system that is efficient for both sparse and dense polynomials.  One
 way to do this is to allow both kinds of term-list representations in our
-system.  The situation is analogous to the complex-number example of 
+system.  The situation is analogous to the complex-number example of
 <a href="2_002e4.xhtml#g_t2_002e4">2.4</a>, where we allowed both rectangular and polar representations.  To do
 this we must distinguish different types of term lists and make the operations
 on term lists generic.  Redesign the polynomial system to implement this
@@ -1465,18 +1467,18 @@ arguments and returns a list of the quotient and remainder polys.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">div-terms L1 L2</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">empty-termlist? L1</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">the-empty-termlist</span><span class="clo">)</span><span class="pln"> 
+      </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">the-empty-termlist</span><span class="clo">)</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">the-empty-termlist</span><span class="clo">))</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">t1 </span><span class="opn">(</span><span class="pln">first-term L1</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">t2 </span><span class="opn">(</span><span class="pln">first-term L2</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t2</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t1</span><span class="clo">))</span><span class="pln">
             </span><span class="opn">(</span><span class="pln">list </span><span class="opn">(</span><span class="pln">the-empty-termlist</span><span class="clo">)</span><span class="pln"> L1</span><span class="clo">)</span><span class="pln">
-            </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">new-c </span><span class="opn">(</span><span class="pln">div </span><span class="opn">(</span><span class="pln">coeff t1</span><span class="clo">)</span><span class="pln"> 
+            </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">new-c </span><span class="opn">(</span><span class="pln">div </span><span class="opn">(</span><span class="pln">coeff t1</span><span class="clo">)</span><span class="pln">
                               </span><span class="opn">(</span><span class="pln">coeff t2</span><span class="clo">)))</span><span class="pln">
-                  </span><span class="opn">(</span><span class="pln">new-o </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t1</span><span class="clo">)</span><span class="pln"> 
+                  </span><span class="opn">(</span><span class="pln">new-o </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">order t1</span><span class="clo">)</span><span class="pln">
                             </span><span class="opn">(</span><span class="pln">order t2</span><span class="clo">))))</span><span class="pln">
               </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">rest-of-result
-                     ⟨</span><var><span class="pln">compute rest of result 
+                     ⟨</span><var><span class="pln">compute rest of result
                      recursively</span></var><span class="pln">⟩ </span><span class="clo">))</span><span class="pln">
                 ⟨</span><var><span class="pln">form complete result</span></var><span class="pln">⟩ </span><span class="clo">))))))</span></pre></div>
 </blockquote>
@@ -1538,7 +1540,7 @@ polynomials works for polynomials in different variables.  (This is not easy!)
 <h5 class="subsubheading">Extended exercise: Rational functions</h5>
 
 <p>We can extend our generic arithmetic system to include <a id="index-rational-functions"></a>
-<em>rational functions</em>.  
+<em>rational functions</em>.
 These are “fractions” whose numerator and denominator are
 polynomials, such as
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -1699,12 +1701,12 @@ polys are not in the same variable.)  Install in the system a generic operation
 and to ordinary <code>gcd</code> for ordinary numbers.  As a test, try
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p1 
-  </span><span class="opn">(</span><span class="pln">make-polynomial 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p1
+  </span><span class="opn">(</span><span class="pln">make-polynomial
    </span><span class="lit">'x</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="lit">4</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="lit">3</span><span class="pln"> </span><span class="lit">-1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="lit">2</span><span class="pln"> </span><span class="lit">-2</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="clo">))))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p2 
-  </span><span class="opn">(</span><span class="pln">make-polynomial 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p2
+  </span><span class="opn">(</span><span class="pln">make-polynomial
    </span><span class="lit">'x</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="lit">3</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="lit">1</span><span class="pln"> </span><span class="lit">-1</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="pln">greatest-common-divisor p1 p2</span><span class="clo">)</span></pre></div>
@@ -2017,13 +2019,13 @@ expressions in either integers or polynomials.  To test your program, try the
 example at the beginning of this extended exercise:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p1 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p1
   </span><span class="opn">(</span><span class="pln">make-polynomial </span><span class="lit">'x</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="clo">))))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p2 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p2
   </span><span class="opn">(</span><span class="pln">make-polynomial </span><span class="lit">'x</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="lit">3</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="lit">0</span><span class="pln"> </span><span class="lit">-1</span><span class="clo">))))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p3 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p3
   </span><span class="opn">(</span><span class="pln">make-polynomial </span><span class="lit">'x</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="clo">))))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p4 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> p4
   </span><span class="opn">(</span><span class="pln">make-polynomial </span><span class="lit">'x</span><span class="pln"> </span><span class="lit">'</span><span class="opn">((</span><span class="lit">2</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="lit">0</span><span class="pln"> </span><span class="lit">-1</span><span class="clo">))))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> rf1 </span><span class="opn">(</span><span class="pln">make-rational p1 p2</span><span class="clo">))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> rf2 </span><span class="opn">(</span><span class="pln">make-rational p3 p4</span><span class="clo">))</span><span class="pln">
@@ -2207,7 +2209,7 @@ integer “measure” <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>x</mi>
     <mo stretchy="false">)</mo>
   </mrow>
-</math> with the properties that 
+</math> with the properties that
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi>m</mi>

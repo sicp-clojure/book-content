@@ -77,14 +77,14 @@ its denominator.  Let us further assume that the constructor and selectors are
 available as procedures:
 </p>
 <ul>
-<li> <code>(make-rat ⟨<var>n</var>⟩ ⟨<var>d</var>⟩)</code> returns the rational number whose numerator 
-is the integer <code>⟨<var>n</var>⟩</code> and whose denominator is the integer 
+<li> <code>(make-rat ⟨<var>n</var>⟩ ⟨<var>d</var>⟩)</code> returns the rational number whose numerator
+is the integer <code>⟨<var>n</var>⟩</code> and whose denominator is the integer
 <code>⟨<var>d</var>⟩</code>.
 
-</li><li> <code>(numer ⟨<var>x</var>⟩)</code> returns the numerator of the rational number 
+</li><li> <code>(numer ⟨<var>x</var>⟩)</code> returns the numerator of the rational number
 <code>⟨<var>x</var>⟩</code>.
 
-</li><li> <code>(denom ⟨<var>x</var>⟩)</code> returns the denominator of the rational number 
+</li><li> <code>(denom ⟨<var>x</var>⟩)</code> returns the denominator of the rational number
 <code>⟨<var>x</var>⟩</code>.
 
 </li></ul>
@@ -96,7 +96,7 @@ We haven’t yet said how a rational number is represented, or how the procedure
 so, if we did have these three procedures, we could then add, subtract,
 multiply, divide, and test equality by using the following relations:
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <mrow class="MJX-TeXAtom-ORD">
@@ -126,6 +126,7 @@ multiply, divide, and test equality by using the following relations:
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -194,6 +195,7 @@ multiply, divide, and test equality by using the following relations:
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -262,6 +264,7 @@ multiply, divide, and test equality by using the following relations:
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -328,6 +331,7 @@ multiply, divide, and test equality by using the following relations:
         </mfrac>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -374,6 +378,7 @@ multiply, divide, and test equality by using the following relations:
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -554,7 +559,7 @@ denominator:<a class="footnote_link" id="DOCF70" href="#FOOT70"><sup>70</sup></a
 
 <p>As the final example shows, our rational-number implementation does not reduce
 rational numbers to lowest terms.  We can remedy this by changing
-<code>make-rat</code>. If we have a <code>gcd</code> procedure like the one in 
+<code>make-rat</code>. If we have a <code>gcd</code> procedure like the one in
 <a href="1_002e2.xhtml#g_t1_002e2_002e5">1.2.5</a> that produces the greatest common divisor of two integers, we can
 use <code>gcd</code> to reduce the numerator and the denominator to lowest terms
 before constructing the pair:
@@ -562,13 +567,13 @@ before constructing the pair:
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-rat n d</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">g </span><span class="opn">(</span><span class="pln">gcd n d</span><span class="clo">)))</span><span class="pln">
-    </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> n g</span><span class="clo">)</span><span class="pln"> 
+    </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> n g</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> d g</span><span class="clo">))))</span></pre></div>
 
 <p>Now we have
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">print-rat 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">print-rat
  </span><span class="opn">(</span><span class="pln">add-rat one-third one-third</span><span class="clo">))</span><span class="pln">
 </span><i><span class="lit">2/3</span></i>
 </pre></div>
@@ -598,9 +603,9 @@ a basic set of operations in terms of which all manipulations of data objects
 of that type will be expressed, and then to use only those operations in
 manipulating the data.
 </p>
-<p>We can envision the structure of the rational-number system as shown in 
+<p>We can envision the structure of the rational-number system as shown in
 <a href="#Figure-2_002e1">Figure 2.1</a>.  The horizontal lines represent <a id="index-abstraction-barriers-1"></a>
-<em>abstraction barriers</em> 
+<em>abstraction barriers</em>
 that isolate different “levels” of the system.  At each level, the
 barrier separates the programs (above) that use the data abstraction from the
 programs (below) that implement the data abstraction.  Programs that use
@@ -776,7 +781,7 @@ definitions:
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">dispatch m</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> m </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> x</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> m </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> y</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
            </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Argument not 0 or 1:
                    CONS"</span><span class="pln"> m</span><span class="clo">))))</span><span class="pln">
   dispatch</span><span class="clo">)</span><span class="pln">
@@ -822,10 +827,10 @@ representation of pairs.  For this representation, verify that <code>(car (cons
 x y))</code> yields <code>x</code> for any objects <code>x</code> and <code>y</code>.
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> x y</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> x y</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">m</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">m x y</span><span class="clo">)))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> z</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> z</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">z </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">p q</span><span class="clo">)</span><span class="pln"> p</span><span class="clo">)))</span></pre></div>
 
 <p>What is the corresponding definition of <code>cdr</code>? (Hint: To verify that this
@@ -970,9 +975,9 @@ the two upper bounds:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">add-interval x y</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">make-interval </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound x</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">make-interval </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound x</span><span class="clo">)</span><span class="pln">
                     </span><span class="opn">(</span><span class="pln">lower-bound y</span><span class="clo">))</span><span class="pln">
-                 </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound x</span><span class="clo">)</span><span class="pln"> 
+                 </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound x</span><span class="clo">)</span><span class="pln">
                     </span><span class="opn">(</span><span class="pln">upper-bound y</span><span class="clo">))))</span></pre></div>
 
 <p>Alyssa also works out the product of two intervals by finding the minimum and
@@ -982,13 +987,13 @@ minimum or maximum of any number of arguments.)
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">mul-interval x y</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">p1 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound x</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">p1 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound x</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">lower-bound y</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">p2 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound x</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="pln">p2 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound x</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">upper-bound y</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">p3 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound x</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="pln">p3 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound x</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">lower-bound y</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">p4 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound x</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="pln">p4 </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound x</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">upper-bound y</span><span class="clo">))))</span><span class="pln">
     </span><span class="opn">(</span><span class="pln">make-interval </span><span class="opn">(</span><span class="pln">min p1 p2 p3 p4</span><span class="clo">)</span><span class="pln">
                    </span><span class="opn">(</span><span class="pln">max p1 p2 p3 p4</span><span class="clo">))))</span></pre></div>
@@ -999,9 +1004,9 @@ the upper bound and the reciprocal of the lower bound, in that order.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">div-interval x y</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">mul-interval x 
-                </span><span class="opn">(</span><span class="pln">make-interval 
-                 </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="lit">1.0</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound y</span><span class="clo">))</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">mul-interval x
+                </span><span class="opn">(</span><span class="pln">make-interval
+                 </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="lit">1.0</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound y</span><span class="clo">))</span><span class="pln">
                  </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="lit">1.0</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound y</span><span class="clo">)))))</span></pre></div>
 
 <blockquote>
@@ -1063,13 +1068,13 @@ an alternate constructor and alternate selectors:
   </span><span class="opn">(</span><span class="pln">make-interval </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> c w</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> c w</span><span class="clo">)))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">center i</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound i</span><span class="clo">)</span><span class="pln"> 
-        </span><span class="opn">(</span><span class="pln">upper-bound i</span><span class="clo">))</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lower-bound i</span><span class="clo">)</span><span class="pln">
+        </span><span class="opn">(</span><span class="pln">upper-bound i</span><span class="clo">))</span><span class="pln">
      </span><span class="lit">2</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">width i</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound i</span><span class="clo">)</span><span class="pln"> 
-        </span><span class="opn">(</span><span class="pln">lower-bound i</span><span class="clo">))</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">upper-bound i</span><span class="clo">)</span><span class="pln">
+        </span><span class="opn">(</span><span class="pln">lower-bound i</span><span class="clo">))</span><span class="pln">
      </span><span class="lit">2</span><span class="clo">))</span></pre></div>
 
 <p>Unfortunately, most of Alyssa’s users are engineers.  Real engineering
@@ -1161,16 +1166,16 @@ parallel-resistors formula differently:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">par1 r1 r2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">div-interval 
+  </span><span class="opn">(</span><span class="pln">div-interval
    </span><span class="opn">(</span><span class="pln">mul-interval r1 r2</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">add-interval r1 r2</span><span class="clo">)))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">par2 r1 r2</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">one </span><span class="opn">(</span><span class="pln">make-interval </span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)))</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">div-interval 
+    </span><span class="opn">(</span><span class="pln">div-interval
      one
-     </span><span class="opn">(</span><span class="pln">add-interval 
-      </span><span class="opn">(</span><span class="pln">div-interval one r1</span><span class="clo">)</span><span class="pln"> 
+     </span><span class="opn">(</span><span class="pln">add-interval
+      </span><span class="opn">(</span><span class="pln">div-interval one r1</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="pln">div-interval one r2</span><span class="clo">)))))</span></pre></div>
 
 <p>Lem complains that Alyssa’s program gives different answers for the two ways of
@@ -1271,7 +1276,7 @@ prints as the value returned by <code>print-rat</code>.</p>
 Surprisingly, this idea is very difficult to formulate
 rigorously. There are two approaches to giving such a formulation.  One,
 pioneered by C. A. R. <a href="References.xhtml#Hoare-_00281972_0029">Hoare (1972)</a>, is known as the method of <a id="index-abstract-models"></a>
-<em>abstract models</em>.  
+<em>abstract models</em>.
 It formalizes the “procedures plus conditions” specification as
 outlined in the rational-number example above.  Note that the condition on the
 rational-number representation was stated in terms of facts about integers
@@ -1279,8 +1284,8 @@ rational-number representation was stated in terms of facts about integers
 objects in terms of previously defined types of data objects.  Assertions about
 data objects can therefore be checked by reducing them to assertions about
 previously defined data objects.  Another approach, introduced by Zilles at
-<abbr>MIT</abbr>, by Goguen, Thatcher, Wagner, and Wright at IBM 
-(see <a href="References.xhtml#Thatcher-et-al_002e-1978">Thatcher et al. 1978</a>), 
+<abbr>MIT</abbr>, by Goguen, Thatcher, Wagner, and Wright at IBM
+(see <a href="References.xhtml#Thatcher-et-al_002e-1978">Thatcher et al. 1978</a>),
 and by Guttag at Toronto (see <a href="References.xhtml#Guttag-1977">Guttag 1977</a>), is called
 <a id="index-algebraic-specification"></a>
 <em>algebraic specification</em>.  It regards the “procedures” as elements

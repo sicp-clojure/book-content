@@ -65,7 +65,7 @@ in the system by the elapsed time in the computer, then we must have a way to
 construct computational objects whose behaviors change as our programs run.  In
 particular, if we wish to model state variables by ordinary symbolic names in
 the programming language, then the language must provide an <a id="index-assignment-operator"></a>
-<em>assignment operator</em> 
+<em>assignment operator</em>
 to enable us to change the value associated with a name.
 </p>
 
@@ -202,7 +202,7 @@ definition as follows:
   </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">balance </span><span class="lit">100</span><span class="clo">))</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">amount</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;=</span><span class="pln"> balance amount</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance 
+          </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance
                        </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> balance amount</span><span class="clo">))</span><span class="pln">
                  balance</span><span class="clo">)</span><span class="pln">
           </span><span class="str">"Insufficient funds"</span><span class="clo">))))</span></pre></div>
@@ -241,7 +241,7 @@ specifies the initial amount of money in the account.<a class="footnote_link" id
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-withdraw balance</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">amount</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;=</span><span class="pln"> balance amount</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance 
+        </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance
                      </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> balance amount</span><span class="clo">))</span><span class="pln">
                balance</span><span class="clo">)</span><span class="pln">
         </span><span class="str">"Insufficient funds"</span><span class="clo">)))</span></pre></div>
@@ -278,7 +278,7 @@ thus we can represent simple bank accounts.  Here is a procedure that returns a
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-account balance</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">withdraw amount</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;=</span><span class="pln"> balance amount</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance 
+        </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance
                      </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> balance amount</span><span class="clo">))</span><span class="pln">
                balance</span><span class="clo">)</span><span class="pln">
         </span><span class="str">"Insufficient funds"</span><span class="clo">))</span><span class="pln">
@@ -288,7 +288,7 @@ thus we can represent simple bank accounts.  Here is a procedure that returns a
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">dispatch m</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'withdraw</span><span class="clo">)</span><span class="pln"> withdraw</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">((</span><span class="kwd">eq</span><span class="pun">?</span><span class="pln"> m </span><span class="lit">'deposit</span><span class="clo">)</span><span class="pln"> deposit</span><span class="clo">)</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request: 
+          </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"Unknown request:
                  MAKE-ACCOUNT"</span><span class="pln"> m</span><span class="clo">))))</span><span class="pln">
   dispatch</span><span class="clo">)</span></pre></div>
 
@@ -384,7 +384,7 @@ procedure so that it creates password-protected accounts.  That is,
 <code>make-account</code> should take a symbol as an additional argument, as in
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> acc 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> acc
   </span><span class="opn">(</span><span class="pln">make-account </span><span class="lit">100</span><span class="pln"> </span><span class="lit">'secret-password</span><span class="clo">))</span></pre></div>
 
 <p>The resulting account object should process a request only if it is accompanied
@@ -520,7 +520,7 @@ trials in which the experiment was found to be true.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">estimate-pi trials</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="lit">6</span><span class="pln"> </span><span class="opn">(</span><span class="pln">monte-carlo trials 
+  </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="lit">6</span><span class="pln"> </span><span class="opn">(</span><span class="pln">monte-carlo trials
                           cesaro-test</span><span class="clo">))))</span><span class="pln">
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cesaro-test</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> </span><span class="opn">(</span><span class="pln">gcd </span><span class="opn">(</span><span class="pln">rand</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">rand</span><span class="clo">))</span><span class="pln"> </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
@@ -530,10 +530,10 @@ trials in which the experiment was found to be true.
     </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> trials-remaining </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> trials-passed trials</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">((</span><span class="pln">experiment</span><span class="clo">)</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">iter </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> trials-remaining </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> 
+           </span><span class="opn">(</span><span class="pln">iter </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> trials-remaining </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
                  </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> trials-passed </span><span class="lit">1</span><span class="clo">)))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-           </span><span class="opn">(</span><span class="pln">iter </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> trials-remaining </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> 
+           </span><span class="opn">(</span><span class="pln">iter </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> trials-remaining </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
                  trials-passed</span><span class="clo">))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">iter trials </span><span class="lit">0</span><span class="clo">))</span></pre></div>
 
@@ -543,12 +543,12 @@ assignment to model local state:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">estimate-pi trials</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="lit">6</span><span class="pln"> </span><span class="opn">(</span><span class="pln">random-gcd-test trials 
+  </span><span class="opn">(</span><span class="pln">sqrt </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> </span><span class="lit">6</span><span class="pln"> </span><span class="opn">(</span><span class="pln">random-gcd-test trials
                               random-init</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">random-gcd-test trials initial-x</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">iter trials-remaining 
-                trials-passed 
+  </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">iter trials-remaining
+                trials-passed
                 x</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">x1 </span><span class="opn">(</span><span class="pln">rand-update x</span><span class="clo">)))</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">x2 </span><span class="opn">(</span><span class="pln">rand-update x1</span><span class="clo">)))</span><span class="pln">
@@ -693,7 +693,7 @@ measuring the area of a unit circle.
 </p>
 <p>You will find it useful to have a procedure that returns a number chosen at
 random from a given range.  The following <code>random-in-range</code> procedure
-implements this in terms of the <code>random</code> procedure used in 
+implements this in terms of the <code>random</code> procedure used in
 <a href="1_002e2.xhtml#g_t1_002e2_002e6">1.2.6</a>, which returns a nonnegative number less than its
 input.<a class="footnote_link" id="DOCF136" href="#FOOT136"><sup>136</sup></a>
 </p>
@@ -806,7 +806,7 @@ body of <code>make-simplified-withdraw</code>.  This reduces the expression
 to<a class="footnote_link" id="DOCF137" href="#FOOT137"><sup>137</sup></a>
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">((</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">amount</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">((</span><span class="kwd">lambda</span><span class="pln"> </span><span class="opn">(</span><span class="pln">amount</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> balance </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="lit">25</span><span class="pln"> amount</span><span class="clo">))</span><span class="pln"> </span><span class="lit">25</span><span class="clo">)</span><span class="pln">
  </span><span class="lit">20</span><span class="clo">)</span></pre></div>
 
@@ -951,7 +951,7 @@ assignment is known as <a id="index-imperative-programming"></a>
 <em>imperative programming</em>.  In addition to
 raising complications about computational models, programs written in
 imperative style are susceptible to bugs that cannot occur in functional
-programs.  For example, recall the iterative factorial program from 
+programs.  For example, recall the iterative factorial program from
 <a href="1_002e2.xhtml#g_t1_002e2_002e1">1.2.1</a>:
 </p>
 <div class="lisp">
@@ -974,7 +974,7 @@ variables <code>product</code> and <code>counter</code>:
     </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">iter</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&gt;</span><span class="pln"> counter n</span><span class="clo">)</span><span class="pln">
           product
-          </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> product </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> counter 
+          </span><span class="opn">(</span><span class="kwd">begin</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> product </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> counter
                                   product</span><span class="clo">))</span><span class="pln">
                  </span><span class="opn">(</span><span class="kwd">set</span><span class="pun">!</span><span class="pln"> counter </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> counter </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
                  </span><span class="opn">(</span><span class="pln">iter</span><span class="clo">))))</span><span class="pln">
@@ -1016,8 +1016,8 @@ example, if <code>peter-acc</code> is a bank account with password
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> paul-acc
-  </span><span class="opn">(</span><span class="pln">make-joint peter-acc 
-              </span><span class="lit">'open-sesame</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="pln">make-joint peter-acc
+              </span><span class="lit">'open-sesame</span><span class="pln">
               </span><span class="lit">'rosebud</span><span class="clo">))</span></pre></div>
 
 <p>will allow one to make transactions on <code>peter-acc</code> using the name
@@ -1032,7 +1032,7 @@ expression is to evaluate its subexpressions.  But we never specified the order
 in which the subexpressions should be evaluated (e.g., left to right or right
 to left).  When we introduce assignment, the order in which the arguments to a
 procedure are evaluated can make a difference to the result.  Define a simple
-procedure <code>f</code> such that evaluating 
+procedure <code>f</code> such that evaluating
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">f </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">f </span><span class="lit">1</span><span class="clo">))</span></pre></div>
@@ -1048,7 +1048,7 @@ the arguments are evaluated from right to left.
 <div id="FOOT129"><p><a class="footnote_backlink" href="#DOCF129"><sup>129</sup></a>
 Actually, this is not quite
 true.  One exception was the random-number generator in <a href="1_002e2.xhtml#g_t1_002e2_002e6">1.2.6</a>.
-Another exception involved the operation/type tables we introduced in 
+Another exception involved the operation/type tables we introduced in
 <a href="2_002e4.xhtml#g_t2_002e4_002e3">2.4.3</a>, where the values of two calls to <code>get</code> with the same
 arguments depended on intervening calls to <code>put</code>.  On the other hand,
 until we introduce assignment, we have no way to create such procedures
@@ -1101,7 +1101,7 @@ One common way to implement
     <mo>+</mo>
     <mi>b</mi>
   </mrow>
-</math> 
+</math>
 modulo <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>m</mi>
 </math>, where <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1154,7 +1154,7 @@ single object appearing under different aliases.  These so-called
 <a id="index-side_002deffect-bugs"></a>
 <em>side-effect bugs</em> are so difficult to locate and to analyze that some
 people have proposed that programming languages be designed in such a way as to
-not allow side effects or aliasing (<a href="References.xhtml#Lampson-et-al_002e-1981">Lampson et al. 1981</a>; 
+not allow side effects or aliasing (<a href="References.xhtml#Lampson-et-al_002e-1981">Lampson et al. 1981</a>;
 <a href="References.xhtml#Morris-et-al_002e-1980">Morris et al. 1980</a>).</p>
 </div>
 <div id="FOOT139"><p><a class="footnote_backlink" href="#DOCF139"><sup>139</sup></a>

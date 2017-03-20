@@ -207,8 +207,8 @@ observation translates directly into a procedure:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">factorial n</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> 
-      </span><span class="lit">1</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
+      </span><span class="lit">1</span><span class="pln">
       </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> n </span><span class="opn">(</span><span class="pln">factorial </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)))))</span></pre></div>
 
 <p>We can use the substitution model of <a href="1_002e1.xhtml#g_t1_002e1_002e5">1.1.5</a> to watch this
@@ -263,7 +263,7 @@ exceeds <math xmlns="http://www.w3.org/1998/Math/MathML">
 factorials:<a class="footnote_link" id="DOCF29" href="#FOOT29"><sup>29</sup></a>
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">factorial n</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">factorial n</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">fact-iter </span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> n</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fact-iter product counter max-count</span><span class="clo">)</span><span class="pln">
@@ -303,7 +303,7 @@ differently.
 <p>Consider the first process.  The substitution model reveals a shape of
 expansion followed by contraction, indicated by the arrow in <a href="#Figure-1_002e3">Figure 1.3</a>.
 The expansion occurs as the process builds up a chain of <a id="index-deferred-operations"></a>
-<em>deferred operations</em> 
+<em>deferred operations</em>
 (in this case, a chain of multiplications).  The contraction occurs
 as the operations are actually performed.  This type of process, characterized
 by a chain of deferred operations, is called a <a id="index-recursive-process"></a>
@@ -398,13 +398,13 @@ which decrements its argument by 1.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> a b</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> a </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
-      b 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> a </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
+      b
       </span><span class="opn">(</span><span class="pln">inc </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">dec a</span><span class="clo">)</span><span class="pln"> b</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> a b</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> a </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
-      b 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> a </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
+      b
       </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">dec a</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">inc b</span><span class="clo">))))</span></pre></div>
 
 <p>Using the substitution model, illustrate the process generated by each
@@ -532,6 +532,7 @@ number is the sum of the preceding two:
         </mtd>
       </mtr>
     </mtable>
+    <mo fence="true" stretchy="true" symmetric="true"/>
   </mrow>
 </math>
 
@@ -729,7 +730,7 @@ simultaneous transformations
 the procedure
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fib n</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fib n</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">fib-iter </span><span class="lit">1</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> n</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fib-iter a b count</span><span class="clo">)</span><span class="pln">
@@ -847,12 +848,12 @@ an algorithm if we specify the following degenerate cases:<a class="footnote_lin
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cc amount kinds-of-coins</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> amount </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&lt;</span><span class="pln"> amount </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
-             </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> kinds-of-coins </span><span class="lit">0</span><span class="clo">))</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pun">&lt;</span><span class="pln"> amount </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
+             </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> kinds-of-coins </span><span class="lit">0</span><span class="clo">))</span><span class="pln">
          </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
          </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">cc amount </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> kinds-of-coins </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
-            </span><span class="opn">(</span><span class="pln">cc </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> amount </span><span class="opn">(</span><span class="pln">first-denomination 
+            </span><span class="opn">(</span><span class="pln">cc </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> amount </span><span class="opn">(</span><span class="pln">first-denomination
                            kinds-of-coins</span><span class="clo">))</span><span class="pln">
                 kinds-of-coins</span><span class="clo">)))))</span><span class="pln">
 
@@ -945,7 +946,7 @@ the rule that <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mo>≥<!-- ≥ --></mo>
     <mn>3</mn>
   </mrow>
-</math>.  
+</math>.
 Write a procedure that computes <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>f</mi>
 </math> by means of a recursive process.  Write a procedure that
@@ -1011,7 +1012,7 @@ the closest integer to <math xmlns="http://www.w3.org/1998/Math/MathML">
     </mrow>
     <mn>2</mn>
   </mrow>
-</math>.  
+</math>.
 Hint: Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>ψ<!-- ψ --></mi>
   <mo>=</mo>
@@ -1029,7 +1030,7 @@ Hint: Let <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mn>2</mn>
   </mrow>
 </math>.
-Use induction and the definition of the Fibonacci numbers (see <a href="#g_t1_002e2_002e2">1.2.2</a>) 
+Use induction and the definition of the Fibonacci numbers (see <a href="#g_t1_002e2_002e2">1.2.2</a>)
 to prove that <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mtext>Fib</mtext>
@@ -1194,7 +1195,7 @@ independent of <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>n</mi>
     <mo stretchy="false">)</mo>
   </mrow>
-</math> 
+</math>
 for any sufficiently large value of <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>n</mi>
 </math>.  (In other words, for large <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1345,7 +1346,7 @@ to change as we change the size of the problem.  For a <math xmlns="http://www.w
 </math>
 (linear) process, doubling the size will roughly double the amount of resources
 used.  For an exponential process, each increment in problem size will multiply
-the resource utilization by a constant factor.  In the remainder of 
+the resource utilization by a constant factor.  In the remainder of
 <a href="#g_t1_002e2">1.2</a> we will examine two algorithms whose order of growth is logarithmic,
 so that doubling the problem size increases the resource requirement by a
 constant amount.
@@ -1359,7 +1360,7 @@ number of steps used by this process as the amount to be changed increases?
 
 <blockquote>
 <p><strong><a id="Exercise-1_002e15"></a>Exercise 1.15:</strong> The sine of an angle (specified
-in radians) can be computed by making use of the approximation 
+in radians) can be computed by making use of the approximation
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi>sin</mi>
@@ -1496,8 +1497,8 @@ which translates readily into the procedure
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">expt b n</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
-      </span><span class="lit">1</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
+      </span><span class="lit">1</span><span class="pln">
       </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> b </span><span class="opn">(</span><span class="pln">expt b </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)))))</span></pre></div>
 
 <p>This is a linear recursive process, which requires <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1519,7 +1520,7 @@ which translates readily into the procedure
 equivalent linear iteration:
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">expt b n</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">expt b n</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">expt-iter b n </span><span class="lit">1</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">expt-iter b counter product</span><span class="clo">)</span><span class="pln">
@@ -1730,11 +1731,11 @@ We can express this method as a procedure:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fast-expt b n</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
          </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">even? n</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">even? n</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">square </span><span class="opn">(</span><span class="pln">fast-expt b </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> n </span><span class="lit">2</span><span class="clo">))))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
          </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> b </span><span class="opn">(</span><span class="pln">fast-expt b </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">))))))</span></pre></div>
 
 <p>where the predicate to test whether an integer is even is defined in terms of
@@ -1806,7 +1807,7 @@ example, <code>fast-expt</code> for <math xmlns="http://www.w3.org/1998/Math/Mat
 </math> = 1000 requires only 14
 multiplications.<a class="footnote_link" id="DOCF38" href="#FOOT38"><sup>38</sup></a> It is also possible to
 use the idea of successive squaring to devise an iterative algorithm that
-computes exponentials with a logarithmic number of steps (see <a href="#Exercise-1_002e16">Exercise 1.16</a>), 
+computes exponentials with a logarithmic number of steps (see <a href="#Exercise-1_002e16">Exercise 1.16</a>),
 although, as is often the case with iterative algorithms, this is not
 written down so straightforwardly as the recursive algorithm.<a class="footnote_link" id="DOCF39" href="#FOOT39"><sup>39</sup></a>
 </p>
@@ -1866,7 +1867,7 @@ define the state transformation in such a way that the product <math xmlns="http
       <mi>n</mi>
     </msup>
   </mrow>
-</math> 
+</math>
 is unchanged from state to state.  At the beginning of the process
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>a</mi>
@@ -1942,7 +1943,7 @@ again <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mn>1</mn>
     <mo stretchy="false">)</mo>
   </mrow>
-</math> and 
+</math> and
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mtext>Fib</mtext>
@@ -2006,7 +2007,7 @@ where <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>b</mi>
     <mo stretchy="false">)</mo>
   </mrow>
-</math> according to 
+</math> according to
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>a</mi>
   <mo stretchy="false">←<!-- ← --></mo>
@@ -2093,7 +2094,7 @@ runs in a logarithmic number of steps:<a class="footnote_link" id="DOCF41" href=
   </span><span class="opn">(</span><span class="pln">fib-iter </span><span class="lit">1</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> n</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fib-iter a b p q count</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> count </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> count </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
          b</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">even? count</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">fib-iter a
@@ -2101,11 +2102,11 @@ runs in a logarithmic number of steps:<a class="footnote_link" id="DOCF41" href=
                    ⟨</span><span class="pun">??</span><span class="pln">⟩  </span><span class="com">;compute </span><var><span class="com">p'</span></var><span class="pln">
                    ⟨</span><span class="pun">??</span><span class="pln">⟩  </span><span class="com">;compute </span><var><span class="com">q'</span></var><span class="pln">
                    </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> count </span><span class="lit">2</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
-         </span><span class="opn">(</span><span class="pln">fib-iter </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> b q</span><span class="clo">)</span><span class="pln"> 
-                      </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> a q</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
+         </span><span class="opn">(</span><span class="pln">fib-iter </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> b q</span><span class="clo">)</span><span class="pln">
+                      </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> a q</span><span class="clo">)</span><span class="pln">
                       </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> a p</span><span class="clo">))</span><span class="pln">
-                   </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> b p</span><span class="clo">)</span><span class="pln"> 
+                   </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> b p</span><span class="clo">)</span><span class="pln">
                       </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> a q</span><span class="clo">))</span><span class="pln">
                    p
                    q
@@ -2172,7 +2173,7 @@ example,
 possible to show that starting with any two positive integers and performing
 repeated reductions will always eventually produce a pair where the second
 number is 0.  Then the <abbr>GCD</abbr> is the other number in the pair.  This
-method for computing the <abbr>GCD</abbr> is known as 
+method for computing the <abbr>GCD</abbr> is known as
 <a id="index-Euclid_0027s-Algorithm"></a>
 <em>Euclid’s Algorithm</em>.<a class="footnote_link" id="DOCF42" href="#FOOT42"><sup>42</sup></a>
 </p>
@@ -2211,7 +2212,7 @@ Algorithm.  Let <math xmlns="http://www.w3.org/1998/Math/MathML">
 </math> be the smaller of the two inputs to the procedure.  If
 the process takes <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>k</mi>
-</math> steps, then we must have 
+</math> steps, then we must have
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>n</mi>
   <mo>≥<!-- ≥ --></mo>
@@ -2316,12 +2317,12 @@ starting with 2.
   </span><span class="opn">(</span><span class="pln">find-divisor n </span><span class="lit">2</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">find-divisor n test-divisor</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">&gt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square test-divisor</span><span class="clo">)</span><span class="pln"> n</span><span class="clo">)</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">&gt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">square test-divisor</span><span class="clo">)</span><span class="pln"> n</span><span class="clo">)</span><span class="pln">
          n</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">divides? test-divisor n</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">divides? test-divisor n</span><span class="clo">)</span><span class="pln">
          test-divisor</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">find-divisor 
-               n 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">find-divisor
+               n
                </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> test-divisor </span><span class="lit">1</span><span class="clo">)))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">divides? a b</span><span class="clo">)</span><span class="pln">
@@ -2486,11 +2487,11 @@ of a number modulo another number:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">expmod base exp m</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> exp </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">even? exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">remainder 
+         </span><span class="opn">(</span><span class="pln">remainder
           </span><span class="opn">(</span><span class="pln">square </span><span class="opn">(</span><span class="pln">expmod base </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> exp </span><span class="lit">2</span><span class="clo">)</span><span class="pln"> m</span><span class="clo">))</span><span class="pln">
           m</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">remainder 
+         </span><span class="opn">(</span><span class="pln">remainder
           </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> base </span><span class="opn">(</span><span class="pln">expmod base </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> exp </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> m</span><span class="clo">))</span><span class="pln">
           m</span><span class="clo">))))</span></pre></div>
 
@@ -2554,7 +2555,7 @@ otherwise.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fast-prime? n times</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> times </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> true</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="pln">fermat-test n</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pln">fermat-test n</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">fast-prime? n </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> times </span><span class="lit">1</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> false</span><span class="clo">)))</span></pre></div>
 
@@ -2693,7 +2694,7 @@ time used in performing the test.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">start-prime-test n start-time</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">prime? n</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">report-prime </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">runtime</span><span class="clo">)</span><span class="pln"> 
+      </span><span class="opn">(</span><span class="pln">report-prime </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> </span><span class="opn">(</span><span class="pln">runtime</span><span class="clo">)</span><span class="pln">
                        start-time</span><span class="clo">))))</span></pre></div>
 
 <div class="lisp">
@@ -2798,13 +2799,13 @@ calling <code>square</code>:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">expmod base exp m</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> exp </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">even? exp</span><span class="clo">)</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">remainder 
+         </span><span class="opn">(</span><span class="pln">remainder
           </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pln">expmod base </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> exp </span><span class="lit">2</span><span class="clo">)</span><span class="pln"> m</span><span class="clo">)</span><span class="pln">
              </span><span class="opn">(</span><span class="pln">expmod base </span><span class="opn">(</span><span class="pun">/</span><span class="pln"> exp </span><span class="lit">2</span><span class="clo">)</span><span class="pln"> m</span><span class="clo">))</span><span class="pln">
           m</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">remainder 
-          </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> base 
+         </span><span class="opn">(</span><span class="pln">remainder
+          </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> base
              </span><span class="opn">(</span><span class="pln">expmod base </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> exp </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> m</span><span class="clo">))</span><span class="pln">
           m</span><span class="clo">))))</span></pre></div>
 
@@ -3111,11 +3112,11 @@ This exercise was suggested to
 us by Joe Stoy, based on an example in <a href="References.xhtml#Kaldewaij-1990">Kaldewaij 1990</a>.</p>
 </div>
 <div id="FOOT42"><p><a class="footnote_backlink" href="#DOCF42"><sup>42</sup></a>
-Euclid’s Algorithm is so called because 
-it appears in Euclid’s <cite>Elements</cite> (Book 7, ca. 300 <abbr>B.C.</abbr>).  
-According to <a href="References.xhtml#Knuth-_00281973_0029">Knuth (1973)</a>, it can be considered the oldest known nontrivial 
-algorithm.  The ancient Egyptian method of multiplication (<a href="#Exercise-1_002e18">Exercise 1.18</a>) is 
-surely older, but, as Knuth explains, Euclid’s algorithm is the oldest known to 
+Euclid’s Algorithm is so called because
+it appears in Euclid’s <cite>Elements</cite> (Book 7, ca. 300 <abbr>B.C.</abbr>).
+According to <a href="References.xhtml#Knuth-_00281973_0029">Knuth (1973)</a>, it can be considered the oldest known nontrivial
+algorithm.  The ancient Egyptian method of multiplication (<a href="#Exercise-1_002e18">Exercise 1.18</a>) is
+surely older, but, as Knuth explains, Euclid’s algorithm is the oldest known to
 have been presented as a general algorithm, rather than as a set of illustrative
 examples.</p>
 </div>
@@ -3149,7 +3150,7 @@ the theorem, we consider pairs <math xmlns="http://www.w3.org/1998/Math/MathML">
       <mi>k</mi>
     </msub>
   </mrow>
-</math>, 
+</math>,
 for which Euclid’s Algorithm terminates in <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>k</mi>
 </math> steps.  The proof
@@ -3211,8 +3212,8 @@ is based on the claim that, if <math xmlns="http://www.w3.org/1998/Math/MathML">
     </msub>
     <mo stretchy="false">)</mo>
   </mrow>
-</math> 
-are three successive pairs 
+</math>
+are three successive pairs
 in the reduction process, then we must have <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>b</mi>
@@ -3236,8 +3237,8 @@ in the reduction process, then we must have <math xmlns="http://www.w3.org/1998/
       <mn>1</mn>
     </mrow>
   </msub>
-</math>.  
-To verify the claim, consider that a reduction step is defined by applying the 
+</math>.
+To verify the claim, consider that a reduction step is defined by applying the
 transformation <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <msub>
@@ -3271,7 +3272,7 @@ transformation <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>a</mi>
     <mi>k</mi>
   </msub>
-</math> 
+</math>
 divided by <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>b</mi>
@@ -3301,12 +3302,12 @@ divided by <math xmlns="http://www.w3.org/1998/Math/MathML">
       </mrow>
     </msub>
   </mrow>
-</math> 
+</math>
 for some positive integer <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>q</mi>
 </math>.  And since <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>q</mi>
-</math> must be at least 1 we have 
+</math> must be at least 1 we have
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>a</mi>
@@ -3343,7 +3344,7 @@ for some positive integer <math xmlns="http://www.w3.org/1998/Math/MathML">
       <mn>1</mn>
     </mrow>
   </msub>
-</math>.  But in the previous reduction 
+</math>.  But in the previous reduction
 step we have <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>b</mi>
@@ -3389,8 +3390,8 @@ step we have <math xmlns="http://www.w3.org/1998/Math/MathML">
 </math>.
 This verifies the claim.  Now we can prove the theorem by induction on <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>k</mi>
-</math>, 
-the number of steps that the algorithm requires to terminate.  The result is true for 
+</math>,
+the number of steps that the algorithm requires to terminate.  The result is true for
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi>k</mi>
@@ -3408,7 +3409,7 @@ the number of steps that the algorithm requires to terminate.  The result is tru
     <mo>=</mo>
     <mn>1</mn>
   </mrow>
-</math>.  
+</math>.
 Now, assume that the result is true for all integers less than or equal
 to <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>k</mi>
@@ -3418,7 +3419,7 @@ to <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mo>+</mo>
     <mn>1</mn>
   </mrow>
-</math>.  
+</math>.
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mo stretchy="false">(</mo>
@@ -3477,8 +3478,8 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
     </msub>
     <mo stretchy="false">)</mo>
   </mrow>
-</math> 
-be successive pairs in the reduction 
+</math>
+be successive pairs in the reduction
 process.  By our induction hypotheses, we have <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>b</mi>
@@ -3497,7 +3498,7 @@ process.  By our induction hypotheses, we have <math xmlns="http://www.w3.org/19
     <mn>1</mn>
     <mo stretchy="false">)</mo>
   </mrow>
-</math> 
+</math>
 and <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>b</mi>
@@ -3510,8 +3511,8 @@ and <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mi>k</mi>
     <mo stretchy="false">)</mo>
   </mrow>
-</math>.  Thus, applying the claim we just proved together with 
-the definition of the Fibonacci numbers gives 
+</math>.  Thus, applying the claim we just proved together with
+the definition of the Fibonacci numbers gives
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub>
     <mi>b</mi>
@@ -3560,7 +3561,7 @@ the definition of the Fibonacci numbers gives
     <mn>1</mn>
     <mo stretchy="false">)</mo>
   </mrow>
-</math>, 
+</math>,
 which completes the proof of Lamé’s Theorem.</p>
 </div>
 <div id="FOOT44"><p><a class="footnote_backlink" href="#DOCF44"><sup>44</sup></a>
@@ -3687,7 +3688,7 @@ applications of probabilistic prime testing has been to the field of
 cryptography.  Although it is now computationally infeasible to factor an
 arbitrary 200-digit number, the primality of such a number can be checked in a
 few seconds with the Fermat test.  This fact forms the basis of a technique for
-constructing “unbreakable codes” suggested by <a href="References.xhtml#Rivest-et-al_002e-_00281977_0029">Rivest et al. (1977)</a>.  
+constructing “unbreakable codes” suggested by <a href="References.xhtml#Rivest-et-al_002e-_00281977_0029">Rivest et al. (1977)</a>.
 The resulting <a id="index-RSA-algorithm"></a>
 <em>RSA algorithm</em> has become a widely used
 technique for enhancing the security of electronic communications.  Because of

@@ -48,10 +48,10 @@ language by introducing the ability to work with arbitrary symbols as data.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pln">a b c d</span><span class="clo">)</span><span class="pln">
 </span><span class="opn">(</span><span class="lit">23</span><span class="pln"> </span><span class="lit">45</span><span class="pln"> </span><span class="lit">17</span><span class="clo">)</span><span class="pln">
-</span><span class="opn">((</span><span class="pln">Norah </span><span class="lit">12</span><span class="clo">)</span><span class="pln"> 
- </span><span class="opn">(</span><span class="pln">Molly </span><span class="lit">9</span><span class="clo">)</span><span class="pln"> 
- </span><span class="opn">(</span><span class="pln">Anna </span><span class="lit">7</span><span class="clo">)</span><span class="pln"> 
- </span><span class="opn">(</span><span class="pln">Lauren </span><span class="lit">6</span><span class="clo">)</span><span class="pln"> 
+</span><span class="opn">((</span><span class="pln">Norah </span><span class="lit">12</span><span class="clo">)</span><span class="pln">
+ </span><span class="opn">(</span><span class="pln">Molly </span><span class="lit">9</span><span class="clo">)</span><span class="pln">
+ </span><span class="opn">(</span><span class="pln">Anna </span><span class="lit">7</span><span class="clo">)</span><span class="pln">
+ </span><span class="opn">(</span><span class="pln">Lauren </span><span class="lit">6</span><span class="clo">)</span><span class="pln">
  </span><span class="opn">(</span><span class="pln">Charlotte </span><span class="lit">4</span><span class="clo">))</span></pre></div>
 
 <p>Lists containing symbols can look just like the expressions of our
@@ -59,9 +59,9 @@ language:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="pun">*</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="lit">23</span><span class="pln"> </span><span class="lit">45</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> x </span><span class="lit">9</span><span class="clo">))</span><span class="pln">
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fact n</span><span class="clo">)</span><span class="pln"> 
-  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> 
-      </span><span class="lit">1</span><span class="pln"> 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">fact n</span><span class="clo">)</span><span class="pln">
+  </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
+      </span><span class="lit">1</span><span class="pln">
       </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> n </span><span class="opn">(</span><span class="pln">fact </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)))))</span></pre></div>
 
 <p>In order to manipulate symbols we need a new element in our language: the
@@ -165,13 +165,13 @@ in response to evaluating each of the following expressions?
 example,
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">this is a list</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">this is a list</span><span class="clo">)</span><span class="pln">
         </span><span class="lit">'</span><span class="opn">(</span><span class="pln">this is a list</span><span class="clo">))</span></pre></div>
 
 <p>is true, but
 </p>
 <div class="lisp">
-<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">this is a list</span><span class="clo">)</span><span class="pln"> 
+<pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="pln">this is a list</span><span class="clo">)</span><span class="pln">
         </span><span class="lit">'</span><span class="opn">(</span><span class="pln">this </span><span class="opn">(</span><span class="pln">is a</span><span class="clo">)</span><span class="pln"> list</span><span class="clo">))</span></pre></div>
 
 <p>is false.  To be more precise, we can define <code>equal?</code>  recursively in
@@ -284,7 +284,7 @@ following reduction rules:
   </mrow>
 </math>
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace">
+  <mtable columnalign="right center left" rowspacing="3pt" columnspacing="0 thickmathspace" displaystyle="true">
     <mtr>
       <mtd>
         <mrow class="MJX-TeXAtom-ORD">
@@ -301,6 +301,7 @@ following reduction rules:
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -328,6 +329,7 @@ following reduction rules:
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -378,6 +380,7 @@ following reduction rules:
         </mrow>
       </mtd>
       <mtd>
+        <mi/>
         <mo>=</mo>
       </mtd>
       <mtd>
@@ -458,13 +461,13 @@ numbers, we can express the differentiation rules as the following procedure:
                    </span><span class="opn">(</span><span class="pln">deriv </span><span class="opn">(</span><span class="pln">augend exp</span><span class="clo">)</span><span class="pln"> var</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">product? exp</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="pln">make-sum
-          </span><span class="opn">(</span><span class="pln">make-product 
+          </span><span class="opn">(</span><span class="pln">make-product
            </span><span class="opn">(</span><span class="pln">multiplier exp</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">deriv </span><span class="opn">(</span><span class="pln">multiplicand exp</span><span class="clo">)</span><span class="pln"> var</span><span class="clo">))</span><span class="pln">
-          </span><span class="opn">(</span><span class="pln">make-product 
+          </span><span class="opn">(</span><span class="pln">make-product
            </span><span class="opn">(</span><span class="pln">deriv </span><span class="opn">(</span><span class="pln">multiplier exp</span><span class="clo">)</span><span class="pln"> var</span><span class="clo">)</span><span class="pln">
            </span><span class="opn">(</span><span class="pln">multiplicand exp</span><span class="clo">))))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"unknown expression 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"unknown expression
                       type: DERIV"</span><span class="pln"> exp</span><span class="clo">))))</span></pre></div>
 
 <p>This <code>deriv</code> procedure incorporates the complete differentiation
@@ -485,7 +488,7 @@ algebraic notation, representing <math xmlns="http://www.w3.org/1998/Math/MathML
     <mo>+</mo>
     <mi>b</mi>
   </mrow>
-</math> as the list <code>(a * x + b)</code>.  
+</math> as the list <code>(a * x + b)</code>.
 However, one especially straightforward choice is to use the same
 parenthesized prefix notation that Lisp uses for combinations; that is, to
 represent <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -645,7 +648,7 @@ the other summand:
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-sum a1 a2</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln">number? a1 </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> a2</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">=</span><span class="pln">number? a2 </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> a1</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">number? a1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">number? a2</span><span class="clo">))</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">number? a1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">number? a2</span><span class="clo">))</span><span class="pln">
          </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> a1 a2</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'</span><span class="pun">+</span><span class="pln"> a1 a2</span><span class="clo">))))</span></pre></div>
 
@@ -661,12 +664,12 @@ times anything is 0 and 1 times anything is the thing itself:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-product m1 m2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln">number? m1 </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> 
-             </span><span class="opn">(</span><span class="pun">=</span><span class="pln">number? m2 </span><span class="lit">0</span><span class="clo">))</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln">number? m1 </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
+             </span><span class="opn">(</span><span class="pun">=</span><span class="pln">number? m2 </span><span class="lit">0</span><span class="clo">))</span><span class="pln">
          </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">=</span><span class="pln">number? m1 </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> m2</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">=</span><span class="pln">number? m2 </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> m1</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">number? m1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">number? m2</span><span class="clo">))</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="kwd">and</span><span class="pln"> </span><span class="opn">(</span><span class="pln">number? m1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">number? m2</span><span class="clo">))</span><span class="pln">
          </span><span class="opn">(</span><span class="pun">*</span><span class="pln"> m1 m2</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list </span><span class="lit">'</span><span class="pun">*</span><span class="pln"> m1 m2</span><span class="clo">))))</span></pre></div>
 
@@ -849,13 +852,13 @@ resulting procedure:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">intersection-set set1 set2</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? set1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? set2</span><span class="clo">))</span><span class="pln"> 
+  </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="kwd">or</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? set1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? set2</span><span class="clo">))</span><span class="pln">
          </span><span class="lit">'</span><span class="opn">(</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pln">element-of-set? </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln"> set2</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">intersection-set </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln"> 
+               </span><span class="opn">(</span><span class="pln">intersection-set </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln">
                                  set2</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">intersection-set </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="pln">intersection-set </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln">
                                 set2</span><span class="clo">))))</span></pre></div>
 
 <p>In designing a representation, one of the issues we should be concerned with is
@@ -1027,14 +1030,14 @@ procedure:
       </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">x1 </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> set1</span><span class="clo">))</span><span class="pln"> </span><span class="opn">(</span><span class="pln">x2 </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> set2</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> x1 x2</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> x1 </span><span class="opn">(</span><span class="pln">intersection-set 
+               </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> x1 </span><span class="opn">(</span><span class="pln">intersection-set
                          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln">
                          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set2</span><span class="clo">))))</span><span class="pln">
-              </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> x1 x2</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">intersection-set 
-                          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln"> 
+              </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> x1 x2</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">intersection-set
+                          </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set1</span><span class="clo">)</span><span class="pln">
                           set2</span><span class="clo">))</span><span class="pln">
-              </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> x2 x1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">intersection-set 
-                          set1 
+              </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> x2 x1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">intersection-set
+                          set1
                           </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set2</span><span class="clo">)))))))</span></pre></div>
 
 <p>To estimate the number of steps required by this process, observe that at each
@@ -1199,12 +1202,12 @@ described above:
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? </span><span class="kwd">set</span><span class="clo">)</span><span class="pln"> false</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> x </span><span class="opn">(</span><span class="pln">entry </span><span class="kwd">set</span><span class="clo">))</span><span class="pln"> true</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> x </span><span class="opn">(</span><span class="pln">entry </span><span class="kwd">set</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">element-of-set? 
-          x 
+         </span><span class="opn">(</span><span class="pln">element-of-set?
+          x
           </span><span class="opn">(</span><span class="pln">left-branch </span><span class="kwd">set</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">&gt;</span><span class="pln"> x </span><span class="opn">(</span><span class="pln">entry </span><span class="kwd">set</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">element-of-set? 
-          x 
+         </span><span class="opn">(</span><span class="pln">element-of-set?
+          x
           </span><span class="opn">(</span><span class="pln">right-branch </span><span class="kwd">set</span><span class="clo">)))))</span></pre></div>
 
 <p>Adjoining an item to a set is implemented similarly and also requires
@@ -1231,7 +1234,7 @@ branches.  Here is the procedure:
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? </span><span class="kwd">set</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-tree x </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)))</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> x </span><span class="opn">(</span><span class="pln">entry </span><span class="kwd">set</span><span class="clo">))</span><span class="pln"> </span><span class="kwd">set</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> x </span><span class="opn">(</span><span class="pln">entry </span><span class="kwd">set</span><span class="clo">))</span><span class="pln">
-         </span><span class="opn">(</span><span class="pln">make-tree 
+         </span><span class="opn">(</span><span class="pln">make-tree
           </span><span class="opn">(</span><span class="pln">entry </span><span class="kwd">set</span><span class="clo">)</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">adjoin-set x </span><span class="opn">(</span><span class="pln">left-branch </span><span class="kwd">set</span><span class="clo">))</span><span class="pln">
           </span><span class="opn">(</span><span class="pln">right-branch </span><span class="kwd">set</span><span class="clo">)))</span><span class="pln">
@@ -1288,21 +1291,21 @@ procedures converts a binary tree to a list.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tree-</span><span class="pun">&gt;</span><span class="pln">list-1 tree</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? tree</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">append 
-       </span><span class="opn">(</span><span class="pln">tree-</span><span class="pun">&gt;</span><span class="pln">list-1 
+      </span><span class="opn">(</span><span class="pln">append
+       </span><span class="opn">(</span><span class="pln">tree-</span><span class="pun">&gt;</span><span class="pln">list-1
         </span><span class="opn">(</span><span class="pln">left-branch tree</span><span class="clo">))</span><span class="pln">
        </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">entry tree</span><span class="clo">)</span><span class="pln">
-             </span><span class="opn">(</span><span class="pln">tree-</span><span class="pun">&gt;</span><span class="pln">list-1 
+             </span><span class="opn">(</span><span class="pln">tree-</span><span class="pun">&gt;</span><span class="pln">list-1
               </span><span class="opn">(</span><span class="pln">right-branch tree</span><span class="clo">))))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">tree-</span><span class="pun">&gt;</span><span class="pln">list-2 tree</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">copy-to-list tree result-list</span><span class="clo">)</span><span class="pln">
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? tree</span><span class="clo">)</span><span class="pln">
         result-list
-        </span><span class="opn">(</span><span class="pln">copy-to-list 
+        </span><span class="opn">(</span><span class="pln">copy-to-list
          </span><span class="opn">(</span><span class="pln">left-branch tree</span><span class="clo">)</span><span class="pln">
          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">entry tree</span><span class="clo">)</span><span class="pln">
-               </span><span class="opn">(</span><span class="pln">copy-to-list 
+               </span><span class="opn">(</span><span class="pln">copy-to-list
                 </span><span class="opn">(</span><span class="pln">right-branch tree</span><span class="clo">)</span><span class="pln">
                 result-list</span><span class="clo">)))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">copy-to-list tree </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)))</span></pre></div>
@@ -1338,35 +1341,35 @@ and whose <code>cdr</code> is the list of elements not included in the tree.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list-</span><span class="pun">&gt;</span><span class="pln">tree elements</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="opn">(</span><span class="pln">partial-tree 
+  </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="opn">(</span><span class="pln">partial-tree
         elements </span><span class="opn">(</span><span class="pln">length elements</span><span class="clo">))))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">partial-tree elts n</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pun">=</span><span class="pln"> n </span><span class="lit">0</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln"> elts</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">left-size 
+      </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">left-size
              </span><span class="opn">(</span><span class="pln">quotient </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="lit">2</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">left-result 
-               </span><span class="opn">(</span><span class="pln">partial-tree 
+        </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">left-result
+               </span><span class="opn">(</span><span class="pln">partial-tree
                 elts left-size</span><span class="clo">)))</span><span class="pln">
-          </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">left-tree 
+          </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">left-tree
                  </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> left-result</span><span class="clo">))</span><span class="pln">
-                </span><span class="opn">(</span><span class="pln">non-left-elts 
+                </span><span class="opn">(</span><span class="pln">non-left-elts
                  </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> left-result</span><span class="clo">))</span><span class="pln">
-                </span><span class="opn">(</span><span class="pln">right-size 
+                </span><span class="opn">(</span><span class="pln">right-size
                  </span><span class="opn">(</span><span class="pun">-</span><span class="pln"> n </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> left-size </span><span class="lit">1</span><span class="clo">))))</span><span class="pln">
-            </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">this-entry 
+            </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">this-entry
                    </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> non-left-elts</span><span class="clo">))</span><span class="pln">
-                  </span><span class="opn">(</span><span class="pln">right-result 
-                   </span><span class="opn">(</span><span class="pln">partial-tree 
+                  </span><span class="opn">(</span><span class="pln">right-result
+                   </span><span class="opn">(</span><span class="pln">partial-tree
                     </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> non-left-elts</span><span class="clo">)</span><span class="pln">
                     right-size</span><span class="clo">)))</span><span class="pln">
-              </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">right-tree 
+              </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">right-tree
                      </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> right-result</span><span class="clo">))</span><span class="pln">
-                    </span><span class="opn">(</span><span class="pln">remaining-elts 
+                    </span><span class="opn">(</span><span class="pln">remaining-elts
                      </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> right-result</span><span class="clo">)))</span><span class="pln">
-                </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-tree this-entry 
-                                 left-tree 
+                </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-tree this-entry
+                                 left-tree
                                  right-tree</span><span class="clo">)</span><span class="pln">
                       remaining-elts</span><span class="clo">))))))))</span></pre></div>
 
@@ -1384,7 +1387,7 @@ the list <code>(1 3 5 7 9 11)</code>.
 </blockquote>
 
 <blockquote>
-<p><strong><a id="Exercise-2_002e65"></a>Exercise 2.65:</strong> Use the results of <a href="#Exercise-2_002e63">Exercise 2.63</a> 
+<p><strong><a id="Exercise-2_002e65"></a>Exercise 2.65:</strong> Use the results of <a href="#Exercise-2_002e63">Exercise 2.63</a>
 and <a href="#Exercise-2_002e64">Exercise 2.64</a> to give <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
     <mi mathvariant="normal">Θ<!-- Θ --></mi>
@@ -1429,11 +1432,11 @@ an unordered list, we could use
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">lookup given-key set-of-records</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? set-of-records</span><span class="clo">)</span><span class="pln"> false</span><span class="clo">)</span><span class="pln">
-        </span><span class="opn">((</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> given-key 
+        </span><span class="opn">((</span><span class="kwd">equal</span><span class="pun">?</span><span class="pln"> given-key
                  </span><span class="opn">(</span><span class="pln">key </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> set-of-records</span><span class="clo">)))</span><span class="pln">
          </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> set-of-records</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
-         </span><span class="opn">(</span><span class="pln">lookup given-key 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
+         </span><span class="opn">(</span><span class="pln">lookup given-key
                  </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> set-of-records</span><span class="clo">)))))</span></pre></div>
 
 <p>Of course, there are better ways to represent large sets than as unordered
@@ -1576,7 +1579,7 @@ root and moving down until we reach the leaf that holds the symbol.  Each time
 we move down a left branch we add a 0 to the code, and each time we move down a
 right branch we add a 1.  (We decide which branch to follow by testing to see
 which branch either is the leaf node for the symbol or contains the symbol in
-its set.)  For example, starting from the root of the tree in <a href="#Figure-2_002e18">Figure 2.18</a>, 
+its set.)  For example, starting from the root of the tree in <a href="#Figure-2_002e18">Figure 2.18</a>,
 we arrive at the leaf for D by following a right branch, then a left
 branch, then a right branch, then a right branch; hence, the code for D is
 1011.
@@ -1621,28 +1624,28 @@ the root of the entire tree.  Here is how the Huffman tree of <a href="#Figure-2
 was generated:
 </p>
 <div class="example">
-<pre class="example">Initial {(A 8) (B 3) (C 1) (D 1) 
+<pre class="example">Initial {(A 8) (B 3) (C 1) (D 1)
 leaves   (E 1) (F 1) (G 1) (H 1)}
 
-Merge   {(A 8) (B 3) ({C D} 2) 
+Merge   {(A 8) (B 3) ({C D} 2)
          (E 1) (F 1) (G 1) (H 1)}
 
-Merge   {(A 8) (B 3) ({C D} 2) 
+Merge   {(A 8) (B 3) ({C D} 2)
          ({E F} 2) (G 1) (H 1)}
 
-Merge   {(A 8) (B 3) ({C D} 2) 
+Merge   {(A 8) (B 3) ({C D} 2)
          ({E F} 2) ({G H} 2)}
 
-Merge   {(A 8) (B 3) ({C D} 2) 
+Merge   {(A 8) (B 3) ({C D} 2)
          ({E F G H} 4)}
 
-Merge   {(A 8) ({B C D} 5) 
+Merge   {(A 8) ({B C D} 5)
          ({E F G H} 4)}
 
 Merge   {(A 8) ({B C D E F G H} 9)}
 
 Final   {({A B C D E F G H} 17)}
-merge    
+merge
 </pre></div>
 
 <p>The algorithm does not always specify a unique tree, because there may not be
@@ -1675,14 +1678,14 @@ symbols, rather than some more sophisticated set representation.  When we make
 a tree by merging two nodes, we obtain the weight of the tree as the sum of the
 weights of the nodes, and the set of symbols as the union of the sets of
 symbols for the nodes.  Since our symbol sets are represented as lists, we can
-form the union by using the <code>append</code> procedure we defined in 
+form the union by using the <code>append</code> procedure we defined in
 <a href="2_002e2.xhtml#g_t2_002e2_002e1">2.2.1</a>:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">make-code-tree left right</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">list left
         right
-        </span><span class="opn">(</span><span class="pln">append </span><span class="opn">(</span><span class="pln">symbols left</span><span class="clo">)</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="pln">append </span><span class="opn">(</span><span class="pln">symbols left</span><span class="clo">)</span><span class="pln">
                 </span><span class="opn">(</span><span class="pln">symbols right</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">(</span><span class="pun">+</span><span class="pln"> </span><span class="opn">(</span><span class="pln">weight left</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">weight right</span><span class="clo">))))</span></pre></div>
 
@@ -1721,21 +1724,21 @@ arguments a list of zeros and ones, together with a Huffman tree.
     </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? bits</span><span class="clo">)</span><span class="pln">
         </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
         </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">next-branch
-               </span><span class="opn">(</span><span class="pln">choose-branch 
-                </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> bits</span><span class="clo">)</span><span class="pln"> 
+               </span><span class="opn">(</span><span class="pln">choose-branch
+                </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> bits</span><span class="clo">)</span><span class="pln">
                 current-branch</span><span class="clo">)))</span><span class="pln">
           </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">leaf? next-branch</span><span class="clo">)</span><span class="pln">
-              </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> 
+              </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">symbol-leaf next-branch</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">decode-1 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> bits</span><span class="clo">)</span><span class="pln"> tree</span><span class="clo">))</span><span class="pln">
-              </span><span class="opn">(</span><span class="pln">decode-1 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> bits</span><span class="clo">)</span><span class="pln"> 
+              </span><span class="opn">(</span><span class="pln">decode-1 </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> bits</span><span class="clo">)</span><span class="pln">
                         next-branch</span><span class="clo">)))))</span><span class="pln">
   </span><span class="opn">(</span><span class="pln">decode-1 bits tree</span><span class="clo">))</span><span class="pln">
 
 </span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">choose-branch bit branch</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> bit </span><span class="lit">0</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">left-branch branch</span><span class="clo">))</span><span class="pln">
         </span><span class="opn">((</span><span class="pun">=</span><span class="pln"> bit </span><span class="lit">1</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">right-branch branch</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"bad bit: 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> </span><span class="opn">(</span><span class="err">error</span><span class="pln"> </span><span class="str">"bad bit:
                CHOOSE-BRANCH"</span><span class="pln"> bit</span><span class="clo">))))</span></pre></div>
 
 <p>The procedure <code>decode-1</code> takes two arguments: the list of remaining bits
@@ -1767,9 +1770,9 @@ the set is never already in it.
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">adjoin-set x </span><span class="kwd">set</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">cond</span><span class="pln"> </span><span class="opn">((</span><span class="pln">null? </span><span class="kwd">set</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">list x</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">weight x</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">weight </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="kwd">set</span><span class="clo">)))</span><span class="pln"> 
+        </span><span class="opn">((</span><span class="pun">&lt;</span><span class="pln"> </span><span class="opn">(</span><span class="pln">weight x</span><span class="clo">)</span><span class="pln"> </span><span class="opn">(</span><span class="pln">weight </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="kwd">set</span><span class="clo">)))</span><span class="pln">
          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> x </span><span class="kwd">set</span><span class="clo">))</span><span class="pln">
-        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln"> 
+        </span><span class="opn">(</span><span class="kwd">else</span><span class="pln">
          </span><span class="opn">(</span><span class="kwd">cons</span><span class="pln"> </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> </span><span class="kwd">set</span><span class="clo">)</span><span class="pln">
                </span><span class="opn">(</span><span class="pln">adjoin-set x </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> </span><span class="kwd">set</span><span class="clo">))))))</span></pre></div>
 
@@ -1782,7 +1785,7 @@ leaves, ready to be merged according to the Huffman algorithm:
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? pairs</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
       </span><span class="opn">(</span><span class="kwd">let</span><span class="pln"> </span><span class="opn">((</span><span class="pln">pair </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> pairs</span><span class="clo">)))</span><span class="pln">
-        </span><span class="opn">(</span><span class="pln">adjoin-set 
+        </span><span class="opn">(</span><span class="pln">adjoin-set
          </span><span class="opn">(</span><span class="pln">make-leaf </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> pair</span><span class="clo">)</span><span class="pln">    </span><span class="roman"><span class="com">; symbol</span></span><span class="pln">
                     </span><span class="opn">(</span><span class="kwd">cadr</span><span class="pln"> pair</span><span class="clo">))</span><span class="pln">  </span><span class="roman"><span class="com">; frequency</span></span><span class="pln">
          </span><span class="opn">(</span><span class="pln">make-leaf-set </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> pairs</span><span class="clo">))))))</span></pre></div>
@@ -1793,15 +1796,15 @@ sample message:
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> sample-tree
-  </span><span class="opn">(</span><span class="pln">make-code-tree 
+  </span><span class="opn">(</span><span class="pln">make-code-tree
    </span><span class="opn">(</span><span class="pln">make-leaf </span><span class="lit">'A</span><span class="pln"> </span><span class="lit">4</span><span class="clo">)</span><span class="pln">
    </span><span class="opn">(</span><span class="pln">make-code-tree
     </span><span class="opn">(</span><span class="pln">make-leaf </span><span class="lit">'B</span><span class="pln"> </span><span class="lit">2</span><span class="clo">)</span><span class="pln">
-    </span><span class="opn">(</span><span class="pln">make-code-tree 
+    </span><span class="opn">(</span><span class="pln">make-code-tree
      </span><span class="opn">(</span><span class="pln">make-leaf </span><span class="lit">'D</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)</span><span class="pln">
      </span><span class="opn">(</span><span class="pln">make-leaf </span><span class="lit">'C</span><span class="pln"> </span><span class="lit">1</span><span class="clo">)))))</span><span class="pln">
 
-</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> sample-message 
+</span><span class="opn">(</span><span class="kwd">define</span><span class="pln"> sample-message
   </span><span class="lit">'</span><span class="opn">(</span><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">0</span><span class="clo">))</span></pre></div>
 
 <p>Use the <code>decode</code> procedure to decode the message, and give the result.
@@ -1816,8 +1819,8 @@ encoded message.
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">encode message tree</span><span class="clo">)</span><span class="pln">
   </span><span class="opn">(</span><span class="kwd">if</span><span class="pln"> </span><span class="opn">(</span><span class="pln">null? message</span><span class="clo">)</span><span class="pln">
       </span><span class="lit">'</span><span class="opn">(</span><span class="clo">)</span><span class="pln">
-      </span><span class="opn">(</span><span class="pln">append 
-       </span><span class="opn">(</span><span class="pln">encode-symbol </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> message</span><span class="clo">)</span><span class="pln"> 
+      </span><span class="opn">(</span><span class="pln">append
+       </span><span class="opn">(</span><span class="pln">encode-symbol </span><span class="opn">(</span><span class="kwd">car</span><span class="pln"> message</span><span class="clo">)</span><span class="pln">
                       tree</span><span class="clo">)</span><span class="pln">
        </span><span class="opn">(</span><span class="pln">encode </span><span class="opn">(</span><span class="kwd">cdr</span><span class="pln"> message</span><span class="clo">)</span><span class="pln"> tree</span><span class="clo">))))</span></pre></div>
 
@@ -1837,7 +1840,7 @@ algorithm.
 </p>
 <div class="lisp">
 <pre class="lisp prettyprinted" style=""><span class="opn">(</span><span class="kwd">define</span><span class="pln"> </span><span class="opn">(</span><span class="pln">generate-huffman-tree pairs</span><span class="clo">)</span><span class="pln">
-  </span><span class="opn">(</span><span class="pln">successive-merge 
+  </span><span class="opn">(</span><span class="pln">successive-merge
    </span><span class="opn">(</span><span class="pln">make-leaf-set pairs</span><span class="clo">)))</span></pre></div>
 
 <p><code>Make-leaf-set</code> is the procedure given above that transforms the list of
@@ -1875,7 +1878,7 @@ Sha na na na na na na na na
 Get a job
 Sha na na na na na na na na
 
-Wah yip yip yip yip 
+Wah yip yip yip yip
 yip yip yip yip yip
 Sha boom
 </pre></div>
@@ -1936,7 +1939,7 @@ steps needed to search the symbol list at each node encountered.  To answer
 this question in general is difficult.  Consider the special case where the
 relative frequencies of the <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>n</mi>
-</math> symbols are as described in <a href="#Exercise-2_002e71">Exercise 2.71</a>, 
+</math> symbols are as described in <a href="#Exercise-2_002e71">Exercise 2.71</a>,
 and give the order of growth (as a function of <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>n</mi>
 </math>) of the number of
@@ -2051,7 +2054,7 @@ devoted to this problem.  See <a href="References.xhtml#Cormen-et-al_002e-1990">
 to Paul Hilfinger.</p>
 </div>
 <div id="FOOT108"><p><a class="footnote_backlink" href="#DOCF108"><sup>108</sup></a>
-See <a href="References.xhtml#Hamming-1980">Hamming 1980</a> 
+See <a href="References.xhtml#Hamming-1980">Hamming 1980</a>
 for a discussion of the mathematical properties of Huffman codes.</p>
 </div>
 </div>
