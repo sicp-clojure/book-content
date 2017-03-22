@@ -1300,7 +1300,7 @@ names to refer to computational objects.  We say that the name identifies a
 In the Scheme dialect of Lisp, we name things with @code{define}.  Typing
 
 @lisp
-(define size 2)
+(def size 2)
 @end lisp
 
 @noindent
@@ -1322,20 +1322,20 @@ size
 Here are further examples of the use of @code{define}:
 
 @lisp
-(define pi 3.14159)
-(define radius 10)
+(def pi 3.14159)
+(def radius 10)
 
 (* pi (* radius radius))
 @i{314.159}
 
-(define circumference (* 2 pi radius))
+(def circumference (* 2 pi radius))
 
 circumference
 @i{62.8318}
 @end lisp
 
 @noindent
-@code{Define} is our language's simplest means of abstraction, for it allows us
+@code{Def} is our language's simplest means of abstraction, for it allows us
 to use simple names to refer to the results of compound operations, such as the
 @code{circumference} computed above.  In general, computational objects may
 have very complex structures, and it would be extremely inconvenient to have to
@@ -1475,13 +1475,13 @@ environment as providing a context in which evaluation takes place will play an
 important role in our understanding of program execution.
 
 Notice that the evaluation rule given above does not handle definitions.  For
-instance, evaluating @code{(define x 3)} does not apply @code{define} to two
+instance, evaluating @code{(def x 3)} does not apply @code{def} to two
 arguments, one of which is the value of the symbol @code{x} and the other of
-which is 3, since the purpose of the @code{define} is precisely to associate
-@code{x} with a value.  (That is, @code{(define x 3)} is not a combination.)
+which is 3, since the purpose of the @code{def} is precisely to associate
+@code{x} with a value.  (That is, @code{(def x 3)} is not a combination.)
 
 Such exceptions to the general evaluation rule are called @newterm{special forms}.
-@code{Define} is the only example of a special form that we have seen
+@code{Def} is the only example of a special form that we have seen
 so far, but we will meet others shortly.  Each special form has its own
 evaluation rule. The various kinds of expressions (each with its associated
 evaluation rule) constitute the syntax of the programming language.  In
@@ -1531,15 +1531,15 @@ We begin by examining how to express the idea of ``squaring.''  We might say,
 language as
 
 @lisp
-(define (square x) (* x x))
+(defn square[x] (* x x))
 @end lisp
 
 @noindent
 We can understand this in the following way:
 
 @example
-(define (square x)    (*       x       x))
-  |      |      |      |       |       |
+(defn square[x]      (*        x     x))
+  |   |      |        |        |     |
  To square something, multiply it by itself.
 @end example
 
@@ -1559,7 +1559,7 @@ procedures that have already been created.  We will see how to do this in
 The general form of a procedure definition is
 
 @lisp
-(define (⟨@var{name}⟩ ⟨@var{formal parameters}⟩) ⟨@var{body}⟩)
+(defn ⟨@var{name}⟩ [⟨@var{formal parameters}⟩] ⟨@var{body}⟩)
 @end lisp
 
 @noindent
@@ -1575,9 +1575,8 @@ formal parameters are replaced by the actual arguments to which the procedure
 is applied.@footnote{More generally, the body of the procedure can be a
 sequence of expressions.  In this case, the interpreter evaluates each
 expression in the sequence in turn and returns the value of the final
-expression as the value of the procedure application.}  The @code{⟨}@var{name}@code{⟩} and
-the @code{⟨}@var{formal parameters}@code{⟩} are grouped within parentheses, just as they
-would be in an actual call to the procedure being defined.
+expression as the value of the procedure application.}  The @code{⟨}@var{formal parameters}@code{⟩}
+are grouped within square parentheses.
 
 Having defined @code{square}, we can now use it:
 
@@ -1605,7 +1604,7 @@ We can easily define a procedure @code{sum-of-squares} that, given any two
 numbers as arguments, produces the sum of their squares:
 
 @lisp
-(define (sum-of-squares x y)
+(defn sum-of-squares[x y]
   (+ (square x) (square y)))
 
 (sum-of-squares 3 4)
@@ -1617,7 +1616,7 @@ Now we can use @code{sum-of-squares} as a building block in constructing
 further procedures:
 
 @lisp
-(define (f a)
+(defn f[a]
   (sum-of-squares (+ a 1) (* a 2)))
 
 (f 5)
@@ -1807,8 +1806,8 @@ valuable tool, and we will investigate some of its implications in @ref{Chapter
 3} and @ref{Chapter 4}.@footnote{In @ref{Chapter 3} we will introduce
 @newterm{stream processing}, which is a way of handling apparently ``infinite''
 data structures by incorporating a limited form of normal-order evaluation.  In
-@ref{4.2} we will modify the Scheme interpreter to produce a
-normal-order variant of Scheme.}
+@ref{4.2} we will modify the Clojure interpreter to produce a
+normal-order variant of Clojure.}
 
 @node	1.1.6, 1.1.7, 1.1.5, 1.1
 @subsection Conditional Expressions and Predicates
@@ -1850,20 +1849,22 @@ in Lisp for notating such a case analysis.  It is called @code{cond} (which
 stands for ``conditional''), and it is used as follows:
 
 @lisp
-(define (abs x)
-  (cond ((> x 0) x)
-        ((= x 0) 0)
-        ((< x 0) (- x))))
+(defn abs[x]
+  (cond
+    (< x 0) (- x)
+    (= x 0) 0
+    (> x 0) x))
 @end lisp
 
 @noindent
 The general form of a conditional expression is
 
 @lisp
-(cond (⟨@var{p₁}⟩ ⟨@var{e₁}⟩)
-      (⟨@var{p₂}⟩ ⟨@var{e₂}⟩)
-      @r{…}
-      (⟨@var{pₙ}⟩ ⟨@var{eₙ}⟩))
+(cond
+  ⟨@var{p₁}⟩ ⟨@var{e₁}⟩
+  ⟨@var{p₂}⟩ ⟨@var{e₂}⟩
+  @r{…}
+  ⟨@var{pₙ}⟩ ⟨@var{eₙ}⟩)
 @end lisp
 
 @noindent
@@ -1871,19 +1872,17 @@ consisting of the symbol @code{cond} followed by parenthesized pairs of
 expressions
 
 @lisp
-(⟨@var{p}⟩ ⟨@var{e}⟩)
+⟨@var{p}⟩ ⟨@var{e}⟩
 @end lisp
 
 @noindent
 called @newterm{clauses}. The first expression in each pair is a
 @newterm{predicate}---that is, an expression whose value is interpreted as
 either true or false.@footnote{``Interpreted as either true or false'' means
-this: In Scheme, there are two distinguished values that are denoted by the
-constants @code{#t} and @code{#f}.  When the interpreter checks a predicate's
-value, it interprets @code{#f} as false.  Any other value is treated as true.
-(Thus, providing @code{#t} is logically unnecessary, but it is convenient.)  In
-this book we will use names @code{true} and @code{false}, which are associated
-with the values @code{#t} and @code{#f} respectively.}
+this: In Clojure, there are two distinguished values that are denoted by the
+constants @code{true} and @code{false}.  When the interpreter checks a predicate's
+value, it interprets @code{false} as false.  Any other value is treated as true.
+(Thus, providing @code{true} is logically unnecessary, but it is convenient.)}
 
 Conditional expressions are evaluated as follows.  The predicate @math{{⟨p_1⟩}} is
 evaluated first.  If its value is false, then @math{{⟨p_2⟩}} is evaluated.  If
@@ -1906,14 +1905,15 @@ number, returning true or false accordingly.
 Another way to write the absolute-value procedure is
 
 @lisp
-(define (abs x)
-  (cond ((< x 0) (- x))
-        (else x)))
+(defn abs[x]
+  (cond
+    (< x 0) (- x)
+    :else x))
 @end lisp
 
 @noindent
 which could be expressed in English as ``If @math{x} is less than zero return
-@math{{-x}}; otherwise return @math{x}.''  @code{else} is a special symbol that can be
+@math{{-x}}; otherwise return @math{x}.''  @code{:else} is a special symbol that can be
 used in place of the @math{{⟨p⟩}} in the final clause of a @code{cond}.  This
 causes the @code{cond} to return as its value the value of the corresponding
 @math{{⟨e⟩}} whenever all previous clauses have been bypassed.  In fact, any
@@ -1923,10 +1923,10 @@ here.
 Here is yet another way to write the absolute-value procedure:
 
 @lisp
-(define (abs x)
+(defn abs[x]
   (if (< x 0)
-      (- x)
-      x))
+    (- x)
+    x))
 @end lisp
 
 @noindent
@@ -2000,7 +2000,7 @@ As another example, we can define a predicate to test whether one number is
 greater than or equal to another as
 
 @lisp
-(define (>= x y)
+(defn >=[x y]
   (or (> x y) (= x y)))
 @end lisp
 
@@ -2008,7 +2008,7 @@ greater than or equal to another as
 or alternatively as
 
 @lisp
-(define (>= x y)
+(defn >=[x y]
   (not (< x y)))
 @end lisp
 
@@ -2024,20 +2024,22 @@ presented.
 (- 9 1)
 (/ 6 2)
 (+ (* 2 4) (- 4 6))
-(define a 3)
-(define b (+ a 1))
+(def a 3)
+(def b (+ a 1))
 (+ a b (* a b))
 (= a b)
 (if (and (> b a) (< b (* a b)))
-    b
-    a)
-(cond ((= a 4) 6)
-      ((= b 4) (+ 6 7 a))
-      (else 25))
+  b
+  a)
+(cond
+  (= a 4) 6
+  (= b 4) (+ 6 7 a)
+  :else 25)
 (+ 2 (if (> b a) b a))
-(* (cond ((> a b) a)
-         ((< a b) b)
-         (else -1))
+(* (cond
+      (> a b) a
+      (< a b) b
+      :else -1)
    (+ a 1))
 @end lisp
 @end quotation
@@ -2076,7 +2078,7 @@ evaluation allows for combinations whose operators are compound expressions.
 Use this observation to describe the behavior of the following procedure:
 
 @lisp
-(define (a-plus-abs-b a b)
+(defn a-plus-abs-b[a b]
   ((if (> b 0) + -) a b))
 @end lisp
 @end quotation
@@ -2088,9 +2090,9 @@ applicative-order evaluation or normal-order evaluation.  He defines the
 following two procedures:
 
 @lisp
-(define (p) (p))
+(def p p)
 
-(define (test x y)
+(defn test[x y]
   (if (= x 0)
       0
       y))
@@ -2146,7 +2148,7 @@ actually find the square root of a given number.  It will not help matters to
 rephrase this definition in pseudo-Lisp:
 
 @lisp
-(define (sqrt x)
+(defn sqrt[x]
   (the y (and (>= y 0)
               (= (square y) x))))
 @end lisp
@@ -2213,10 +2215,10 @@ done; if not, we must repeat the process with an improved guess.  We write this
 basic strategy as a procedure:
 
 @lisp
-(define (sqrt-iter guess x)
+(defn sqrt-iter[guess x]
   (if (good-enough? guess x)
-      guess
-      (sqrt-iter (improve guess x) x)))
+    guess
+    (sqrt-iter (improve guess x) x)))
 @end lisp
 
 @noindent
@@ -2224,7 +2226,7 @@ A guess is improved by averaging it with the quotient of the radicand and the
 old guess:
 
 @lisp
-(define (improve guess x)
+(defn improve[guess x]
   (average guess (/ x guess)))
 @end lisp
 
@@ -2232,7 +2234,7 @@ old guess:
 where
 
 @lisp
-(define (average x y)
+(defn average[x y]
   (/ (+ x y) 2))
 @end lisp
 
@@ -2247,7 +2249,7 @@ This is just a stylistic convention.  As far as the interpreter is concerned,
 the question mark is just an ordinary character.}
 
 @lisp
-(define (good-enough? guess x)
+(defn good-enough?[guess x]
   (< (abs (- (square guess) x)) 0.001))
 @end lisp
 
@@ -2255,8 +2257,8 @@ the question mark is just an ordinary character.}
 Finally, we need a way to get started.  For instance, we can always guess that
 the square root of any number is 1:@footnote{Observe that we express our
 initial guess as 1.0 rather than 1.  This would not make any difference in many
-Lisp implementations.  @abbr{MIT} Scheme, however, distinguishes between
-exact integers and decimal values, and dividing two integers produces a
+Lisp implementations.  Clojure, however, distinguishes between
+exact integers, rational and decimal values, and dividing two integers produces a
 rational number rather than a decimal.  For example, dividing 10 by 6 yields
 5/3, while dividing 10.0 by 6.0 yields 1.6666666666666667.  (We will learn how
 to implement arithmetic on rational numbers in @ref{2.1.1}.)  If we
@@ -2267,7 +2269,7 @@ numbers and decimals always yield decimals, so starting with an initial guess
 of 1.0 forces all subsequent values to be decimals.}
 
 @lisp
-(define (sqrt x)
+(defn sqrt[x]
   (sqrt-iter 1.0 x))
 @end lisp
 
@@ -2309,11 +2311,10 @@ Eva Lu Ator claims this can indeed be done, and she defines a new version of
 @code{if}:
 
 @lisp
-(define (new-if predicate
-                then-clause
-                else-clause)
-  (cond (predicate then-clause)
-        (else else-clause)))
+(defn new-if[predicate then-clause else-clause]
+  (cond
+    predicate then-clause
+    :else else-clause))
 @end lisp
 
 Eva demonstrates the program for Alyssa:
@@ -2329,10 +2330,10 @@ Eva demonstrates the program for Alyssa:
 Delighted, Alyssa uses @code{new-if} to rewrite the square-root program:
 
 @lisp
-(define (sqrt-iter guess x)
+(defn sqrt-iter[guess x]
   (new-if (good-enough? guess x)
-          guess
-          (sqrt-iter (improve guess x) x)))
+    guess
+    (sqrt-iter (improve guess x) x)))
 @end lisp
 
 What happens when Alyssa attempts to use this to compute square roots?
@@ -2446,12 +2447,12 @@ has extensive tables of logarithms and antilogarithms stored in a very
 efficient manner.}
 
 @lisp
-(define (square x) (* x x))
+(defn square[x] (* x x))
 
-(define (square x)
+(defn square[x]
   (exp (double (log x))))
 
-(define (double x) (+ x x))
+(defn double[x] (+ x x))
 @end lisp
 
 @noindent
@@ -2468,8 +2469,8 @@ formal parameters.  Thus, the following procedures should not be
 distinguishable:
 
 @lisp
-(define (square x) (* x x))
-(define (square y) (* y y))
+(defn square[x] (* x x))
+(defn square[y] (* y y))
 @end lisp
 
 @noindent
@@ -2481,7 +2482,7 @@ example, we used @code{square} in the definition of @code{good-enough?} in our
 square-root procedure:
 
 @lisp
-(define (good-enough? guess x)
+(defn good-enough?[guess x]
   (< (abs (- (square guess) x)) 0.001))
 @end lisp
 
@@ -2538,18 +2539,18 @@ square-root program illustrates another way in which we would like to control
 the use of names.  The existing program consists of separate procedures:
 
 @lisp
-(define (sqrt x)
+(defn sqrt[x]
   (sqrt-iter 1.0 x))
 
-(define (sqrt-iter guess x)
+(defn sqrt-iter[guess x]
   (if (good-enough? guess x)
-      guess
-      (sqrt-iter (improve guess x) x)))
+    guess
+    (sqrt-iter (improve guess x) x)))
 
-(define (good-enough? guess x)
+(defn good-enough?[guess x]
   (< (abs (- (square guess) x)) 0.001))
 
-(define (improve guess x)
+(defn improve[guess x]
   (average guess (/ x guess)))
 @end lisp
 
@@ -2571,15 +2572,15 @@ procedure to have internal definitions that are local to that procedure.  For
 example, in the square-root problem we can write
 
 @lisp
-(define (sqrt x)
-  (define (good-enough? guess x)
-    (< (abs (- (square guess) x)) 0.001))
-  (define (improve guess x)
+(defn sqrt[x]
+  (defn good-enough?[guess x]
+    (< (abs (- (square guess) x)) 0.0001))
+  (defn improve[guess x]
     (average guess (/ x guess)))
-  (define (sqrt-iter guess x)
+  (defn sqrt-iter[guess x]
     (if (good-enough? guess x)
-        guess
-        (sqrt-iter (improve guess x) x)))
+      guess
+      (sqrt-iter (improve guess x) x)))
   (sqrt-iter 1.0 x))
 @end lisp
 
@@ -2601,15 +2602,15 @@ procedure was defined. We will see how this works in detail in chapter 3 when we
 environments and the detailed behavior of the interpreter.@anchor{Footnote 28}}
 
 @lisp
-(define (sqrt x)
-  (define (good-enough? guess)
-    (< (abs (- (square guess) x)) 0.001))
-  (define (improve guess)
+(defn sqrt[x]
+  (defn good-enough?[guess]
+    (< (abs (- (square guess) x)) 0.0001))
+  (defn improve[guess]
     (average guess (/ x guess)))
-  (define (sqrt-iter guess)
+  (defn sqrt-iter[guess]
     (if (good-enough? guess)
-        guess
-        (sqrt-iter (improve guess))))
+      guess
+      (sqrt-iter (improve guess))))
   (sqrt-iter 1.0))
 @end lisp
 
@@ -2715,10 +2716,10 @@ result by @math{n}.  If we add the stipulation that 1! is equal to 1, this
 observation translates directly into a procedure:
 
 @lisp
-(define (factorial n)
+(defn factorial [n]
   (if (= n 1)
-      1
-      (* n (factorial (- n 1)))))
+    1
+    (* n (factorial (- n 1)))))
 @end lisp
 
 @noindent
@@ -2777,28 +2778,28 @@ structure introduced in the last section to hide the definition of
 @code{fact-iter}:
 
 @lisp
-(define (factorial n)
-  (define (iter product counter)
+(defn factorial[n]
+  (defn fact-iter[product counter]
     (if (> counter n)
-        product
-        (iter (* counter product)
-              (+ counter 1))))
-  (iter 1 1))
+      product
+      (fact-iter (* counter product)
+                 (+ counter 1))))
+  (fact-iter 1 1))
 @end lisp
 
 We avoided doing this here so as to minimize the number of things to think
 about at once.}
 
 @lisp
-(define (factorial n)
-  (fact-iter 1 1 n))
-
-(define (fact-iter product counter max-count)
+(defn fact-iter[product counter max-count]
   (if (> counter max-count)
-      product
-      (fact-iter (* counter product)
-                 (+ counter 1)
-                 max-count)))
+    product
+    (fact-iter (* counter product)
+               (+ counter 1)
+               max-count)))
+
+(defn factorial[n]
+  (fact-iter 1 1 n))
 @end lisp
 
 @noindent
@@ -2898,21 +2899,23 @@ consumes an amount of memory that grows with the number of procedure calls,
 even when the process described is, in principle, iterative.  As a consequence,
 these languages can describe iterative processes only by resorting to
 special-purpose ``looping constructs'' such as @code{do}, @code{repeat},
-@code{until}, @code{for}, and @code{while}.  The implementation of Scheme we
-shall consider in @ref{Chapter 5} does not share this defect.  It will execute
-an iterative process in constant space, even if the iterative process is
-described by a recursive procedure.  An implementation with this property is
-called @newterm{tail-recursive}.  With a tail-recursive implementation,
-iteration can be expressed using the ordinary procedure call mechanism, so that
-special iteration constructs are useful only as syntactic sugar.@footnote{Tail
-recursion has long been known as a compiler optimization trick.  A coherent
-semantic basis for tail recursion was provided by Carl @ref{Hewitt (1977)}, who
-explained it in terms of the ``message-passing'' model of computation that we
-shall discuss in @ref{Chapter 3}.  Inspired by this, Gerald Jay Sussman and Guy
-Lewis Steele Jr. (see @ref{Steele and Sussman 1975}) constructed a tail-recursive interpreter for
-Scheme.  Steele later showed how tail recursion is a consequence of the natural
-way to compile procedure calls (@ref{Steele 1977}).  The @abbr{IEEE} standard for
-Scheme requires that Scheme implementations be tail-recursive.}
+@code{until}, @code{for}, and @code{while}.  Sadly the implementation of Clojure
+we shall consider in @ref{Chapter 5} shares this same defect.  It will only
+execute an iterative process in constant space provided the recursive procudure
+call is replaced with the keyword @code{recur}.  An implementation which
+automatically detects this kind of recursion and replaced the implementation
+with iteration is called @newterm{tail-recursive}.  With a tail-recursive
+implementation, iteration can be expressed using the ordinary procedure call
+mechanism, so that special iteration constructs are useful only as syntactic
+sugar.@footnote{Tail recursion has long been known as a compiler optimization
+trick.  A coherent semantic basis for tail recursion was provided by Carl
+@ref{Hewitt (1977)}, who explained it in terms of the ``message-passing'' model
+of computation that we shall discuss in @ref{Chapter 3}.  Inspired by this,
+Gerald Jay Sussman and Guy Lewis Steele Jr. (see @ref{Steele and Sussman 1975})
+constructed a tail-recursive interpreter for Scheme.  Steele later showed how
+tail recursion is a consequence of the natural way to compile procedure calls
+(@ref{Steele 1977}).  The @abbr{IEEE} standard for Scheme requires that Scheme
+implementations be tail-recursive.}
 
 @quotation
 @strong{@anchor{Exercise 1.9}Exercise 1.9:} Each of the following two
@@ -2921,15 +2924,15 @@ procedures @code{inc}, which increments its argument by 1, and @code{dec},
 which decrements its argument by 1.
 
 @lisp
-(define (+ a b)
+(defn +[a b]
   (if (= a 0)
-      b
-      (inc (+ (dec a) b))))
+    b
+    (inc (+ (dec a) b))))
 
-(define (+ a b)
+(defn +[a b]
   (if (= a 0)
-      b
-      (+ (dec a) (inc b))))
+    b
+    (+ (dec a) (inc b))))
 @end lisp
 
 Using the substitution model, illustrate the process generated by each
@@ -2942,12 +2945,13 @@ recursive?
 a mathematical function called Ackermann's function.
 
 @lisp
-(define (A x y)
-  (cond ((= y 0) 0)
-        ((= x 0) (* 2 y))
-        ((= y 1) 2)
-        (else (A (- x 1)
-                 (A x (- y 1))))))
+(defn A[x y]
+  (cond
+    (= y 0) 0
+    (= x 0) (* 2 y)
+    (= y 1) 2
+    :else (A (- x 1)
+            (A x (- y 1)))))
 @end lisp
 
 What are the values of the following expressions?
@@ -2962,10 +2966,10 @@ Consider the following procedures, where @code{A} is the procedure
 defined above:
 
 @lisp
-(define (f n) (A 0 n))
-(define (g n) (A 1 n))
-(define (h n) (A 2 n))
-(define (k n) (* 5 n n))
+(defn f[n] (A 0 n))
+(defn g[n] (A 1 n))
+(defn h[n] (A 2 n))
+(defn k[n] (* 5 n n))
 @end lisp
 
 Give concise mathematical definitions for the functions computed by the
@@ -3014,11 +3018,12 @@ We can immediately translate this definition into a recursive procedure for
 computing Fibonacci numbers:
 
 @lisp
-(define (fib n)
-  (cond ((= n 0) 0)
-        ((= n 1) 1)
-        (else (+ (fib (- n 1))
-                 (fib (- n 2))))))
+(defn fib[n]
+  (cond
+    (= n 0) 0
+    (= n 1) 1
+    :else (+ (fib (- n 1))
+             (fib (- n 2)))))
 @end lisp
 
 @noindent
@@ -3143,13 +3148,13 @@ It is not hard to show that, after applying this transformation @math{n} times,
 the procedure
 
 @lisp
-(define (fib n)
-  (fib-iter 1 0 n))
-
-(define (fib-iter a b count)
+(defn fib-iter[a b count]
   (if (= count 0)
-      b
-      (fib-iter (+ a b) a (- count 1))))
+    b
+    (fib-iter (+ a b) a (- count 1))))
+
+(defn fib[n]
+  (fib-iter 1 0 n))
 @end lisp
 
 @noindent
@@ -3231,26 +3236,29 @@ If @math{n} is 0, we should count that as 0 ways to make change.
 We can easily translate this description into a recursive procedure:
 
 @lisp
-(define (count-change amount)
+
+(defn first-denomination[kinds-of-coins]
+  (cond
+    (= kinds-of-coins 1) 1
+    (= kinds-of-coins 2) 5
+    (= kinds-of-coins 3) 10
+    (= kinds-of-coins 4) 25
+    (= kinds-of-coins 5) 50))
+
+(defn cc[amount kinds-of-coins]
+  (cond
+    (= amount 0) 1
+    (or (< amount 0)
+        (= kinds-of-coins 0))
+      0
+    :else
+      (+ (cc amount (- kinds-of-coins 1))
+         (cc (- amount (first-denomination
+                        kinds-of-coins))
+                kinds-of-coins))))
+
+(defn count-change[amount]
   (cc amount 5))
-
-(define (cc amount kinds-of-coins)
-  (cond ((= amount 0) 1)
-        ((or (< amount 0)
-             (= kinds-of-coins 0))
-         0)
-        (else
-         (+ (cc amount (- kinds-of-coins 1))
-            (cc (- amount (first-denomination
-                           kinds-of-coins))
-                kinds-of-coins)))))
-
-(define (first-denomination kinds-of-coins)
-  (cond ((= kinds-of-coins 1) 1)
-        ((= kinds-of-coins 2) 5)
-        ((= kinds-of-coins 3) 10)
-        ((= kinds-of-coins 4) 25)
-        ((= kinds-of-coins 5) 50)))
 @end lisp
 
 @noindent
@@ -3425,9 +3433,9 @@ greater than 0.1 radians.) These ideas are incorporated in the following
 procedures:
 
 @lisp
-(define (cube x) (* x x x))
-(define (p x) (- (* 3 x) (* 4 (cube x))))
-(define (sine angle)
+(defn cube[x] (* x x x))
+(defn p[x] (- (* 3 x) (* 4 (cube x))))
+(defn sine[angle]
    (if (not (> (abs angle) 0.1))
        angle
        (p (sine (/ angle 3.0)))))
@@ -3476,7 +3484,7 @@ b^0 = 1
 which translates readily into the procedure
 
 @lisp
-(define (expt b n)
+(defn expt[b n]
   (if (= n 0)
       1
       (* b (expt b (- n 1)))))
@@ -3488,15 +3496,15 @@ This is a linear recursive process, which requires @math{{\Theta(n)}} steps and
 equivalent linear iteration:
 
 @lisp
-(define (expt b n)
-  (expt-iter b n 1))
-
-(define (expt-iter b counter product)
+(defn expt-iter[b counter product]
   (if (= counter 0)
       product
       (expt-iter b
                  (- counter 1)
                  (* b product))))
+
+(defn expt[b n]
+  (expt-iter b n 1))
 @end lisp
 
 @noindent
@@ -3566,13 +3574,14 @@ b^n = b * b^(n - 1)  if n is odd
 We can express this method as a procedure:
 
 @lisp
-(define (fast-expt b n)
-  (cond ((= n 0)
-         1)
-        ((even? n)
-         (square (fast-expt b (/ n 2))))
-        (else
-         (* b (fast-expt b (- n 1))))))
+(defn fast-expt[b n]
+  (cond
+    (= n 0)
+      1
+    (even? n)
+      (square (fast-expt b (/ n 2)))
+    :else
+      (* b (fast-expt b (- n 1)))))
 @end lisp
 
 @noindent
@@ -3580,8 +3589,8 @@ where the predicate to test whether an integer is even is defined in terms of
 the primitive procedure @code{remainder} by
 
 @lisp
-(define (even? n)
-  (= (remainder n 2) 0))
+(defn even?[n]
+  (= (rem n 2) 0))
 @end lisp
 
 @noindent
@@ -3637,10 +3646,10 @@ it is assumed that our language can only add, not multiply) is analogous to the
 @code{expt} procedure:
 
 @lisp
-(define (* a b)
+(defn *[a b]
   (if (= b 0)
-      0
-      (+ a (* a (- b 1)))))
+    0
+    (+ a (* a (- b 1)))))
 @end lisp
 
 This algorithm takes a number of steps that is linear in @code{b}.  Now suppose
@@ -3684,27 +3693,28 @@ runs in a logarithmic number of steps:@footnote{This exercise was suggested to
 us by Joe Stoy, based on an example in @ref{Kaldewaij 1990}.}
 
 @lisp
-(define (fib n)
-  (fib-iter 1 0 0 1 n))
+(defn fib-iter[a b p q count]
+  (cond
+    (= count 0)
+      b
+    (even? count)
+      (fib-iter a
+                b
+                ⟨??⟩  ;compute @var{p'}
+                ⟨??⟩  ;compute @var{q'}
+                (/ count 2))
+    :else
+      (fib-iter (+ (* b q)
+                   (* a q)
+                   (* a p))
+                (+ (* b p)
+                   (* a q))
+                p
+                q
+                (- count 1))))
 
-(define (fib-iter a b p q count)
-  (cond ((= count 0)
-         b)
-        ((even? count)
-         (fib-iter a
-                   b
-                   ⟨??⟩  ;compute @var{p'}
-                   ⟨??⟩  ;compute @var{q'}
-                   (/ count 2)))
-        (else
-         (fib-iter (+ (* b q)
-                      (* a q)
-                      (* a p))
-                   (+ (* b p)
-                      (* a q))
-                   p
-                   q
-                   (- count 1)))))
+(defn fib[n]
+  (fib-iter 1 0 0 1 n))
 @end lisp
 @end quotation
 
@@ -3760,10 +3770,10 @@ examples.}
 It is easy to express Euclid's Algorithm as a procedure:
 
 @lisp
-(define (gcd a b)
+(defn gcd[a b]
   (if (= b 0)
-      a
-      (gcd b (remainder a b))))
+    a
+    (gcd b (rem a b))))
 @end lisp
 
 @noindent
@@ -3845,20 +3855,22 @@ straightforward way, by testing @math{n} for divisibility by successive integers
 starting with 2.
 
 @lisp
-(define (smallest-divisor n)
+(defn divides?[a b]
+  (= (rem b a) 0))
+
+(defn find-divisor[n test-divisor]
+  (cond
+    (> (square test-divisor) n)
+      n
+    (divides? test-divisor n)
+      test-divisor
+    :else
+      (find-divisor
+          n
+          (+ test-divisor 1))))
+
+(defn smallest-divisor[n]
   (find-divisor n 2))
-
-(define (find-divisor n test-divisor)
-  (cond ((> (square test-divisor) n)
-         n)
-        ((divides? test-divisor n)
-         test-divisor)
-        (else (find-divisor
-               n
-               (+ test-divisor 1)))))
-
-(define (divides? a b)
-  (= (remainder b a) 0))
 @end lisp
 
 @noindent
@@ -3866,7 +3878,7 @@ We can test whether a number is prime as follows: @math{n} is prime if and only 
 @math{n} is its own smallest divisor.
 
 @lisp
-(define (prime? n)
+(defn prime?[n]
   (= n (smallest-divisor n)))
 @end lisp
 
@@ -3924,16 +3936,17 @@ To implement the Fermat test, we need a procedure that computes the exponential
 of a number modulo another number:
 
 @lisp
-(define (expmod base exp m)
-  (cond ((= exp 0) 1)
-        ((even? exp)
-         (remainder
-          (square (expmod base (/ exp 2) m))
-          m))
-        (else
-         (remainder
-          (* base (expmod base (- exp 1) m))
-          m))))
+(defn expmod[base exp m]
+  (cond
+    (= exp 0) 1
+    (even? exp)
+      (rem
+        (square (expmod base (/ exp 2) m))
+        m)
+    :else
+      (rem
+        (* base (expmod base (- exp 1) m))
+        m)))
 @end lisp
 
 @noindent
@@ -3959,8 +3972,10 @@ input.  Hence, to obtain a random number between 1 and @math{{n-1}}, we call
 @code{random} with an input of @math{{n-1}} and add 1 to the result:
 
 @lisp
-(define (fermat-test n)
-  (define (try-it a)
+(defn fermat-test[n]
+  (defn random[m]
+    (int (* m (rand))))
+  (defn try-it[a]
     (= (expmod a n n) a))
   (try-it (+ 1 (random (- n 1)))))
 @end lisp
@@ -3971,11 +3986,12 @@ a parameter.  Its value is true if the test succeeds every time, and false
 otherwise.
 
 @lisp
-(define (fast-prime? n times)
-  (cond ((= times 0) true)
-        ((fermat-test n)
-         (fast-prime? n (- times 1)))
-        (else false)))
+(defn fast-prime?[n times]
+  (cond
+    (= times 0) true
+    (fermat-test n)
+      (fast-prime? n (- times 1))
+    :else false))
 @end lisp
 
 @subsubheading Probabilistic methods
@@ -4044,29 +4060,32 @@ procedure to find the smallest divisor of each of the following numbers: 199,
 @strong{@anchor{Exercise 1.22}Exercise 1.22:} Most Lisp implementations include
 a primitive called @code{runtime} that returns an integer that specifies the
 amount of time the system has been running (measured, for example, in
-microseconds).  The following @code{timed-prime-test} procedure, when called
-with an integer @math{n}, prints @math{n} and checks to see if @math{n} is prime.  If
-@math{n} is prime, the procedure prints three asterisks followed by the amount of
-time used in performing the test.
+microseconds).  The following procedure defines @code{runtime} in Clojure
+which returns the current time in nano seconds.
 
 @lisp
-(define (timed-prime-test n)
-  (newline)
-  (display n)
-  (start-prime-test n (runtime)))
+(defn runtime[] (System/nanoTime))
 @end lisp
 
+The following @code{timed-prime-test} procedure, when called with an integer
+@math{n}, prints @math{n} and checks to see if @math{n} is prime.  If @math{n}
+is prime, the procedure prints three asterisks followed by the amount of time
+used in performing the test.
+
 @lisp
-(define (start-prime-test n start-time)
+(defn report-prime[elapsed-time]
+  (print " *** ")
+  (println elapsed-time))
+
+(defn start-prime-test[n start-time]
   (if (prime? n)
       (report-prime (- (runtime)
                        start-time))))
-@end lisp
 
-@lisp
-(define (report-prime elapsed-time)
-  (display " *** ")
-  (display elapsed-time))
+(defn timed-prime-test[n]
+  (newline)
+  (print n)
+  (start-prime-test n (runtime)))
 @end lisp
 
 Using this procedure, write a procedure @code{search-for-primes} that checks
@@ -4116,8 +4135,8 @@ we went to a lot of extra work in writing @code{expmod}.  After all, she says,
 since we already know how to compute exponentials, we could have simply written
 
 @lisp
-(define (expmod base exp m)
-  (remainder (fast-expt base exp) m))
+(defn expmod[base exp m]
+  (rem (fast-expt base exp) m))
 @end lisp
 
 Is she correct?  Would this procedure serve as well for our fast prime tester?
@@ -4133,18 +4152,19 @@ the @code{expmod} procedure to use an explicit multiplication, rather than
 calling @code{square}:
 
 @lisp
-(define (expmod base exp m)
-  (cond ((= exp 0) 1)
-        ((even? exp)
-         (remainder
-          (* (expmod base (/ exp 2) m)
-             (expmod base (/ exp 2) m))
-          m))
-        (else
-         (remainder
-          (* base
-             (expmod base (- exp 1) m))
-          m))))
+(defn expmod[base exp m]
+  (cond
+    (= exp 0) 1
+    (even? exp)
+      (rem
+        (* (expmod base (/ exp 2) m)
+           (expmod base (/ exp 2) m))
+        m)
+    :else
+      (rem
+        (* base
+           (expmod base (- exp 1) m))
+        m)))
 @end lisp
 
 ``I don't see what difference that could make,'' says Louis.  @w{``I do.''}  says
@@ -4193,7 +4213,7 @@ compound operations on numbers independent of the particular numbers.  For
 example, when we
 
 @lisp
-(define (cube x) (* x x x))
+(defn cube[x] (* x x x))
 @end lisp
 
 @noindent
